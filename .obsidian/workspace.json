@@ -1,0 +1,240 @@
+{
+  "main": {
+    "id": "c14c4c9d4bcbc958",
+    "type": "split",
+    "children": [
+      {
+        "id": "02d28fe4eca6e5f6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2d61bb42d1196d4d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "04_Archive/Tutorial - Sincronização Obsidian e Git.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Tutorial - Sincronização Obsidian e Git"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2a545ad19ddb1a4d",
+    "type": "split",
+    "children": [
+      {
+        "id": "8cc5cccc696b3bba",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c5552a6e2e1d44e7",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de arquivos"
+            }
+          },
+          {
+            "id": "5ef5727891fda8d1",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Procurar"
+            }
+          },
+          {
+            "id": "88070f4499ff566a",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "2759f92783eb222f",
+    "type": "split",
+    "children": [
+      {
+        "id": "5015fa170b4cc59f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fc26b65f6e82b349",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "04_Archive/Tutorial - Sincronização Obsidian e Git.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Links inversos"
+            }
+          },
+          {
+            "id": "6c9eaa3a5f624e53",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "04_Archive/Tutorial - Sincronização Obsidian e Git.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Links de saída"
+            }
+          },
+          {
+            "id": "a09a64db58a8edb2",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "5f144824aad96bcd",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas as propriedades"
+            }
+          },
+          {
+            "id": "85b5c50c8131c62a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "04_Archive/Tutorial - Sincronização Obsidian e Git.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Sumário"
+            }
+          },
+          {
+            "id": "4438fca970cfaf76",
+            "type": "leaf",
+            "state": {
+              "type": "github-copilot-chat-view",
+              "state": {},
+              "icon": "bot-message-square",
+              "title": "Copilot Chat"
+            }
+          }
+        ],
+        "currentTab": 5
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Criar nova base": false
+    }
+  },
+  "active": "c5552a6e2e1d44e7",
+  "lastOpenFiles": [
+    "00_Inbox/📥 Capturas Rápidas.md",
+    "04_Archive/Tutorial - Sincronização Obsidian e Git.md",
+    "Configuration and Monitoring.md",
+    "03_Resources/SAP/IDoc - Intermediate Document.md",
+    "00_Inbox/PIMON - Configuration and Monitoring.md",
+    "Roteiro_Estudos_SAP.md",
+    "03_Resources/SAP/ABAP Proxy - Advanced Business Application Programming Proxy.md",
+    "03_Resources/SAP/ABAP Proxy.md",
+    "03_Resources/SAP/SOAP - Simple Object Access Protocol.md",
+    "03_Resources/SAP/IDoc.md",
+    "03_Resources/SAP/SOAP.md",
+    "03_Resources/SAP/PI - Process Intagration.md",
+    "00_Inbox/Integration Builder (Integration Directory).md",
+    "00_Inbox/ESR - Enterprise Services Repository.md",
+    "00_Inbox/SLD - System Landscape Directory.md",
+    "00_Inbox/SOA - Service-Oriented Architecture.md",
+    "03_Resources/Programação/Conhecimentos Gerais/ESB - Enterprise Service Bus.md",
+    "03_Resources/Programação/Conhecimentos Gerais",
+    "03_Resources/Programação",
+    "ESB.md",
+    "00_Inbox/ESB.md",
+    "00_Inbox/SOA.md",
+    "00_Inbox/guia_inbox.md",
+    "03_Resources/SAP/Roteiro de Estudos SAP.md",
+    "03_Resources/guia_recursos.md",
+    "05_Templates/Template_Projeto.md",
+    "Bem-vindo.md",
+    "03_Resources/SAP/PO - Process Orquestration.md",
+    "03_Resources/SAP",
+    "05_Templates",
+    "04_Archive",
+    "03_Resources",
+    "02_Areas",
+    "01_Projects",
+    "00_Inbox"
+  ]
+}
