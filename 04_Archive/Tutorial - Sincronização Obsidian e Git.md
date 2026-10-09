@@ -41,9 +41,9 @@ Para que você não precise usar o terminal diariamente, o Obsidian fará isso s
 1. Abra o Obsidian no seu computador.
 2. Vá em **Configurações** (ícone de engrenagem) > **Community Plugins** (Plugins da comunidade).
 3. Desative a opção **Safe Mode** (Modo seguro).
-4. Clique em **Browse** e busque por **Obsidian Git**.
+4. Clique em **Browse** e busque pelo plugin chamado **Git** (criado pelo autor Vinzent).
 5. Clique em **Install** e depois em **Enable** (Ativar).
-6. Nas opções (Options) do plugin Obsidian Git, procure pelo campo **Vault backup interval** (Intervalo de backup em minutos). Defina um tempo, por exemplo, `10` (para salvar a cada 10 minutos).
+6. Nas opções (Options) do plugin Git, procure pelo campo **Vault backup interval** (Intervalo de backup em minutos). Defina um tempo, por exemplo, `10` (para salvar a cada 10 minutos).
 7. Mais abaixo, ative a opção **Push changes on backup**. A partir deste momento, o Obsidian do computador enviará e receberá atualizações do GitHub automaticamente.
 
 ---
@@ -67,9 +67,9 @@ O aplicativo do celular precisará de uma senha especial (Token) para se conecta
 1. Abra o aplicativo do **Obsidian no Android**.
 2. Na tela inicial, selecione **Create new vault** (Criar novo cofre). Dê um nome temporário, como `Cofre Temporario`, e salve em qualquer pasta do aparelho.
 3. Abra as **Configurações** (ícone de engrenagem no canto inferior) > **Community plugins**. Desative o *Safe mode*.
-4. Clique em **Browse**, busque por **Obsidian Git**, instale e ative o plugin.
+4. Clique em **Browse**, busque pelo plugin **Git** (criado por Vinzent), instale e ative o plugin.
 5. Feche as configurações. Na tela principal, deslize o dedo do topo da tela para baixo (ou clique no ícone de Comandos / Command Palette).
-6. Digite e selecione a opção: `Obsidian Git: Clone an existing repository`.
+6. Digite e selecione a opção: `Obsidian Git: Clone an existing repository` (ou apenas `Git: Clone...`).
 7. O aplicativo solicitará o endereço do repositório. Cole a URL do seu GitHub (a mesma do Passo 1).
 8. Quando pedir autenticação, digite o seu Nome de Usuário do GitHub e, no campo de senha, **cole o Token (PAT)** gerado no Passo 4.
 9. O Obsidian fará o download de todos os seus arquivos. Ao finalizar, feche o aplicativo e abra-o novamente. Selecione "Open folder as vault" e aponte para a pasta que acabou de ser baixada. (Você pode excluir a pasta `Cofre Temporario` original).

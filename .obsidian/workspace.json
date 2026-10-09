@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "04_Archive/Tutorial - Sincronização Obsidian e Git.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -176,12 +176,22 @@
             "state": {
               "type": "github-copilot-chat-view",
               "state": {},
+              "icon": "lucide-ghost",
+              "title": "github-copilot-chat-view"
+            }
+          },
+          {
+            "id": "f81325c4dcbe6a42",
+            "type": "leaf",
+            "state": {
+              "type": "github-copilot-chat-view",
+              "state": {},
               "icon": "bot-message-square",
               "title": "Copilot Chat"
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -199,7 +209,7 @@
       "bases:Criar nova base": false
     }
   },
-  "active": "b540c8480a118a13",
+  "active": "f81325c4dcbe6a42",
   "lastOpenFiles": [
     "03_Resources/SAP/SOAP - Simple Object Access Protocol.md",
     "04_Archive/Tutorial - Sincronização Obsidian e Git.md",
