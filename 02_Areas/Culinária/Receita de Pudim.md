@@ -5,15 +5,15 @@ status: "done"
 summary: "Receita clássica e tradicional de Pudim de Leite Condensado com calda de caramelo."
 ---
 # Receita de Pudim de Leite Condensado
-
+>Vídeo de referência: https://www.youtube.com/watch?v=olw3gMc4YlU
+--- 
 ## 🛒 Lista de Compras (Para o Mercado)
 - [ ] 1 pacote de Açúcar
 - [ ] 1 lata de Leite Condensado (395g)
 - [ ] 1 litro de Leite Integral
 - [ ] 3 Ovos 
 - [ ] Rolo de Papel Alumínio
-
----
+--- 
 ## 🥘 Ingredientes
 
 ### Para a Calda de Caramelo:
