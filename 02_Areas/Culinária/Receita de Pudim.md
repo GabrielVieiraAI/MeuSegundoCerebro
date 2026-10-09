@@ -7,14 +7,13 @@ summary: "Receita clássica e tradicional de Pudim de Leite Condensado com calda
 # Receita de Pudim de Leite Condensado
 
 ## 🛒 Lista de Compras (Para o Mercado)
-- [ ] 1 pct de Açúcar (para a calda)
+- [ ] 1 pacote de Açúcar
 - [ ] 1 lata de Leite Condensado (395g)
 - [ ] 1 litro de Leite Integral
-- [ ] Ovos (você usará 3 unidades)
-- [ ] *Checar em casa: Rolo de Papel-Alumínio (essencial para assar!)*
+- [ ] 3 Ovos 
+- [ ] Rolo de Papel Alumínio
 
 ---
-
 ## 🥘 Ingredientes
 
 ### Para a Calda de Caramelo:
@@ -48,4 +47,4 @@ summary: "Receita clássica e tradicional de Pudim de Leite Condensado com calda
 4. Deixe esfriar completamente e leve à geladeira por, no mínimo, 6 horas.
 
 ## 💡 Como Desenformar sem quebrar
-Passe o fundo da forma rapidamente sobre a boca do fogão ligada (coisa de 10 a 15 segundos). Isso vai dar uma derretidinha na calda presa no fundo, e o pudim vai escorregar perfeitamente para o prato!
+Passe o fundo da forma rapidamente sobre a boca do fogão ligada (coisa de 10 a 15 segundos). Isso vai derreter a calda presa no fundo, e o pudim vai escorregar perfeitamente para o prato!
