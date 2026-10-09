@@ -11,14 +11,13 @@
             "id": "b540c8480a118a13",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "bases",
               "state": {
-                "file": "04_Archive/Tutorial - Sincronização Obsidian e Git.md",
-                "mode": "preview",
-                "source": false
+                "file": "Sem título.base",
+                "viewName": "Visualizaçao padrão"
               },
-              "icon": "lucide-file",
-              "title": "Tutorial - Sincronização Obsidian e Git"
+              "icon": "lucide-list",
+              "title": "Sem título"
             }
           }
         ]
@@ -83,7 +82,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 297.5
   },
   "right": {
     "id": "2759f92783eb222f",
@@ -213,34 +212,35 @@
   },
   "active": "b540c8480a118a13",
   "lastOpenFiles": [
+    "03_Resources/guia_recursos.md",
+    "04_Archive/Tutorial - Sincronização Obsidian e Git.md",
+    "04_Archive/guia_arquivo.md",
+    "03_Resources/Programação/Conhecimentos Gerais/ESB - Enterprise Service Bus.md",
+    "01_Projects/guia_projetos.md",
+    "00_Inbox/📥 Capturas Rápidas.md",
+    "03_Resources/Programação/Conhecimentos Gerais/ESR - Enterprise Services Repository.md",
+    "00_Inbox/guia_inbox.md",
+    "03_Resources/SAP/Integration Builder (Integration Directory).md",
+    "03_Resources/SAP/SLD - System Landscape Directory.md",
+    "03_Resources/SAP/PIMON - Configuration and Monitoring.md",
+    "03_Resources/Programação/Conhecimentos Gerais/SOA - Service-Oriented Architecture.md",
     "Sem título.base",
     "03_Resources/SAP/SOAP - Simple Object Access Protocol.md",
-    "04_Archive/Tutorial - Sincronização Obsidian e Git.md",
-    "00_Inbox/📥 Capturas Rápidas.md",
     "Configuration and Monitoring.md",
     "03_Resources/SAP/IDoc - Intermediate Document.md",
-    "00_Inbox/PIMON - Configuration and Monitoring.md",
     "Roteiro_Estudos_SAP.md",
     "03_Resources/SAP/ABAP Proxy - Advanced Business Application Programming Proxy.md",
     "03_Resources/SAP/ABAP Proxy.md",
     "03_Resources/SAP/IDoc.md",
     "03_Resources/SAP/SOAP.md",
     "03_Resources/SAP/PI - Process Intagration.md",
-    "00_Inbox/Integration Builder (Integration Directory).md",
-    "00_Inbox/ESR - Enterprise Services Repository.md",
-    "00_Inbox/SLD - System Landscape Directory.md",
-    "00_Inbox/SOA - Service-Oriented Architecture.md",
-    "03_Resources/Programação/Conhecimentos Gerais/ESB - Enterprise Service Bus.md",
     "03_Resources/Programação/Conhecimentos Gerais",
     "03_Resources/Programação",
     "ESB.md",
     "00_Inbox/ESB.md",
     "00_Inbox/SOA.md",
-    "00_Inbox/guia_inbox.md",
     "03_Resources/SAP/Roteiro de Estudos SAP.md",
-    "03_Resources/guia_recursos.md",
     "05_Templates/Template_Projeto.md",
-    "Bem-vindo.md",
     "03_Resources/SAP",
     "05_Templates",
     "04_Archive",
