@@ -6,14 +6,20 @@ summary: "Receita clássica e tradicional de Pudim de Leite Condensado com calda
 ---
 # Receita de Pudim de Leite Condensado
 
-O Segundo Cérebro também serve para a vida real! Aqui está a receita clássica e tradicional do pudim de leite condensado, perfeito para o fim de semana.
+## 🛒 Lista de Compras (Para o Mercado)
+- [ ] 1 pct de Açúcar (para a calda)
+- [ ] 1 lata de Leite Condensado (395g)
+- [ ] 1 litro de Leite Integral
+- [ ] Ovos (você usará 3 unidades)
+- [ ] *Checar em casa: Rolo de Papel-Alumínio (essencial para assar!)*
+
+---
 
 ## 🥘 Ingredientes
 
 ### Para a Calda de Caramelo:
 - 1 xícara (chá) de açúcar
 - 1/2 xícara (chá) de água quente
-
 ### Para o Pudim:
 - 1 lata ou caixinha de Leite Condensado (395g)
 - 1 lata de Leite Integral (use a lata de leite condensado vazia como medida)
