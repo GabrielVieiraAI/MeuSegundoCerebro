@@ -68,11 +68,11 @@ O aplicativo do celular precisará de uma senha especial (Token) para se conecta
 2. Na tela inicial, selecione **Create new vault** (Criar novo cofre). Dê um nome temporário, como `Cofre Temporario`, e salve em qualquer pasta do aparelho.
 3. Abra as **Configurações** (ícone de engrenagem no canto inferior) > **Community plugins**. Desative o *Safe mode*.
 4. Clique em **Browse**, busque pelo plugin **Git** (criado por Vinzent), instale e ative o plugin.
-5. Feche as configurações. Na tela principal, deslize o dedo do topo da tela para baixo (ou clique no ícone de Comandos / Command Palette).
-6. Digite e selecione a opção: `Obsidian Git: Clone an existing repository` (ou apenas `Git: Clone...`).
-7. O aplicativo solicitará o endereço do repositório. Cole a URL do seu GitHub (a mesma do Passo 1).
-8. Quando pedir autenticação, digite o seu Nome de Usuário do GitHub e, no campo de senha, **cole o Token (PAT)** gerado no Passo 4.
-9. O Obsidian fará o download de todos os seus arquivos. Ao finalizar, feche o aplicativo e abra-o novamente. Selecione "Open folder as vault" e aponte para a pasta que acabou de ser baixada. (Você pode excluir a pasta `Cofre Temporario` original).
+5. **Passo crucial para repositórios privados:** Ainda nas configurações, entre nas opções do próprio plugin **Git**. Role a tela até a seção **Authentication / Credentials**. Preencha o seu *Username* do GitHub e, no campo *Password / Personal Access Token*, cole o **Token** gerado no Passo 4.
+6. Feche as configurações. Na tela principal, deslize o dedo do topo da tela para baixo (ou clique no ícone de Comandos / Command Palette).
+7. Digite e selecione a opção: `Git: Clone an existing repository`.
+8. O aplicativo solicitará o endereço do repositório. Cole a URL do seu GitHub (ex: `https://github.com/SeuUsuario/meu-obsidian.git`). Como o Token já foi configurado no passo 5, ele terá permissão imediata para encontrar e baixar os arquivos.
+9. Ao finalizar o download, feche o aplicativo e abra-o novamente. Selecione "Open folder as vault" e aponte para a pasta que acabou de ser baixada. (Você pode excluir a pasta `Cofre Temporario` original).
 
 ---
 
