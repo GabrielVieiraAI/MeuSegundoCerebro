@@ -11,13 +11,14 @@
             "id": "b540c8480a118a13",
             "type": "leaf",
             "state": {
-              "type": "bases",
+              "type": "markdown",
               "state": {
-                "file": "Sem título.base",
-                "viewName": "Visualizaçao padrão"
+                "file": "02_Areas/Culinária/Receita de Pudim de Leite Condensado.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-list",
-              "title": "Sem título"
+              "icon": "lucide-file",
+              "title": "Receita de Pudim de Leite Condensado"
             }
           }
         ]
@@ -212,6 +213,10 @@
   },
   "active": "b540c8480a118a13",
   "lastOpenFiles": [
+    "02_Areas/guia_areas.md",
+    "02_Areas/Culinária/Receita de Pudim de Leite Condensado.md",
+    "02_Areas/Culinária",
+    "Sem título.base",
     "03_Resources/guia_recursos.md",
     "04_Archive/Tutorial - Sincronização Obsidian e Git.md",
     "04_Archive/guia_arquivo.md",
@@ -224,7 +229,6 @@
     "03_Resources/SAP/SLD - System Landscape Directory.md",
     "03_Resources/SAP/PIMON - Configuration and Monitoring.md",
     "03_Resources/Programação/Conhecimentos Gerais/SOA - Service-Oriented Architecture.md",
-    "Sem título.base",
     "03_Resources/SAP/SOAP - Simple Object Access Protocol.md",
     "Configuration and Monitoring.md",
     "03_Resources/SAP/IDoc - Intermediate Document.md",
@@ -239,14 +243,11 @@
     "ESB.md",
     "00_Inbox/ESB.md",
     "00_Inbox/SOA.md",
-    "03_Resources/SAP/Roteiro de Estudos SAP.md",
-    "05_Templates/Template_Projeto.md",
     "03_Resources/SAP",
     "05_Templates",
     "04_Archive",
     "03_Resources",
     "02_Areas",
-    "01_Projects",
-    "00_Inbox"
+    "01_Projects"
   ]
 }
