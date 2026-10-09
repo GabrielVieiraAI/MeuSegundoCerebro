@@ -206,11 +206,14 @@
       "daily-notes:Abrir a nota de hoje": false,
       "templates:Inserir modelo": false,
       "command-palette:Abrir paleta de comandos": false,
-      "bases:Criar nova base": false
+      "bases:Criar nova base": false,
+      "obsidian-git:Open Git source control": false,
+      "gitsync-portal:Open GitSync Portal": false
     }
   },
-  "active": "f81325c4dcbe6a42",
+  "active": "b540c8480a118a13",
   "lastOpenFiles": [
+    "Sem título.base",
     "03_Resources/SAP/SOAP - Simple Object Access Protocol.md",
     "04_Archive/Tutorial - Sincronização Obsidian e Git.md",
     "00_Inbox/📥 Capturas Rápidas.md",
@@ -238,7 +241,6 @@
     "03_Resources/guia_recursos.md",
     "05_Templates/Template_Projeto.md",
     "Bem-vindo.md",
-    "03_Resources/SAP/PO - Process Orquestration.md",
     "03_Resources/SAP",
     "05_Templates",
     "04_Archive",
