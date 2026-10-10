@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "795fe3b10de62015",
+        "id": "17018ba6139078bd",
         "type": "tabs",
         "children": [
           {
-            "id": "aa786aa6ddfe3a75",
+            "id": "a27a8c1f32bbf0e5",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Trans.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nova aba"
+              "title": "Trans"
             }
           }
         ]
@@ -113,6 +117,7 @@
         "state": {
           "type": "backlink",
           "state": {
+            "file": "00_Inbox/📥 Capturas Rápidas.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -131,6 +136,7 @@
         "state": {
           "type": "outgoing-link",
           "state": {
+            "file": "00_Inbox/📥 Capturas Rápidas.md",
             "linksCollapsed": false,
             "unlinkedCollapsed": true
           },
@@ -144,6 +150,7 @@
         "state": {
           "type": "outline",
           "state": {
+            "file": "00_Inbox/📥 Capturas Rápidas.md",
             "followCursor": false,
             "showSearch": false,
             "searchQuery": ""
@@ -157,29 +164,42 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "gitsync-portal:Open GitSync Portal": false,
       "switcher:Abrir a troca rápida": false,
       "graph:Abrir visualização em gráfico": false,
       "canvas:Criar novo canvas": false,
       "daily-notes:Abrir a nota de hoje": false,
       "templates:Inserir modelo": false,
       "command-palette:Abrir paleta de comandos": false,
-      "bases:Criar nova base": false,
-      "obsidian-git:Open Git source control": false,
-      "gitsync-portal:Open GitSync Portal": false
+      "bases:Criar nova base": false
     }
   },
-  "active": "aa786aa6ddfe3a75",
+  "active": "a27a8c1f32bbf0e5",
   "lastOpenFiles": [
+    "Trans.md",
+    "02_Areas/Culinária/Receita de Pudim.md",
+    "02_Areas/Culinária/Receita de Pudim.conflict-android-20261009T205743Z.md",
+    "02_Areas/guia_areas.md",
+    "02_Areas/Culinária/Receita de Pudim.conflict-android-20261009T200058Z.md",
+    "00_Inbox/📥 Capturas Rápidas.md",
+    "02_Areas/Culinária/Receita de Pudim.conflict-android-20261009T193146Z.md",
+    "Sem título.base",
+    "03_Resources/SAP/SLD - System Landscape Directory.md",
+    "03_Resources/SAP/PIMON - Configuration and Monitoring.md",
+    "03_Resources/SAP/Integration Builder (Integration Directory).md",
+    "03_Resources/Programação/Conhecimentos Gerais/SOA - Service-Oriented Architecture.md",
+    "03_Resources/Programação/Conhecimentos Gerais/ESR - Enterprise Services Repository.md",
+    "02_Areas/Culinária",
+    "04_Archive/Tutorial - Sincronização Obsidian e Git.md",
+    "03_Resources/SAP/PO - Process Orquestration.md",
     "05_Templates/Template_Recurso.md",
     "05_Templates/Template_Projeto.md",
     "05_Templates",
     "04_Archive/guia_arquivo.md",
-    "04_Archive/Tutorial - Sincronização Obsidian e Git.md",
     "04_Archive",
     "03_Resources/guia_recursos.md",
     "03_Resources/SAP/SOAP - Simple Object Access Protocol.md",
     "03_Resources/SAP/Roteiro de Estudos SAP.md",
-    "03_Resources/SAP/PO - Process Orquestration.md",
     "03_Resources/SAP/PI - Process Intagration.md",
     "03_Resources/SAP/IDoc - Intermediate Document.md",
     "03_Resources/SAP/ABAP Proxy - Advanced Business Application Programming Proxy.md",
@@ -188,18 +208,9 @@
     "03_Resources/Programação/Conhecimentos Gerais",
     "03_Resources/Programação",
     "03_Resources",
-    "02_Areas/guia_areas.md",
     "02_Areas",
     "01_Projects/guia_projetos.md",
     "01_Projects",
-    "00_Inbox/📥 Capturas Rápidas.md",
-    "00_Inbox/guia_inbox.md",
-    "00_Inbox/SOA - Service-Oriented Architecture.md",
-    "00_Inbox/SLD - System Landscape Directory.md",
-    "00_Inbox/PIMON - Configuration and Monitoring.md",
-    "00_Inbox/Integration Builder (Integration Directory).md",
-    "00_Inbox/ESR - Enterprise Services Repository.md",
-    "00_Inbox",
-    "Sem título.base"
+    "00_Inbox/guia_inbox.md"
   ]
 }
