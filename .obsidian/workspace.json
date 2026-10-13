@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "02d28fe4eca6e5f6",
+        "id": "6680a30df4daad65",
         "type": "tabs",
         "children": [
           {
-            "id": "b540c8480a118a13",
+            "id": "e00a2096d3b7ce9d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02_Areas/Culinária/Receita de Pudim.md",
-                "mode": "source",
+                "file": "02_Areas/Culinária/Receita de Bolo de Chocolate.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Receita de Pudim"
+              "title": "Receita de Bolo de Chocolate"
             }
           }
         ]
@@ -78,8 +78,19 @@
               "icon": "lucide-bookmark",
               "title": "Marcadores"
             }
+          },
+          {
+            "id": "dd7465fe901cf95e",
+            "type": "leaf",
+            "state": {
+              "type": "gitsync-portal-dashboard",
+              "state": {},
+              "icon": "cloud-cog",
+              "title": "GitSync Portal"
+            }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -99,7 +110,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "04_Archive/Tutorial - Sincronização Obsidian e Git.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +128,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "04_Archive/Tutorial - Sincronização Obsidian e Git.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -161,7 +170,6 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "04_Archive/Tutorial - Sincronização Obsidian e Git.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -169,37 +177,17 @@
               "icon": "lucide-list",
               "title": "Sumário"
             }
-          },
-          {
-            "id": "4438fca970cfaf76",
-            "type": "leaf",
-            "state": {
-              "type": "github-copilot-chat-view",
-              "state": {},
-              "icon": "lucide-ghost",
-              "title": "github-copilot-chat-view"
-            }
-          },
-          {
-            "id": "f81325c4dcbe6a42",
-            "type": "leaf",
-            "state": {
-              "type": "github-copilot-chat-view",
-              "state": {},
-              "icon": "bot-message-square",
-              "title": "Copilot Chat"
-            }
           }
-        ],
-        "currentTab": 6
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 526.5,
     "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
+      "full-calendar-remastered:Task backlog": false,
       "switcher:Abrir a troca rápida": false,
       "graph:Abrir visualização em gráfico": false,
       "canvas:Criar novo canvas": false,
@@ -207,47 +195,48 @@
       "templates:Inserir modelo": false,
       "command-palette:Abrir paleta de comandos": false,
       "bases:Criar nova base": false,
-      "obsidian-git:Open Git source control": false,
-      "gitsync-portal:Open GitSync Portal": false
+      "gitsync-portal:Open GitSync Portal": false,
+      "full-calendar-remastered:Open Full Calendar": false,
+      "full-calendar-remastered:FCR Command": false
     }
   },
-  "active": "b540c8480a118a13",
+  "active": "c5552a6e2e1d44e7",
   "lastOpenFiles": [
-    "02_Areas/guia_areas.md",
-    "02_Areas/Culinária/Receita de Pudim.md",
-    "02_Areas/Culinária",
+    "Trans.md",
     "Sem título.base",
-    "03_Resources/guia_recursos.md",
+    "00_Inbox/📥 Capturas Rápidas.md",
+    "05_Templates/Template_Recurso.conflict-windows-20261013T210931Z.md",
+    "05_Templates/Template_Projeto.conflict-windows-20261013T210931Z.md",
+    "03_Resources/SAP/Roteiro de Estudos SAP.conflict-windows-20261013T210931Z.md",
+    "00_Inbox/1📋Gerenciador de Tarefas.md",
+    "02_Areas/Culinária/Receita de Bolo de Chocolate.md",
+    "00_Inbox/0📥 Capturas Rápidas.md",
+    "Sem título 1.base",
+    "00_Inbox/Rotinas e Hábitos.md",
+    "📋 Painel de Tarefas.md",
+    "04_Archive/Guia_Metodo_PARA.md",
+    "02_Areas/Culinária/Receita de Pudim.md",
+    "01_Projects/guia_projetos.md",
     "04_Archive/Tutorial - Sincronização Obsidian e Git.md",
+    "03_Resources/SAP/PIMON - Configuration and Monitoring - Copia.md",
+    "02_Areas/Culinária/sumario.md",
+    "03_Resources/guia_recursos.md",
+    "03_Resources/SAP/Roteiro de Estudos SAP.md",
+    "03_Resources/SAP/PI - Process Intagration.md",
+    "03_Resources/SAP/PO - Process Orquestration.md",
+    "02_Areas/Espiritual",
+    "01_Projects/Youtube",
+    "01_Projects/Cefe",
+    "02_Areas/guia_areas.md",
+    "02_Areas/Culinária",
     "04_Archive/guia_arquivo.md",
     "03_Resources/Programação/Conhecimentos Gerais/ESB - Enterprise Service Bus.md",
-    "01_Projects/guia_projetos.md",
-    "00_Inbox/📥 Capturas Rápidas.md",
     "03_Resources/Programação/Conhecimentos Gerais/ESR - Enterprise Services Repository.md",
     "00_Inbox/guia_inbox.md",
     "03_Resources/SAP/Integration Builder (Integration Directory).md",
-    "03_Resources/SAP/SLD - System Landscape Directory.md",
-    "03_Resources/SAP/PIMON - Configuration and Monitoring.md",
-    "03_Resources/Programação/Conhecimentos Gerais/SOA - Service-Oriented Architecture.md",
-    "03_Resources/SAP/SOAP - Simple Object Access Protocol.md",
-    "Configuration and Monitoring.md",
-    "03_Resources/SAP/IDoc - Intermediate Document.md",
-    "Roteiro_Estudos_SAP.md",
-    "03_Resources/SAP/ABAP Proxy - Advanced Business Application Programming Proxy.md",
-    "03_Resources/SAP/ABAP Proxy.md",
-    "03_Resources/SAP/IDoc.md",
-    "03_Resources/SAP/SOAP.md",
-    "03_Resources/SAP/PI - Process Intagration.md",
     "03_Resources/Programação/Conhecimentos Gerais",
     "03_Resources/Programação",
-    "ESB.md",
-    "00_Inbox/ESB.md",
-    "00_Inbox/SOA.md",
     "03_Resources/SAP",
-    "05_Templates",
-    "04_Archive",
-    "03_Resources",
-    "02_Areas",
-    "01_Projects"
+    "05_Templates"
   ]
 }
