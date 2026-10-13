@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "17018ba6139078bd",
+        "id": "1777cfc7639b01ff",
         "type": "tabs",
         "children": [
           {
-            "id": "a27a8c1f32bbf0e5",
+            "id": "6bab629a81bf8bca",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Trans.md",
+                "file": "03_Resources/SAP/ABAP Proxy - Advanced Business Application Programming Proxy.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Trans"
+              "title": "ABAP Proxy - Advanced Business Application Programming Proxy"
             }
           }
         ]
@@ -174,8 +174,11 @@
       "bases:Criar nova base": false
     }
   },
-  "active": "a27a8c1f32bbf0e5",
+  "active": "a2fe3ef2bf270752",
   "lastOpenFiles": [
+    "02_Areas/Culinária/Receita de Bolo de Chocolate.md",
+    "00_Inbox/1📋Gerenciador de Tarefas.md",
+    "00_Inbox/0📥 Capturas Rápidas.md",
     "Trans.md",
     "02_Areas/Culinária/Receita de Pudim.md",
     "02_Areas/Culinária/Receita de Pudim.conflict-android-20261009T205743Z.md",
@@ -204,13 +207,10 @@
     "03_Resources/SAP/IDoc - Intermediate Document.md",
     "03_Resources/SAP/ABAP Proxy - Advanced Business Application Programming Proxy.md",
     "03_Resources/SAP",
-    "03_Resources/Programação/Conhecimentos Gerais/ESB - Enterprise Service Bus.md",
     "03_Resources/Programação/Conhecimentos Gerais",
     "03_Resources/Programação",
     "03_Resources",
     "02_Areas",
-    "01_Projects/guia_projetos.md",
-    "01_Projects",
-    "00_Inbox/guia_inbox.md"
+    "01_Projects"
   ]
 }
