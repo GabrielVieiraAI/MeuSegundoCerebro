@@ -4,24 +4,39 @@
     "type": "split",
     "children": [
       {
-        "id": "6680a30df4daad65",
+        "id": "ee65564fb4491943",
         "type": "tabs",
         "children": [
           {
-            "id": "e00a2096d3b7ce9d",
+            "id": "7557abaee6f3219f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "00_Inbox/0📥 Capturas Rápidas.md",
+                "file": "03_Resources/SAP/Tutoriais/Criando um Produto no SAP NetWeaver SLD.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "0📥 Capturas Rápidas"
+              "title": "Criando um Produto no SAP NetWeaver SLD"
+            }
+          },
+          {
+            "id": "e96c6a0c7c76f884",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03_Resources/Obsidian/Guia - Adicionar Vault em Novo Computador.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Guia - Adicionar Vault em Novo Computador"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -94,7 +109,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 297.5
+    "width": 432.8333435058594
   },
   "right": {
     "id": "2759f92783eb222f",
@@ -177,8 +192,19 @@
               "icon": "lucide-list",
               "title": "Sumário"
             }
+          },
+          {
+            "id": "cbc67c10a69ad012",
+            "type": "leaf",
+            "state": {
+              "type": "task-backlog-view",
+              "state": {},
+              "icon": "list-todo",
+              "title": "Task backlog"
+            }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
@@ -200,13 +226,25 @@
       "full-calendar-remastered:FCR Command": false
     }
   },
-  "active": "c5552a6e2e1d44e7",
+  "active": "e96c6a0c7c76f884",
   "lastOpenFiles": [
+    "03_Resources/Programação/Conceitos/ESR - Enterprise Services Repository.md",
+    "03_Resources/Obsidian/Guia - Adicionar Vault em Novo Computador.md",
+    "03_Resources/Obsidian",
+    "03_Resources/SAP/Conceitos/SLD - System Landscape Directory.md",
+    "03_Resources/SAP/Tutoriais/Criando um Produto no SAP NetWeaver SLD.md",
+    "04_Archive/Tutorial - Sincronização Obsidian e Git.md",
+    "03_Resources/SAP/Conceitos/ABAP Proxy - Advanced Business Application Programming Proxy.md",
+    "03_Resources/SAP/Tutoriais",
+    "03_Resources/SAP/Roteiro de Estudos SAP.md",
+    "03_Resources/SAP/Conceitos/Roteiro de Estudos SAP.conflict-windows-20261013T210931Z.md",
+    "03_Resources/SAP/Conceitos/IDoc - Intermediate Document.md",
+    "03_Resources/SAP/Conceitos",
+    "00_Inbox/0📥 Capturas Rápidas.md",
     "03_Resources/Finanças/Livros/Sem título.md",
     "03_Resources/Finanças/Livros/Libertação Financeira.md",
     "05_Templates/Template_Nota_Literatura.md",
     "00_Inbox/1📋Gerenciador de Tarefas.md",
-    "00_Inbox/0📥 Capturas Rápidas.md",
     "05_Templates/Template_Recurso.md",
     "05_Templates/Template_Recurso.conflict-windows-20261013T210931Z.md",
     "05_Templates/Template_Projeto.md",
@@ -220,23 +258,11 @@
     "Trans.md",
     "Sem título.base",
     "00_Inbox/📥 Capturas Rápidas.md",
-    "03_Resources/SAP/Roteiro de Estudos SAP.conflict-windows-20261013T210931Z.md",
     "Sem título 1.base",
     "00_Inbox/Rotinas e Hábitos.md",
     "📋 Painel de Tarefas.md",
     "04_Archive/Guia_Metodo_PARA.md",
     "02_Areas/Culinária/Receita de Pudim.md",
-    "01_Projects/guia_projetos.md",
-    "04_Archive/Tutorial - Sincronização Obsidian e Git.md",
-    "03_Resources/SAP/PIMON - Configuration and Monitoring - Copia.md",
-    "02_Areas/Culinária/sumario.md",
-    "03_Resources/guia_recursos.md",
-    "03_Resources/SAP/Roteiro de Estudos SAP.md",
-    "03_Resources/SAP/PI - Process Intagration.md",
-    "03_Resources/SAP/PO - Process Orquestration.md",
-    "02_Areas/Espiritual",
-    "01_Projects/Youtube",
-    "01_Projects/Cefe",
-    "02_Areas/Culinária"
+    "02_Areas/Espiritual"
   ]
 }
