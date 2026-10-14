@@ -2,12 +2,23 @@
   "version": 1,
   "favorites": [],
   "history": [
-    "03_Resources/SAP/ABAP Proxy - Advanced Business Application Programming Proxy.md",
-    "Trans.md",
+    "00_Inbox/0📥 Capturas Rápidas.md",
+    "03_Resources/Finanças/Livros/Sem título.md",
+    "03_Resources/Finanças/Livros/Libertação Financeira.md",
+    "05_Templates/Template_Nota_Literatura.md",
+    "00_Inbox/1📋Gerenciador de Tarefas.md",
+    "02_Areas/Culinária/Receita de Bolo de Chocolate.md",
+    "04_Archive/Guia_Metodo_PARA.md",
     "02_Areas/Culinária/Receita de Pudim.md",
+    "01_Projects/guia_projetos.md",
     "02_Areas/guia_areas.md",
-    "00_Inbox/📥 Capturas Rápidas.md",
+    "03_Resources/guia_recursos.md",
     "04_Archive/Tutorial - Sincronização Obsidian e Git.md",
-    "03_Resources/SAP/PO - Process Orquestration.md"
+    "03_Resources/Programação/Conhecimentos Gerais/ESB - Enterprise Service Bus.md",
+    "03_Resources/Programação/Conhecimentos Gerais/ESR - Enterprise Services Repository.md",
+    "03_Resources/SAP/Integration Builder (Integration Directory).md",
+    "03_Resources/SAP/SLD - System Landscape Directory.md",
+    "03_Resources/SAP/PIMON - Configuration and Monitoring.md",
+    "03_Resources/Programação/Conhecimentos Gerais/SOA - Service-Oriented Architecture.md"
   ]
 }

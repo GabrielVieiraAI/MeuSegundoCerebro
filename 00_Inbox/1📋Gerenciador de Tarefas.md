@@ -25,15 +25,21 @@ dayMaxEvents: false
 ---
 ## 🔄 Tarefas Rotineiras `BUTTON[btn-nova-rotina]`
 
-- [ ] Orar #espiritual 🔁 every day 📅 2026-10-14
+- [ ] Orar #espiritual 🔁 every day 📅 2026-10-15
+- [x] Orar #espiritual 🔁 every day 📅 2026-10-14 ✅ 2026-10-14
 - [x] Orar #espiritual 🔁 every day 📅 2026-10-13 ✅ 2026-10-13
-- [ ] Leitura Literária #leitura 🔁 every day 📅 2026-10-13
-- [ ] Correr #saude 🔁 every week on Tuesday, Thursday 📅 2026-10-13
+- [ ] Leitura Literária #leitura 🔁 every day 📅 2026-10-14
+- [x] Leitura Literária #leitura 🔁 every day 📅 2026-10-13 ✅ 2026-10-14
+- [ ] Correr #saude 🔁 every week on Tuesday, Thursday 📅 2026-10-15
+- [x] Correr #saude 🔁 every week on Tuesday, Thursday 📅 2026-10-13 ✅ 2026-10-14
 - [ ] Malhar #saude 🔁 every week on Monday, Wednesday, Friday 📅 2026-10-14
-- [ ] Culto PG Fornalha ⏫ 🔁 every week on Tuesday 📅 2026-10-13 
+- [ ] Culto PG Fornalha ⏫ 🔁 every week on Tuesday 📅 2026-10-20
+- [x] Culto PG Fornalha ⏫ 🔁 every week on Tuesday 📅 2026-10-13 ✅ 2026-10-14
 - [ ] Culto Fornalha eve 🔁 every week 📅 2026-10-14
 - [ ] Culto Fornalha ⏫🔁 every week on Sunday 📅 2026-10-18  
 ---
+- [ ] Leitura Bíblica 🔁 every day 📅 2026-10-15
+- [x] Leitura Bíblica 🔁 every day 📅 2026-10-14 ✅ 2026-10-14
 ## 📝 Tarefas Avulsas `BUTTON[btn-nova-tarefa-avulsa]`
 
 - [ ] #pessoal Vistoria do Fiesta R$180,00 ⏫ 📅 2026-10-15
@@ -45,9 +51,12 @@ dayMaxEvents: false
 - [ ] #insi #sap Criar nota referente a **OData** através do **SAP GUI** ⏬ 📅 2026-10-14
 - [x] Presente da Ligia ⏫ 📅 2026-10-13 ✅ 2026-10-13
 - [x] Criar sistema de gerenciamento de Tarefas 📅 2026-10-13 ✅ 2026-10-13
-- [ ] #insi Conseguir acesso de desenvolvimento no SAP GUI 📅 2026-10-14
-- [ ]  #insi Liberar Request de ajuste da demanda de logs barramento  📅 2026-10-13
-- [ ] Criar Nota de receita de bolo de chocolate 📅 2026-10-13
+- [ ] #insi Conseguir acesso de desenvolvimento no SAP GUI 🔺   📅 2026-10-14
+- [ ] #insi Liberar Request de ajuste da demanda de logs barramento 🔺  📅 2026-10-14
+- [x] Criar Nota de receita de bolo de chocolate 📅 2026-10-13 ✅ 2026-10-14
+- [ ] Criar uma forma de metrificar as tarefas rotineiras. 📅 2026-10-14⏬ 
+- [ ] Se cadastrar em vagas SAP ⏫ 📅 2026-10-14
+- [ ] Estudar SAP ⏫ 📅 2026-10-14 
 
 
 
@@ -81,3 +90,6 @@ action:
   type: command
   command: quickadd:choice:tarefa-avulsa
 ```
+- [ ] Comprar areia dos Gatos e ingredientes para bolo 📅 2026-10-14
+
+

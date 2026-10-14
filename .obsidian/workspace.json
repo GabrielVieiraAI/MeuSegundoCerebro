@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02_Areas/Culinária/Receita de Bolo de Chocolate.md",
-                "mode": "preview",
+                "file": "00_Inbox/0📥 Capturas Rápidas.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Receita de Bolo de Chocolate"
+              "title": "0📥 Capturas Rápidas"
             }
           }
         ]
@@ -202,15 +202,25 @@
   },
   "active": "c5552a6e2e1d44e7",
   "lastOpenFiles": [
+    "03_Resources/Finanças/Livros/Sem título.md",
+    "03_Resources/Finanças/Livros/Libertação Financeira.md",
+    "05_Templates/Template_Nota_Literatura.md",
+    "00_Inbox/1📋Gerenciador de Tarefas.md",
+    "00_Inbox/0📥 Capturas Rápidas.md",
+    "05_Templates/Template_Recurso.md",
+    "05_Templates/Template_Recurso.conflict-windows-20261013T210931Z.md",
+    "05_Templates/Template_Projeto.md",
+    "02_Areas/Finanças",
+    "03_Resources/Finanças/Conceitos",
+    "03_Resources/Finanças/Livros",
+    "03_Resources/Finanças",
+    "05_Templates/Template_Projeto.conflict-windows-20261013T210931Z.md",
+    "05_Templates/Template_Nota_Permanente.md",
+    "02_Areas/Culinária/Receita de Bolo de Chocolate.md",
     "Trans.md",
     "Sem título.base",
     "00_Inbox/📥 Capturas Rápidas.md",
-    "05_Templates/Template_Recurso.conflict-windows-20261013T210931Z.md",
-    "05_Templates/Template_Projeto.conflict-windows-20261013T210931Z.md",
     "03_Resources/SAP/Roteiro de Estudos SAP.conflict-windows-20261013T210931Z.md",
-    "00_Inbox/1📋Gerenciador de Tarefas.md",
-    "02_Areas/Culinária/Receita de Bolo de Chocolate.md",
-    "00_Inbox/0📥 Capturas Rápidas.md",
     "Sem título 1.base",
     "00_Inbox/Rotinas e Hábitos.md",
     "📋 Painel de Tarefas.md",
@@ -227,16 +237,6 @@
     "02_Areas/Espiritual",
     "01_Projects/Youtube",
     "01_Projects/Cefe",
-    "02_Areas/guia_areas.md",
-    "02_Areas/Culinária",
-    "04_Archive/guia_arquivo.md",
-    "03_Resources/Programação/Conhecimentos Gerais/ESB - Enterprise Service Bus.md",
-    "03_Resources/Programação/Conhecimentos Gerais/ESR - Enterprise Services Repository.md",
-    "00_Inbox/guia_inbox.md",
-    "03_Resources/SAP/Integration Builder (Integration Directory).md",
-    "03_Resources/Programação/Conhecimentos Gerais",
-    "03_Resources/Programação",
-    "03_Resources/SAP",
-    "05_Templates"
+    "02_Areas/Culinária"
   ]
 }
