@@ -63,10 +63,10 @@ nota_pessoal: ⭐⭐⭐⭐⭐
 > [!NOTE]
 > O que este livro muda em como você pensa, decide ou age? Ligue a uma Área ou Projeto quando fizer sentido.
 
-- [ ] **Mudança de hábito, rotina ou postura:** 
-- [ ] **Algo a aplicar numa Área (`[[02_Areas/...]]`):** 
-- [ ] **Projeto ou estudo a iniciar (`[[01_Projects/...]]`):** 
-- [ ] **Próxima leitura relacionada:** 
+-  **Mudança de hábito, rotina ou postura:** 
+-  **Algo a aplicar numa Área (`[[02_Areas/...]]`):** 
+-  **Projeto ou estudo a iniciar (`[[01_Projects/...]]`):** 
+-  **Próxima leitura relacionada:** 
 
 ---
 

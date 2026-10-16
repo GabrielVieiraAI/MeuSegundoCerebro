@@ -10,10 +10,10 @@ Este é o roadmap das tecnologias e habilidades relacionadas ao ecossistema SAP 
 | ORD | TECNOLOGIA / HABILIDADE                                              | RELEVÂNCIA / DEMANDA | STATUS                |
 | :-- | :------------------------------------------------------------------- | :------------------- | :-------------------- |
 | 01  | Ampliações (BAdIs Classic/Kernel, User Exits, C-Exits, BTEs, Spots)  | Crítico              | Preciso me aprofundar |
-| 02  | Interfaces Clássicas (RFC Síncrona, BAPI, IDoc, ALE)                 | Crítico              | Preciso me aprofundar |
+| 02  | Interfaces Clássicas (RFC Síncrona, BAPI, [[IDoc - Intermediate Document\|IDoc]], ALE)                 | Crítico              | Preciso me aprofundar |
 | 04  | ABAP Orientado a Objetos (ABAP OO / Design Patterns)                 | Crítico              | Domino                |
 | 05  | Dicionário de Dados (DDIC: Tabelas, Views, Search Helps, Locks)      | Crítico              | Domino                |
-| 06  | Reports (ALV Grid, ALV OO, Telas de Seleção, Module Pool)            | Crítico              | Preciso me aprofundar |
+| 06  | Reports ([[ALV - ABAP List Viewer\|ALV Grid]], ALV OO, Telas de Seleção, Module Pool)            | Crítico              | Preciso me aprofundar |
 | 07  | Performance & Troubleshooting (ST05 SQL Trace, ST22 Dumps, SAT, SCI) | Crítico              | Preciso me aprofundar |
 | 09  | Formulários (Adobe Forms, SmartForms, SAPscript)                     | Alto                 | Preciso me aprofundar |
 | 13  | Controle de Versão SAP (abapGit, Git / Git Flow)                     | Médio                | Preciso me aprofundar |
@@ -26,7 +26,7 @@ Este é o roadmap das tecnologias e habilidades relacionadas ao ecossistema SAP 
 | :-- | :-------------------------------------------------------- | :------------------- | :-------------------- |
 | 08  | Técnicas de Code Pushdown & Open SQL Moderno              | Alto                 | Preciso me aprofundar |
 | 10  | AMDP (ABAP Managed Database Procedures / SQLScript)       | Alto                 | Preciso Aprender      |
-| -   | CDS Views (Core Data Services, Associações e Annotations) | Crítico              | Domino                |
+| -   | [[CDS - Core Data Services\|CDS Views]] (Core Data Services, Associações e Annotations) | Crítico              | Domino                |
 | -   | OData Services (v2 / v4) e SAP Gateway                    | Crítico              | Preciso me aprofundar |
 
 ## ETAPA 3: ARQUITETURA MODERNA & CLEAN CORE
@@ -34,7 +34,7 @@ Este é o roadmap das tecnologias e habilidades relacionadas ao ecossistema SAP 
 | ORD | TECNOLOGIA / HABILIDADE | RELEVÂNCIA / DEMANDA | STATUS |
 | :--- | :--- | :--- | :--- |
 | 11 | Modelos de Extensibilidade e Princípios de Clean Core | Alto | Preciso Aprender |
-| - | RAP (RESTful Application Programming Model - Managed/Unmanaged/EML) | Alto | Domino |
+| - | [[RAP - ABAP RESTful Application Programming Model\|RAP]] (RESTful Application Programming Model - Managed/Unmanaged/EML) | Alto | Domino |
 
 ## ETAPA 4: NUVEM & INTEGRAÇÕES SAP / EXTERNAS
 

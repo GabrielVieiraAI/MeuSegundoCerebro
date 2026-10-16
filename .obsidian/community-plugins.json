@@ -3,5 +3,7 @@
   "obsidian-tasks-plugin",
   "full-calendar-remastered",
   "obsidian-meta-bind-plugin",
-  "quickadd"
+  "quickadd",
+  "dataview",
+  "contribution-graph"
 ]
