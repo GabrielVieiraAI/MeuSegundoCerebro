@@ -5,7 +5,7 @@
       "name": "➕ Adicionar Tarefa",
       "type": "Multi",
       "command": true,
-      "collapsed": false,
+      "collapsed": true,
       "choices": [
         {
           "id": "tarefa-avulsa",
@@ -424,7 +424,7 @@
       }
     }
   ],
-  "inputPrompt": "single-line",
+  "inputPrompt": "multi-line",
   "persistInputPromptDrafts": true,
   "useSelectionAsCaptureValue": true,
   "namePastedImagesAfterNoteTitle": false,
