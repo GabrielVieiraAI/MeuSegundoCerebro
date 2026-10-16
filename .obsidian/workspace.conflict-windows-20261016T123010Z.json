@@ -1,0 +1,268 @@
+{
+  "main": {
+    "id": "c14c4c9d4bcbc958",
+    "type": "split",
+    "children": [
+      {
+        "id": "ee65564fb4491943",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7557abaee6f3219f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03_Resources/SAP/Tutoriais/Criando um Produto no SAP NetWeaver SLD.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Criando um Produto no SAP NetWeaver SLD"
+            }
+          },
+          {
+            "id": "e96c6a0c7c76f884",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03_Resources/Obsidian/Guia - Adicionar Vault em Novo Computador.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Guia - Adicionar Vault em Novo Computador"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2a545ad19ddb1a4d",
+    "type": "split",
+    "children": [
+      {
+        "id": "8cc5cccc696b3bba",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c5552a6e2e1d44e7",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de arquivos"
+            }
+          },
+          {
+            "id": "5ef5727891fda8d1",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Procurar"
+            }
+          },
+          {
+            "id": "88070f4499ff566a",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          },
+          {
+            "id": "dd7465fe901cf95e",
+            "type": "leaf",
+            "state": {
+              "type": "gitsync-portal-dashboard",
+              "state": {},
+              "icon": "cloud-cog",
+              "title": "GitSync Portal"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 432.8333435058594
+  },
+  "right": {
+    "id": "2759f92783eb222f",
+    "type": "split",
+    "children": [
+      {
+        "id": "5015fa170b4cc59f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fc26b65f6e82b349",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Links inversos"
+            }
+          },
+          {
+            "id": "6c9eaa3a5f624e53",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Links de saída"
+            }
+          },
+          {
+            "id": "a09a64db58a8edb2",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "5f144824aad96bcd",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas as propriedades"
+            }
+          },
+          {
+            "id": "85b5c50c8131c62a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Sumário"
+            }
+          },
+          {
+            "id": "cbc67c10a69ad012",
+            "type": "leaf",
+            "state": {
+              "type": "task-backlog-view",
+              "state": {},
+              "icon": "list-todo",
+              "title": "Task backlog"
+            }
+          }
+        ],
+        "currentTab": 5
+      }
+    ],
+    "direction": "horizontal",
+    "width": 526.5,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "full-calendar-remastered:Task backlog": false,
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Criar nova base": false,
+      "gitsync-portal:Open GitSync Portal": false,
+      "full-calendar-remastered:Open Full Calendar": false,
+      "full-calendar-remastered:FCR Command": false
+    }
+  },
+  "active": "e96c6a0c7c76f884",
+  "lastOpenFiles": [
+    "03_Resources/Programação/Conceitos/ESR - Enterprise Services Repository.md",
+    "03_Resources/Obsidian/Guia - Adicionar Vault em Novo Computador.md",
+    "03_Resources/Obsidian",
+    "03_Resources/SAP/Conceitos/SLD - System Landscape Directory.md",
+    "03_Resources/SAP/Tutoriais/Criando um Produto no SAP NetWeaver SLD.md",
+    "04_Archive/Tutorial - Sincronização Obsidian e Git.md",
+    "03_Resources/SAP/Conceitos/ABAP Proxy - Advanced Business Application Programming Proxy.md",
+    "03_Resources/SAP/Tutoriais",
+    "03_Resources/SAP/Roteiro de Estudos SAP.md",
+    "03_Resources/SAP/Conceitos/Roteiro de Estudos SAP.conflict-windows-20261013T210931Z.md",
+    "03_Resources/SAP/Conceitos/IDoc - Intermediate Document.md",
+    "03_Resources/SAP/Conceitos",
+    "00_Inbox/0📥 Capturas Rápidas.md",
+    "03_Resources/Finanças/Livros/Sem título.md",
+    "03_Resources/Finanças/Livros/Libertação Financeira.md",
+    "05_Templates/Template_Nota_Literatura.md",
+    "00_Inbox/1📋Gerenciador de Tarefas.md",
+    "05_Templates/Template_Recurso.md",
+    "05_Templates/Template_Recurso.conflict-windows-20261013T210931Z.md",
+    "05_Templates/Template_Projeto.md",
+    "02_Areas/Finanças",
+    "03_Resources/Finanças/Conceitos",
+    "03_Resources/Finanças/Livros",
+    "03_Resources/Finanças",
+    "05_Templates/Template_Projeto.conflict-windows-20261013T210931Z.md",
+    "05_Templates/Template_Nota_Permanente.md",
+    "02_Areas/Culinária/Receita de Bolo de Chocolate.md",
+    "Trans.md",
+    "Sem título.base",
+    "00_Inbox/📥 Capturas Rápidas.md",
+    "Sem título 1.base",
+    "00_Inbox/Rotinas e Hábitos.md",
+    "📋 Painel de Tarefas.md",
+    "04_Archive/Guia_Metodo_PARA.md",
+    "02_Areas/Culinária/Receita de Pudim.md",
+    "02_Areas/Espiritual"
+  ]
+}

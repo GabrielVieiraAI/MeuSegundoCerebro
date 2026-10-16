@@ -8,20 +8,20 @@ summary: "Receita de Bolo de Chocolate fofinho e molhadinho com calda cremosa e 
 >Vídeo de referência: https://www.youtube.com/watch?v=QFMxJWh3mqE
 --- 
 ## 🛒 Lista de Compras (Para o Mercado)
-- [ ] 4 Ovos
-- [x] 1 pacote de Açúcar (refinado ou cristal) ✅ 2026-10-13
-- [x] 1 garrafa de Óleo (soja ou girassol) ✅ 2026-10-13
-- [x] 1 pacote ou pote de Cacau em Pó ou Chocolate em Pó ✅ 2026-10-13
-- [ ] 1 pacote de Farinha de Trigo
-- [ ] 1 caixa de Amido de Milho
-- [x] 1 pote de Fermento Químico em Pó ✅ 2026-10-13
-- [x] 1 pote de Bicarbonato de Sódio ✅ 2026-10-13
-- [x] 1 litro de Leite Integral ✅ 2026-10-13
-- [ ] 2 caixinhas de Creme de Leite (200g cada)
-- [ ] 2 caixinhas ou latas de Leite Condensado (395g cada)
-- [x] 1 pote de Manteiga ✅ 2026-10-13
-- [ ] 1 pacote de Confeito Granulado de Chocolate
-- [x] Rolo de Papel Alumínio ou Plástico Filme ✅ 2026-10-13
+-  4 Ovos
+-  1 pacote de Açúcar (refinado ou cristal)
+-  1 garrafa de Óleo (soja ou girassol)
+-  1 pacote ou pote de Cacau em Pó ou Chocolate em Pó
+-  1 pacote de Farinha de Trigo
+-  1 caixa de Amido de Milho
+-  1 pote de Fermento Químico em Pó
+-  1 pote de Bicarbonato de Sódio
+-  1 litro de Leite Integral
+-  2 caixinhas de Creme de Leite (200g cada)
+-  2 caixinhas ou latas de Leite Condensado (395g cada)
+-  1 pote de Manteiga
+-  1 pacote de Confeito Granulado de Chocolate
+-  1 Rolo de Papel Alumínio ou Plástico Filme
 --- 
 ## 🥘 Ingredientes
 > *Xícara padrão medidora de 240ml*

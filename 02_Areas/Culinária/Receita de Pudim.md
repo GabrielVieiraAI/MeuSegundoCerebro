@@ -8,11 +8,11 @@ summary: "Receita clássica e tradicional de Pudim de Leite Condensado com calda
 >Vídeo de referência: https://www.youtube.com/watch?v=olw3gMc4YlU
 --- 
 ## 🛒 Lista de Compras (Para o Mercado)
-- [ ] 1 pacote de Açúcar
-- [ ] 1 lata de Leite Condensado (395g)
-- [ ] 1 litro de Leite Integral
-- [ ] 3 Ovos 
-- [ ] Rolo de Papel Alumínio
+-  1 pacote de Açúcar
+-  1 lata de Leite Condensado (395g)
+-  1 litro de Leite Integral
+-  3 Ovos 
+-  1 Rolo de Papel Alumínio
 --- 
 ## 🥘 Ingredientes
 
