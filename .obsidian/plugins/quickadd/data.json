@@ -382,6 +382,46 @@
           ]
         }
       ]
+    },
+    {
+      "id": "git-push",
+      "name": "⬆️ Salvar no GitHub (Push)",
+      "type": "Macro",
+      "command": true,
+      "runOnStartup": false,
+      "macro": {
+        "id": "macro-git-push",
+        "name": "⬆️ Salvar no GitHub (Push)",
+        "commands": [
+          {
+            "id": "cmd-git-push",
+            "name": "quickadd-git-push",
+            "type": "UserScript",
+            "path": ".obsidian/scripts/quickadd-git-push.js",
+            "settings": {}
+          }
+        ]
+      }
+    },
+    {
+      "id": "git-pull-smart",
+      "name": "🔄 Atualizar do GitHub (Smart Pull)",
+      "type": "Macro",
+      "command": true,
+      "runOnStartup": false,
+      "macro": {
+        "id": "macro-git-pull-smart",
+        "name": "🔄 Atualizar do GitHub (Smart Pull)",
+        "commands": [
+          {
+            "id": "cmd-git-pull",
+            "name": "quickadd-git-pull",
+            "type": "UserScript",
+            "path": ".obsidian/scripts/quickadd-git-pull.js",
+            "settings": {}
+          }
+        ]
+      }
     }
   ],
   "inputPrompt": "single-line",

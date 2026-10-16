@@ -1,0 +1,6 @@
+{
+  "enableDataviewJs": true,
+  "enableInlineDataviewJs": true,
+  "enableDataview": true,
+  "enableInlineDataview": true
+}

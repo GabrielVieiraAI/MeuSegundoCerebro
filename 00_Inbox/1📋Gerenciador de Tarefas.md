@@ -8,6 +8,7 @@ tags:
 
 > ⚡ **Ações Rápidas:** `BUTTON[btn-add-tarefa]` `BUTTON[btn-nova-rotina]` 
 > 📊 **Hábitos & Performance:** [[Dashboard_Habitos|Ver Dashboard Consolidado de Hábitos]]
+> 🚀 **Git & Nuvem:** [[Painel de Controle Git|Abrir Painel de Controle Git]]
 
 ---
 ## 🗓️ Agenda da Semana 
