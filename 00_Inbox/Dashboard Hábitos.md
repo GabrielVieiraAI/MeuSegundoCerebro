@@ -30,8 +30,8 @@ TABLE
   sum(map(rows, (r) => choice(r.orar, 1, 0))) + " / " + length(rows) + " dias" AS "🙏 Oração",
   sum(map(rows, (r) => choice(r.leitura_biblica, 1, 0))) + " / " + length(rows) + " dias" AS "📖 Bíblia",
   sum(map(rows, (r) => choice(r.malhar, 1, 0))) + " dias" AS "💪 Treinos",
-  sum(map(rows, (r) => choice(r.correr, 1, 0))) + " dias (" + default(sum(rows.corrida_km), 0) + " km)" AS "🏃 Corrida",
-  sum(map(rows, (r) => choice(r.leitura_literaria, 1, 0))) + " dias (" + default(sum(rows.leitura_paginas), 0) + " pág)" AS "📚 Leitura"
+  sum(map(rows, (r) => choice(r.correr, 1, 0))) + " dias (" + default(sum(nonnull(rows.corrida_km)), 0) + " km)" AS "🏃 Corrida",
+  sum(map(rows, (r) => choice(r.leitura_literaria, 1, 0))) + " dias (" + default(sum(nonnull(rows.leitura_paginas)), 0) + " pág)" AS "📚 Leitura"
 FROM "00_Inbox/Daily"
 WHERE default(file.day, date(data)) >= date(today) - dur(7 days)
 GROUP BY true
@@ -46,9 +46,9 @@ TABLE
   sum(map(rows, (r) => choice(r.orar, 1, 0))) + " dias" AS "🙏 Oração",
   sum(map(rows, (r) => choice(r.leitura_biblica, 1, 0))) + " dias" AS "📖 Bíblia",
   sum(map(rows, (r) => choice(r.malhar, 1, 0))) + " dias" AS "💪 Treinos",
-  default(sum(rows.corrida_km), 0) + " km (" + sum(map(rows, (r) => choice(r.correr, 1, 0))) + " corridas)" AS "🏃 Corrida",
-  default(sum(rows.leitura_paginas), 0) + " pág (" + sum(map(rows, (r) => choice(r.leitura_literaria, 1, 0))) + " dias)" AS "📚 Leitura",
-  round(average(rows.sono_horas), 1) + " h" AS "Média Sono"
+  default(sum(nonnull(rows.corrida_km)), 0) + " km (" + sum(map(rows, (r) => choice(r.correr, 1, 0))) + " corridas)" AS "🏃 Corrida",
+  default(sum(nonnull(rows.leitura_paginas)), 0) + " pág (" + sum(map(rows, (r) => choice(r.leitura_literaria, 1, 0))) + " dias)" AS "📚 Leitura",
+  default(round(average(nonnull(rows.sono_horas)), 1), 0) + " h" AS "Média Sono"
 FROM "00_Inbox/Daily"
 WHERE default(file.day, date(data)).month = date(today).month AND default(file.day, date(data)).year = date(today).year
 GROUP BY true
@@ -209,9 +209,9 @@ TABLE
   sum(map(rows, (r) => choice(r.leitura_biblica, 1, 0))) + " dias" AS "Total Bíblia",
   sum(map(rows, (r) => choice(r.malhar, 1, 0))) + " treinos" AS "Total Musculação",
   sum(map(rows, (r) => choice(r.correr, 1, 0))) + " corridas" AS "Dias de Corrida",
-  default(sum(rows.corrida_km), 0) + " km" AS "Distância Acumulada",
-  default(sum(rows.leitura_paginas), 0) + " pág" AS "Páginas Lidas",
-  round(average(rows.sono_horas), 1) + " h/noite" AS "Média Sono Anual"
+  default(sum(nonnull(rows.corrida_km)), 0) + " km" AS "Distância Acumulada",
+  default(sum(nonnull(rows.leitura_paginas)), 0) + " pág" AS "Páginas Lidas",
+  default(round(average(nonnull(rows.sono_horas)), 1), 0) + " h/noite" AS "Média Sono Anual"
 FROM "00_Inbox/Daily"
 WHERE default(file.day, date(data)).year = date(today).year
 GROUP BY true

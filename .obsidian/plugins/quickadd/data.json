@@ -5,7 +5,7 @@
       "name": "➕ Adicionar Tarefa",
       "type": "Multi",
       "command": true,
-      "collapsed": true,
+      "collapsed": false,
       "choices": [
         {
           "id": "tarefa-avulsa",

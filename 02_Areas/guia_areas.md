@@ -11,5 +11,5 @@ Diferente dos projetos, as Áreas são responsabilidades **contínuas**. Elas n�
 ---
 
 ## 📌 Áreas Mapeadas
-* [[Dashboard_Habitos|📊 Hábitos & Performance]]: Acompanhamento e métricas de consistência diária, semanal e mensal.
+* [[Dashboard Hábitos|📊 Hábitos & Performance]]: Acompanhamento e métricas de consistência diária, semanal e mensal.
 * [[02_Areas/Culinária|🍳 Culinária]]
