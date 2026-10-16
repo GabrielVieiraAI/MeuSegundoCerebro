@@ -98,7 +98,7 @@ hide backlink
 - [x] Enviar chave da API Primata para o Bruno Braga via e-mail 🔽 📅 2026-10-13 ✅ 2026-10-13
 - [ ] Retirar provisionamento da CEFE 📅 2026-10-19 ⏫ 
 - [x] Enviar Boleto Azure para o Paolo ⏫ 📅 2026-10-13 ✅ 2026-10-13
-- [ ] Criar nota referente a **OData** através do **SAP GUI**  📅 2026-10-14
+- [ ] Criar nota referente a **OData** através do **SAP GUI** 📅 2026-10-19
 - [x] Presente da Ligia ⏫ 📅 2026-10-13 ✅ 2026-10-13
 - [x] Criar sistema de gerenciamento de Tarefas 📅 2026-10-13 ✅ 2026-10-13
 - [ ] Conseguir acesso de desenvolvimento no SAP GUI 🔺 📅 2026-10-19
@@ -108,7 +108,7 @@ hide backlink
 - [x] Se cadastrar em vagas SAP ⏫ 📅 2026-10-15 ✅ 2026-10-15
 - [x] Estudar SAP ⏫ 📅 2026-10-14 ✅ 2026-10-14
 - [x] Comprar areia dos Gatos e ingredientes para bolo 📅 2026-10-14 ✅ 2026-10-14
-- [ ] Estudar SAP 📅 2026-10-15
+- [ ] Definir cronograma de estudos Certificação SAP 📅 2026-10-15
 
 ```meta-bind-button
 id: btn-add-tarefa
@@ -140,3 +140,4 @@ action:
   command: quickadd:choice:tarefa-avulsa
 ```
 - [ ] Retirar provisionamento da Cefe 📅 2026-10-15
+- [ ]  Formartar computador do Paolo 📅 2026-10-19
