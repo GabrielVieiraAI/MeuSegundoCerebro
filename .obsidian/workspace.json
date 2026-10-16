@@ -5,9 +5,11 @@
     "children": [
       {
         "id": "04cd1476e9c389c3",
+        "id": "04cd1476e9c389c3",
         "type": "tabs",
         "children": [
           {
+            "id": "eec6dd27f7053472",
             "id": "eec6dd27f7053472",
             "type": "leaf",
             "state": {
@@ -93,6 +95,7 @@
       }
     ],
     "direction": "horizontal",
+    "width": 339.8999938964844
     "width": 339.8999938964844
   },
   "right": {
@@ -185,6 +188,8 @@
               "state": {},
               "icon": "lucide-ghost",
               "title": "task-backlog-view"
+              "icon": "lucide-ghost",
+              "title": "task-backlog-view"
             }
           }
         ],
@@ -210,6 +215,7 @@
       "full-calendar-remastered:FCR Command": false
     }
   },
+  "active": "eec6dd27f7053472",
   "active": "eec6dd27f7053472",
   "lastOpenFiles": [
     "03_Resources/Obsidian/Tutoriais/Atualizar Repositório Local pelo Remoto.md",
