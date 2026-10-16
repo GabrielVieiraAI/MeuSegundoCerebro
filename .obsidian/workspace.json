@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "00_Inbox/1📋Gerenciador de Tarefas.conflict-windows-20261016T123010Z.md",
+                "file": "03_Resources/Obsidian/Tutoriais/Como Resolver Conflitos Git no Obsidian com GitSync.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1📋Gerenciador de Tarefas.conflict-windows-20261016T123010Z"
+              "title": "Como Resolver Conflitos Git no Obsidian com GitSync"
             }
           }
         ]
@@ -89,7 +89,8 @@
               "title": "GitSync Portal"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -210,13 +211,18 @@
       "full-calendar-remastered:FCR Command": false
     }
   },
-  "active": "eec6dd27f7053472",
+  "active": "dd7465fe901cf95e",
   "lastOpenFiles": [
+    "03_Resources/Obsidian/Tutoriais/Adicionar Vault em Novo Computador.md",
+    "03_Resources/Obsidian/Tutoriais/Sincronização Obsidian e Git.md",
+    "03_Resources/Obsidian/Tutoriais/Como Resolver Conflitos Git no Obsidian com GitSync.md",
+    "03_Resources/Obsidian/Guia - Adicionar Vault em Novo Computador.md",
+    "COMO_RESOLVER_CONFLITOS_GIT.md",
+    "00_Inbox/1📋Gerenciador de Tarefas.conflict-windows-20261016T123010Z.md",
     "00_Inbox/0📥 Capturas Rápidas.md",
     "00_Inbox/0📥 Capturas Rápidas.conflict-windows-20261016T123010Z.md",
     "04_Archive/Tutorial - Sincronização Obsidian e Git.md",
     "03_Resources/SAP/Conceitos/PIMON - Configuration and Monitoring - Copia.md",
-    "03_Resources/Obsidian/Guia - Adicionar Vault em Novo Computador.md",
     "03_Resources/Finanças/Livros/Sem título.md",
     "00_Inbox/📥 Capturas Rápidas.md",
     "Trans.conflict-windows-20261016T123015Z.md",
@@ -233,11 +239,6 @@
     "03_Resources/Programação/Conceitos/SOA - Service-Oriented Architecture.conflict-windows-20261016T123012Z.md",
     "03_Resources/Programação/Conceitos/ESR - Enterprise Services Repository.conflict-windows-20261016T123012Z.md",
     "03_Resources/Programação/Conceitos/ESB - Enterprise Service Bus.conflict-windows-20261016T123012Z.md",
-    "03_Resources/Finanças/Livros/Libertação Financeira.conflict-windows-20261016T123011Z.md",
-    "02_Areas/guia_areas.conflict-windows-20261016T123011Z.md",
-    "02_Areas/Culinária/Receita de Pudim.conflict-windows-20261016T123011Z.md",
-    "02_Areas/Culinária/Receita de Bolo de Chocolate.conflict-windows-20261016T123011Z.md",
-    "00_Inbox/1📋Gerenciador de Tarefas.conflict-windows-20261016T123010Z.md",
     "00_Inbox/Daily",
     "02_Areas/Habitos",
     "01_Projects/Insi/Rede Sim/01-[REDESIM]-Padrões de Desenvolvimento.pdf",
