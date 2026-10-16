@@ -2,21 +2,26 @@ const { exec } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-// Obtém as classes do Obsidian do contexto do aplicativo com fallback seguro
-function getObsidianClasses() {
-    let obs = {};
-    if (typeof window !== 'undefined' && typeof window.require === 'function') {
-        try {
-            obs = window.require('obsidian') || {};
-        } catch (e) {
-            console.warn("[GitManager] Fallback para objetos globais do Obsidian:", e);
+// Sistema de notificação resiliente
+let activeNotice = null;
+function notify(message, timeout = 5000) {
+    try {
+        if (activeNotice && typeof activeNotice.hide === 'function') {
+            activeNotice.hide();
+            activeNotice = null;
         }
+        const NoticeConstructor = typeof Notice !== 'undefined' 
+            ? Notice 
+            : (typeof window !== 'undefined' && window.Notice ? window.Notice : null);
+
+        if (NoticeConstructor) {
+            activeNotice = new NoticeConstructor(message, timeout);
+            return activeNotice;
+        }
+    } catch (e) {
+        console.warn("[GitManager] Fallback console notice:", e);
     }
-    return {
-        Notice: obs.Notice || (typeof Notice !== 'undefined' ? Notice : globalThis.Notice),
-        Modal: obs.Modal || (typeof Modal !== 'undefined' ? Modal : globalThis.Modal),
-        Setting: obs.Setting || (typeof Setting !== 'undefined' ? Setting : globalThis.Setting)
-    };
+    console.log(`[GitManager] ${message}`);
 }
 
 /**
@@ -53,9 +58,8 @@ function getVaultPath(app) {
  * Envia alterações locais para o GitHub (Push).
  */
 async function pushVault(app) {
-    const { Notice } = getObsidianClasses();
     const vaultPath = getVaultPath(app);
-    const notice = Notice ? new Notice("⏳ Preparando e enviando notas para o GitHub...", 0) : null;
+    notify("⏳ Preparando e enviando notas para o GitHub...", 0);
 
     try {
         await runCommand("git add .", vaultPath);
@@ -67,14 +71,13 @@ async function pushVault(app) {
             await runCommand(`git commit -m "Vault sync: ${timestamp}"`, vaultPath);
         }
 
+        // Tenta enviar diretamente
         await runCommand("git push origin main", vaultPath);
 
-        if (notice && typeof notice.hide === 'function') notice.hide();
-        if (Notice) new Notice("✅ Notas enviadas com sucesso para o GitHub!", 6000);
+        notify("✅ Notas enviadas com sucesso para o GitHub!", 6000);
     } catch (err) {
-        if (notice && typeof notice.hide === 'function') notice.hide();
         console.error("[GitManager] Erro no Push:", err);
-        if (Notice) new Notice(`❌ Erro ao enviar para o GitHub:\n${err.message}`, 10000);
+        notify(`❌ Erro ao enviar para o GitHub:\n${err.message}`, 10000);
     }
 }
 
@@ -139,108 +142,159 @@ async function forceResetVault(vaultPath) {
 }
 
 /**
- * Dispara o fluxo de atualização inteligente com modal interativo.
+ * Renderiza modal nativo do Obsidian com layout de cards (sem quebras de texto e 100% responsivo).
  */
-function pullWithPrompt(app) {
-    const { Notice, Modal, Setting } = getObsidianClasses();
-    const vaultPath = getVaultPath(app);
-
-    if (!Modal || !Setting) {
-        if (Notice) new Notice("❌ Interface do Obsidian não disponível para abrir o diálogo.", 6000);
+function openSmartPullModal(vaultPath) {
+    if (typeof document === 'undefined') {
+        notify("❌ Ambiente sem suporte a interface gráfica.", 5000);
         return;
     }
 
-    class SmartPullModal extends Modal {
-        constructor(appInstance) {
-            super(appInstance);
-        }
+    // Remove qualquer modal prévio
+    const oldModal = document.querySelector('.git-smart-pull-modal');
+    if (oldModal) oldModal.remove();
 
-        onOpen() {
-            const { contentEl } = this;
-            contentEl.empty();
+    const container = document.createElement('div');
+    container.className = 'modal-container mod-dim git-smart-pull-modal';
 
-            contentEl.createEl("h2", { text: "🔄 Atualizar Repositório Local" });
-            contentEl.createEl("p", {
-                text: "O repositório do GitHub será a fonte absoluta da verdade. Como você gostaria de proceder?",
-                cls: "mod-warning"
-            });
+    const bg = document.createElement('div');
+    bg.className = 'modal-bg';
+    container.appendChild(bg);
 
-            // Opção 1: Backup e Atualizar
-            const opt1 = contentEl.createDiv({ cls: "git-manager-opt" });
-            opt1.style.marginBottom = "15px";
-            opt1.style.padding = "10px";
-            opt1.style.border = "1px solid var(--interactive-accent)";
-            opt1.style.borderRadius = "8px";
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.style.position = 'relative';
+    modal.style.maxWidth = '520px';
+    modal.style.width = '100%';
+    modal.style.boxSizing = 'border-box';
+    modal.style.padding = '24px';
+    modal.style.borderRadius = '12px';
+    container.appendChild(modal);
 
-            new Setting(opt1)
-                .setName("💾 Fazer Backup e Atualizar (Recomendado)")
-                .setDesc("Cria uma cópia integral do estado atual em uma pasta '_backup_versao_X' antes de alinhar com o GitHub.")
-                .addButton(btn => btn
-                    .setButtonText("Fazer Backup e Atualizar")
-                    .setCta()
-                    .onClick(async () => {
-                        this.close();
-                        const notice = Notice ? new Notice("⏳ Criando cópia de backup do cofre...", 0) : null;
-                        try {
-                            const { backupDirName } = createBackupCopy(vaultPath);
-                            if (notice && typeof notice.setMessage === 'function') {
-                                notice.setMessage(`💾 Backup criado em '${backupDirName}'. Sincronizando com GitHub...`);
-                            }
-                            await forceResetVault(vaultPath);
-                            if (notice && typeof notice.hide === 'function') notice.hide();
-                            if (Notice) new Notice(`✅ Sucesso! Cofre atualizado com o GitHub.\n📁 Backup preservado em: ${backupDirName}`, 8000);
-                        } catch (err) {
-                            if (notice && typeof notice.hide === 'function') notice.hide();
-                            console.error("[GitManager] Erro no Backup e Pull:", err);
-                            if (Notice) new Notice(`❌ Erro durante o processo:\n${err.message}`, 10000);
-                        }
-                    }));
+    const closeBtn = document.createElement('div');
+    closeBtn.className = 'modal-close-button';
+    modal.appendChild(closeBtn);
 
-            // Opção 2: Sobrescrever Direto
-            const opt2 = contentEl.createDiv({ cls: "git-manager-opt" });
-            opt2.style.marginBottom = "15px";
-            opt2.style.padding = "10px";
-            opt2.style.border = "1px solid var(--background-modifier-border)";
-            opt2.style.borderRadius = "8px";
+    const title = document.createElement('h2');
+    title.innerText = '🔄 Atualizar Repositório Local';
+    title.style.margin = '0 0 8px 0';
+    title.style.fontSize = '20px';
+    modal.appendChild(title);
 
-            new Setting(opt2)
-                .setName("⚡ Sobrescrever Direto (Sem Backup)")
-                .setDesc("Descarta imediatamente divergências locais e força o cofre a ficar idêntico ao GitHub.")
-                .addButton(btn => btn
-                    .setButtonText("Sobrescrever Direto")
-                    .setWarning()
-                    .onClick(async () => {
-                        this.close();
-                        const notice = Notice ? new Notice("⏳ Sobrescrevendo cofre com versão do GitHub...", 0) : null;
-                        try {
-                            await forceResetVault(vaultPath);
-                            if (notice && typeof notice.hide === 'function') notice.hide();
-                            if (Notice) new Notice("✅ Cofre atualizado 100% com o GitHub!", 6000);
-                        } catch (err) {
-                            if (notice && typeof notice.hide === 'function') notice.hide();
-                            console.error("[GitManager] Erro no Reset Direto:", err);
-                            if (Notice) new Notice(`❌ Erro ao atualizar do GitHub:\n${err.message}`, 10000);
-                        }
-                    }));
+    const desc = document.createElement('p');
+    desc.innerText = 'O repositório do GitHub será a fonte absoluta da verdade. Como você gostaria de proceder?';
+    desc.style.color = 'var(--text-muted)';
+    desc.style.margin = '0 0 20px 0';
+    desc.style.fontSize = '14px';
+    desc.style.lineHeight = '1.5';
+    modal.appendChild(desc);
 
-            // Opção 3: Cancelar
-            const opt3 = contentEl.createDiv({ cls: "git-manager-opt" });
-            new Setting(opt3)
-                .addButton(btn => btn
-                    .setButtonText("Cancelar")
-                    .onClick(() => {
-                        this.close();
-                        if (Notice) new Notice("Operação cancelada.");
-                    }));
-        }
+    const cardContainer = document.createElement('div');
+    cardContainer.style.display = 'flex';
+    cardContainer.style.flexDirection = 'column';
+    cardContainer.style.gap = '12px';
+    modal.appendChild(cardContainer);
 
-        onClose() {
-            const { contentEl } = this;
-            contentEl.empty();
-        }
+    function closeModal() {
+        container.remove();
+        document.removeEventListener('keydown', onKeyDown);
     }
 
-    new SmartPullModal(app).open();
+    function onKeyDown(e) {
+        if (e.key === 'Escape') closeModal();
+    }
+    document.addEventListener('keydown', onKeyDown);
+    bg.onclick = closeModal;
+    closeBtn.onclick = closeModal;
+
+    // Card 1: Fazer Backup e Atualizar
+    const card1 = document.createElement('div');
+    card1.style.padding = '14px 16px';
+    card1.style.borderRadius = '10px';
+    card1.style.border = '1.5px solid var(--interactive-accent)';
+    card1.style.backgroundColor = 'var(--background-primary-alt)';
+    card1.style.cursor = 'pointer';
+    card1.style.transition = 'all 0.15s ease';
+    card1.style.display = 'flex';
+    card1.style.flexDirection = 'column';
+    card1.style.gap = '4px';
+    card1.onmouseenter = () => { card1.style.backgroundColor = 'var(--background-modifier-hover)'; };
+    card1.onmouseleave = () => { card1.style.backgroundColor = 'var(--background-primary-alt)'; };
+
+    card1.innerHTML = `
+        <div style="font-weight: 600; font-size: 15px; color: var(--text-accent);">💾 Fazer Backup e Atualizar <span style="font-size: 12px; font-weight: normal; opacity: 0.85;">(Recomendado)</span></div>
+        <div style="font-size: 13px; color: var(--text-muted); line-height: 1.4; white-space: normal;">Cria uma cópia integral do estado atual em pasta de backup antes de alinhar com o GitHub.</div>
+    `;
+    card1.onclick = async () => {
+        closeModal();
+        notify("⏳ Criando cópia de backup do cofre...", 0);
+        try {
+            const { backupDirName } = createBackupCopy(vaultPath);
+            notify(`💾 Backup criado em '${backupDirName}'. Sincronizando com GitHub...`, 0);
+            await forceResetVault(vaultPath);
+            notify(`✅ Sucesso! Cofre atualizado com o GitHub.\n📁 Backup preservado em: ${backupDirName}`, 8000);
+        } catch (err) {
+            console.error("[GitManager] Erro no Backup e Pull:", err);
+            notify(`❌ Erro durante o processo:\n${err.message}`, 10000);
+        }
+    };
+    cardContainer.appendChild(card1);
+
+    // Card 2: Sobrescrever Direto
+    const card2 = document.createElement('div');
+    card2.style.padding = '14px 16px';
+    card2.style.borderRadius = '10px';
+    card2.style.border = '1.5px solid var(--text-error)';
+    card2.style.backgroundColor = 'var(--background-primary-alt)';
+    card2.style.cursor = 'pointer';
+    card2.style.transition = 'all 0.15s ease';
+    card2.style.display = 'flex';
+    card2.style.flexDirection = 'column';
+    card2.style.gap = '4px';
+    card2.onmouseenter = () => { card2.style.backgroundColor = 'var(--background-modifier-hover)'; };
+    card2.onmouseleave = () => { card2.style.backgroundColor = 'var(--background-primary-alt)'; };
+
+    card2.innerHTML = `
+        <div style="font-weight: 600; font-size: 15px; color: var(--text-error);">⚡ Sobrescrever Direto <span style="font-size: 12px; font-weight: normal; opacity: 0.85;">(Sem Backup)</span></div>
+        <div style="font-size: 13px; color: var(--text-muted); line-height: 1.4; white-space: normal;">Descarta divergências locais e força o cofre a ficar idêntico ao GitHub.</div>
+    `;
+    card2.onclick = async () => {
+        closeModal();
+        notify("⏳ Sobrescrevendo cofre com versão do GitHub...", 0);
+        try {
+            await forceResetVault(vaultPath);
+            notify("✅ Cofre atualizado 100% com o GitHub!", 6000);
+        } catch (err) {
+            console.error("[GitManager] Erro no Reset Direto:", err);
+            notify(`❌ Erro ao atualizar do GitHub:\n${err.message}`, 10000);
+        }
+    };
+    cardContainer.appendChild(card2);
+
+    // Botão Cancelar
+    const btnCancel = document.createElement('button');
+    btnCancel.innerText = 'Cancelar';
+    btnCancel.style.padding = '10px 16px';
+    btnCancel.style.cursor = 'pointer';
+    btnCancel.style.borderRadius = '8px';
+    btnCancel.style.border = '1px solid var(--background-modifier-border)';
+    btnCancel.style.width = '100%';
+    btnCancel.style.marginTop = '6px';
+    btnCancel.onclick = () => {
+        closeModal();
+        notify("Operação cancelada.", 3000);
+    };
+    cardContainer.appendChild(btnCancel);
+
+    document.body.appendChild(container);
+}
+
+/**
+ * Dispara o fluxo de atualização inteligente com modal interativo.
+ */
+function pullWithPrompt(app) {
+    const vaultPath = getVaultPath(app);
+    openSmartPullModal(vaultPath);
 }
 
 module.exports = {
