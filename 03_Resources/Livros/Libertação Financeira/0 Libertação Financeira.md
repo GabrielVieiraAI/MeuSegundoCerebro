@@ -74,8 +74,8 @@ nota_pessoal: ⭐⭐⭐⭐⭐
 > [!TIP]
 > Escreva notas concisas com números de página. Evite cópia literal — resuma o argumento do autor com o seu próprio vocabulário.
 
-### Cap. 1: [Nome do Capítulo] (p. XX)
-* 
+### Cap. [[8 - Dízimos]]
+* A relação entre o homem e o sacerdote, tendo Deus como sua testemunha. 
 
 ### Cap. 2: [Nome do Capítulo] (p. XX)
 * 
