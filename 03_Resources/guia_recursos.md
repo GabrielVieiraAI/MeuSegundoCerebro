@@ -6,6 +6,8 @@ tags: [sistema, recursos]
 Este é o meu "conhecimento consolidado". Tudo o que eu estudo, aprendo e quero guardar como referência para o meu eu do futuro vive aqui.
 
 * **O que entra aqui?** `Anotações de React`, `Padrões de Projeto`, `Arquitetura Limpa`, `Roteiros de Estudo`.
-* **Guias e Tutoriais:** [[Guia - Adicionar Vault em Novo Computador|Guia: Configurar Vault em Novo Computador]]
+* **Guias e Tutoriais:** 
+  * [[Guia - Adicionar Vault em Novo Computador|Guia: Configurar Vault em Novo Computador]]
+  * [[Metodologia de Aprendizado com Gemini e NotebookLM|Metodologia de Aprendizado com Gemini e NotebookLM]]
 * **Integração com IA:** As IAs consultam essas notas para saber como eu prefiro estruturar meu código, quais bibliotecas eu costumo usar e qual o meu nível de conhecimento sobre cada tecnologia. Quanto mais rica for a anotação aqui, melhor a IA vai me ajudar a programar no dia a dia.
 
