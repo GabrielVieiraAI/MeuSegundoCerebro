@@ -84,11 +84,11 @@ hide backlink
 
 - [x] #pessoal Vistoria do Fiesta R$180,00 ⏫ 📅 2026-10-15 ⏳ 11:30 ✅ 2026-10-15
 - [x] Assinar documentos do Fiesta no Gov.br ⏫ 📅 2026-10-13 ✅ 2026-10-13
-- [ ] 11:30 - 13:30 Transferência do Fiesta no Detran 📅 2026-10-20
+- [x] 11:30 - 13:30 Transferência do Fiesta no Detran 📅 2026-10-20 ✅ 2026-10-20
 - [x] Enviar chave da API Primata para o Bruno Braga via e-mail 🔽 📅 2026-10-13 ✅ 2026-10-13
 - [x] 14:00 - 14:30 Retirar provisionamento da CEFE ⏫ 📅 2026-10-20 ✅ 2026-10-20
 - [x] Enviar Boleto Azure para o Paolo ⏫ 📅 2026-10-13 ✅ 2026-10-13
-- [ ] 14:30 - 15:00  Criar nota referente a **OData** através do **SAP GUI** 📅 2026-10-19
+- [ ] 14:30 - 15:00  Criar nota referente a **OData** através do **SAP GUI** 📅 2026-10-21
 - [x] Presente da Ligia ⏫ 📅 2026-10-13 ✅ 2026-10-13
 - [x] Criar sistema de gerenciamento de Tarefas 📅 2026-10-13 ✅ 2026-10-13
 - [x] Conseguir acesso de desenvolvimento no SAP GUI 🔺 📅 2026-10-19 ✅ 2026-10-19
@@ -129,8 +129,8 @@ action:
   type: command
   command: quickadd:choice:tarefa-avulsa
 ```
-- [ ] 14:00 - 14:30 Cobrar posicionamento computador do Paolo 📅 2026-10-20
-- [ ] 08:00 Estudar módulo Getting Started Certificação SAP 📅 2026-10-20
+- [ ] 14:00 - 14:30 Cobrar posicionamento computador do Paolo 📅 2026-10-21
+- [x] 08:00 Estudar módulo Getting Started Certificação SAP 📅 2026-10-20 ✅ 2026-10-20
 - [x] 15:30 Reunião presencial com a Thalita 📅 2026-10-19 ✅ 2026-10-20
 - [x] 08:00 Cobrar o Paolo pagamento do provisionamento. 📅 2026-10-20 ✅ 2026-10-20
-- [ ] 16:00 - 17:00 Avaliar sobre prestação de serviço Aconchego. 📅 2026-10-20
+- [ ] 16:00 - 17:00 Avaliar sobre prestação de serviço Aconchego. 📅 2026-10-21

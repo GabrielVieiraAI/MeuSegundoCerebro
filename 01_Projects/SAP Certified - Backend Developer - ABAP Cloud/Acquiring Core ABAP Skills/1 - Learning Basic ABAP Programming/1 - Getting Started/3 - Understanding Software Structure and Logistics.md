@@ -141,14 +141,3 @@ Neste exercício, você adicionará o pacote de estudos aos seus favoritos e cri
 #### 3. Confirmar a criação nos Favoritos:
 1. No **Project Explorer**, verifique dentro do nó **Favorite Packages** se o seu pacote `ZS4D400_##` já aparece listado.
 2. *(Caso não apareça, repita o processo de adicionar pacote favorito buscando pelo seu nome `ZS4D400_##`)*.
-
----
-
-## 📌 Termos e Conceitos para Adicionar em `03_Resources/SAP/Conceitos`
-
-Abaixo estão os conceitos fundamentais apresentados nesta lição recomendados para criação de notas dedicadas na pasta `03_Resources/SAP/Conceitos`:
-
-- `[[Pacotes ABAP (Packages) e Superpackages]]` — Contêineres de governança e organização lógica de objetos no Repositório ABAP.
-- `[[Namespaces no SAP (Z, Y e Prefixos de Parceiros)]]` — Regras de nomenclatura que isolam desenvolvimentos de clientes para proteger o código contra upgrades padrão da SAP.
-- `[[Transport Request (Ordem de Transporte)]]` — Mecanismo de bloqueio de versão, trabalho em equipe e transporte de alterações entre ambientes (DEV → TST → PRD).
-- `[[Software Components no ABAP Cloud]]` — Estrutura de nível superior que define o empacotamento, escopo de entrega e dependências de código na nuvem.

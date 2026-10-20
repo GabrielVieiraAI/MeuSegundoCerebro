@@ -3,6 +3,7 @@
   "strictLineBreaks": false,
   "showLineNumber": true,
   "readableLineLength": false,
+  "attachmentFolderPath": "01_Projects/SAP Certified - Backend Developer - ABAP Cloud/Imagens",
   "pdfExportSettings": {
     "pageSize": "A4",
     "landscape": false,

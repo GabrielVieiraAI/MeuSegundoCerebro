@@ -110,12 +110,4 @@ Neste exercício, você criará uma nova classe ABAP dentro do seu pacote de est
    ```
 2. *(Caso a aba não apareça automaticamente, vá no menu **Window** → **Show View** → **Other...**, digite `Console` e dê um duplo clique).*
 
----
 
-## 📌 Termos e Conceitos para Adicionar em `03_Resources/SAP/Conceitos`
-
-Abaixo estão os conceitos fundamentais apresentados nesta lição recomendados para criação de notas dedicadas na pasta `03_Resources/SAP/Conceitos`:
-
-- `[[Classes e Interfaces em ABAP OO]]` — Fundamentos de orientação a objetos no ABAP (definição, visibilidade pública/privada e contratos de interface).
-- `[[Interface IF_OO_ADT_CLASSRUN (Console Runner)]]` — Interface padrão do ADT para execução e teste imediato de lógicas backend sem necessidade de telas Fiori.
-- `[[Ciclo de Ativação e Compilação ABAP (Ctrl + F3)]]` — A diferença entre versão inativa (rascunho) e ativa (executável) no repositório SAP.

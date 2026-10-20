@@ -133,14 +133,3 @@ Utilize algumas funções do *ABAP Development Tools* para analisar o código-fo
 	> Se a visualização do *ABAP Language Help* que se abrir indicar que os resultados da consulta de busca não são suportados na versão de linguagem ABAP atual, digite **SELECT** no campo *search term* da própria aba de ajuda e pressione **Enter**. Essa busca exibirá a ajuda desejada.
 	> 
 	> Não há necessidade de ler ou compreender toda a documentação da instrução neste momento.
-
----
-
-## 📌 Termos e Conceitos para Adicionar em `03_Resources/SAP/Conceitos`
-
-Abaixo estão os conceitos fundamentais apresentados nesta lição recomendados para criação de notas dedicadas na pasta `03_Resources/SAP/Conceitos`:
-
-- `[[ADT - ABAP Development Tools]]` — IDE baseada em Eclipse para desenvolvimento moderno em ABAP, ABAP Cloud e RAP.
-- `[[Pacotes ABAP (Packages) e Transporte]]` — Estrutura de agrupamento lógico e governança de objetos de desenvolvimento no repositório ABAP.
-- `[[Teclas de Atalho e Navegação no ADT (F1, F2, F3)]]` — Guia de produtividade no Eclipse para consulta de sintaxe (F1), inspeção rápida de tipos (F2) e navegação para definições/implementações (F3).
-- `[[Modelo de Dados de Demonstração /DMO/ (Flight Legacy)]]` — Pacote e modelo de dados de voos disponibilizado pela SAP para exercícios práticos em ABAP e RAP.
