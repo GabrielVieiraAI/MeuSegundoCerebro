@@ -96,19 +96,19 @@ hide backlink
 - [x] Assinar documentos do Fiesta no Gov.br ⏫ 📅 2026-10-13 ✅ 2026-10-13
 - [ ] 11:30 - 13:30 Transferência do Fiesta no Detran 📅 2026-10-20
 - [x] Enviar chave da API Primata para o Bruno Braga via e-mail 🔽 📅 2026-10-13 ✅ 2026-10-13
-- [ ] Retirar provisionamento da CEFE 📅 2026-10-19 ⏫ 
+- [ ] 14:00 - 14:30 Retirar provisionamento da CEFE ⏫ 📅 2026-10-20
 - [x] Enviar Boleto Azure para o Paolo ⏫ 📅 2026-10-13 ✅ 2026-10-13
-- [ ] Criar nota referente a **OData** através do **SAP GUI** 📅 2026-10-19
+- [ ]14:00 - 14:30  Criar nota referente a **OData** através do **SAP GUI** 📅 2026-10-19
 - [x] Presente da Ligia ⏫ 📅 2026-10-13 ✅ 2026-10-13
 - [x] Criar sistema de gerenciamento de Tarefas 📅 2026-10-13 ✅ 2026-10-13
-- [ ] Conseguir acesso de desenvolvimento no SAP GUI 🔺 📅 2026-10-19
-- [ ] Liberar Request de ajuste da demanda de logs barramento 🔺 📅 2026-10-19
+- [x] Conseguir acesso de desenvolvimento no SAP GUI 🔺 📅 2026-10-19 ✅ 2026-10-19
+- [x] Liberar Request de ajuste da demanda de logs barramento 🔺 📅 2026-10-19 ✅ 2026-10-19
 - [x] Criar Nota de receita de bolo de chocolate 📅 2026-10-13 ✅ 2026-10-14
 - [x] Criar uma forma de metrificar as tarefas rotineiras. 📅 2026-10-14 ✅ 2026-10-15
 - [x] Se cadastrar em vagas SAP ⏫ 📅 2026-10-15 ✅ 2026-10-15
 - [x] Estudar SAP ⏫ 📅 2026-10-14 ✅ 2026-10-14
 - [x] Comprar areia dos Gatos e ingredientes para bolo 📅 2026-10-14 ✅ 2026-10-14
-- [ ] Definir cronograma de estudos Certificação SAP 📅 2026-10-15
+- [x] Definir cronograma de estudos Certificação SAP 📅 2026-10-15 ✅ 2026-10-19
 
 ```meta-bind-button
 id: btn-add-tarefa
@@ -139,5 +139,7 @@ action:
   type: command
   command: quickadd:choice:tarefa-avulsa
 ```
-- [ ] Retirar provisionamento da Cefe 📅 2026-10-15
-- [ ]  Formartar computador do Paolo 📅 2026-10-19
+- [ ] 14:00 - 14:30 Cobrar posicionamento computador do Paolo 📅 2026-10-20
+- [ ] 08:00 Estudar módulo Getting Started Certificação SAP 📅 2026-10-20
+- [x] 15:30 Reunião presencial com a Thalita 📅 2026-10-19 ✅ 2026-10-20
+- [x] 08:00 Cobrar o Paolo pagamento do provisionamento. 📅 2026-10-20 ✅ 2026-10-20

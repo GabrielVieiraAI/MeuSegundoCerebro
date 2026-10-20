@@ -15,7 +15,6 @@ Após concluir esta lição, você será capaz de criar um projeto **ABAP Cloud*
 ---
 ## Projeto ABAP Cloud
 Para desenvolver aplicações ABAP para o SAP BTP, você precisa primeiro instalar e preparar o ambiente de desenvolvimento Eclipse. Assista ao vídeo da lição para aprender o passo a passo.
-
 ### Diferentes Tipos de Projetos ABAP
 
 ![[01_-_SAP_BTP_ABAP_003.png]]
@@ -30,7 +29,6 @@ Existem dois tipos de projetos no **ADT (ABAP Development Tools)**:
 > No decorrer deste curso, abordaremos exclusivamente como acessar e trabalhar em um sistema em nuvem (*Cloud*).
 
 ---
-
 ### Localizando o Ambiente ABAP
 
 ![[01_-_SAP_BTP_ABAP_004.png]]
@@ -45,21 +43,6 @@ Dentro da subconta, você provisiona um ambiente de execução (*runtime*), como
 > Neste curso, utilizamos uma instância ABAP provisionada no **SAP Business Technology Platform (SAP BTP)**. No entanto, este conteúdo também é aplicável a outras implementações ABAP modernas, como sistemas *on-premise* SAP S/4HANA ou SAP S/4HANA Cloud.
 
 ---
-
 ## Como Criar um Projeto ABAP Cloud
 
 Demonstração prática: [Iniciar Demonstração (Start Demo)](https://learnsap.enable-now.cloud.sap/pub/mmcp/index.html?show=project!PR_45E9553478ED05A1:uebung)
-
----
-
-## 📌 Termos e Conceitos para Adicionar em `03_Resources/SAP/Conceitos`
-
-Abaixo estão os conceitos fundamentais apresentados nesta lição recomendados para criação de notas dedicadas na pasta `03_Resources/SAP/Conceitos`:
-
--  `[[ADT - ABAP Development Tools]]` — Extensão do Eclipse que substitui o antigo SE80 e serve como IDE oficial para desenvolvimento ABAP moderno e ABAP Cloud.
-- `[[ABAP Cloud]]` — Modelo de desenvolvimento moderno e clean core da SAP, baseado em sintaxe ABAP restrita e APIs públicas para SAP BTP e SAP S/4HANA (Cloud e On-Premise).
--  `[[SAP BTP - Business Technology Platform]]` — Plataforma como serviço (PaaS) da SAP para extensão, integração e desenvolvimento nativo em nuvem.
--  `[[SAP BTP - Contas Globais e Subcontas]]` — Estrutura de organização e governança de contas no SAP BTP (Global Accounts, Subaccounts, Entitlements e Quotas).
--  `[[SAP BTP - Runtimes (Cloud Foundry e Kyma)]]` — Ambientes de execução de aplicações e microsserviços disponíveis para deploy no SAP BTP.
--  `[[SAP S/4HANA - Modelos de Implantação (Cloud vs On-Premise, Public vs Private)]]` — Níveis de arquitetura e extensibilidade do ERP SAP entre edições On-Premise, Private Cloud e Public Cloud.
--  `[[Projetos ADT - ABAP Project vs ABAP Cloud Project]]` — Tipos de projeto no ADT (conexão clássica para On-Premise/Private Cloud versus conexão Cloud com regras de Clean Core para BTP/Public Cloud).

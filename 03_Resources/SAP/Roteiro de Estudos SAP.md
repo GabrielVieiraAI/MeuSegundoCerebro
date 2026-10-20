@@ -33,7 +33,7 @@ Este é o roadmap das tecnologias e habilidades relacionadas ao ecossistema SAP 
 
 | ORD | TECNOLOGIA / HABILIDADE | RELEVÂNCIA / DEMANDA | STATUS |
 | :--- | :--- | :--- | :--- |
-| 11 | Modelos de Extensibilidade e Princípios de Clean Core | Alto | Preciso Aprender |
+| 11 | Modelos de Extensibilidade e Princípios de Clean Core ([[RISE with SAP|RISE]]) | Alto | Preciso Aprender |
 | - | [[RAP - ABAP RESTful Application Programming Model\|RAP]] (RESTful Application Programming Model - Managed/Unmanaged/EML) | Alto | Domino |
 
 ## ETAPA 4: NUVEM & INTEGRAÇÕES SAP / EXTERNAS
@@ -41,7 +41,7 @@ Este é o roadmap das tecnologias e habilidades relacionadas ao ecossistema SAP 
 | ORD | TECNOLOGIA / HABILIDADE                                                            | RELEVÂNCIA / DEMANDA | STATUS           |
 | :-- | :--------------------------------------------------------------------------------- | :------------------- | :--------------- |
 | 03  | Consumo / Exposição de Web Services (RESTful APIs, JSON, SOAP)                     | Crítico              | Preciso Aprender |
-| 12  | SAP BTP e ABAP Cloud                                                               | Alto                 | Preciso Aprender |
+| 12  | [[BTP - Business Technology Platform|SAP BTP]] e ABAP Cloud                               | Alto                 | Preciso Aprender |
 | 14  | Noções de Middlewares / [[PI - Process Intagration]] e SAP CPI (Integration Suite) | Médio                | Preciso Aprender |
 | 17  | APIs de Integração Externa (.NET Core, ASP.NET Core, C#)                           | Diferencial          | Domino           |
 | 18  | Serviços de Nuvem Externa (Azure App Services, Storage / AWS)                      | Diferencial          | Domino           |
