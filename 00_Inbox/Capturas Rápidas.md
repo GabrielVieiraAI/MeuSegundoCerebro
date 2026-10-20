@@ -28,12 +28,16 @@ status: draft
 	-  "Quem dá primeiro é maior."
 
 ---
-## 💻 Tecnologia & Estudos (To-Do)
+## 💻 Tecnologia & Estudos 
 
 - [ ] Criar uma nota detalhada de como realizar a publicação de um serviço **OData** através do **SAP GUI**.
 - [ ] Conseguir acesso ao IPTV gratuito para rodar no projetor 
 - [ ] Criar uma nota para cada transação que eu já usei, listando o que posso fazer nessa transação.
 - [ ] Criar uma nota explicando todo o ciclo de desenvolvimento de um app fiori. visto que já foi publicado 2.
 
+## Tarefas de Casa
+- [ ] Concertar a pia da cozinha
+- [ ] Lavar o carro
+- [ ] Concertar painel do carro
 
 

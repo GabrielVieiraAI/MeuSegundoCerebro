@@ -11,28 +11,6 @@ tags:
 > 🚀 **Git & Nuvem:** [[Painel de Controle Git|Abrir Painel de Controle Git]]
 
 ---
-## 🗓️ Agenda da Semana 
-
-```fc-calendar
-view: timeGridWeek
-weather: false
-height: 600px
-slotMinTime: "07:00"
-slotMaxTime: "22:00"
-dayMaxEvents: false
-```
-
----
-
-## 🚨 Atrasadas 
-```tasks
-not done
-tags do not include #agenda
-due before today
-sort by due
-```
-
----
 
 ## 🎯 Prioridades de Hoje
 ```tasks
@@ -54,6 +32,18 @@ due before next Monday
 sort by due
 group by due
 hide backlink
+```
+
+---
+## 🗓️ Agenda da Semana 
+
+```fc-calendar
+view: timeGridWeek
+weather: false
+height: 600px
+slotMinTime: "07:00"
+slotMaxTime: "22:00"
+dayMaxEvents: false
 ```
 
 ---
@@ -96,9 +86,9 @@ hide backlink
 - [x] Assinar documentos do Fiesta no Gov.br ⏫ 📅 2026-10-13 ✅ 2026-10-13
 - [ ] 11:30 - 13:30 Transferência do Fiesta no Detran 📅 2026-10-20
 - [x] Enviar chave da API Primata para o Bruno Braga via e-mail 🔽 📅 2026-10-13 ✅ 2026-10-13
-- [ ] 14:00 - 14:30 Retirar provisionamento da CEFE ⏫ 📅 2026-10-20
+- [x] 14:00 - 14:30 Retirar provisionamento da CEFE ⏫ 📅 2026-10-20 ✅ 2026-10-20
 - [x] Enviar Boleto Azure para o Paolo ⏫ 📅 2026-10-13 ✅ 2026-10-13
-- [ ]14:00 - 14:30  Criar nota referente a **OData** através do **SAP GUI** 📅 2026-10-19
+- [ ] 14:30 - 15:00  Criar nota referente a **OData** através do **SAP GUI** 📅 2026-10-19
 - [x] Presente da Ligia ⏫ 📅 2026-10-13 ✅ 2026-10-13
 - [x] Criar sistema de gerenciamento de Tarefas 📅 2026-10-13 ✅ 2026-10-13
 - [x] Conseguir acesso de desenvolvimento no SAP GUI 🔺 📅 2026-10-19 ✅ 2026-10-19
@@ -143,3 +133,4 @@ action:
 - [ ] 08:00 Estudar módulo Getting Started Certificação SAP 📅 2026-10-20
 - [x] 15:30 Reunião presencial com a Thalita 📅 2026-10-19 ✅ 2026-10-20
 - [x] 08:00 Cobrar o Paolo pagamento do provisionamento. 📅 2026-10-20 ✅ 2026-10-20
+- [ ] 16:00 - 17:00 Avaliar sobre prestação de serviço Aconchego. 📅 2026-10-20

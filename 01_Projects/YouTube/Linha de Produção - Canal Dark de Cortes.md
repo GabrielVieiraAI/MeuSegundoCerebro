@@ -200,17 +200,17 @@ flowchart LR
 
 ## 📋 Checklist Semanal (Rotina em 4 Blocos)
 
-- [ ] **Segunda-feira (Bloco 1 - Garimpo):**
-  - [ ] Rastrear 5 pregações/podcasts em alta.
-  - [ ] Recortar e arquivar 15 momentos de ouro brutos com o LosslessCut na pasta `01_Brutos`.
-- [ ] **Terça & Quarta-feira (Bloco 2 - Edição):**
-  - [ ] Importar os brutos para o CapCut.
-  - [ ] Editar os 14 a 21 cortes verticais (gancho, cortes de silêncio, legendas, b-rolls e áudio).
-  - [ ] Exportar todos os vídeos prontos para a pasta `03_Finalizados`.
-- [ ] **Quinta-feira (Bloco 3 - Publicação):**
-  - [ ] Criar títulos atrativos e definir frames de capa.
-  - [ ] Subir e agendar os vídeos de sexta até a próxima quinta-feira no YouTube Studio.
-  - [ ] Programar os mesmos cortes no TikTok, Reels e Kwai.
-- [ ] **Sexta-feira (Bloco 4 - Otimização):**
-  - [ ] Analisar os relatórios de retenção e *Viewed vs. Swiped Away* da semana anterior.
-  - [ ] Registrar os melhores temas e oradores para calibrar a curadoria da próxima segunda.
+-  **Segunda-feira (Bloco 1 - Garimpo):**
+  -  Rastrear 5 pregações/podcasts em alta.
+  -  Recortar e arquivar 15 momentos de ouro brutos com o LosslessCut na pasta `01_Brutos`.
+-  **Terça & Quarta-feira (Bloco 2 - Edição):**
+  -  Importar os brutos para o CapCut.
+  -  Editar os 14 a 21 cortes verticais (gancho, cortes de silêncio, legendas, b-rolls e áudio).
+  -  Exportar todos os vídeos prontos para a pasta `03_Finalizados`.
+- **Quinta-feira (Bloco 3 - Publicação):**
+  -  Criar títulos atrativos e definir frames de capa.
+  -  Subir e agendar os vídeos de sexta até a próxima quinta-feira no YouTube Studio.
+  -  Programar os mesmos cortes no TikTok, Reels e Kwai.
+- **Sexta-feira (Bloco 4 - Otimização):**
+  -  Analisar os relatórios de retenção e *Viewed vs. Swiped Away* da semana anterior.
+  -  Registrar os melhores temas e oradores para calibrar a curadoria da próxima segunda.
