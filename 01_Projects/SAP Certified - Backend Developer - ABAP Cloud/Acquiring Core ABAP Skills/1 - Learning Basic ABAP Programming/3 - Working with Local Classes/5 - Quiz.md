@@ -1,4 +1,4 @@
----
+﻿---
 title: "Quiz - Working with Local Classes"
 source: "https://learning.sap.com/courses/basic-abap-programming/working-with-local-classes_a9aded38-18bd-3b91-ba78-9eb4574fafe0"
 created: 2026-10-21
@@ -14,8 +14,8 @@ tags:
 # SAP Learning - Basic ABAP Programming
 ## Quiz: Trabalhando com Classes Locais (Working with Local Classes)
 
-> [!INFO] Desempenho
-> **Aprovação:** 8 de 8 questões corretas (Gabarito Oficial)
+> [!NOTE] Instruções de Estudo Ativo
+> Responda às questões marcando os checkboxes antes de expandir o gabarito.
 
 ---
 
@@ -27,6 +27,10 @@ tags:
 - **C.** Nenhum parâmetro `CHANGING`
 - **D.** Exatamente um parâmetro `RETURNING`
 
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **D**  
+> **Conceito:** Por definição fundamental no ABAP, um método funcional é caracterizado por possuir obrigatoriamente um único parâmetro de retorno (`RETURNING VALUE(...)`), permitindo seu uso direto em expressões.
+
 ---
 
 ### Pergunta 2
@@ -35,6 +39,10 @@ tags:
 - **A.** No início do programa
 - **B.** Ao chamar um método estático da classe
 - **C.** Ao instanciar a classe
+
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **B, C**  
+> **Conceito:** O construtor estático (`CLASS_CONSTRUCTOR`) é disparado uma única vez pelo *runtime* assim que a classe é referenciada pela primeira vez durante a execução do programa (chamada a método estático ou instanciação).
 
 ---
 
@@ -46,6 +54,10 @@ tags:
 - **C.** Parâmetros `CHANGING`
 - **D.** Exceções
 
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **A, D**  
+> **Conceito:** Construtores de instância (`METHODS constructor`) só podem receber valores iniciais de entrada via parâmetros `IMPORTING` e disparar erros via declaração de exceções (`RAISING`). Parâmetros `EXPORTING` ou `CHANGING` são proibidos.
+
 ---
 
 ### Pergunta 4
@@ -55,6 +67,10 @@ tags:
 - **B.** Componentes de instância usando o nome da classe
 - **C.** Componentes estáticos usando a variável de referência
 - **D.** Componentes estáticos usando o nome da classe
+
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **D**  
+> **Conceito:** Componentes estáticos pertencem à classe e não a uma instância individual, podendo ser acessados diretamente através do nome da classe (`lcl_class**=>**static_attr`) mesmo sem instanciar nenhum objeto.
 
 ---
 
@@ -70,24 +86,30 @@ ref2 = ref1.
 - **A.** O sistema ABAP cria uma cópia do objeto para o qual `ref1` aponta e atribui seu endereço a `ref2`. Agora existem dois objetos.
 - **B.** O sistema ABAP atribui a `ref2` o endereço do objeto para o qual `ref1` aponta. Continua existindo apenas um objeto.
 
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **B**  
+> **Conceito:** Variáveis de referência armazenam apenas ponteiros para endereços de memória. A atribuição `ref2 = ref1` apenas copia o ponteiro; continua existindo exatamente uma instância alocada.
+
 ---
 
 ### Pergunta 6
 **Em qual ordem as seções de visibilidade de uma classe devem ser definidas?**
 
-- **A.**
-  ```abap
+- **A.** ```abap
   PUBLIC SECTION.
   PROTECTED SECTION.
   PRIVATE SECTION.
   ```
-- **B.**
-  ```abap
+- **B.** ```abap
   PRIVATE SECTION.
   PROTECTED SECTION.
   PUBLIC SECTION.
   ```
 - **C.** Não importa a ordem.
+
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **A**  
+> **Conceito:** Na definição de classes ABAP (`CLASS ... DEFINITION`), o compilador exige estritamente a declaração das seções nessa ordem decrescente de visibilidade: `PUBLIC SECTION` -> `PROTECTED SECTION` -> `PRIVATE SECTION`.
 
 ---
 
@@ -99,42 +121,31 @@ ref2 = ref1.
 - **C.** Mantê-lo na seção pública utilizando a adição `READ-ONLY`
 - **D.** Movê-lo para outra classe local
 
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **A, C**  
+> **Conceito:** O encapsulamento pode ser garantido tornando o atributo `PRIVATE` (acessível só internamente) ou mantendo-o público com `READ-ONLY` (leitura livre externa, mas escrita bloqueada fora da classe).
+
 ---
 
 ### Pergunta 8
 **Uma classe `my_class` contém o método estático público `my_method`. Qual é o código correto para chamar esse método?**
 
-- **A.**
-  ```abap
+- **A.** ```abap
   my_class->my_method().
   ```
-- **B.**
-  ```abap
+- **B.** ```abap
   my_class=>my_method().
   ```
-- **C.**
-  ```abap
+- **C.** ```abap
   my_class->my_method( ).
   ```
-- **D.**
-  ```abap
+- **D.** ```abap
   my_class=>my_method( ).
   ```
 
----
-
-## Gabarito e Justificativas
-
-| Questão | Resposta | Justificativa / Conceito Técnico Oficial |
-| :---: | :---: | :--- |
-| **P1** | **D** | **Exactly one returning parameter:** Por definição fundamental no ABAP, um método funcional é caracterizado por possuir obrigatoriamente um único parâmetro de retorno (`RETURNING VALUE(...)`), permitindo seu uso direto em expressões. |
-| **P2** | **B, C** | **When you call a static method of the class / When you instantiate the class:** O construtor estático (`CLASS_CONSTRUCTOR`) é disparado uma única vez pelo *runtime* assim que a classe é referenciada pela primeira vez durante a execução do programa. |
-| **P3** | **A, D** | **Importing parameters / Exceptions:** Construtores de instância (`METHODS constructor`) só podem receber valores iniciais de entrada via parâmetros `IMPORTING` e disparar erros via declaração de exceções (`RAISING`). Parâmetros `EXPORTING` ou `CHANGING` são proibidos. |
-| **P4** | **D** | **Static components using the name of the class:** Componentes estáticos pertencem à classe e não a uma instância individual, podendo ser acessados diretamente através do nome da classe (`lcl_class**=>**static_attr`) mesmo sem instanciar nenhum objeto. |
-| **P5** | **B** | **The ABAP system assigns the address of the object... There is only one object:** Variáveis de referência armazenam apenas ponteiros para endereços de memória. A atribuição `ref2 = ref1` apenas copia o ponteiro; continua existindo exatamente uma instância alocada. |
-| **P6** | **A** | **PUBLIC SECTION -> PROTECTED SECTION -> PRIVATE SECTION:** Na definição de classes ABAP (`CLASS ... DEFINITION`), o compilador exige estritamente a declaração das seções nessa ordem decrescente de visibilidade. |
-| **P7** | **A, C** | **Make it a private attribute / Leave it in the public section but use the READ-ONLY addition:** O encapsulamento pode ser garantido tornando o atributo `PRIVATE` (acessível só internamente) ou mantendo-o público com `READ-ONLY` (leitura livre externa, mas escrita bloqueada). |
-| **P8** | **D** | **`my_class=>my_method( ).`:** Métodos estáticos exigem o seletor de classe **`=>`** e o compilador ABAP exige espaços obrigatórios separando os delimitadores de parênteses dos parâmetros. |
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **D**  
+> **Conceito:** Métodos estáticos exigem o seletor de classe **`=>`** e o compilador ABAP exige espaços obrigatórios separando os delimitadores de parênteses dos parâmetros (`my_class=>my_method( ).`).
 
 ---
 

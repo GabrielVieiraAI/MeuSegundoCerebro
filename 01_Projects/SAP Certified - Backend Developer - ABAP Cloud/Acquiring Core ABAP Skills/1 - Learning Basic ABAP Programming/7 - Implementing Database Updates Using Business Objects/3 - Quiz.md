@@ -1,4 +1,4 @@
----
+﻿---
 title: "Quiz - Implementing Database Updates Using Business Objects"
 source: "https://learning.sap.com/courses/basic-abap-programming/using-the-entity-manipulation-language_b378f225-0471-45bf-8b7a-f48d00e1bccb"
 created: 2026-10-21
@@ -14,8 +14,8 @@ tags:
 # SAP Learning - Basic ABAP Programming
 ## Quiz: Implementando Atualizações no Banco de Dados Usando Objetos de Negócio (Implementing Database Updates Using Business Objects)
 
-> [!INFO] Desempenho
-> **Aprovação:** 2 de 2 questões corretas
+> [!NOTE] Instruções de Estudo Ativo
+> Responda às questões marcando os checkboxes antes de expandir o gabarito.
 
 ---
 
@@ -26,6 +26,10 @@ tags:
 - **B.** O desenvolvedor do objeto de negócio o cria na implementação do comportamento (*Behavior Implementation*).
 - **C.** O sistema o cria automaticamente.
 
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **C**  
+> **Conceito:** O compilador ABAP e o framework RAP geram automaticamente os tipos derivados do BOBJ (como `TYPE TABLE FOR READ RESULT`, `TYPE TABLE FOR ACTION IMPORT`, etc.) com base na definição de comportamento (*Behavior Definition - BDEF*). O desenvolvedor não precisa criar esses tipos manualmente.
+
 ---
 
 ### Pergunta 2
@@ -35,14 +39,9 @@ tags:
 - **B.** Determinações (*Determinations*)
 - **C.** Atualização (*Update*)
 
----
-
-## Gabarito e Justificativas
-
-| Questão | Resposta | Justificativa / Conceito Técnico |
-| :---: | :---: | :--- |
-| **P1** | **C** | O compilador ABAP e o framework RAP geram automaticamente os tipos derivados do BOBJ (como `TYPE TABLE FOR READ RESULT`, `TYPE TABLE FOR ACTION IMPORT`, etc.) com base na definição de comportamento (*Behavior Definition - BDEF*). O desenvolvedor não precisa criar esses tipos manualmente. |
-| **P2** | **A, B** | No framework RAP com implementação gerenciada (*Managed BO*), operações CRUD padrão como *Update* são fornecidas e tratadas automaticamente pelo framework. O desenvolvedor implementa manualmente nas classes de comportamento (*Behavior Pool*) a lógica de negócio personalizada, como Validações (*Validations*) e Determinações (*Determinations*). |
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **A, B**  
+> **Conceito:** No framework RAP com implementação gerenciada (*Managed BO*), operações CRUD padrão como *Update* são fornecidas e tratadas automaticamente pelo framework. O desenvolvedor implementa manualmente nas classes de comportamento (*Behavior Pool*) a lógica de negócio personalizada, como Validações (*Validations*) e Determinações (*Determinations*).
 
 ---
 

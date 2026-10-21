@@ -1,4 +1,4 @@
----
+﻿---
 title: "Quiz - Working with Complex Internal Tables"
 source: "https://learning.sap.com/courses/basic-abap-programming/working-with-complex-internal-tables_f8c923f3-6f95-4b47-960f-557001f13977"
 created: 2026-10-21
@@ -14,8 +14,8 @@ tags:
 # SAP Learning - Basic ABAP Programming
 ## Quiz: Trabalhando com Tabelas Internas Complexas (Working with Complex Internal Tables)
 
-> [!INFO] Desempenho
-> **Aprovação:** 3 de 4 questões corretas
+> [!NOTE] Instruções de Estudo Ativo
+> Responda às questões marcando os checkboxes antes de expandir o gabarito.
 
 ---
 
@@ -26,6 +26,10 @@ tags:
 - **B.** `VALUE #( )`
 - **C.** `LOOP...ENDLOOP`
 - **D.** `APPEND`
+
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **B, D**  
+> **Conceito:** No ABAP moderno, o operador construtor `VALUE #( ... )` é utilizado para preenchimento declarativo (*inline*) de tabelas internas, enquanto a instrução clássica `APPEND` insere linhas no final da tabela. `READ TABLE` é para leitura e `LOOP...ENDLOOP` itera sobre os dados existentes.
 
 ---
 
@@ -39,18 +43,19 @@ TYPES tt_table TYPE STANDARD TABLE OF st_connection
 
 **Qual instrução `DATA` você utilizaria para criar uma tabela interna com esse tipo?**
 
-- **A.**
-  ```abap
+- **A.** ```abap
   DATA table TYPE tt_table.
   ```
-- **B.**
-  ```abap
+- **B.** ```abap
   DATA table TYPE TABLE OF tt_table.
   ```
-- **C.**
-  ```abap
+- **C.** ```abap
   DATA table TYPE REF TO tt_table.
   ```
+
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **A**  
+> **Conceito:** Como o tipo `tt_table` já foi declarado explicitamente como um tipo de tabela completa (`TYPE STANDARD TABLE OF ...`), a variável deve ser tipada diretamente com `TYPE tt_table`. Utilizar `TYPE TABLE OF tt_table` declararia uma tabela interna aninhada (tabela de tabelas).
 
 ---
 
@@ -62,6 +67,10 @@ TYPES tt_table TYPE STANDARD TABLE OF st_connection
 - **C.** `INNER JOIN`
 - **D.** `UNION ALL`
 
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **B**  
+> **Conceito:** No ABAP SQL, a instrução `UNION` combina os resultados de duas ou mais consultas em um único conjunto de linhas, eliminando automaticamente registros duplicados. `UNION ALL` preserva duplicatas, enquanto `JOIN` realiza combinação horizontal de colunas.
+
 ---
 
 ### Pergunta 4
@@ -71,16 +80,9 @@ TYPES tt_table TYPE STANDARD TABLE OF st_connection
 - **B.** A chave é sempre não única.
 - **C.** Você pode escolher se a chave será única ou não única.
 
----
-
-## Gabarito e Justificativas
-
-| Questão | Resposta | Justificativa / Conceito Técnico |
-| :---: | :---: | :--- |
-| **P1** | **B, D** | No ABAP moderno, o operador construtor `VALUE #( ... )` é utilizado para preenchimento declarativo (*inline*) de tabelas internas, enquanto a instrução clássica `APPEND` insere linhas no final da tabela. `READ TABLE` é para leitura e `LOOP...ENDLOOP` itera sobre os dados existentes. |
-| **P2** | **A** | Como o tipo `tt_table` já foi declarado explicitamente como um tipo de tabela completa (`TYPE STANDARD TABLE OF ...`), a variável deve ser tipada diretamente com `TYPE tt_table`. Utilizar `TYPE TABLE OF tt_table` declararia uma tabela interna aninhada (tabela de tabelas). |
-| **P3** | **B** | No ABAP SQL, a instrução `UNION` combina os resultados de duas ou mais consultas em um único conjunto de linhas, eliminando automaticamente registros duplicados. `UNION ALL` preserva duplicatas, enquanto `JOIN` realiza combinação horizontal de colunas. |
-| **P4** | **B** | Em uma `STANDARD TABLE`, a chave primária é **sempre não única** (`WITH NON-UNIQUE KEY`). Se houver necessidade de impor chave única garantida pelo *runtime*, deve-se utilizar `SORTED TABLE` ou `HASHED TABLE` com `WITH UNIQUE KEY`. |
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **B**  
+> **Conceito:** Em uma `STANDARD TABLE`, a chave primária é **sempre não única** (`WITH NON-UNIQUE KEY`). Se houver necessidade de impor chave única garantida pelo *runtime*, deve-se utilizar `SORTED TABLE` ou `HASHED TABLE` com `WITH UNIQUE KEY`.
 
 ---
 

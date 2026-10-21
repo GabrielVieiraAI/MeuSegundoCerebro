@@ -5,5 +5,7 @@
   "obsidian-meta-bind-plugin",
   "quickadd",
   "dataview",
-  "contribution-graph"
+  "contribution-graph",
+  "obsidian-spaced-repetition",
+  "obsidian-mind-map"
 ]

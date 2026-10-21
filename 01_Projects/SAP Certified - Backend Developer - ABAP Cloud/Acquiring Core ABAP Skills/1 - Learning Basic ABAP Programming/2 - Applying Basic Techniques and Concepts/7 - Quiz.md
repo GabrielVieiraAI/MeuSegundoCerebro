@@ -1,4 +1,4 @@
----
+﻿---
 title: "Quiz - Applying Basic Techniques and Concepts"
 source: "https://learning.sap.com/courses/basic-abap-programming/applying-basic-techniques-and-concepts_229d99f1-2c5a-3df4-872e-ca6b16d6567a"
 created: 2026-10-20
@@ -14,6 +14,9 @@ tags:
 # SAP Learning - Basic ABAP Programming
 ## Quiz: Applying Basic Techniques and Concepts
 
+> [!NOTE] Instruções de Estudo Ativo
+> Responda às questões marcando os checkboxes antes de expandir o gabarito.
+
 ---
 
 ### Pergunta 1
@@ -24,6 +27,10 @@ tags:
 - **C.** `--` em qualquer posição da linha
 - **D.** `"` em qualquer posição da linha
 
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **B, D**  
+> **Conceito:** `*` na primeira coluna comenta a linha inteira; `"` em qualquer posição da linha comenta o restante do texto até o final da linha.
+
 ---
 
 ### Pergunta 2
@@ -33,6 +40,10 @@ tags:
 - **B.** Todas as exceções podem ser capturadas.
 - **C.** Algumas exceções podem ser capturadas e outras não podem.
 - **D.** Um bloco `TRY...ENDTRY` deve conter pelo menos duas instruções `CATCH`.
+
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **A, C**  
+> **Conceito:** Exceções não tratadas abortam o programa gerando um *Runtime Error (Short Dump ST22)*. Apenas exceções tratáveis podem ser capturadas por blocos `CATCH`.
 
 ---
 
@@ -54,6 +65,10 @@ CLEAR var.
 - **A.** 0
 - **B.** 100
 
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **A**  
+> **Conceito:** O comando `CLEAR` sempre redefine a variável para o valor inicial técnico padrão do tipo (`0` para inteiros), ignorando o valor de partida definido na adição `VALUE`.
+
 ---
 
 ### Pergunta 4
@@ -63,6 +78,10 @@ CLEAR var.
 - **B.** `&`
 - **C.** `++`
 - **D.** `&&`
+
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **D**  
+> **Conceito:** `&&` é o operador moderno oficial de concatenação de strings no ABAP.
 
 ---
 
@@ -74,6 +93,10 @@ CLEAR var.
 - **C.** Encerrar a sessão de depuração
 - **D.** Executar o programa até a posição atual do cursor
 
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **A**  
+> **Conceito:** **F8 (Resume)** retoma a execução contínua do programa até encontrar o próximo breakpoint/watchpoint ou finalizar a execução.
+
 ---
 
 ### Pergunta 6
@@ -83,6 +106,10 @@ CLEAR var.
 - **B.** O conteúdo atual da variável
 - **C.** O consumo atual de memória da variável
 
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **B**  
+> **Conceito:** No Debugger do Eclipse ADT, posicionar o cursor do mouse (*hover*) sobre qualquer variável exibe um pop-up com seu valor atual em memória.
+
 ---
 
 ### Pergunta 7
@@ -91,6 +118,10 @@ CLEAR var.
 - **A.** Após um determinado número de repetições
 - **B.** Após um determinado intervalo de tempo
 - **C.** Quando uma condição específica for atendida
+
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **A, C**  
+> **Conceito:** Um laço pode ser encerrado por limite de iterações (`DO n TIMES`) ou por saída condicional antecipada com a instrução `EXIT`.
 
 ---
 
@@ -111,6 +142,10 @@ ENDIF.
 - **B.** O ramo iniciado por `ELSEIF a = 25.`
 - **C.** Ambos os ramos
 
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **A**  
+> **Conceito:** Em cadeias `IF/ELSEIF`, a avaliação é sequencial. Como o valor 25 satisfaz a primeira condição (`a > 10`), seu bloco é executado e o `ELSEIF a = 25` é ignorado.
+
 ---
 
 ### Pergunta 9
@@ -125,6 +160,10 @@ result = var MOD 2.
 - **A.** `var` é um número par
 - **B.** `var` é um número ímpar
 
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **B**  
+> **Conceito:** O operador `MOD` calcula o resto da divisão inteira. Todo número inteiro cujo resto da divisão por 2 seja 1 é um número ímpar.
+
 ---
 
 ### Pergunta 10
@@ -135,19 +174,6 @@ result = var MOD 2.
 - **C.** P
 - **D.** I
 
----
-
-## Gabarito e Justificativas
-
-| Questão | Resposta | Justificativa / Conceito Técnico |
-| :---: | :---: | :--- |
-| **P1** | **B, D** | `*` na primeira coluna comenta a linha inteira; `"` em qualquer posição da linha comenta o restante do texto. |
-| **P2** | **A, C** | Exceções não tratadas abortam o programa gerando um *Runtime Error (Short Dump ST22)*. Apenas exceções tratáveis podem ser capturadas por blocos `CATCH`. |
-| **P3** | **A** | O comando `CLEAR` sempre redefine a variável para o valor inicial técnico padrão do tipo (`0` para inteiros), ignorando o valor de partida definido no `VALUE`. |
-| **P4** | **D** | `&&` é o operador moderno oficial de concatenação de strings no ABAP. |
-| **P5** | **A** | **F8 (Resume)** retoma a execução contínua do programa até encontrar o próximo breakpoint/watchpoint ou finalizar. |
-| **P6** | **B** | No Debugger do Eclipse ADT, posicionar o cursor do mouse (*hover*) sobre qualquer variável exibe um pop-up com seu valor atual em memória. |
-| **P7** | **A, C** | Um laço pode ser encerrado por limite de iterações (`DO n TIMES`) ou por saída condicional antecipada com a instrução `EXIT`. |
-| **P8** | **A** | Em cadeias `IF/ELSEIF`, a avaliação é sequencial. Como o valor 25 satisfaz a primeira condição (`a > 10`), seu bloco é executado e o `ELSEIF a = 25` é ignorado. |
-| **P9** | **B** | O operador `MOD` calcula o resto da divisão inteira. Todo número inteiro cujo resto da divisão por 2 seja 1 é um número ímpar. |
-| **P10** | **B, D** | Tipos completos possuem comprimento fixo nativo: `D` (data, 8 caracteres) e `I` (inteiro, 4 bytes). Tipos `C` e `P` são incompletos porque exigem definir `LENGTH` ou `DECIMALS`. |
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **B, D**  
+> **Conceito:** Tipos completos possuem comprimento fixo nativo: `D` (data, 8 caracteres) e `I` (inteiro, 4 bytes). Tipos `C` e `P` são incompletos porque exigem definir `LENGTH` ou `DECIMALS`.

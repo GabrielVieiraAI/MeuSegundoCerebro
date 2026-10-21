@@ -1,4 +1,4 @@
----
+﻿---
 title: "Quiz - Working with Structured Data Objects"
 source: "https://learning.sap.com/courses/basic-abap-programming/working-with-structured-data-objects_ca4e0b14-57ad-4993-a83b-cca17980399c"
 created: 2026-10-21
@@ -14,8 +14,8 @@ tags:
 # SAP Learning - Basic ABAP Programming
 ## Quiz: Trabalhando com Objetos de Dados Estruturados (Working with Structured Data Objects)
 
-> [!INFO] Desempenho
-> **Aprovação:** 3 de 3 questões corretas
+> [!NOTE] Instruções de Estudo Ativo
+> Responda às questões marcando os checkboxes antes de expandir o gabarito.
 
 ---
 
@@ -27,6 +27,10 @@ tags:
 - **C.** `struct->comp`
 - **D.** `struct=>comp`
 
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **B**  
+> **Conceito:** No ABAP, o operador hífen (`-`) é o seletor padrão de componentes para acessar campos de estruturas (`struct-comp`). O operador `->` é o seletor de componentes de instância de classes e **`=>`** é o seletor de componentes estáticos de classes.
+
 ---
 
 ### Pergunta 2
@@ -35,6 +39,10 @@ tags:
 - **A.** Apenas componentes com nomes idênticos são copiados.
 - **B.** Os componentes são copiados de acordo com suas posições.
 - **C.** Apenas componentes com tipos idênticos são copiados.
+
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **A**  
+> **Conceito:** A expressão construtora `CORRESPONDING #( ... )` transfere dados mapeando exclusivamente componentes que compartilham o mesmo nome (*mapping by name*). A ordem posicional dos campos na estrutura é desconsiderada.
 
 ---
 
@@ -52,15 +60,9 @@ DATA struct TYPE ...
 - **C.** Uma CDS View
 - **D.** Um tipo ABAP predefinido
 
----
-
-## Gabarito e Justificativas
-
-| Questão | Resposta | Justificativa / Conceito Técnico |
-| :---: | :---: | :--- |
-| **P1** | **B** | No ABAP, o operador hífen (`-`) é o seletor padrão de componentes para acessar campos de estruturas (`struct-comp`). O operador `->` é o seletor de componentes de instância de classes e **`=>`** é o seletor de componentes estáticos de classes. |
-| **P2** | **A** | A expressão construtora `CORRESPONDING #( ... )` transfere dados mapeando exclusivamente componentes que compartilham o mesmo nome (*mapping by name*). A ordem posicional dos campos na estrutura é desconsiderada. |
-| **P3** | **A, C** | Tabelas de banco de dados e CDS Views fornecem tipos estruturados compostos no repositório de dados. Já os *Data Elements* e tipos predefinidos da linguagem ABAP (como `i`, `c`, `string`) definem tipos elementares, não estruturas completas. |
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **A, C**  
+> **Conceito:** Tabelas de banco de dados e CDS Views fornecem tipos estruturados compostos no repositório de dados. Já os *Data Elements* e tipos predefinidos da linguagem ABAP (como `i`, `c`, `string`) definem tipos elementares, não estruturas completas.
 
 ---
 

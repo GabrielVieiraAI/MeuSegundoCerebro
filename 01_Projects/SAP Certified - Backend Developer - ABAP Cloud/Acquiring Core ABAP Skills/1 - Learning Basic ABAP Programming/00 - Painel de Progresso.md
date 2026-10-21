@@ -34,7 +34,7 @@ meta_conclusao: 2026-11-21
 
 | Módulo                                                                                                                                                                                                                  | Anotações (P4) | Bateria 90% (P5) | Feynman / Slides (P6) | D+1 | D+3 | D+7 | D+30 | Status         |
 | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------: | :--------------: | :-------------------: | :-: | :-: | :-: | :--: | :------------- |
-| **[[01_Projects/SAP Certified - Backend Developer - ABAP Cloud/Acquiring Core ABAP Skills/1 - Learning Basic ABAP Programming/1 - Getting Started/6 - Quiz\|1 - Getting Started]]**                                     |      [x]       |      [ ] 0%      |          [ ]          | [ ] | [ ] | [ ] | [ ]  | ⚪ Não Iniciado |
+| **[[01_Projects/SAP Certified - Backend Developer - ABAP Cloud/Acquiring Core ABAP Skills/1 - Learning Basic ABAP Programming/1 - Getting Started/🎯 Revisao Ativa - Modulo 01\|1 - Getting Started]]**                 |      [x]       |      [ ] 0%      |          [ ]          | [ ] | [ ] | [ ] | [ ]  | ⚪ Não Iniciado |
 | **[[01_Projects/SAP Certified - Backend Developer - ABAP Cloud/Acquiring Core ABAP Skills/1 - Learning Basic ABAP Programming/2 - Applying Basic Techniques and Concepts/7 - Quiz\|2 - Basic Techniques]]**             |      [x]       |      [ ] 0%      |          [ ]          | [ ] | [ ] | [ ] | [ ]  | ⚪ Não Iniciado |
 | **[[01_Projects/SAP Certified - Backend Developer - ABAP Cloud/Acquiring Core ABAP Skills/1 - Learning Basic ABAP Programming/3 - Working with Local Classes/5 - Quiz\|3 - Local Classes]]**                            |      [x]       |      [ ] 0%      |          [ ]          | [ ] | [ ] | [ ] | [ ]  | ⚪ Não Iniciado |
 | **[[01_Projects/SAP Certified - Backend Developer - ABAP Cloud/Acquiring Core ABAP Skills/1 - Learning Basic ABAP Programming/4 - Reading Data from the Database/4 - Quiz\|4 - Database & CDS]]**                       |      [x]       |      [ ] 0%      |          [ ]          | [ ] | [ ] | [ ] | [ ]  | ⚪ Não Iniciado |
@@ -42,6 +42,27 @@ meta_conclusao: 2026-11-21
 | **[[01_Projects/SAP Certified - Backend Developer - ABAP Cloud/Acquiring Core ABAP Skills/1 - Learning Basic ABAP Programming/6 - Working with Complex Internal Tables/3 - Quiz\|6 - Complex Tables]]**                 |      [x]       |      [ ] 0%      |          [ ]          | [ ] | [ ] | [ ] | [ ]  | ⚪ Não Iniciado |
 | **[[01_Projects/SAP Certified - Backend Developer - ABAP Cloud/Acquiring Core ABAP Skills/1 - Learning Basic ABAP Programming/7 - Implementing Database Updates Using Business Objects/3 - Quiz\|7 - BO & EML]]**       |      [x]       |      [ ] 0%      |          [ ]          | [ ] | [ ] | [ ] | [ ]  | ⚪ Não Iniciado |
 | **[[01_Projects/SAP Certified - Backend Developer - ABAP Cloud/Acquiring Core ABAP Skills/1 - Learning Basic ABAP Programming/8 - Describing the ABAP RESTful Application Programming Model/5 - Quiz\|8 - RAP Model]]** |      [x]       |      [ ] 0%      |          [ ]          | [ ] | [ ] | [ ] | [ ]  | ⚪ Não Iniciado |
+
+---
+
+## 🛠️ Checklist de Formatos a Gerar no NotebookLM (Por Módulo)
+
+Use esta lista para garantir que explorou todos os recursos do **Estúdio** do NotebookLM para cada módulo estudado:
+
+### Formatos Essenciais do Método
+
+-  **1. Baterias de Teste (*Quiz* de Múltipla Escolha):**
+  -  **Fácil:** Sintaxe e conceitos diretos.
+  -  **Médio:** Comportamento de execução e regras de negócio.
+  -  **Difícil (Meta: ≥ 90%):** Cenários reais de prova e restrições de *Clean Core*.
+-  **2. Slides do Apresentador (*Técnica Feynman*):**
+  -  Roteiro gerado no formato "Slides do Apresentador" para treinar a explicação em voz alta sem olhar o código.
+-  **3. Cartões Didáticos (*Flashcards*):**
+  -  Gerados focando especificamente nas lacunas, termos onde houve hesitação e atalhos do ADT (usados na revisão D+1).
+-  **4. Resumo em Áudio (*Audio Overview / Podcast*):**
+  -  Áudio com prompt personalizado (dois especialistas explicando com didática acessível para revisão D+3).
+-  **5. Guia de Estudo / Mapa Estruturado:**
+  -  Documento síntese conectando os tópicos do módulo para revisão visual em D+7.
 
 ---
 

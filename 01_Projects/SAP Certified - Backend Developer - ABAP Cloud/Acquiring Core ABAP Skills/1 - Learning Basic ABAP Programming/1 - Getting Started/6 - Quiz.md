@@ -14,6 +14,9 @@ tags:
 # SAP Learning - Basic ABAP Programming
 ## Quiz: Getting Started
 
+> [!NOTE] Instruções de Estudo Ativo
+> Responda às questões marcando os checkboxes antes de expandir o gabarito.
+
 ---
 
 ### Pergunta 1
@@ -22,6 +25,10 @@ tags:
 - **A.** Dar duplo clique no nome do objeto
 - **B.** Posicionar o cursor sobre o nome do objeto e pressionar F2
 - **C.** Posicionar o cursor sobre o nome do objeto e pressionar F3
+
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **C**  
+
 
 ---
 
@@ -33,6 +40,10 @@ tags:
 - **C.** Análise de desempenho de código ABAP
 - **D.** Sugestões para otimização de banco de dados
 
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **A**  
+> **Conceito:** A funcionalidade *Explain* do assistente Joule analisa trechos de código ABAP selecionados e gera explicações em linguagem natural.
+
 ---
 
 ### Pergunta 3
@@ -43,6 +54,10 @@ tags:
 - **C.** Permitir o desenvolvimento de aplicações de negócio personalizadas habilitadas para IA
 - **D.** Automatizar a implantação de aplicações ABAP na nuvem
 
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **C**  
+> **Conceito:** O *ABAP AI SDK* permite que desenvolvedores consumam capacidades de IA generativa diretamente em aplicações de negócio ABAP.
+
 ---
 
 ### Pergunta 4
@@ -51,6 +66,10 @@ tags:
 - **A.** 8
 - **B.** _
 - **C.** $
+
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **C**  
+> **Conceito:** Nomes de classes ABAP podem conter letras (A-Z), dígitos (0-9) e sublinhado (`_`). O caractere cifrão (`$`) é proibido.
 
 ---
 
@@ -62,6 +81,10 @@ tags:
 - **C.** Atribuir o pacote a um componente de software
 - **D.** Declarar quais outros pacotes podem utilizar o conteúdo do pacote
 
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **A, C**  
+> **Conceito:** Pacotes customizados de clientes devem usar namespace `Z` ou `Y` e estar associados a um *Software Component* (ex: `ZSTUDENTS`).
+
 ---
 
 ### Pergunta 6
@@ -71,26 +94,20 @@ tags:
 - **B.** Sistema ABAP On-Premise
 - **C.** Instância ABAP embarcada no SAP S/4HANA Cloud
 
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **A, C**  
+> **Conceito:** Projetos ABAP Cloud conectam-se exclusivamente a instâncias de nuvem: SAP BTP e SAP S/4HANA Cloud (Public e Private com regras de Clean Core).
+
 ---
 
 ### Pergunta 7
-**Qual das seguintes opções é um recurso-chave das Capacidades de IA do ABAP?**
+**Qual das seguintes opções é um recurso chave das Capacidades de IA do ABAP?**
 
 - **A.** Implantação automatizada no SAP BTP
 - **B.** Conclusão preditiva de código
 - **C.** Monitoramento em tempo real do desempenho da aplicação
 - **D.** Tradução automática de código ABAP para outras linguagens
 
----
-
-## Gabarito e Justificativas
-
-| Questão | Resposta | Justificativa / Conceito Técnico |
-| :---: | :---: | :--- |
-| **P1** | **A** | Duplo clique no nome do objeto navega para a sua definição (assim como o atalho `F3` ou `Ctrl + clique`). |
-| **P2** | **A** | A funcionalidade *Explain* do assistente Joule analisa trechos de código ABAP selecionados e gera explicações em linguagem natural. |
-| **P3** | **C** | O *ABAP AI SDK* permite que desenvolvedores consumam capacidades de IA generativa diretamente em aplicações de negócio ABAP. |
-| **P4** | **C** | Nomes de classes ABAP podem conter letras (A-Z), dígitos (0-9) e sublinhado (`_`). O caractere cifrão (`$`) é proibido. |
-| **P5** | **A, C** | Pacotes customizados de clientes devem usar namespace `Z` ou `Y` e estar associados a um *Software Component* (ex: `ZSTUDENTS`). |
-| **P6** | **A, C** | Projetos ABAP Cloud conectam-se exclusivamente a instâncias de nuvem: SAP BTP e SAP S/4HANA Cloud (Public e Private com regras de Clean Core). |
-| **P7** | **B** | As capacidades de IA no ADT oferecem sugestões inteligentes e autocompletar preditivo de código enquanto o desenvolvedor digita. |
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **B**  
+> **Conceito:** As capacidades de IA no ADT oferecem sugestões inteligentes e autocompletar preditivo de código enquanto o desenvolvedor digita.

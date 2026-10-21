@@ -1,4 +1,4 @@
----
+﻿---
 title: "Quiz - Reading Data from the Database"
 source: "https://learning.sap.com/courses/basic-abap-programming/reading-data-from-the-database"
 created: 2026-10-21
@@ -14,8 +14,8 @@ tags:
 # SAP Learning - Basic ABAP Programming
 ## Quiz: Lendo Dados do Banco de Dados (Reading Data from the Database)
 
-> [!INFO] Desempenho
-> **Aprovação:** 4 de 5 questões corretas
+> [!NOTE] Instruções de Estudo Ativo
+> Responda às questões marcando os checkboxes antes de expandir o gabarito.
 
 ---
 
@@ -27,6 +27,10 @@ tags:
 - **C.** Outra entidade CDS View
 - **D.** Uma estrutura
 
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **B, C**  
+> **Conceito:** CDS View Entities podem ser construídas consumindo tabelas transparentes de banco de dados ou outras CDS Views/Entities como fontes de dados (*data sources*). Tabelas internas e estruturas existem apenas na memória da aplicação ABAP.
+
 ---
 
 ### Pergunta 2
@@ -36,28 +40,29 @@ tags:
 - **B.** Data Definition Language (DDL)
 - **C.** Data Manipulation Language (DML)
 
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **C**  
+> **Conceito:** O ABAP SQL representa a camada DML (*Data Manipulation Language*), permitindo operações de consulta e manipulação de dados (`SELECT`, `INSERT`, `UPDATE`, `MODIFY`, `DELETE`).
+
 ---
 
 ### Pergunta 3
 **Qual é a sequência correta de cláusulas em uma instrução `SELECT SINGLE`?**
 
-- **A.**
-  ```abap
+- **A.** ```abap
   SELECT SINGLE FIELDS ...
   FROM ...
   INTO ...
   WHERE ...
   ```
-- **B.**
-  ```abap
+- **B.** ```abap
   SELECT SINGLE
   FROM ...
   FIELDS ...
   WHERE ...
   INTO ...
   ```
-- **C.**
-  ```abap
+- **C.** ```abap
   SELECT SINGLE
   FROM ...
   FIELDS ...
@@ -65,6 +70,10 @@ tags:
   WHERE ...
   ```
 - **D.** As cláusulas podem ser escritas em qualquer ordem.
+
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **B**  
+> **Conceito:** Na sintaxe moderna do ABAP SQL, a ordem estrita obrigatória para `SELECT SINGLE` é `FROM ... FIELDS ... WHERE ... INTO ...`.
 
 ---
 
@@ -74,6 +83,10 @@ tags:
 - **A.** Uma expressão lógica
 - **B.** Uma expressão de caminho (*Path Expression*)
 - **C.** Uma expressão regular
+
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **B**  
+> **Conceito:** Para navegar por associações declaradas em uma CDS View e acessar campos da entidade alvo na lista de campos ou cláusula `WHERE`, utiliza-se uma *Path Expression* (ex: `\_Association-field`).
 
 ---
 
@@ -85,17 +98,9 @@ tags:
 - **C.** F3
 - **D.** F8
 
----
-
-## Gabarito e Justificativas
-
-| Questão | Resposta | Justificativa / Conceito Técnico                                                                                                                                                                                                          |
-| :-----: | :------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **P1**  | **B, C** | CDS View Entities podem ser construídas consumindo tabelas transparentes de banco de dados ou outras CDS Views/Entities como fontes de dados (*data sources*). Tabelas internas e estruturas existem apenas na memória da aplicação ABAP. |
-| **P2**  |  **C**   | O ABAP SQL representa a camada DML (*Data Manipulation Language*), permitindo operações de consulta e manipulação de dados (`SELECT`, `INSERT`, `UPDATE`, `MODIFY`, `DELETE`).                                                            |
-| **P3**  |  **B**   | Na sintaxe moderna do ABAP SQL, a ordem estrita obrigatória para `SELECT SINGLE` é `FROM ... FIELDS ... WHERE ... INTO ...`.                                                                                                              |
-| **P4**  |  **B**   | Para navegar por associações declaradas em uma CDS View e acessar campos da entidade alvo na lista de campos ou cláusula `WHERE`, utiliza-se uma *Path Expression* (ex: `\_Association-field`).                                           |
-| **P5**  |  **D**   | No ABAP Development Tools (ADT), a tecla de atalho **F8** executa a ferramenta de pré-visualização de dados (*Data Preview*) para tabelas ou CDS Views.                                                                                   |
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **D**  
+> **Conceito:** No ABAP Development Tools (ADT), a tecla de atalho **F8** executa a ferramenta de pré-visualização de dados (*Data Preview*) para tabelas ou CDS Views.
 
 ---
 

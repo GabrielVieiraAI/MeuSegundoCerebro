@@ -1,4 +1,4 @@
----
+﻿---
 title: "Quiz - Descrevendo o ABAP RESTful Application Programming Model (RAP)"
 source: "https://learning.sap.com/courses/basic-abap-programming/describing-the-abap-restful-application-programming-model"
 created: 2026-10-21
@@ -15,8 +15,8 @@ tags:
 # SAP Learning - Basic ABAP Programming
 ## Quiz: Descrevendo o ABAP RESTful Application Programming Model (RAP)
 
-> [!INFO] Desempenho
-> **Aprovação:** 8 de 9 questões corretas
+> [!NOTE] Instruções de Estudo Ativo
+> Responda às questões marcando os checkboxes antes de expandir o gabarito.
 
 ---
 
@@ -27,6 +27,10 @@ tags:
 - **B.** Em uma Classe Global
 - **C.** Em uma Classe de Mensagens (*Message Class*)
 
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **C**  
+> **Conceito:** No ABAP, mensagens do sistema para os usuários (erros, avisos, informações) são centralizadas e gerenciadas em Classes de Mensagens (*Message Classes*, transação SE91 ou no Eclipse ADT), sendo referenciadas por classes de exceção ou estruturas de mensagens do RAP.
+
 ---
 
 ### Pergunta 2
@@ -35,6 +39,10 @@ tags:
 - **A.** Na Metadata Extension
 - **B.** Na Behavior Implementation
 - **C.** Na Behavior Definition
+
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **C**  
+> **Conceito:** O controle formal de mutabilidade de campos (como `field ( readonly ) campo;` ou `field ( mandatory ) campo;`) é declarado diretamente na Definição de Comportamento (*Behavior Definition* - BDEF) da entidade.
 
 ---
 
@@ -46,6 +54,10 @@ tags:
 - **C.** Determinações (*Determinations*)
 - **D.** Operações de Criação, Atualização e Exclusão (*Create, Update e Delete*)
 
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **A, D**  
+> **Conceito:** Ao utilizar o gerador de objetos RAP (*Object Generator*), o framework cria automaticamente as operações padrão CRUD (`create`, `update`, `delete`) e os comandos de suporte a rascunho (*Draft Enabling*). Validações e determinações exigem lógica de negócio específica e devem ser declaradas e codificadas pelo desenvolvedor.
+
 ---
 
 ### Pergunta 4
@@ -55,6 +67,10 @@ tags:
 - **B.** O tipo embutido do ABAP Dictionary `abap.clnt`
 - **C.** O elemento de dados `MANDT`
 
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **C**  
+> **Conceito:** Para tabelas dependentes de mandante (*client-specific*) que serão utilizadas com os geradores de código do RAP, o campo de cliente deve utilizar o elemento de dados padrão `MANDT`.
+
 ---
 
 ### Pergunta 5
@@ -63,6 +79,10 @@ tags:
 - **A.** Domain
 - **B.** Data Element
 - **C.** Local Type
+
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **B**  
+> **Conceito:** No ABAP Dictionary, as colunas de uma tabela transparente são definidas por meio de Elementos de Dados (*Data Elements*), que encapsulam a tipagem técnica, rótulos de tela (*field labels*) e regras semânticas. Tipos locais não existem no Dicionário e Domínios não podem ser diretamente vinculados ao campo da tabela.
 
 ---
 
@@ -74,6 +94,10 @@ tags:
 - **C.** Um método totalmente implementado na classe local da Behavior Implementation
 - **D.** Um método totalmente implementado na classe global da Behavior Implementation
 
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **A**  
+> **Conceito:** Ao adicionar uma validação na BDEF, o Quick Fix do Eclipse ADT gera automaticamente o protótipo com a assinatura e o corpo vazio do método na classe local de tratamento (*Local Handler Class*) da *Behavior Implementation* (`lhc_<entidade>`).
+
 ---
 
 ### Pergunta 7
@@ -82,6 +106,10 @@ tags:
 - **A.** `REPORTED`
 - **B.** `FAILED`
 - **C.** `KEYS`
+
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **C**  
+> **Conceito:** Métodos de validação e determinação recebem o parâmetro de entrada implícito `KEYS`, que contém as chaves primárias dos registros afetados na transação atual. Esse parâmetro é repassado na cláusula `WITH` da instrução `READ ENTITIES`.
 
 ---
 
@@ -92,6 +120,10 @@ tags:
 - **B.** Uma CDS View que fornece a lista de resultados
 - **C.** Uma lista de campos exibidos na ajuda de pesquisa
 - **D.** O campo que fornece o valor selecionado
+
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **B, D**  
+> **Conceito:** A anotação `@Consumption.ValueHelpDefinition` define a ajuda de pesquisa (*Value Help*) vinculando uma entidade CDS de referência (`entity.name`) e mapeando o campo de retorno (`entity.element`) para o atributo anotado.
 
 ---
 
@@ -105,21 +137,9 @@ tags:
 - **E.** Service Definition
 - **F.** Service Binding
 
----
-
-## Gabarito e Justificativas
-
-| Questão | Resposta | Justificativa / Conceito Técnico                                                                                                                                                                                                                                                                                                    |
-| :-----: | :------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **P1**  |  **C**   | No ABAP, mensagens do sistema para os usuários (erros, avisos, informações) são centralizadas e gerenciadas em Classes de Mensagens (*Message Classes*, transação SE91 ou no Eclipse ADT), sendo referenciadas por classes de exceção ou estruturas de mensagens do RAP.                                                            |
-| **P2**  |  **C**   | O controle formal de mutabilidade de campos (como `field ( readonly ) campo;` ou `field ( mandatory ) campo;`) é declarado diretamente na Definição de Comportamento (*Behavior Definition* - BDEF) da entidade.                                                                                                                    |
-| **P3**  | **A, D** | Ao utilizar o gerador de objetos RAP (*Object Generator*), o framework cria automaticamente as operações padrão CRUD (`create`, `update`, `delete`) e os comandos de suporte a rascunho (*Draft Enabling*). Validações e determinações exigem lógica de negócio específica e devem ser declaradas e codificadas pelo desenvolvedor. |
-| **P4**  |  **C**   | Para tabelas dependentes de mandante (*client-specific*) que serão utilizadas com os geradores de código do RAP, o campo de cliente deve utilizar o elemento de dados padrão `MANDT`.                                                                                                                                               |
-| **P5**  |  **B**   | No ABAP Dictionary, as colunas de uma tabela transparente são definidas por meio de Elementos de Dados (*Data Elements*), que encapsulam a tipagem técnica, rótulos de tela (*field labels*) e regras semânticas. Tipos locais não existem no Dicionário e Domínios não podem ser diretamente vinculados ao campo da tabela.        |
-| **P6**  |  **A**   | Ao adicionar uma validação na BDEF, o Quick Fix do Eclipse ADT gera automaticamente o protótipo com a assinatura e o corpo vazio do método na classe local de tratamento (*Local Handler Class*) da *Behavior Implementation* (`lhc_<entidade>`).                                                                                   |
-| **P7**  |  **C**   | Métodos de validação e determinação recebem o parâmetro de entrada implícito `KEYS`, que contém as chaves primárias dos registros afetados na transação atual. Esse parâmetro é repassado na cláusula `WITH` da instrução `READ ENTITIES`.                                                                                          |
-| **P8**  | **B, D** | A anotação `@Consumption.ValueHelpDefinition` define a ajuda de pesquisa (*Value Help*) vinculando uma entidade CDS de referência (`entity.name`) e mapeando o campo de retorno (`entity.element`) para o atributo anotado.                                                                                                         |
-| **P9**  |  **B**   | No fluxo do assistente de geração de repositório (*RAP Object Generator* / *Generate ABAP Repository Objects*), a entidade CDS (*CDS Entity*) atua como objeto de desenvolvimento de partida a partir do qual a estrutura de comportamento, projeções e serviços são gerados.                                                         |
+> [!success]- Gabarito e Explicação
+> **Resposta Correta:** **B**  
+> **Conceito:** No fluxo do assistente de geração de repositório (*RAP Object Generator* / *Generate ABAP Repository Objects*), a entidade CDS (*CDS Entity*) atua como objeto de desenvolvimento de partida a partir do qual a estrutura de comportamento, projeções e serviços são gerados.
 
 ---
 
