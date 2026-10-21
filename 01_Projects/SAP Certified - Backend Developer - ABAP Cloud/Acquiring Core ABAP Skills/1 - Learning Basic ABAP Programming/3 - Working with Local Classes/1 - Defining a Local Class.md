@@ -166,11 +166,3 @@ ENDCLASS.
 
 ---
 
-## 📌 Termos e Conceitos para Adicionar em `03_Resources/SAP/Conceitos`
-
-Abaixo estão os conceitos fundamentais apresentados nesta lição recomendados para criação de notas dedicadas na pasta `03_Resources/SAP/Conceitos`:
-
-- `[[Classes Globais vs. Classes Locais no ABAP]]` — Diferença de escopo, repositório central (*Class Pool*) versus classes auxiliares em *Local Types*.
-- `[[Seções de Visibilidade (PUBLIC, PROTECTED, PRIVATE)]]` — Encapsulamento de objetos, regras de acesso externo e ordem obrigatória de declaração.
-- `[[Atributos de Instância (DATA) vs. Estáticos (CLASS-DATA)]]` — Escopo de memória, ciclo de vida de variáveis de objeto e dados compartilhados de classe.
-- `[[Estrutura de Classe ABAP (DEFINITION e IMPLEMENTATION)]]` — Separação entre assinatura/contrato da classe e corpo executável dos métodos.

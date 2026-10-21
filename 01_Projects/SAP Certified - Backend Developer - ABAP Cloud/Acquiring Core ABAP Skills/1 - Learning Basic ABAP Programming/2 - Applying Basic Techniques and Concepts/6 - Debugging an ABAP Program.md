@@ -189,11 +189,3 @@ Neste exercício, você duplicará uma classe modelo de simulação de plano de 
 
 ---
 
-## 📌 Termos e Conceitos para Adicionar em `03_Resources/SAP/Conceitos`
-
-Abaixo estão os conceitos fundamentais apresentados nesta lição recomendados para criação de notas dedicadas na pasta `03_Resources/SAP/Conceitos`:
-
-- `[[Depuração no ABAP (Debugger no Eclipse ADT)]]` — Operação da perspectiva Debug, inspeção de variáveis e controle do fluxo em tempo de execução.
-- `[[Navegação no Debugger (F5, F6, F7, F8)]]` — Diferença prática entre Step Into (F5), Step Over (F6), Step Return (F7) e Resume (F8).
-- `[[Breakpoints Especiais e Watchpoints]]` — Configuração de paradas condicionais, por comando (Statement), por exceção e monitoramento de variáveis com Watchpoints.
-- `[[Inspeção e Alteração de Tabelas Internas no Debugger]]` — Visualização detalhada e edição dinâmica de linhas em memória no ambiente de testes.

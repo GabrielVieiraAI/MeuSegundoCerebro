@@ -67,6 +67,3 @@ Demonstração prática: [Iniciar Demonstração (Start Demo)](https://learnsap.
 
 ---
 
-## 📌 Termos e Conceitos para Adicionar em `03_Resources/SAP/Conceitos`
-- `[[ADT - ABAP Development Tools]]` — Extensão oficial da SAP para a IDE Eclipse, utilizada como ambiente padrão para desenvolvimento ABAP moderno e ABAP Cloud.
-- `[[BTP - Business Technology Platform]]` — Plataforma PaaS da SAP na nuvem que hospeda serviços, ferramentas de integração, extensões de aplicações e o ambiente ABAP Cloud.

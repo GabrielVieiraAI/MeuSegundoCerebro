@@ -147,4 +147,4 @@ ref2 = ref1.
 - **Variáveis de Referência:** Guardam apenas o endereço de memória do objeto. A atribuição `ref2 = ref1` copia a referência, mantendo um único objeto alocado.
 - **Hierarquia de Visibilidade:** Ordem estrita do compilador: `PUBLIC SECTION.` $\rightarrow$ `PROTECTED SECTION.` $\rightarrow$ `PRIVATE SECTION.`.
 - **Encapsulamento e Proteção:** Para proteger atributos contra alterações indevidas, utilize a seção `PRIVATE` ou a adição `READ-ONLY` na seção `PUBLIC`.
-- **Sintaxe de Chamada:** Seletor de classe **`=>`** para estáticos e espaços obrigatórios internos aos parênteses `( )`.
+- **Sintaxe de Chamada:** Seletor de classe **=>** para estáticos e espaços obrigatórios internos aos parênteses `( )`.

@@ -362,11 +362,3 @@ Copie o código a seguir para testar o laço `DO` com `TIMES` e com condição d
 
 ---
 
-## 📌 Termos e Conceitos para Adicionar em `03_Resources/SAP/Conceitos`
-
-Abaixo estão os conceitos fundamentais apresentados nesta lição recomendados para criação de notas dedicadas na pasta `03_Resources/SAP/Conceitos`:
-
-- `[[Estruturas Condicionais no ABAP (IF e CASE)]]` — Regras de sintaxe, ramificações `ELSEIF`, pontuação obrigatória e escolha de arquitetura entre IF e CASE.
-- `[[Tratamento de Exceções no ABAP (TRY-CATCH e Classes CX_)]]` — Captura de exceções tratáveis do sistema, prevenção de Short Dumps (`ST22`) e classes padrão.
-- `[[Laços de Repetição (DO, LOOP e Variáveis de Sistema sy-index e sy-tabix)]]` — Controle de iterações, cláusula TIMES, saída antecipada com EXIT e indexação baseada em 1.
-- `[[Expressões Lógicas e Verificação de Estado (IS INITIAL)]]` — Operadores relacionais e validação de valores padrão em tipos de dados ABAP.

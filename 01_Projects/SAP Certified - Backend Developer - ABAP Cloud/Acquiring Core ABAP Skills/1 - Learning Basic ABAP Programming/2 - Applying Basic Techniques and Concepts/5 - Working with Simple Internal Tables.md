@@ -244,11 +244,3 @@ ENDMETHOD.
 
 ---
 
-## 📌 Termos e Conceitos para Adicionar em `03_Resources/SAP/Conceitos`
-
-Abaixo estão os conceitos fundamentais apresentados nesta lição recomendados para criação de notas dedicadas na pasta `03_Resources/SAP/Conceitos`:
-
-- `[[Tabelas Internas no ABAP (Internal Tables)]]` — Conceito de coleções em memória, row types e alocação dinâmica.
-- `[[Instrução APPEND e Manipulação de Linhas]]` — Inserção de registros no final de tabelas internas.
-- `[[Expressões de Tabela (Table Expressions - itab[ index ])]]` — Leitura posicional moderna com colchetes e tratamento da exceção `cx_sy_itab_line_not_found`.
-- `[[Laço LOOP AT e Declarações Inline no ABAP]]` — Iteração de tabelas com `INTO DATA(...)` e uso do contador de linha `sy-tabix`.

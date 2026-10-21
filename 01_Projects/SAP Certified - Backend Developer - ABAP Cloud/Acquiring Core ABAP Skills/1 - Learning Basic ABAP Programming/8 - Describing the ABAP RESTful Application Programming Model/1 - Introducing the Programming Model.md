@@ -49,6 +49,3 @@ Nesta unidade, você aprenderá as etapas sequenciais para construir um serviço
 
 ---
 
-## 📌 Termos e Conceitos para Adicionar em `03_Resources/SAP/Conceitos`
-- `[[RAP - ABAP RESTful Application Programming Model]]` — Framework arquitetural da SAP para desenvolvimento de aplicações corporativas modernas e serviços OData na nuvem e on-premise.
-- `[[OData - Open Data Protocol]]` — Protocolo padronizado baseado em REST/HTTP utilizado para criar e consumir APIs de dados consumíveis por apps SAP Fiori e integrações externas.

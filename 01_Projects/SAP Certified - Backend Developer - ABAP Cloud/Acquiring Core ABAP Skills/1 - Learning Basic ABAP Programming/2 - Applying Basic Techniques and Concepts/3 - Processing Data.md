@@ -215,11 +215,3 @@ ENDMETHOD.
 
 ---
 
-## 📌 Termos e Conceitos para Adicionar em `03_Resources/SAP/Conceitos`
-
-Abaixo estão os conceitos fundamentais apresentados nesta lição recomendados para criação de notas dedicadas na pasta `03_Resources/SAP/Conceitos`:
-
-- `[[Expressões Aritméticas e Funções Matemáticas no ABAP]]` — Regras de cálculo, precedência, operadores e funções nativas (sqrt, ipow).
-- `[[String Templates e Expressões Embutidas (|...| e { ... })]]` — Interpolação moderna de strings, regras de espaçamento e concatenação com `&&`.
-- `[[Opções de Formatação de Saída (DATE, NUMBER, STYLE)]]` — Formatação regional de dados e padrões internacionais (ISO, USER) para exibição.
-- `[[Controle de Precisão e Tipo Packed Decimal (p)]]` — Como evitar perda de precisão e truncamentos em divisões e cálculos financeiros.

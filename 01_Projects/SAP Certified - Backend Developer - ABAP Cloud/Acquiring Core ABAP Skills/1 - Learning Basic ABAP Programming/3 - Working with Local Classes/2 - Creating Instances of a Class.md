@@ -194,12 +194,3 @@ ENDMETHOD.
    * Avance com **F5** para observar as referências sendo adicionadas na tabela interna e confirme que os dados de cada voo são mantidos independentes.
 
 ---
-
-## 📌 Termos e Conceitos para Adicionar em `03_Resources/SAP/Conceitos`
-
-Abaixo estão os conceitos fundamentais apresentados nesta lição recomendados para criação de notas dedicadas na pasta `03_Resources/SAP/Conceitos`:
-
-- `[[Variáveis de Referência e Instanciação (TYPE REF TO e Operador NEW)]]` — Ponteiros de objetos em memória e o operador construtor moderno `NEW #( )`.
-- `[[Seletores de Componentes no ABAP (=> vs ->)]]` — Diferença de sintaxe e acesso entre membros estáticos de classe e membros de instância de objeto.
-- `[[Garbage Collector no ABAP]]` — Gerenciamento automático de memória, contagem de referências e destruição de objetos inalcançáveis.
-- `[[Tabelas Internas de Referências a Objetos]]` — Padrão de arquitetura para armazenar e iterar coleções dinâmicas de instâncias.
