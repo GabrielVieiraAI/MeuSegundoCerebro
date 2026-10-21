@@ -34,6 +34,12 @@ status: draft
 - [ ] Conseguir acesso ao IPTV gratuito para rodar no projetor 
 - [ ] Criar uma nota para cada transação que eu já usei, listando o que posso fazer nessa transação.
 - [ ] Criar uma nota explicando todo o ciclo de desenvolvimento de um app fiori. visto que já foi publicado 2.
+- [ ] Estudar Transações SAP
+	- STMS 
+	- PFCG
+	- SU01
+	- SE01 / SE09 / SE10
+	- ST22   
 
 ## Tarefas de Casa
 - [ ] Concertar a pia da cozinha
