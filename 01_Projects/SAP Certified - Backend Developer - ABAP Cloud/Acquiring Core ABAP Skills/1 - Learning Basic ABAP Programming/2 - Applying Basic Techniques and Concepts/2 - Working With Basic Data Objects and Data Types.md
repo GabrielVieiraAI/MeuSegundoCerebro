@@ -21,6 +21,14 @@ Após concluir esta lição, você será capaz de:
 
 ## 1. Objetos de Dados no ABAP (*Data Objects*)
 
+<iframe 
+    src="https://cdnapisec.kaltura.com/p/1921661/embedPlaykitJs/uiconf_id/50355372?iframeembed=true&entry_id=1_6ei6t5pz" 
+    width="100%" 
+    height="400" 
+    allowfullscreen 
+    frameborder="0">
+</iframe>
+
 Um **objeto de dados (*data object*)** representa uma área de memória reservada pelo programa durante a execução para armazenar informações.
 
 No ABAP, existem três categorias fundamentais de objetos de dados:
@@ -230,6 +238,14 @@ CLEAR lv_valor. " Agora lv_valor volta a ser 0
 ---
 
 ## 9. Declarações Modernas em Linha (*Inline Declarations*)
+
+<iframe 
+    src="https://cdnapisec.kaltura.com/p/1921661/embedPlaykitJs/uiconf_id/50355372?iframeembed=true&entry_id=1_9ig9t2qc" 
+    width="100%" 
+    height="400" 
+    allowfullscreen 
+    frameborder="0">
+</iframe>
 
 No ABAP moderno, você não precisa declarar todas as variáveis no início do método. É possível declarar a variável no exato momento em que ela recebe um valor, utilizando o operador **`DATA(...)`**:
 

@@ -22,9 +22,25 @@ Após concluir esta lição, você será capaz de:
 
 ## 1. O Modo de Depuração (*Debug Mode*)
 
+<iframe 
+    src="https://cdnapisec.kaltura.com/p/1921661/embedPlaykitJs/uiconf_id/50355372?iframeembed=true&entry_id=1_lwyuafsc" 
+    width="100%" 
+    height="400" 
+    allowfullscreen 
+    frameborder="0">
+</iframe>
+
 A depuração (*debugging*) é o processo de executar o código de forma controlada, linha por linha, para entender o fluxo lógico da aplicação, validar cálculos e identificar a causa de comportamentos inesperados ou erros em tempo de execução (*Short Dumps*).
 
 ### Como Iniciar o Debugger no Eclipse ADT
+
+<iframe 
+    src="https://cdnapisec.kaltura.com/p/1921661/embedPlaykitJs/uiconf_id/50355372?iframeembed=true&entry_id=1_j5gmo2p6" 
+    width="100%" 
+    height="400" 
+    allowfullscreen 
+    frameborder="0">
+</iframe>
 
 ![[01_-_Enter_debugging_mode_002.png]]
 
@@ -83,6 +99,14 @@ Faz o programa pausar no exato momento em que uma classe de exceção específic
 
 ## 4. Monitoramento com Watchpoints
 
+<iframe 
+    src="https://cdnapisec.kaltura.com/p/1921661/embedPlaykitJs/uiconf_id/50355372?iframeembed=true&entry_id=1_dso8gyzh" 
+    width="100%" 
+    height="400" 
+    allowfullscreen 
+    frameborder="0">
+</iframe>
+
 Um **Watchpoint** é utilizado para monitorar o valor de uma variável ou tabela interna. Em vez de pausar em uma linha de código específica, o programa roda livremente e **pausa automaticamente no momento exato em que o valor dessa variável for alterado na memória**.
 
 * *Como criar um Watchpoint:* Na aba **Variables**, clique com o botão direito sobre a variável desejada e selecione **Set Watchpoint**.
@@ -96,10 +120,28 @@ Um **Watchpoint** é utilizado para monitorar o valor de uma variável ou tabela
 Durante a sessão de depuração, você pode inspecionar e até alterar os dados em memória para testar cenários hipotéticos sem precisar recompilar o código:
 
 ### Variáveis Simples (*Variables View*)
+
+<iframe 
+    src="https://cdnapisec.kaltura.com/p/1921661/embedPlaykitJs/uiconf_id/50355372?iframeembed=true&entry_id=1_yqvsxfdr" 
+    width="100%" 
+    height="400" 
+    allowfullscreen 
+    frameborder="0">
+</iframe>
+
 * Dê um duplo clique em qualquer variável no código-fonte para trazê-la para a aba **Variables**.
 * Clique com o botão direito $\rightarrow$ **Change Value...** para alterar o valor numérico ou textual em memória.
 
 ### Tabelas Internas (*ABAP Internal Table View*)
+
+<iframe 
+    src="https://cdnapisec.kaltura.com/p/1921661/embedPlaykitJs/uiconf_id/50355372?iframeembed=true&entry_id=1_ydxx5fo0" 
+    width="100%" 
+    height="400" 
+    allowfullscreen 
+    frameborder="0">
+</iframe>
+
 Quando a variável inspecionada é uma tabela interna, o Eclipse abre uma aba dedicada abaixo do editor com as seguintes opções (ao clicar com o botão direito):
 * **Change value...:** Modifica o conteúdo de uma célula da linha selecionada.
 * **Insert Row...:** Insere um novo registro (na posição atual ou no fim da tabela).

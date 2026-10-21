@@ -1,8 +1,12 @@
 ---
-tags: [git, dashboard, sincronizacao, backup]
-type: "dashboard"
-status: "active"
-summary: "Painel interativo para sincronização rápida com GitHub, salvamento em nuvem e atualização segura com backup incremental."
+tags:
+  - git
+  - dashboard
+  - sincronizacao
+  - backup
+type: dashboard
+status: active
+summary: Painel interativo para sincronização rápida com GitHub, salvamento em nuvem e atualização segura com backup incremental.
 ---
 
 # 🚀 Painel de Controle Git

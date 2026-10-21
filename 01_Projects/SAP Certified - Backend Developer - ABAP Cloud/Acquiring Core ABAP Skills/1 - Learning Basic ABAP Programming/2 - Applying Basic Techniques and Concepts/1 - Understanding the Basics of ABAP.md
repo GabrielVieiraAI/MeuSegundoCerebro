@@ -21,6 +21,14 @@ Após concluir esta lição, você será capaz de:
 
 ## 1. O ABAP Ontem e Hoje
 
+<iframe 
+    src="https://cdnapisec.kaltura.com/p/1921661/embedPlaykitJs/uiconf_id/50355372?iframeembed=true&entry_id=1_8jbaexoy" 
+    width="100%" 
+    height="400" 
+    allowfullscreen 
+    frameborder="0">
+</iframe>
+
 ### Origem e Evolução
 
 O **ABAP** (*Advanced Business Application Programming*) é a linguagem de programação de alto nível criada pela SAP para desenvolver e customizar aplicações de negócio empresariais.
@@ -55,6 +63,14 @@ No SAP, cada programa ou classe possui um atributo interno que define a sua **Ve
 
 ## 2. A Arquitetura do ABAP Cloud
 
+<iframe 
+    src="https://cdnapisec.kaltura.com/p/1921661/embedPlaykitJs/uiconf_id/50355372?iframeembed=true&entry_id=1_80fxqpsp" 
+    width="100%" 
+    height="400" 
+    allowfullscreen 
+    frameborder="0">
+</iframe>
+
 ![[02-ABAP_Cloud.png]]
 
 O **ABAP Cloud** não é apenas uma nova versão da linguagem, mas sim um modelo arquitetural completo para desenvolvimento de software moderno:
@@ -75,6 +91,14 @@ O **ABAP Cloud** não é apenas uma nova versão da linguagem, mas sim um modelo
 ---
 
 ## 3. Fundamentos da Sintaxe ABAP
+
+<iframe 
+    src="https://cdnapisec.kaltura.com/p/1921661/embedPlaykitJs/uiconf_id/50355372?iframeembed=true&entry_id=1_8upjznmg" 
+    width="100%" 
+    height="400" 
+    allowfullscreen 
+    frameborder="0">
+</iframe>
 
 ![[02_-_Basics_of_ABAP_syntax_001.png]]
 

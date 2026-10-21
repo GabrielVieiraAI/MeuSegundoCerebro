@@ -169,6 +169,14 @@ No método `if_oo_adt_classrun~main` da sua classe de testes, execute o trecho a
 
 ## 3. Tratamento de Exceções (*Exception Handling*)
 
+<iframe 
+    src="https://cdnapisec.kaltura.com/p/1921661/embedPlaykitJs/uiconf_id/50355372?iframeembed=true&entry_id=1_p1u9q3et" 
+    width="100%" 
+    height="400" 
+    allowfullscreen 
+    frameborder="0">
+</iframe>
+
 ![[03_-_Handle_Exceptions_001.png]]
 
 Uma **exceção (*exception*)** representa uma condição de erro que ocorre durante a execução do programa (ex: divisão por zero, conversão inválida de texto para número ou tentativa de ler uma linha inexistente em uma tabela).
@@ -181,6 +189,14 @@ Se o programa não contiver um bloco de captura para o erro:
 ---
 
 ### A Estrutura `TRY ... CATCH ... ENDTRY`
+
+<iframe 
+    src="https://cdnapisec.kaltura.com/p/1921661/embedPlaykitJs/uiconf_id/50355372?iframeembed=true&entry_id=1_xgayu5wy" 
+    width="100%" 
+    height="400" 
+    allowfullscreen 
+    frameborder="0">
+</iframe>
 
 ![[03_-_Handle_Exceptions_003.png]]
 

@@ -22,6 +22,14 @@ Após concluir esta lição, você será capaz de:
 
 ## 1. Cálculos Aritméticos no ABAP
 
+<iframe 
+    src="https://cdnapisec.kaltura.com/p/1921661/embedPlaykitJs/uiconf_id/50355372?iframeembed=true&entry_id=1_kr2xs45i" 
+    width="100%" 
+    height="400" 
+    allowfullscreen 
+    frameborder="0">
+</iframe>
+
 Expressões aritméticas em ABAP combinam valores, variáveis, operadores matemáticos e funções para calcular um resultado. Elas podem ser usadas em qualquer lugar que espere uma leitura de valor (como no lado direito de uma atribuição com `=`).
 
 ### Operadores Básicos e Funções

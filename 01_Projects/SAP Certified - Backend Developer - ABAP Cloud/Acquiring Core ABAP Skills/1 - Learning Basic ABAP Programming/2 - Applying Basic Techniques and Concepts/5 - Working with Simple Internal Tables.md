@@ -52,6 +52,15 @@ Podemos declarar tabelas internas de três maneiras no ABAP:
 ## 3. Manipulação de Dados em Tabelas Internas
 
 ### 1. Inserir Linhas com `APPEND`
+
+<iframe 
+    src="https://cdnapisec.kaltura.com/p/1921661/embedPlaykitJs/uiconf_id/50355372?iframeembed=true&entry_id=1_d7ntsls8" 
+    width="100%" 
+    height="400" 
+    allowfullscreen 
+    frameborder="0">
+</iframe>
+
 A instrução **`APPEND`** adiciona uma nova linha no **final** da tabela interna:
 
 ```abap
@@ -94,6 +103,14 @@ out->write( |Conteúdo da Linha 1: { numbers[ 1 ] }| ).
 ---
 
 ### 4. Percorrer a Tabela em um Laço (`LOOP AT ... ENDLOOP`)
+
+<iframe 
+    src="https://cdnapisec.kaltura.com/p/1921661/embedPlaykitJs/uiconf_id/50355372?iframeembed=true&entry_id=1_g9c31mzw" 
+    width="100%" 
+    height="400" 
+    allowfullscreen 
+    frameborder="0">
+</iframe>
 
 ![[02_Process_data_simple_itab_005.png]]
 
