@@ -135,3 +135,4 @@ action:
 - [x] 08:00 Cobrar o Paolo pagamento do provisionamento. 📅 2026-10-20 ✅ 2026-10-20
 - [ ] 16:00 - 17:00 Avaliar sobre prestação de serviço Aconchego. 📅 2026-10-21
 - [ ]  Pagamento da transferencia do carro 📅 2026-10-21
+- [ ] 08:00 - 12:00 Evento TI - ES Multivix Goiabeiras 📅 2026-11-14

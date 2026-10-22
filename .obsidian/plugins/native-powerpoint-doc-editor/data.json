@@ -1,0 +1,20 @@
+{
+  "authorName": "Obsidian",
+  "editorTheme": "system",
+  "showRuler": false,
+  "autosave": true,
+  "createBackupsBeforeSave": false,
+  "defaultZoom": 1,
+  "enableDocxSearchIndex": false,
+  "autoIndexDocxSearch": false,
+  "debugLogging": false,
+  "powerPointAutosaveEnabled": true,
+  "powerPointHideUnsupportedSvgContent": false,
+  "powerPointOpenWithYoloMode": true,
+  "powerPointShowInspector": false,
+  "disableDocxFiles": false,
+  "disablePowerPointFiles": false,
+  "enableAiInterfacing": false,
+  "addAiSkill": false,
+  "enableGrammarChecking": true
+}

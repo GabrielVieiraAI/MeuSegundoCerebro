@@ -48,7 +48,7 @@ O aplicativo é estruturado sobre três tabelas relacionadas: módulos, parâmet
 
 Para criar um valor, é necessário que exista um parâmetro, e para criar um parâmetro, é preciso que exista um módulo.
 
-Os parâmetros funcionam como constantes globais utilizadas em diversos processos e, por isso, são organizados por módulos. A criação de parâmetros nesta transação substitui o uso da TVARV.
+Os parâmetros funcionam como constantes globais utilizadas em diversos processos e, por isso, são organizados por módulos. A criação de parâmetros nesta transação substitui o uso da [[STVARV e TVARVC - Variaveis de Selecao e Parametros|TVARV]].
 
 Os módulos são exibidos apenas aos usuários que possuem permissão de acesso, portanto, se um módulo não aparecer na tela, isso não significa que o registro não exista, mas sim que o usuário não possui autorização para visualizá-lo.
 

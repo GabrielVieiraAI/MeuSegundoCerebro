@@ -1,5 +1,12 @@
 # Diretrizes do Projeto MeuSegundoCerebro
 
+## Linguagem
+
+Sempre utilize uma linguagem técnica mas acessível a todos os níveis de conhecimento. Caso cite alguma abreviação pela primeira vez, dê uma breve explicação do que é, caso seja um termo muito complexo utilize uma analogia simples. Evite usar analogias por qualquer motivo.
+
+## Publico alvo
+
+Esse repositório é para mim que sou um desenvolvedor Júnior. 
 ## Comando de Barra Customizado: `/professor-sap`
 
 Somente se a mensagem do usuário iniciar com `/professor-sap` ou  contiver `/professor-sap`:

@@ -25,25 +25,27 @@ status: draft
 	-  "A benção do Senhor já está sobre mim."
 	Dar é melhor que Receber
 	-  "Não traga uma oferta sem um pedido e não peça sem uma oferta."
-	-  "Quem dá primeiro é maior."
-
+	-  "Quem dá primeiro é maior."=
 ---
 ## 💻 Tecnologia & Estudos 
-
 - [ ] Criar uma nota detalhada de como realizar a publicação de um serviço **OData** através do **SAP GUI**.
 - [ ] Conseguir acesso ao IPTV gratuito para rodar no projetor 
 - [ ] Criar uma nota para cada transação que eu já usei, listando o que posso fazer nessa transação.
 - [ ] Criar uma nota explicando todo o ciclo de desenvolvimento de um app fiori. visto que já foi publicado 2.
-- [ ] Estudar Transações SAP
-	- STMS 
-	- PFCG
-	- SU01
-	- SE01 / SE09 / SE10
-	- ST22   
-
+- [ ] Estudar as transações indispensáveis do desenvolvedor sênior mapeadas na nota [[Transacoes SAP - Principais Transacoes|Transações SAP – Guia das Principais Transações (TCodes)]]
+	- STMS / SE09 / SE10 (Transportes e Liberação)
+	- PFCG / SU01 / SU53 (Segurança, Perfis e Diagnóstico de Autorização)
+	- ST22 / SM50 / SM12 (Troubleshooting de Dumps, Processos Travados e Bloqueios)
+	- ST05 / SAT (Performance, SQL Trace e Runtime Analysis)
+	- /IWFND/GW_CLIENT / /IWFND/ERROR_LOG (Testes OData e Depuração Fiori)
+	- SM59 / WE02 / WE19 (Conexões RFC e Simulação de IDocs)
+- [ ] Criar links entre notas do curso de Certificação ABAP
+---
 ## Tarefas de Casa
 - [ ] Concertar a pia da cozinha
 - [ ] Lavar o carro
 - [ ] Concertar painel do carro
+- [ ] Pesquisar como deixar pano de prato branco novamente
+- [ ] Pesquisar como remover mancha do piso com facilidade
 
 

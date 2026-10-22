@@ -42,7 +42,7 @@ Para que possamos minimizar retrabalhos, perda de tempo (custo) de ambos os lado
 
 ### / Documento da Solução
 
-Junto a entrega de toda a construção da solução o documento de **Especificação Tecnica** deverá ser produzido pelo profissional Abap desenvolvedor do GAP, neste além de informar os Ricefws, objetos da solução, também será evidenciado os testes técnicos que serão realizados após término do desenvolvimento.
+Junto a entrega de toda a construção da solução o documento de **Especificação Tecnica** deverá ser produzido pelo profissional Abap desenvolvedor do GAP, neste além de informar os [[RICEFW - Reports Interfaces Conversions Enhancements Forms Workflows|Ricefws]], objetos da solução, também será evidenciado os testes técnicos que serão realizados após término do desenvolvimento.
 
 ---
 

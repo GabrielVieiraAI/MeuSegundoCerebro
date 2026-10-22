@@ -57,7 +57,10 @@ data: 2026-10-03
 
 ## Sumário
 
+* 🗺️ **[[Alinhamento de Arquitetura e Objetos - DEL-R2R-009|Alinhamento de Arquitetura e Objetos]]** *(Diagrama e detalhamento por objeto)*
 * **01** – [[01 - Contexto Atual e Cenário Organizacional|Contexto Atual e Cenário Organizacional]]
 * **02** – [[02 - Estratégia da Solução|Estratégia da Solução]]
 * **03** – [[03 - Detalhamento para Desenvolvimento|Detalhamento para Desenvolvimento]]
 * **04** – [[04 - Governança Técnica da Solução|Governança Técnica da Solução]]
+* **Reuniões** – [[Primeira reunião com consultores|Primeira Reunião com Consultores (22/10/2026)]]
+* **Reuniões** – [[Segunda reunião com consultor|Segunda Reunião com Consultor (22/10/2026)]]
