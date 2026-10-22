@@ -129,7 +129,6 @@ btnPull.onclick = () => {
 ## 📚 Guias e Tutoriais Rápidos
 * [[Atualizar Repositório Remoto|Como Enviar Manualmente via Terminal]]
 * [[Atualizar Repositório Local pelo Remoto|Como Atualizar Manualmente via Terminal]]
-* [[Como Resolver Conflitos Git no Obsidian com GitSync|Entendendo Conflitos do GitSync]]
 
 ```meta-bind-button
 id: btn-git-push
