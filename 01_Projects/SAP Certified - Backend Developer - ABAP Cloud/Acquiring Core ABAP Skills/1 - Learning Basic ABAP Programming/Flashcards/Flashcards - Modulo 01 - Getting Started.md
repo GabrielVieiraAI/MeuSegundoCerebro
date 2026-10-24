@@ -36,6 +36,7 @@ Para que servem os atalhos F1, F2, F3 e Alt + ← no ADT?
 * **F2:** Exibe documentação rápida (*Quick Info*) sobre o elemento selecionado.
 * **F3 (ou duplo clique):** Navega até a definição do objeto de desenvolvimento.
 * **Alt + ←:** Retorna ao ponto de origem após realizar a navegação.
+<!--SR:!2026-10-27,3,250-->
 
 ---
 

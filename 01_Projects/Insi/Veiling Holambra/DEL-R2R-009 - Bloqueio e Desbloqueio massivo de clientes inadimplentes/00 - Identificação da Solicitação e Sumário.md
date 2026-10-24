@@ -57,7 +57,7 @@ data: 2026-10-03
 
 ## Sumário
 
-* 🗺️ **[[Alinhamento de Arquitetura e Objetos - DEL-R2R-009|Alinhamento de Arquitetura e Objetos]]** *(Diagrama e detalhamento por objeto)*
+* 🗺️ **[[DEL-R2R-009 - Arquitetura e Objetos|Alinhamento de Arquitetura e Objetos]]** *(Diagrama e detalhamento por objeto)*
 * **01** – [[01 - Contexto Atual e Cenário Organizacional|Contexto Atual e Cenário Organizacional]]
 * **02** – [[02 - Estratégia da Solução|Estratégia da Solução]]
 * **03** – [[03 - Detalhamento para Desenvolvimento|Detalhamento para Desenvolvimento]]
