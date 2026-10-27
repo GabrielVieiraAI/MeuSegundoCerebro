@@ -44,17 +44,17 @@ flowchart LR
 
 ---
 
-### Versões de Linguagem ABAP (ABAP Language Versions)
+### Versões de Linguagem ABAP 
 
 No SAP, cada programa ou classe possui um atributo interno que define a sua **Versão de Linguagem (*ABAP Language Version*)**. Essa configuração determina quais comandos, tabelas e objetos de sistema aquele código tem permissão de usar:
 
 ![[01_-_ABAP_then_and_now_002.png]]
 
-| Versão da Linguagem | Onde é Utilizada? | Regras e Restrições |
-| :--- | :--- | :--- |
-| **Standard ABAP** (*ABAP Padrão*) | Sistemas legados (SAP ECC), SAP S/4HANA On-Premise e Private Cloud. | **Sem restrições de sintaxe:** Permite comandos legados e acesso direto a qualquer tabela ou função interna do sistema. **Desvantagem:** Dificulta upgrades (*quebra o Clean Core*). |
-| **ABAP for Key Users** (*Usuários-Chave*) | Adaptações no-code / low-code feitas diretamente na interface web do S/4HANA. | **Conjunto muito restrito:** Voltado para analistas de negócio criarem validações simples em campos de tela sem precisar programar classes inteiras. |
-| **ABAP for Cloud Development** (*ABAP Cloud*) | **SAP BTP ABAP Environment** e **SAP S/4HANA Cloud (Public e Private)**. | **Otimizado para a Nuvem:** Permite apenas sintaxe moderna e acesso exclusivo a **APIs Públicas Oficiais (*Released APIs*)**, impedindo o acesso indevido a estruturas internas da SAP. |
+| Versão da Linguagem                           | Onde é Utilizada?                                                             | Regras e Restrições                                                                                                                                                                     |
+| :-------------------------------------------- | :---------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Standard ABAP** (*ABAP Padrão*)             | Sistemas legados (SAP ECC), SAP S/4HANA On-Premise e Private Cloud.           | **Sem restrições de sintaxe:** Permite comandos legados e acesso direto a qualquer tabela ou função interna do sistema. **Desvantagem:** Dificulta upgrades (*quebra o Clean Core*).    |
+| **ABAP for Key Users** (*Usuários-Chave*)     | Adaptações no-code / low-code feitas diretamente na interface web do S/4HANA. | **Conjunto muito restrito:** Voltado para analistas de negócio criarem validações simples em campos de tela sem precisar programar classes inteiras.                                    |
+| **ABAP for Cloud Development** (*ABAP Cloud*) | **SAP BTP ABAP Environment** e **SAP S/4HANA Cloud (Public e Private)**.      | **Otimizado para a Nuvem:** Permite apenas sintaxe moderna e acesso exclusivo a **APIs Públicas Oficiais (*Released APIs*)**, impedindo o acesso indevido a estruturas internas da SAP. |
 
 > [!NOTE]
 > **Foco deste curso:** Este treinamento foca na sintaxe moderna compatível com o **ABAP Cloud**, garantindo que todo o código aprendido seja pronto para a nuvem (*Cloud-Ready*) e compatível com as melhores práticas de [[Clean Core]].

@@ -22,12 +22,12 @@ Este é o roadmap das tecnologias e habilidades relacionadas ao ecossistema SAP 
 
 ## ETAPA 2: S/4HANA & MODERN ABAP
 
-| ORD | TECNOLOGIA / HABILIDADE                                   | RELEVÂNCIA / DEMANDA | STATUS                |
-| :-- | :-------------------------------------------------------- | :------------------- | :-------------------- |
-| 08  | Técnicas de Code Pushdown & Open SQL Moderno              | Alto                 | Preciso me aprofundar |
-| 10  | AMDP (ABAP Managed Database Procedures / SQLScript)       | Alto                 | Preciso Aprender      |
+| ORD | TECNOLOGIA / HABILIDADE                                                                 | RELEVÂNCIA / DEMANDA | STATUS                |
+| :-- | :-------------------------------------------------------------------------------------- | :------------------- | :-------------------- |
+| 08  | Técnicas de Code Pushdown & Open SQL Moderno                                            | Alto                 | Preciso me aprofundar |
+| 10  | AMDP (ABAP Managed Database Procedures / SQLScript)                                     | Alto                 | Preciso Aprender      |
 | -   | [[CDS - Core Data Services\|CDS Views]] (Core Data Services, Associações e Annotations) | Crítico              | Domino                |
-| -   | OData Services (v2 / v4) e SAP Gateway                    | Crítico              | Preciso me aprofundar |
+| -   | OData Services (v2 / v4) e SAP Gateway                                                  | Crítico              | Preciso me aprofundar |
 
 ## ETAPA 3: ARQUITETURA MODERNA & CLEAN CORE
 

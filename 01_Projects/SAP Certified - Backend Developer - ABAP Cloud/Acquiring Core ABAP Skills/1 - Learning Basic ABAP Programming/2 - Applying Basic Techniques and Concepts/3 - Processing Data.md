@@ -34,15 +34,17 @@ Expressões aritméticas em ABAP combinam valores, variáveis, operadores matem�
 
 ### Operadores Básicos e Funções
 
-| Operação                | Operador / Função | Exemplo                               | Observação de Sintaxe                                          |
-| :---------------------- | :---------------- | :------------------------------------ | :------------------------------------------------------------- |
-| **Soma**                | `+`               | `result = 2 + 3.`                     | **Obrigatório:** Espaços em branco antes e depois do operador. |
-| **Subtração**           | `-`               | `result = 5 - 2.`                     | Espaços obrigatórios.                                          |
-| **Multiplicação**       | `*`               | `result = 4 * 2.`                     | Espaços obrigatórios.                                          |
-| **Divisão**             | `/`               | `result = 10 / 2.`                    | Espaços obrigatórios.                                          |
-| **Raiz Quadrada**       | `sqrt( )`         | `result = sqrt( 9 ).`                 | Pelo menos um espaço dentro dos parênteses.                    |
-| **Potenciação Inteira** | `ipow( )`         | `result = ipow( base = 2 exp = 3 ).`  | Calcula $2^3 = 8$.                                             |
-| **Precedência**         | `( )`             | `result = ( 8 * 7 - 6 ) / ( 5 + 4 ).` | Parênteses para forçar a ordem de cálculo.                     |
+| Operação                          | Operador / Função | Exemplo                               | Observação de Sintaxe                                          |
+| :-------------------------------- | :---------------- | :------------------------------------ | :------------------------------------------------------------- |
+| **Soma**                          | `+`               | `result = 2 + 3.`                     | **Obrigatório:** Espaços em branco antes e depois do operador. |
+| **Subtração**                     | `-`               | `result = 5 - 2.`                     | Espaços obrigatórios.                                          |
+| **Multiplicação**                 | `*`               | `result = 4 * 2.`                     | Espaços obrigatórios.                                          |
+| **Divisão Padrão**                | `/`               | `result = 10 / 2.`                    | Divide valores; arredonda comercialmente se o destino for `i`. |
+| **Divisão Inteira (Quociente)**   | `DIV`             | `result = 7 DIV 2.`                   | Retorna o quociente inteiro truncado (resultado: `3`).          |
+| **Resto da Divisão (Módulo)**     | `MOD`             | `result = 7 MOD 2.`                   | Retorna o resto da divisão inteira (resultado: `1`).           |
+| **Raiz Quadrada**                 | `sqrt( )`         | `result = sqrt( 9 ).`                 | Pelo menos um espaço dentro dos parênteses.                    |
+| **Potenciação Inteira**           | `ipow( )`         | `result = ipow( base = 2 exp = 3 ).`  | Calcula $2^3 = 8$.                                             |
+| **Precedência**                   | `( )`             | `result = ( 8 * 7 - 6 ) / ( 5 + 4 ).` | Parênteses para forçar a ordem de cálculo.                     |
 
 > [!WARNING]
 > **Espaçamento Obrigatório:** Escrever `result = 2+3.` causará erro de compilação. O compilador ABAP exige espaços entre operandos e operadores (`result = 2 + 3.`).
@@ -51,10 +53,18 @@ Expressões aritméticas em ABAP combinam valores, variáveis, operadores matem�
 
 ### O Tipo de Dado e a Precisão do Resultado
 
-O tipo da variável que recebe o cálculo define como o valor será armazenado:
+O tipo da variável de destino que recebe o resultado do cálculo define como o valor será processado e armazenado na memória:
 
-* **Com `TYPE i` (Inteiro):** Se você calcular `2 / 3` em uma variável inteira, o resultado será arredondado para `1` (ou truncado para `0`), perdendo todas as casas decimais.
-* **Com `TYPE p DECIMALS 2` (Packed Decimal):** O cálculo preserva as casas decimais exatas (ex: `0.67`), ideal para operações comerciais e financeiras.
+* **Com `TYPE i` (Inteiro):**
+  * Ao contrário de linguagens como C, Java ou Python onde a divisão entre inteiros trunca o valor, no ABAP a barra de divisão (`/`) aplica **arredondamento comercial (*Commercial Rounding / Round Half-Up*)** ao converter para o tipo `i`:
+    * Se a parte fracionária for $\ge 0,5$, o valor é arredondado para cima.
+    * Se a parte fracionária for $< 0,5$, o valor é arredondado para baixo.
+  * **Exemplo prático de `2 / 3`:** Como $2 / 3 = 0,6666...$, a fração é maior que $0,5$, logo o resultado armazenado na variável inteira será **estritamente `1`** (e não `0`).
+  * **Exemplo prático de `1 / 3`:** Como $1 / 3 = 0,3333...$, a fração é menor que $0,5$, logo o resultado será `0`.
+  * **Divisão Inteira Real com Truncamento (`DIV`):** Para obter apenas o quociente inteiro descartando o resto sem arredondar para cima, deve-se usar o operador `DIV`: `2 DIV 3` resulta em `0`.
+
+* **Com `TYPE p DECIMALS 2` (Packed Decimal):**
+  * O cálculo preserva as casas decimais exatas configuradas (ex: `0.67`), sendo o tipo padrão obrigatório para valores monetários, taxas financeiras e quantidades fracionárias comerciais para evitar perdas de precisão.
 
 ---
 

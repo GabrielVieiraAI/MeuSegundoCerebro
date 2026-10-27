@@ -16,18 +16,16 @@ nota_pessoal: ⭐⭐⭐⭐⭐
 
 ---
 ## Frases que impactaram
-
-* **Ideia 1:** Você não tem o que Ganha. Você tem o que guarda e coloca para render.  
-* **Ideia 2:** Quem vive para comer é animal de abate.
-
+*  Você não tem o que Ganha. Você tem o que guarda e coloca para render.  
+*  Quem vive para comer é animal de abate.
+* O foco não é ficar rico, mas progredir com o que tenho, vivo e alinhado com princípios do Reino.
+## Princípios 
+- **Consagrado ao Senhor:** É tudo o que é consagrado ao Senhor; se for tomado ou utilizado indevidamente por alguém, este se torna amaldiçoado.
+- **Postura pessoal:** O que pertence ao Senhor é anátema para mim (não me pertence e não retenho para mim).
+- **O dízimo como anátema:** O dízimo é consagrado ao Senhor e deve ser entregue nas mãos de um sacerdote. Se não houver sacerdote, deve ser entregue ao necessitado. Todos têm que tirar o anátema de casa.
 ##  Conceitos Candidatos a Notas Permanentes (`[[Notas Atômicas]]`)
-
-* `[[Nome do Conceito 1]]`: Breve definição no contexto deste livro.
-* `[[Nome do Conceito 2]]`: Breve definição no contexto deste livro.
-
+- `lashon hara` 
+- [[Descansar em Deus]] 
+- [[Dízimos]] - O que pertence ao Senhor é anátema para mim 
+- 
 ---
-##  Notas dos Capítulos (Síntese com suas palavras)
-### Cap. [[8 - Dízimos]]
-* A relação entre o homem e o sacerdote, tendo Deus como sua testemunha. 
-### Cap.  [[9 - O Descanso]] 
-* Descansar em Deus é a nossa benção

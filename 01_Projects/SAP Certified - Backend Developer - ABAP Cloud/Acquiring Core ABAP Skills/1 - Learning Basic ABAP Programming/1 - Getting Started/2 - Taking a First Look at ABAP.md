@@ -129,7 +129,8 @@ Utilize algumas funções do *ABAP Development Tools* para analisar o código-fo
 	1. Algumas linhas abaixo, há uma linha que se inicia com `SELECT`. Sem navegar para fora da tela, posicione o cursor sobre o elemento `/dmo/travel` (após a palavra-chave `FROM`) e pressione **F2**.
 8. **Exibir a Ajuda da Linguagem ABAP (*ABAP Language Help*) para a palavra-chave `SELECT`:**
 	1. No início da linha de código atual, posicione o cursor sobre a palavra-chave **SELECT** e pressione **F1**.
-	> [!TIP]
+	
+	[!TIP]
 	> Se a visualização do *ABAP Language Help* que se abrir indicar que os resultados da consulta de busca não são suportados na versão de linguagem ABAP atual, digite **SELECT** no campo *search term* da própria aba de ajuda e pressione **Enter**. Essa busca exibirá a ajuda desejada.
 	> 
 	> Não há necessidade de ler ou compreender toda a documentação da instrução neste momento.

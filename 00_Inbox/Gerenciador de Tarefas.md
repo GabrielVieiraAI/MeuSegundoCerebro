@@ -88,7 +88,7 @@ hide backlink
 - [x] Enviar chave da API Primata para o Bruno Braga via e-mail 🔽 📅 2026-10-13 ✅ 2026-10-13
 - [x] 14:00 - 14:30 Retirar provisionamento da CEFE ⏫ 📅 2026-10-20 ✅ 2026-10-20
 - [x] Enviar Boleto Azure para o Paolo ⏫ 📅 2026-10-13 ✅ 2026-10-13
-- [ ] 14:30 - 15:00  Criar nota referente a **OData** através do **SAP GUI** 📅 2026-10-24
+- [ ] 14:30 - 15:00  Criar nota referente a **OData** através do **SAP GUI** 📅 2026-10-26
 - [x] Presente da Ligia ⏫ 📅 2026-10-13 ✅ 2026-10-13
 - [x] Criar sistema de gerenciamento de Tarefas 📅 2026-10-13 ✅ 2026-10-13
 - [x] Conseguir acesso de desenvolvimento no SAP GUI 🔺 📅 2026-10-19 ✅ 2026-10-19
@@ -129,10 +129,10 @@ action:
   type: command
   command: quickadd:choice:tarefa-avulsa
 ```
-- [ ] 14:00 - 14:30 Cobrar posicionamento computador do Paolo 📅 2026-10-24
+- [ ] 14:00 - 14:30 Cobrar posicionamento computador do Paolo 📅 2026-10-26
 - [x] 08:00 Estudar módulo Getting Started Certificação SAP 📅 2026-10-20 ✅ 2026-10-20
 - [x] 15:30 Reunião presencial com a Thalita 📅 2026-10-19 ✅ 2026-10-20
 - [x] 08:00 Cobrar o Paolo pagamento do provisionamento. 📅 2026-10-20 ✅ 2026-10-20
-- [ ] 16:00 - 17:00 Avaliar sobre prestação de serviço Aconchego. 📅 2026-10-24
-- [ ] Pagamento da transferencia do carro 📅 2026-10-24
+- [ ] 16:00 - 17:00 Avaliar sobre prestação de serviço Aconchego. 📅 2026-10-26
+- [ ] Pagamento da transferencia do carro 📅 2026-10-26
 - [ ] 08:00 - 12:00 Evento TI - ES Multivix Goiabeiras 📅 2026-11-14
