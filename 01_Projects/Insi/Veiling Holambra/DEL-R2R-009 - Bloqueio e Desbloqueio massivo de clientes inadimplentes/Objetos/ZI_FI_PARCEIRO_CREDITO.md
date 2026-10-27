@@ -49,7 +49,7 @@ A responsabilidade técnica dela é unificar, em uma única visão limpa, os dad
 ```abap
 @AbapCatalog.viewEnhancementCategory: [#NONE]
 @AccessControl.authorizationCheck: #NOT_REQUIRED
-@EndUserText.label: 'DEL-R2R-009: Dados de Crédito e Hierarquia do Parceiro'
+@EndUserText.label: 'DEL-R2R-009: Parceiro e Crédito FSCM'
 @Metadata.ignorePropagatedAnnotations: true
 @ObjectModel.usageType:{
   serviceQuality: #X,
@@ -57,23 +57,23 @@ A responsabilidade técnica dela é unificar, em uma única visão limpa, os dad
   dataClass: #MASTER
 }
 define view entity ZI_FI_PARCEIRO_CREDITO
-  as select from    ukmbp_cms_sgm      as Segmento
-    inner join      ukmbp_cms          as CreditoGeral on  CreditoGeral.partner = Segmento.partner
-    left outer join I_BusinessPartner  as BP           on  BP.BusinessPartner   = Segmento.partner
-    left outer join bp001              as Atuacao      on  Atuacao.partner      = Segmento.partner
-    left outer join but050             as Relacao      on  Relacao.partner1     = Segmento.partner
-                                                       and Relacao.reltyp       = 'FUKM001'
+  as select from    ukmbp_cms_sgm      as Segmento     // Tabela de dados de crédito do parceiro por segmento (FSCM)
+    inner join      ukmbp_cms          as CreditoGeral on  CreditoGeral.partner = Segmento.partner   // Tabela mestre de crédito geral (classe de risco)
+    left outer join I_BusinessPartner  as BP           on  BP.BusinessPartner   = Segmento.partner   // CDS Standard para obter a razão social do cliente
+    left outer join bp001              as Atuacao      on  Atuacao.partner      = Segmento.partner   // Dados adicionais do BP (segmento de atuação)
+    left outer join but050             as Relacao      on  Relacao.partner1     = Segmento.partner   // Relacionamentos entre parceiros (Matriz x Filial)
+                                                       and Relacao.reltyp       = 'UKM001'           // Categoria de relação FSCM: Conta de crédito de nível superior
 {
-  key Segmento.partner                                           as PartnerMatriz,
-  key coalesce( Relacao.partner2, Segmento.partner )             as PartnerOrigem,
-      Segmento.credit_sgmnt                                      as CreditSegment,
-      BP.BusinessPartnerFullName                                 as NomeCliente,
-      CreditoGeral.risk_class                                    as RiskClass,
-      Atuacao.group_feature                                      as GroupFeature,
-      Segmento.xblocked                                          as IsBlocked,
-      Segmento.block_reason                                      as BlockReason
+  key Segmento.partner                                           as PartnerMatriz,   // Chave 1: BP da Matriz (onde o bloqueio de crédito é aplicado)
+  key coalesce( Relacao.partner2, Segmento.partner )             as PartnerOrigem,   // Chave 2: BP da filial devedora (ou a própria Matriz se não houver filial)
+      Segmento.credit_sgmnt                                      as CreditSegment,   // Segmento de crédito do FSCM avaliado (1000)
+      BP.BusinessPartnerFullName                                 as NomeCliente,     // Nome/Razão social do cliente para exibição no aplicativo
+      CreditoGeral.risk_class                                    as RiskClass,       // Classe de risco do cliente (1A = À vista, 2A = A prazo)
+      Atuacao.group_feature                                      as GroupFeature,   // Segmento de atuação (identifica se o cliente é Autosserviço)
+      Segmento.xblocked                                          as IsBlocked,       // Status de bloqueio atual no FSCM (X = Bloqueado, vazio = Liberado)
+      Segmento.block_reason                                      as BlockReason      // Motivo do bloqueio atual gravado no FSCM (10 = Inadimplência)
 }
 where
-      Segmento.credit_sgmnt     = '1000'
-  and CreditoGeral.risk_class  <> '5'
+      Segmento.credit_sgmnt     = '1000'                                             // Filtra exclusivamente o segmento de crédito 1000 da Veiling
+  and CreditoGeral.risk_class  <> '5'                                                // Exclui a classe 5 (contas internas da própria Veiling Holambra)
 ```

@@ -61,7 +61,7 @@ A **Metadata Extension (MDE)** `ZC_FI_CLIENTE_INADIMPLENTE` é um artefato separ
     visualizations: [{ type: #AS_LINEITEM }]
   }]
 }
-annotate entity ZC_FI_CLIENTE_INADIMPLENTE with
+annotate entity ZC_FI_CLIENTE_INADIMPLENTE with                      // Estende a CDS de projeção com o layout visual do Fiori Elements
 {
   @UI.lineItem: [
     { position: 10, importance: #HIGH },
@@ -69,39 +69,39 @@ annotate entity ZC_FI_CLIENTE_INADIMPLENTE with
     { type: #FOR_ACTION, dataAction: 'desbloquearCliente', label: 'Desbloquear' }
   ]
   @UI.selectionField: [{ position: 10 }]
-  AcaoProposta;
+  AcaoProposta;                                                        // Coluna 10: Sugestão da régua com os botões de ação e filtro de tela
 
   @UI.lineItem: [{ position: 20, importance: #HIGH }]
   @UI.selectionField: [{ position: 20 }]
-  PartnerMatriz;
+  PartnerMatriz;                                                       // Coluna 20: Código do cliente Matriz com campo de filtro na tela
 
   @UI.lineItem: [{ position: 30, importance: #HIGH }]
-  NomeCliente;
+  NomeCliente;                                                         // Coluna 30: Razão social / Nome do cliente
 
   @UI.lineItem: [{ position: 40, importance: #MEDIUM }]
-  PartnerOrigem;
+  PartnerOrigem;                                                       // Coluna 40: BP de Origem (filial que originou a dívida)
 
   @UI.lineItem: [{ position: 50, importance: #HIGH }]
   @UI.selectionField: [{ position: 30 }]
-  GroupFeature;
+  GroupFeature;                                                        // Coluna 50: Segmento de atuação (Autosserviço) com filtro de tela
 
   @UI.lineItem: [{ position: 60, importance: #HIGH }]
   @UI.selectionField: [{ position: 40 }]
-  RiskClass;
+  RiskClass;                                                           // Coluna 60: Classe de risco do cliente com filtro de tela
 
   @UI.lineItem: [{ position: 70, importance: #HIGH }]
-  ValorTotalVencido;
+  ValorTotalVencido;                                                   // Coluna 70: Montante financeiro total vencido
 
   @UI.lineItem: [{ position: 80, importance: #MEDIUM }]
-  DiasAtraso;
+  DiasAtraso;                                                          // Coluna 80: Maior quantidade de dias em atraso
 
   @UI.lineItem: [{ position: 90, importance: #HIGH }]
-  IsBlocked;
+  IsBlocked;                                                           // Coluna 90: Status atual de bloqueio de crédito (Sim/Não)
 
   @UI.lineItem: [{ position: 100, importance: #MEDIUM }]
-  BlockReason;
+  BlockReason;                                                         // Coluna 100: Motivo do bloqueio registrado no FSCM
 
   @UI.hidden: true
-  OrdemProposta;
+  OrdemProposta;                                                       // Campo técnico oculto na tabela (utilizado no sortOrder inicial)
 }
 ```

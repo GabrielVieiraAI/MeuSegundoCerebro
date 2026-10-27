@@ -40,10 +40,10 @@ O **Service Binding** `ZUI_O2_FI_CLIENTE_INAD` vincula o Service Definition (`[[
 > *Nota: O Service Binding é um objeto criado via assistente visual no Eclipse ADT (New -> Service Binding), não possuindo código-fonte textual editável. Abaixo estão os parâmetros exatos de configuração do objeto:*
 
 ```yaml
-Nome do Objeto: ZUI_O2_FI_CLIENTE_INAD
-Descrição: "DEL-R2R-009: Service Binding OData V2 - Clientes Inadimplentes"
-Service Definition: ZUI_FI_CLIENTE_INAD
-Binding Type: OData V2 - UI
-Entidade Principal: ClienteInadimplente (ZC_FI_CLIENTE_INADIMPLENTE)
-Status de Publicação: Local Service Endpoint Published
+Nome do Objeto: ZUI_O2_FI_CLIENTE_INAD                               # Nome técnico do Service Binding seguindo a convenção ZUI_O2_[MD]_<desc>
+Descrição: "DEL-R2R-009: Service Binding OData V2 - Clientes Inad." # Descrição no dicionário ABAP (máx. 60 caracteres)
+Service Definition: ZUI_FI_CLIENTE_INAD                             # Service Definition de origem que declara as entidades expostas
+Binding Type: OData V2 - UI                                         # Protocolo de binding OData V2 com suporte a UI (Fiori Elements)
+Entidade Principal: ClienteInadimplente (ZC_FI_CLIENTE_INADIMPLENTE)# Entidade raiz consumida pelo app e testada no App Preview do ADT
+Status de Publicação: Local Service Endpoint Published              # Status após clicar em 'Publish' (gera os endpoints no SAP Gateway)
 ```

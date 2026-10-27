@@ -38,8 +38,8 @@ Ele funciona como um "cardápio" que declara quais CDS Views de Projeção fazem
 ## 💻 Snippet de Código
 
 ```abap
-@EndUserText.label: 'DEL-R2R-009: Definição de Serviço de Clientes Inadimplentes'
-define service ZUI_FI_CLIENTE_INAD {
-  expose ZC_FI_CLIENTE_INADIMPLENTE as ClienteInadimplente;
+@EndUserText.label: 'DEL-R2R-009: Serviço Clientes Inadimp.'
+define service ZUI_FI_CLIENTE_INAD {                                   // Declara o escopo do serviço de negócio exposto para fora do backend
+  expose ZC_FI_CLIENTE_INADIMPLENTE as ClienteInadimplente;            // Expõe a CDS de projeção com alias amigável consumido pelo Fiori
 }
 ```

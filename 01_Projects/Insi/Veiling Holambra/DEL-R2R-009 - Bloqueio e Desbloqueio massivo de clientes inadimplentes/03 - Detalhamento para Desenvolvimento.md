@@ -88,7 +88,7 @@ O app é utilizado uma vez ao dia pela equipe de Contas a Receber/Crédito.
 | **Parceiro de Negócio** | Função de crédito | BUT100-RLTYP = UKM000 |
 | **Crédito – dados gerais** | Classe de risco | UKMBP_CMS-RISK_CLASS |
 | **Parceiro de Negócio** | Segmento de atuação (característica de agrupamento) | BP001-GROUP_FEATURE |
-| **Parceiro de Negócio** | Hierarquia de crédito (BP principal / vinculados) | BUT050-RELTYP = FUKM001 / TUKM001 |
+| **Parceiro de Negócio** | Hierarquia de crédito (BP principal / vinculados) | BUT050-RELTYP = UKM001 (exibido na UI como FUKM001 / TUKM001) |
 | **Crédito – segmento** | Segmento de crédito | UKMBP_CMS_SGM-CREDIT_SGMNT |
 | **Crédito – segmento** | Indicador de bloqueio | UKMBP_CMS_SGM-XBLOCKED |
 | **Crédito – segmento** | Motivo do bloqueio | UKMBP_CMS_SGM-BLOCK_REASON |

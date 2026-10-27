@@ -43,19 +43,19 @@ Esta nota também documenta os objetos de configuração do **SAP Fiori Launchpa
 
 Trecho principal de configuração do `manifest.json` da aplicação Fiori Elements (OData V2 List Report com seleção múltipla habilitada):
 
-```json
+```jsonc
 {
   "_version": "1.59.0",
   "sap.app": {
-    "id": "br.com.veiling.bloqinadimplente",
-    "type": "application",
-    "title": "Bloquear/Desbloquear Clientes Inadimplentes",
+    "id": "br.com.veiling.bloqinadimplente",                           // Identificador único da aplicação UI5 no repositório BSP
+    "type": "application",                                            // Tipo de artefato: aplicação executável
+    "title": "Bloquear/Desbloquear Clientes Inadimplentes",            // Título exibido no cabeçalho do Fiori Launchpad
     "dataSources": {
       "mainService": {
-        "uri": "/sap/opu/odata/sap/ZUI_O2_FI_CLIENTE_INAD/",
-        "type": "OData",
+        "uri": "/sap/opu/odata/sap/ZUI_O2_FI_CLIENTE_INAD/",           // Endpoint do serviço OData V2 publicado no SAP Gateway
+        "type": "OData",                                               // Protocolo de comunicação baseado em padrões abertos OData
         "settings": {
-          "odataVersion": "2.0"
+          "odataVersion": "2.0"                                        // Versão do protocolo OData consumida pelo List Report
         }
       }
     }
@@ -63,21 +63,21 @@ Trecho principal de configuração do `manifest.json` da aplicação Fiori Eleme
   "sap.ui.generic.app": {
     "_version": "1.3.0",
     "settings": {
-      "forceGlobalRefresh": true
+      "forceGlobalRefresh": true                                       // Recarrega os dados da tela após a execução de ações em massa
     },
     "pages": {
       "ListReport|ClienteInadimplente": {
-        "entitySet": "ClienteInadimplente",
+        "entitySet": "ClienteInadimplente",                            // Entidade raiz exposta pelo Service Definition
         "component": {
-          "name": "sap.suite.ui.generic.template.ListReport",
+          "name": "sap.suite.ui.generic.template.ListReport",          // Template padrão SAP Fiori Elements List Report
           "list": true,
           "settings": {
-            "condensedTableLayout": true,
-            "smartVariantManagement": true,
-            "enableTableFilterInPageVariant": true,
+            "condensedTableLayout": true,                              // Layout compacto da tabela para visualizar mais linhas
+            "smartVariantManagement": true,                            // Habilita salvar variantes de filtro/visão por usuário
+            "enableTableFilterInPageVariant": true,                    // Sincroniza a barra de filtros com a variante da página
             "tableSettings": {
-              "type": "ResponsiveTable",
-              "multiSelect": true
+              "type": "ResponsiveTable",                               // Tabela responsiva compatível com desktop e mobile
+              "multiSelect": true                                      // Habilita checkboxes para seleção e processamento em lote
             }
           }
         }

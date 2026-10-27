@@ -48,29 +48,31 @@ Ela é o coração analítico do aplicativo: faz o cruzamento (`LEFT OUTER JOIN`
 
 ```abap
 @AccessControl.authorizationCheck: #CHECK
-@EndUserText.label: 'DEL-R2R-009: Entidade Raiz de Clientes Inadimplentes'
+@EndUserText.label: 'DEL-R2R-009: Clientes Inadimplentes'
 @Metadata.ignorePropagatedAnnotations: true
 define root view entity ZI_FI_CLIENTE_INADIMPLENTE
-  as select from    ZI_FI_PARCEIRO_CREDITO as Parceiro
-    left outer join ZI_FI_TITULOS_VENCIDOS as Titulos  on Titulos.Customer = Parceiro.PartnerOrigem
+  as select from    ZI_FI_PARCEIRO_CREDITO as Parceiro   // CDS de dados de crédito e parceiros elegíveis (Passo 05)
+    left outer join ZI_FI_TITULOS_VENCIDOS as Titulos    // CDS de agregação financeira de títulos vencidos (Passo 04)
+      on Titulos.Customer = Parceiro.PartnerOrigem       // Cruza os títulos em aberto pelo BP da filial devedora
 {
-  key Parceiro.PartnerMatriz,
-  key Parceiro.CreditSegment,
+  key Parceiro.PartnerMatriz,                            // Chave 1: BP da Matriz (onde a conta de crédito reside e onde o bloqueio é aplicado)
+  key Parceiro.CreditSegment,                            // Chave 2: Segmento de crédito do FSCM avaliado (1000)
 
-      Parceiro.PartnerOrigem,
-      Parceiro.NomeCliente,
-      Parceiro.RiskClass,
-      Parceiro.GroupFeature,
-      Parceiro.IsBlocked,
-      Parceiro.BlockReason,
+      Parceiro.PartnerOrigem,                            // BP de Origem: filial que originou a dívida contábil (ou Matriz se não houver filial)
+      Parceiro.NomeCliente,                              // Razão social / Nome do cliente para exibição no aplicativo
+      Parceiro.RiskClass,                                // Classe de risco do cliente (1A = À vista, 2A = A prazo)
+      Parceiro.GroupFeature,                             // Segmento de atuação (identifica se o cliente é Autosserviço)
+      Parceiro.IsBlocked,                                // Status atual de bloqueio no FSCM (X = Bloqueado, vazio = Liberado)
+      Parceiro.BlockReason,                              // Motivo atual de bloqueio no FSCM (ex.: 10 = Inadimplência)
 
-      coalesce( Titulos.CompanyCodeCurrency, cast( 'BRL' as abap.cuky(5) ) ) as Moeda,
+      coalesce( Titulos.CompanyCodeCurrency, cast( 'BRL' as abap.cuky(5) ) ) as Moeda, // Moeda dos títulos (ou default BRL caso em dia)
 
       @Semantics.amount.currencyCode: 'Moeda'
-      coalesce( Titulos.ValorTotalVencido, cast( 0 as abap.curr(15,2) ) )    as ValorTotalVencido,
+      coalesce( Titulos.ValorTotalVencido, cast( 0 as abap.curr(15,2) ) )    as ValorTotalVencido, // Saldo vencido consolidado (0 se sem atraso)
 
-      Titulos.MenorDataVencimento,
+      Titulos.MenorDataVencimento,                       // Data da fatura vencida mais antiga (base para o cálculo de dias de atraso)
 
+      // Calcula a quantidade de dias em atraso entre a data de vencimento mais antiga e a data atual do sistema
       case
         when Titulos.MenorDataVencimento is not null
          and Titulos.MenorDataVencimento <> '00000000'
@@ -78,7 +80,7 @@ define root view entity ZI_FI_CLIENTE_INADIMPLENTE
         else 0
       end                                                                    as DiasAtraso,
 
-      // Cálculo da Proposta de Ação (1 = Bloquear, 2 = Desbloquear, 3 = Sem proposta)
+      // Régua de Inadimplência: sugere 'Bloquear', 'Desbloquear' ou '' (sem proposta) para orientar o operador
       case
         when Parceiro.IsBlocked is initial
          and ( ( Parceiro.RiskClass = '1A' and Titulos.ValorTotalVencido > 0 )
@@ -93,7 +95,7 @@ define root view entity ZI_FI_CLIENTE_INADIMPLENTE
         else ''
       end                                                                    as AcaoProposta,
 
-      // Campo auxiliar numérico para garantir que 'Bloquear' venha sempre no topo da ordenação
+      // Campo auxiliar de ordenação: garante que 'Bloquear' apareça no topo da lista na tela
       case
         when Parceiro.IsBlocked is initial
          and ( ( Parceiro.RiskClass = '1A' and Titulos.ValorTotalVencido > 0 )
@@ -106,6 +108,6 @@ define root view entity ZI_FI_CLIENTE_INADIMPLENTE
       end                                                                    as OrdemProposta
 }
 where
-     Parceiro.IsBlocked   is initial
-  or Parceiro.BlockReason = '10'
+     Parceiro.IsBlocked   is initial                     // Inclui clientes liberados para verificar se devem ser bloqueados
+  or Parceiro.BlockReason = '10'                         // Inclui bloqueados por inadimplência (oculta bloqueios fiscais/jurídicos <> 10)
 ```

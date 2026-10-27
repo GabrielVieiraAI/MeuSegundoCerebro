@@ -25,7 +25,7 @@ data: 2026-10-23
 
 O **Behavior Definition (BDEF) Root** `ZI_FI_CLIENTE_INADIMPLENTE` é o objeto que transforma a nossa CDS Raiz (`[[ZI_FI_CLIENTE_INADIMPLENTE (CDS)|ZI_FI_CLIENTE_INADIMPLENTE]]`) de uma simples consulta de leitura em um **Business Object (BO) transacional** dentro do modelo **RAP** (*ABAP RESTful Application Programming Model*).
 
-Como os dados de bloqueio são gravados nas tabelas standard de crédito via classes standard da SAP (`CL_UKM_BUPA_FACTORY` / `CL_UKM_ACCOUNT`) e o log é gravado em `[[ZTFI_LOG_BLOQ_INAD]]`, utilizamos o cenário **`unmanaged implementation in class zclfi_bp_cliente_inad unique`**, declarando as duas ações customizadas: **`bloquearCliente`** e **`desbloquearCliente`**.
+Como os dados de bloqueio são gravados nas tabelas standard de crédito via classes standard da SAP (`CL_UKM_BUPA_FACTORY` / `CL_UKM_ACCOUNT`) e o log é gravado em `[[ZTFI_LOG_INADIMP]]`, utilizamos o cenário **`unmanaged implementation in class zclfi_bp_cliente_inad unique`**, declarando as duas ações customizadas: **`bloquearCliente`** e **`desbloquearCliente`**.
 
 ---
 
@@ -41,14 +41,14 @@ Como os dados de bloqueio são gravados nas tabelas standard de crédito via cla
 ## 💻 Snippet de Código
 
 ```abap
-unmanaged implementation in class zclfi_bp_cliente_inad unique;
-strict ( 2 );
+unmanaged implementation in class zclfi_bp_cliente_inad unique;  // Cenário unmanaged: persistência manual via APIs standard e log Z
+strict ( 2 );                                                      // Habilita as verificações de sintaxe estritas do RAP versão 2
 
-define behavior for ZI_FI_CLIENTE_INADIMPLENTE alias ClienteInadimplente
-lock master
-authorization master ( instance )
+define behavior for ZI_FI_CLIENTE_INADIMPLENTE alias ClienteInadimplente // Comportamento transacional da entidade raiz
+lock master                                                        // Controle de concorrência e bloqueio de registros da entidade raiz
+authorization master ( instance )                                  // Valida autorização por linha (método get_instance_authorizations)
 {
-  field ( readonly )
+  field ( readonly )                                               // Define todos os campos como somente leitura na tela
     PartnerMatriz,
     CreditSegment,
     PartnerOrigem,
@@ -64,7 +64,7 @@ authorization master ( instance )
     AcaoProposta,
     OrdemProposta;
 
-  action bloquearCliente    result [1] $self;
-  action desbloquearCliente result [1] $self;
+  action bloquearCliente    result [1] $self;                      // Ação em massa: bloqueia cliente no FSCM e atualiza a linha na tela
+  action desbloquearCliente result [1] $self;                      // Ação em massa: desbloqueia cliente no FSCM e atualiza a linha na tela
 }
 ```

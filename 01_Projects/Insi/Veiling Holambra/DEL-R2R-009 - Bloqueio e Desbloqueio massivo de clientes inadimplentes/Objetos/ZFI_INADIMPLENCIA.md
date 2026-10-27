@@ -36,14 +36,14 @@ A **`ZFI_INADIMPLENCIA`** é a **Classe de Mensagens** (transação `SE91` / Mes
 ## 💻 Snippet de Código
 
 ```yaml
-Message Class: ZFI_INADIMPLENCIA
-Descrição: "DEL-R2R-009: Mensagens de Bloqueio/Desbloqueio de Inadimplentes"
+Message Class: ZFI_INADIMPLENCIA                                    # Nome técnico da Classe de Mensagens (SE91 / Eclipse ADT)
+Descrição: "DEL-R2R-009: Mensagens de Bloqueio/Desbloqueio de Inad."# Descrição curta da classe de mensagens
 
 Mensagens Previstas:
-  001: "Cliente &1 bloqueado com sucesso no segmento &2 (Motivo 10)."
-  002: "Cliente &1 desbloqueado com sucesso no segmento &2."
-  003: "Erro ao atualizar bloqueio do cliente &1: &2"
-  004: "Sem autorização para bloquear clientes na empresa &1 / segmento &2."
-  005: "Sem autorização para desbloquear clientes na empresa &1 / segmento &2."
-  006: "Cliente &1 possui bloqueio por motivo &2 (diferente de 10 - Inadimplência)."
+  001: "Cliente &1 bloqueado com sucesso no segmento &2 (Motivo 10)." # Mensagem de sucesso após bloquear o BP no FSCM
+  002: "Cliente &1 desbloqueado com sucesso no segmento &2."          # Mensagem de sucesso após desbloquear o BP no FSCM
+  003: "Erro ao atualizar bloqueio do cliente &1: &2"                 # Falha técnica ou exceção ao chamar as APIs do FSCM
+  004: "Sem autorização para bloquear clientes na empresa &1 / segmento &2."   # Falha no AUTHORITY-CHECK ZFI_BLOQ (Atividade 05)
+  005: "Sem autorização para desbloquear clientes na empresa &1 / segmento &2." # Falha no AUTHORITY-CHECK ZFI_BLOQ (Atividade 43)
+  006: "Cliente &1 possui bloqueio por motivo &2 (diferente de 10 - Inadimplência)." # Alerta quando cliente já tem outro bloqueio
 ```

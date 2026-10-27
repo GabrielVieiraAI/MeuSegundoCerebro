@@ -38,12 +38,12 @@ No modelo RAP, nenhuma ação definida no BDEF Raiz (`[[ZI_FI_CLIENTE_INADIMPLEN
 ## 💻 Snippet de Código
 
 ```abap
-projection;
-strict ( 2 );
+projection;                                                           // Define que este Behavior Definition é uma projeção de consumo
+strict ( 2 );                                                          // Validação estrita de sintaxe do framework RAP versão 2
 
-define behavior for ZC_FI_CLIENTE_INADIMPLENTE alias ClienteInadimplente
+define behavior for ZC_FI_CLIENTE_INADIMPLENTE alias ClienteInadimplente // Projeção de comportamento para a tela Fiori Elements
 {
-  use action bloquearCliente;
-  use action desbloquearCliente;
+  use action bloquearCliente;                                          // Habilita o botão 'Bloquear' na tela do Fiori Elements
+  use action desbloquearCliente;                                        // Habilita o botão 'Desbloquear' na tela do Fiori Elements
 }
 ```

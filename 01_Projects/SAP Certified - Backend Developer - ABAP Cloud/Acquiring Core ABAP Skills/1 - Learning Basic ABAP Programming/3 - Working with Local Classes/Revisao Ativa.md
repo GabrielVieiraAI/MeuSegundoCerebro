@@ -21,20 +21,19 @@ data_conclusao:
 
 ## Podcast de Revisão
 ### Audio
-
+![[Blindando_dados_com_POO_no_ABAP.m4a]]
 ### Vídeo
-
+![[Classes_Locais_ABAP 1.mp4]]
 ---
 ## Apresentação em slides
-
-![[Slides_Modulo_03_Working_with_Local_Classes.pdf]]
+![[O_Arquiteto_ABAP_Moderno.pdf]]
 
 ---
 ## Flashcards  
 
 * **Nota de Flashcards:** [[01_Projects/SAP Certified - Backend Developer - ABAP Cloud/Acquiring Core ABAP Skills/1 - Learning Basic ABAP Programming/Flashcards/Flashcards - Modulo 03 - Working with Local Classes|🗂️ Flashcards - Módulo 03]]
 * **Deck no Plugin:** `#flashcards/sap/abap-cloud/modulo-03`
-* **Quantidade de Cartões:** 0 cartões ativos
+* **Quantidade de Cartões:** 25 cartões ativos
 
 ---
 ## Testes

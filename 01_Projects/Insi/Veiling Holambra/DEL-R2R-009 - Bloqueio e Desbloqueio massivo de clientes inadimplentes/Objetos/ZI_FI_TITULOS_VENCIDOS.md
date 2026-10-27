@@ -44,37 +44,37 @@ A responsabilidade técnica dela é ler as partidas contábeis da CDS standard d
 ## 💻 Snippet de Código
 
 ```abap
-@AbapCatalog.viewEnhancementCategory: [#NONE]
-@AccessControl.authorizationCheck: #NOT_REQUIRED
-@EndUserText.label: 'DEL-R2R-009: Agregação de Títulos Vencidos por Cliente'
-@Metadata.ignorePropagatedAnnotations: true
+@AbapCatalog.viewEnhancementCategory: [#NONE]                       // Impede extensões desnecessárias que possam degradar a performance
+@AccessControl.authorizationCheck: #NOT_REQUIRED                   // Leitura analítica agregada; a segurança é validada na camada de topo
+@EndUserText.label: 'DEL-R2R-009: Agregação Títulos Vencidos'       // Rótulo da CDS View no catálogo ABAP (máximo de 40 caracteres)
+@Metadata.ignorePropagatedAnnotations: true                        // Ignora anotações propagadas para otimizar o tempo de ativação
 @ObjectModel.usageType:{
-  serviceQuality: #X,
-  sizeCategory: #XL,
-  dataClass: #TRANSACTIONAL
+  serviceQuality: #X,                                              // Nível de serviço para consultas analíticas de agregação
+  sizeCategory: #XL,                                               // Categoria de volume: tabela contábil com grande massa de dados
+  dataClass: #TRANSACTIONAL                                        // Dados transacionais de partidas em aberto (FI-AR)
 }
 define view entity ZI_FI_TITULOS_VENCIDOS
-  as select from I_OperationalAcctgDocItem as Item
+  as select from I_OperationalAcctgDocItem as Item                 // CDS Standard SAP de itens contábeis operacionais (ACDOCA / BSEG)
 {
-  key Item.CompanyCode,
-  key Item.Customer,
+  key Item.CompanyCode,                                            // Chave 1: Empresa contábil responsável pelo lançamento (ex.: CVH1)
+  key Item.Customer,                                               // Chave 2: Código do Cliente devedor (base do agrupamento financeiro)
 
-      Item.CompanyCodeCurrency,
+      Item.CompanyCodeCurrency,                                    // Moeda da empresa: obrigatória para associação semântica de valores
 
       @Semantics.amount.currencyCode: 'CompanyCodeCurrency'
-      sum( Item.AmountInCompanyCodeCurrency ) as ValorTotalVencido,
+      sum( Item.AmountInCompanyCodeCurrency ) as ValorTotalVencido,  // Montante total: soma do valor líquido de todas as parcelas vencidas
 
-      min( Item.NetDueDate )                  as MenorDataVencimento,
+      min( Item.NetDueDate )                  as MenorDataVencimento,// Vencimento mais antigo: usado na CDS Raiz para calcular dias de atraso
 
-      count( distinct Item.AccountingDocument ) as QtdTitulosVencidos
+      count( distinct Item.AccountingDocument ) as QtdTitulosVencidos // Quantidade de títulos: total de faturas distintas em aberto vencidas
 }
 where
-      Item.FinancialAccountType = 'D'
-  and Item.CompanyCode          = 'CVH1' // Em implementação final, vincular à tabela de parâmetros
-  and Item.ClearingDate         is initial
-  and Item.NetDueDate           < $session.system_date
+      Item.FinancialAccountType = 'D'                              // Filtro 1: Somente partidas de Clientes (D = Debitor / FI-AR)
+  and Item.CompanyCode          = 'CVH1'                           // Filtro 2: Empresa da Veiling (via parâmetro no Clean Core)
+  and Item.ClearingDate         is initial                         // Filtro 3: Somente títulos em aberto (sem data de compensação/baixa)
+  and Item.NetDueDate           < $session.system_date             // Filtro 4: Somente títulos vencidos há pelo menos 1 dia da data atual
 group by
-  Item.CompanyCode,
-  Item.Customer,
-  Item.CompanyCodeCurrency
+  Item.CompanyCode,                                                // Agrupa por empresa
+  Item.Customer,                                                   // Agrupa por cliente (garante exatamente 1 linha por cliente devedor)
+  Item.CompanyCodeCurrency                                         // Agrupa por moeda para garantir coerência monetária na soma
 ```

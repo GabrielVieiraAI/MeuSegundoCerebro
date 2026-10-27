@@ -17,7 +17,7 @@ data: 2026-10-23
 
 # DEL-R2R-009 · Arquitetura Técnica e Lista de Objetos (ABAP Cloud Lean)
 
-⬅️ [[00 - Identificação da Solicitação e Sumário|Sumário da Demanda]] | 📄 [[03 - Detalhamento para Desenvolvimento|Detalhamento para Desenvolvimento]] | 📋 [[Consolidado de decisões tomadas em todas as reuniões|Decisões das Reuniões]]
+⬅️ [[00 - Identificação da Solicitação e Sumário|Sumário da Demanda]] | 📄 [[03 - Detalhamento para Desenvolvimento|Detalhamento para Desenvolvimento]] | 📋 [[Consolidado de decisões tomadas em todas as reuniões|Decisões das Reuniões]] | 🚀 [[DEL-R2R-009 - Guia de Implementação|Guia de Implementação]]
 
 ---
 
@@ -47,7 +47,7 @@ A nomenclatura segue estritamente o [[0 - Padrão de Nomenclatura ABAP Veiling H
 
 | Tipo de Objeto          | Padrão          | Nome do Objeto       | Responsabilidade Técnica                                                                                                                                                                                                                                                                                                                                       |
 | :---------------------- | :-------------- | :------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Tabela Transparente** | `ZT[MD]_<desc>` | [[ZTFI_LOG_BLOQ_INAD]] | Tabela de log para auditoria de bloqueio e desbloqueio. Registra chave única (`sysuuid_x16`), BP Matriz (`bu_partner`), BP Origem (`bu_partner`), segmento de crédito, ação (`abap.char(1)`: B/D), motivo do bloqueio, status da execução (`abap.char(1)`: S/E), montante vencido, dias de atraso, timestamp (`abap.utclong`) e usuário (`abp_creation_user`). |
+| **Tabela Transparente** | `ZT[MD]_<desc>` | [[ZTFI_LOG_INADIMP]] | Tabela de log para auditoria de bloqueio e desbloqueio. Registra chave única (`sysuuid_x16`), BP Matriz (`bu_partner`), BP Origem (`bu_partner`), segmento de crédito, ação (`abap.char(1)`: B/D), motivo do bloqueio, status da execução (`abap.char(1)`: S/E), montante vencido, dias de atraso, timestamp (`abap.utclong`) e usuário (`abp_creation_user`). |
 
 > [!TIP]
 > **Definição Lean da Tabela:** No ABAP Cloud, os campos `partner` e `partner_origem` reutilizam o mesmo elemento de dados standard liberado `bu_partner`. A diferenciação de rótulo para o usuário ("Matriz" vs "BP de Origem") é realizada via `@EndUserText.label` na camada de CDS View.
@@ -77,7 +77,7 @@ A nomenclatura segue estritamente o [[0 - Padrão de Nomenclatura ABAP Veiling H
 | :--- | :--- | :--- | :--- |
 | **Behavior Definition (BDEF Root)** | Mesmo nome da CDS raiz | [[ZI_FI_CLIENTE_INADIMPLENTE (BDEF)\|ZI_FI_CLIENTE_INADIMPLENTE]] | Define as operações do Business Object e as ações customizadas em massa: `bloquearCliente` (motivo fixo `10`, sem pop-up) e `desbloquearCliente`. |
 | **Behavior Definition (Projection)**| Mesmo nome da CDS consumo | [[ZC_FI_CLIENTE_INADIMPLENTE (BDEF)\|ZC_FI_CLIENTE_INADIMPLENTE]] | Projeta as ações de negócio para a interface Fiori Elements. |
-| **Behavior Pool (Classe ABAP)** | `ZCL[MD]_<desc>` | [[ZCLFI_BP_CLIENTE_INAD]] | Implementação das ações do BDEF. Executa as validações de autorização, invoca as APIs standard de crédito (`CL_UKM_BUPA_FACTORY` / `CL_UKM_ACCOUNT`) para aplicar/retirar o bloqueio (motivo `10`) na Matriz, grava a auditoria em [[ZTFI_LOG_BLOQ_INAD]] e monta as mensagens consolidadas de retorno. |
+| **Behavior Pool (Classe ABAP)** | `ZCL[MD]_<desc>` | [[ZCLFI_BP_CLIENTE_INAD]] | Implementação das ações do BDEF. Executa as validações de autorização, invoca as APIs standard de crédito (`CL_UKM_BUPA_FACTORY` / `CL_UKM_ACCOUNT`) para aplicar/retirar o bloqueio (motivo `10`) na Matriz, grava a auditoria em [[ZTFI_LOG_INADIMP]] e monta as mensagens consolidadas de retorno. |
 
 ---
 
@@ -95,7 +95,7 @@ A nomenclatura segue estritamente o [[0 - Padrão de Nomenclatura ABAP Veiling H
 | Tipo de Objeto                   | Padrão         | Nome do Objeto      | Responsabilidade Técnica                                                                                                                                                        |
 | :------------------------------- | :------------- | :------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Classe de Mensagens (SE91)**   | `Z[MD]_<desc>` | [[ZFI_INADIMPLENCIA]] | Mensagens do sistema para validações, autorização, sucesso e mensagens individuais no retorno consolidado.                                                                      |
-| **Objeto de Autorização (SU21)** | `Z<desc>`      | [[ZFI_BLOQ]]          | Objeto de autorização contendo os campos: Empresa (`BUKRS`), Segmento de Crédito (`CREDIT_SGMNT`) e Atividade (`ACTVT` = `03` Exibir, `43` Liberar/Desbloquear, `05` Bloquear). |
+| **Objeto de Autorização (SU21)** | `Z<desc>`      | [[ZFI_BLOQ]]          | Objeto de autorização contendo os campos: Empresa (`BUKRS`), Segmento de Crédito (`UKM_SGMNT`) e Atividade (`ACTVT` = `03` Exibir, `43` Liberar/Desbloquear, `05` Bloquear). |
 
 ---
 
@@ -125,6 +125,6 @@ A nomenclatura segue estritamente o [[0 - Padrão de Nomenclatura ABAP Veiling H
 
 ## 🔄 Próximos Passos para o Detalhamento
 
-1. [x] Definir a sintaxe exata DDL da tabela [[ZTFI_LOG_BLOQ_INAD]] no Eclipse ADT (campos, tipos e chaves).
+1. [x] Definir a sintaxe exata DDL da tabela [[ZTFI_LOG_INADIMP]] no Eclipse ADT (campos, tipos e chaves).
 2. [x] Detalhar a arquitetura das CDS Views ([[ZI_FI_TITULOS_VENCIDOS]], [[ZI_FI_PARCEIRO_CREDITO]], [[ZI_FI_CLIENTE_INADIMPLENTE (CDS)|ZI_FI_CLIENTE_INADIMPLENTE]] e [[ZC_FI_CLIENTE_INADIMPLENTE (CDS)|ZC_FI_CLIENTE_INADIMPLENTE]]).
 3. [x] Desenhar a lógica do Behavior Pool [[ZCLFI_BP_CLIENTE_INAD]] (chamada das classes de crédito com motivo fixo `10` e persistência do log).

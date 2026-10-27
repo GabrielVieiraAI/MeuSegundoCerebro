@@ -32,7 +32,7 @@ Ele é verificado tanto na leitura dos dados quanto na execução dos botões **
 
 1. **Controle por Empresa, Segmento de Crédito e Atividade:**
    - `BUKRS` (Empresa): ex. `CVH1`;
-   - `CREDIT_SGMNT` (Segmento de Crédito): ex. `1000`;
+   - `UKM_SGMNT` (Segmento de Crédito): ex. `1000`;
    - `ACTVT` (Atividade):
      - `03` = Exibir lista de clientes;
      - `05` = Bloquear cliente (`bloquearCliente`);
@@ -44,13 +44,13 @@ Ele é verificado tanto na leitura dos dados quanto na execução dos botões **
 ## 💻 Snippet de Código
 
 ```abap
-" Exemplo de verificação do objeto ZFI_BLOQ dentro de ZCLFI_BP_CLIENTE_INAD:
-AUTHORITY-CHECK OBJECT 'ZFI_BLOQ'
-  ID 'BUKRS'        FIELD 'CVH1'
-  ID 'CREDIT_SGMNT' FIELD '1000'
-  ID 'ACTVT'        FIELD '05'. " 05 = Bloquear | 43 = Desbloquear | 03 = Exibir
+// Exemplo de verificação do objeto ZFI_BLOQ dentro de ZCLFI_BP_CLIENTE_INAD:
+AUTHORITY-CHECK OBJECT 'ZFI_BLOQ'                                      // Valida autorização de acesso ao objeto customizado ZFI_BLOQ
+  ID 'BUKRS'     FIELD 'CVH1'                                          // Campo 1: Empresa contábil autorizada (Veiling Holambra)
+  ID 'UKM_SGMNT' FIELD '1000'                                          // Campo 2: Segmento de crédito do FSCM avaliado
+  ID 'ACTVT'     FIELD '05'.                                           // Campo 3: Operação autorizada (03 = Exibir | 05 = Bloquear | 43 = Liberar)
 
-IF sy-subrc <> 0.
-  " Adiciona mensagem 004/005 da classe ZFI_INADIMPLENCIA na estrutura reported/failed
+IF sy-subrc <> 0.                                                      // Retorno diferente de zero indica falta de autorização no perfil PFCG
+  // Adiciona mensagem 004 ou 005 da classe ZFI_INADIMPLENCIA na estrutura reported/failed
 ENDIF.
 ```

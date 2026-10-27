@@ -48,57 +48,57 @@ Enquanto a CDS Raiz (`[[ZI_FI_CLIENTE_INADIMPLENTE (CDS)|ZI_FI_CLIENTE_INADIMPLE
 
 ```abap
 @AccessControl.authorizationCheck: #CHECK
-@EndUserText.label: 'DEL-R2R-009: Projeção de Clientes Inadimplentes'
+@EndUserText.label: 'DEL-R2R-009: Projeção Inadimplentes'
 @Metadata.allowExtensions: true
 @Search.searchable: true
 define root view entity ZC_FI_CLIENTE_INADIMPLENTE
-  provider contract transactional_query
-  as projection on ZI_FI_CLIENTE_INADIMPLENTE
+  provider contract transactional_query                                // Contrato transacional do RAP para projeção consumida no Fiori
+  as projection on ZI_FI_CLIENTE_INADIMPLENTE                          // Projeta diretamente os campos da CDS Raiz (Passo 06)
 {
       @Search.defaultSearchElement: true
       @EndUserText.label: 'Cliente (Matriz)'
-  key PartnerMatriz,
+  key PartnerMatriz,                                                   // Chave 1: BP Matriz (alvo do bloqueio/desbloqueio)
 
       @EndUserText.label: 'Segmento de Crédito'
-  key CreditSegment,
+  key CreditSegment,                                                   // Chave 2: Segmento de crédito avaliado (1000)
 
       @Search.defaultSearchElement: true
       @EndUserText.label: 'BP de Origem'
-      PartnerOrigem,
+      PartnerOrigem,                                                   // BP da filial devedora (ou Matriz se não houver filial)
 
       @Search.defaultSearchElement: true
       @Search.fuzzinessThreshold: 0.8
       @EndUserText.label: 'Nome do Cliente'
-      NomeCliente,
+      NomeCliente,                                                     // Nome / Razão social do cliente
 
       @EndUserText.label: 'Classe de Risco'
-      RiskClass,
+      RiskClass,                                                       // Perfil de risco (1A = À vista, 2A = A prazo)
 
       @EndUserText.label: 'Segmento de Atuação (Autosserviço)'
-      GroupFeature,
+      GroupFeature,                                                    // Identifica se o cliente atua no Autosserviço
 
       @EndUserText.label: 'Bloqueado'
-      IsBlocked,
+      IsBlocked,                                                       // Status de bloqueio atual (X = Bloqueado, vazio = Liberado)
 
       @EndUserText.label: 'Motivo do Bloqueio'
-      BlockReason,
+      BlockReason,                                                     // Motivo do bloqueio no FSCM (10 = Inadimplência)
 
       @Semantics.currencyCode: true
-      Moeda,
+      Moeda,                                                           // Moeda dos valores financeiros (BRL)
 
       @Semantics.amount.currencyCode: 'Moeda'
       @EndUserText.label: 'Valor Vencido'
-      ValorTotalVencido,
+      ValorTotalVencido,                                               // Saldo total vencido do cliente
 
       @EndUserText.label: 'Vencimento Mais Antigo'
-      MenorDataVencimento,
+      MenorDataVencimento,                                             // Data da parcela em atraso mais antiga
 
       @EndUserText.label: 'Dias em Atraso'
-      DiasAtraso,
+      DiasAtraso,                                                      // Quantidade calculada de dias em atraso
 
       @EndUserText.label: 'Ação Proposta'
-      AcaoProposta,
+      AcaoProposta,                                                    // Sugestão da régua: 'Bloquear', 'Desbloquear' ou vazio
 
-      OrdemProposta
+      OrdemProposta                                                    // Campo numérico técnico para ordenação (1=Bloquear no topo)
 }
 ```
