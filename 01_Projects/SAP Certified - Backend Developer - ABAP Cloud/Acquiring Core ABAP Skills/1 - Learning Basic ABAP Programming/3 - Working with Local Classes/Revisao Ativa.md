@@ -20,14 +20,17 @@ data_conclusao:
 ---
 
 ## Podcast de Revisão
-### Audio
-![[Blindando_dados_com_POO_no_ABAP.m4a]]
+
+### Áudio
+- [[Blindando_dados_com_POO_no_ABAP.m4a| Áudio 1]]
+- [[Armadilhas_em_classes_locais_no_ABAP_Cloud (1).m4a| Áudio 2]]
 ### Vídeo
-![[Classes_Locais_ABAP 1.mp4]]
+- [[Classes_Locais_ABAP 1.mp4| Vídeo 1]]
+- [[Módulo_3__Classes_Locais.mp4|Vídeo 2]]
 ---
 ## Apresentação em slides
-![[O_Arquiteto_ABAP_Moderno.pdf]]
 
+- [[O_Arquiteto_ABAP_Moderno.pdf | Apresentação]]
 ---
 ## Flashcards  
 
@@ -47,7 +50,7 @@ data_conclusao:
 ---
 ## Mapa Mental (Excalidraw)
 
-* **Mapa Mental Interativo:** [[01_Projects/SAP Certified - Backend Developer - ABAP Cloud/Acquiring Core ABAP Skills/1 - Learning Basic ABAP Programming/3 - Working with Local Classes/Mapa Mental.excalidraw|🧠 Abrir Mapa Mental no Excalidraw]]  
+* **Mapa Mental Interativo:** [[Mapa Mental.excalidraw 2|🧠 Abrir Mapa Mental no Excalidraw]]  
   *(Abra no modo Excalidraw para navegar, dar zoom e editar os nós interativamente)*
 
-![[01_Projects/SAP Certified - Backend Developer - ABAP Cloud/Acquiring Core ABAP Skills/1 - Learning Basic ABAP Programming/3 - Working with Local Classes/Mapa Mental.excalidraw.md]]
+![[Mapa Mental.excalidraw 2]]
