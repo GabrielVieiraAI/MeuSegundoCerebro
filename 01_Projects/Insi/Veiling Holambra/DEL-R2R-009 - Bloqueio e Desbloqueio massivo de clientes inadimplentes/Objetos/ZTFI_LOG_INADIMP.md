@@ -43,8 +43,22 @@ Seguindo a abordagem **ABAP Cloud Lean**, esta tabela reutiliza elementos de dad
 
 ---
 
+## 🛠️ Passo a Passo da Criação do Objeto
+
+1. **No Eclipse ADT:** Conecte-se ao sistema `S4D` (mandante `100`).
+2. No *Project Explorer*, clique com o botão direito sobre o pacote de desenvolvimento `ZFI_BLOQ_INADIMPLENTES` -> **`New`** -> **`Other ABAP Repository Object`**.
+3. Na barra de pesquisa, digite **`Database Table`** (dentro da categoria *Core Data Services*) e clique em **Next**.
+4. Preencha as propriedades da tabela:
+   - **Name:** `ZTFI_LOG_INADIMP`
+   - **Description:** `DEL-R2R-009: Log Auditoria Bloqueio Inadimplentes`
+5. Clique em **Next**, selecione a sua ordem de transporte (TR) de desenvolvimento e clique em **Finish**.
+6. Substitua o código gerado pelo snippet abaixo e ative o objeto com **`Ctrl + F3`**.
+
+---
+
 ## 💻 Snippet de Código
 
+### 📝 Código Comentado (Para Estudo e Referência)
 ```abap
 @EndUserText.label : 'DEL-R2R-009: Log Clientes Inadimplentes'
 @AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
@@ -69,6 +83,38 @@ define table ztfi_log_inadimp {
   dias_atraso        : abap.int4;                   // Dias em atraso: maior quantidade de dias vencidos que o cliente possuía no momento
   created_by         : abp_creation_user;           // Usuário executor: login SAP (sy-uname) do operador que confirmou a ação no Fiori
   created_at         : abap.utclong;                // Timestamp de auditoria: data, hora, minuto e segundo exatos (UTC) da gravação
+
+}
+```
+
+---
+
+### 🚀 Código Limpo (Sem Comentários - Para Copiar e Colar)
+
+```abap
+@EndUserText.label : 'DEL-R2R-009: Log Clientes Inadimplentes'
+@AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.dataMaintenance : #RESTRICTED
+define table ztfi_log_inadimp {
+
+  key client         : abap.clnt not null;
+  key log_id         : sysuuid_x16 not null;
+  partner            : bu_partner not null;
+  partner_origem     : bu_partner;
+  credit_sgmnt       : ukm_credit_sgmnt;
+  acao               : abap.char(1);
+  block_reason       : ukm_block_reason;
+  status             : abap.char(1);
+  mensagem           : abap.char(220);
+  risk_class         : ukm_risk_class;
+  moeda              : waers_curc;
+  @Semantics.amount.currencyCode : 'ztfi_log_inadimp.moeda'
+  vlr_vencido        : abap.curr(15,2);
+  dias_atraso        : abap.int4;
+  created_by         : abp_creation_user;
+  created_at         : abap.utclong;
 
 }
 ```

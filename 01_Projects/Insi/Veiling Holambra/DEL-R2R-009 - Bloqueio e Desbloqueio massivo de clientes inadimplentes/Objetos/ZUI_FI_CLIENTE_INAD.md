@@ -35,11 +35,36 @@ Ele funciona como um "cardápio" que declara quais CDS Views de Projeção fazem
 
 ---
 
+## 🛠️ Passo a Passo da Criação do Objeto
+
+1. **No Eclipse ADT:** Clique com o botão direito sobre a CDS View de Projeção `ZC_FI_CLIENTE_INADIMPLENTE` (ou sobre o pacote `ZFI_BLOQ_INADIMPLENTES` na pasta `Business Services` -> `Service Definitions`) -> **`New Service Definition`**.
+2. No assistente de criação:
+   - **Name:** `ZUI_FI_CLIENTE_INAD`
+   - **Description:** `DEL-R2R-009: Serviço Clientes Inadimp.`
+3. Clique em **Next**, selecione a Ordem de Transporte (TR) do projeto e clique em **Finish**.
+4. Substitua o código gerado pelo conteúdo da seção [Snippet de Código](file:///c:/Users/gabriel.vsouza/source/MeuSegundoCerebro/01_Projects/Insi/Veiling%20Holambra/DEL-R2R-009%20-%20Bloqueio%20e%20Desbloqueio%20massivo%20de%20clientes%20inadimplentes/Objetos/ZUI_FI_CLIENTE_INAD.md#L45-L55) abaixo.
+   *(Nota técnica: A instrução `expose ZC_FI_CLIENTE_INADIMPLENTE as ClienteInadimplente;` publica a entidade no escopo do serviço, atribuindo o alias `ClienteInadimplente` que será o nome da coleção no OData).*
+5. Ative o objeto pressionando **`Ctrl + F3`**.
+
+---
+
 ## 💻 Snippet de Código
 
+### 📝 Código Comentado (Para Estudo e Referência)
 ```abap
 @EndUserText.label: 'DEL-R2R-009: Serviço Clientes Inadimp.'
 define service ZUI_FI_CLIENTE_INAD {                                   // Declara o escopo do serviço de negócio exposto para fora do backend
   expose ZC_FI_CLIENTE_INADIMPLENTE as ClienteInadimplente;            // Expõe a CDS de projeção com alias amigável consumido pelo Fiori
+}
+```
+
+---
+
+### 🚀 Código Limpo (Sem Comentários - Para Copiar e Colar)
+
+```abap
+@EndUserText.label: 'DEL-R2R-009: Serviço Clientes Inadimp.'
+define service ZUI_FI_CLIENTE_INAD {
+  expose ZC_FI_CLIENTE_INADIMPLENTE as ClienteInadimplente;
 }
 ```

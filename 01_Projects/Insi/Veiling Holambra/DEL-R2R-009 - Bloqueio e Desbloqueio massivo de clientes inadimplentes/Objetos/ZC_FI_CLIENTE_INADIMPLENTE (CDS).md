@@ -44,8 +44,24 @@ Enquanto a CDS Raiz (`[[ZI_FI_CLIENTE_INADIMPLENTE (CDS)|ZI_FI_CLIENTE_INADIMPLE
 
 ---
 
+## 🛠️ Passo a Passo da Criação do Objeto
+
+1. **No Eclipse ADT:** Clique com o botão direito sobre a CDS View raiz `ZI_FI_CLIENTE_INADIMPLENTE` (ou sobre o pacote `ZFI_BLOQ_INADIMPLENTES` em `Core Data Services` -> `Data Definitions`) -> **`New`** -> **`Data Definition`**.
+2. Preencha os dados do objeto:
+   - **Name:** `ZC_FI_CLIENTE_INADIMPLENTE`
+   - **Description:** `DEL-R2R-009: Projeção Inadimplentes (Consumption)`
+3. Clique em **Next**, selecione a Ordem de Transporte (TR) e clique em **Next** para a seleção de templates.
+4. Escolha o template padrão **`Define Root View Entity`** (ou template em branco) e clique em **Finish**.
+   *(Nota: A declaração `as projection on ZI_FI_CLIENTE_INADIMPLENTE` com o contrato `provider contract transactional_query` converte a entidade para uma Projeção Transacional no RAP, que herda as capacidades da raiz e permite o consumo limpo no SAP Fiori).*
+5. Substitua o conteúdo pelo código presente na seção [Snippet de Código](file:///c:/Users/gabriel.vsouza/source/MeuSegundoCerebro/01_Projects/Insi/Veiling%20Holambra/DEL-R2R-009%20-%20Bloqueio%20e%20Desbloqueio%20massivo%20de%20clientes%20inadimplentes/Objetos/ZC_FI_CLIENTE_INADIMPLENTE%20(CDS).md#L62-L118) abaixo.
+6. Ative o objeto pressionando **`Ctrl + F3`**.
+7. **Validação dos Dados (`F8 - Data Preview`):** Pressione `F8` na CDS View de Projeção para verificar se os dados são exibidos com os textos de rótulo corretos e se os campos de chave e moeda estão devidamente amarrados.
+
+---
+
 ## 💻 Snippet de Código
 
+### 📝 Código Comentado (Para Estudo e Referência)
 ```abap
 @AccessControl.authorizationCheck: #CHECK
 @EndUserText.label: 'DEL-R2R-009: Projeção Inadimplentes'
@@ -100,5 +116,66 @@ define root view entity ZC_FI_CLIENTE_INADIMPLENTE
       AcaoProposta,                                                    // Sugestão da régua: 'Bloquear', 'Desbloquear' ou vazio
 
       OrdemProposta                                                    // Campo numérico técnico para ordenação (1=Bloquear no topo)
+}
+```
+
+---
+
+### 🚀 Código Limpo (Sem Comentários - Para Copiar e Colar)
+
+```abap
+@AccessControl.authorizationCheck: #CHECK
+@EndUserText.label: 'DEL-R2R-009: Projeção Inadimplentes'
+@Metadata.allowExtensions: true
+@Search.searchable: true
+define root view entity ZC_FI_CLIENTE_INADIMPLENTE
+  provider contract transactional_query
+  as projection on ZI_FI_CLIENTE_INADIMPLENTE
+{
+      @Search.defaultSearchElement: true
+      @EndUserText.label: 'Cliente (Matriz)'
+  key PartnerMatriz,
+
+      @EndUserText.label: 'Segmento de Crédito'
+  key CreditSegment,
+
+      @Search.defaultSearchElement: true
+      @EndUserText.label: 'BP de Origem'
+      PartnerOrigem,
+
+      @Search.defaultSearchElement: true
+      @Search.fuzzinessThreshold: 0.8
+      @EndUserText.label: 'Nome do Cliente'
+      NomeCliente,
+
+      @EndUserText.label: 'Classe de Risco'
+      RiskClass,
+
+      @EndUserText.label: 'Segmento de Atuação (Autosserviço)'
+      GroupFeature,
+
+      @EndUserText.label: 'Bloqueado'
+      IsBlocked,
+
+      @EndUserText.label: 'Motivo do Bloqueio'
+      BlockReason,
+
+      @Semantics.currencyCode: true
+      Moeda,
+
+      @Semantics.amount.currencyCode: 'Moeda'
+      @EndUserText.label: 'Valor Vencido'
+      ValorTotalVencido,
+
+      @EndUserText.label: 'Vencimento Mais Antigo'
+      MenorDataVencimento,
+
+      @EndUserText.label: 'Dias em Atraso'
+      DiasAtraso,
+
+      @EndUserText.label: 'Ação Proposta'
+      AcaoProposta,
+
+      OrdemProposta
 }
 ```

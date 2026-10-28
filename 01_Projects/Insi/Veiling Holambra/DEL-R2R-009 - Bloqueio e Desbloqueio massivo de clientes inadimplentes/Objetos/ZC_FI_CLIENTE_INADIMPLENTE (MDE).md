@@ -42,8 +42,24 @@ A **Metadata Extension (MDE)** `ZC_FI_CLIENTE_INADIMPLENTE` é um artefato separ
 
 ---
 
+## 🛠️ Passo a Passo da Criação do Objeto
+
+1. **No Eclipse ADT:** Clique com o botão direito sobre a CDS View de Projeção `ZC_FI_CLIENTE_INADIMPLENTE` (ou sobre o pacote `ZFI_BLOQ_INADIMPLENTES` na pasta `Core Data Services` -> `Metadata Extensions`) -> **`New`** -> **`Metadata Extension`**.
+2. Preencha os campos do assistente:
+   - **Name:** `ZC_FI_CLIENTE_INADIMPLENTE` *(por convenção SAP, utiliza-se exatamente o mesmo nome da CDS que ela estende)*.
+   - **Description:** `DEL-R2R-009: Metadados UI Inadimplentes`
+   - **Extended Entity:** Certifique-se de que está preenchido com `ZC_FI_CLIENTE_INADIMPLENTE`.
+3. Clique em **Next**, selecione a Ordem de Transporte (TR) do projeto e clique em **Next** para a tela de templates.
+4. Escolha o template **`annotate entity`** (ou `annotate view`) e clique em **Finish**.
+5. Substitua o conteúdo pelo código exibido na seção [Snippet de Código](file:///c:/Users/gabriel.vsouza/source/MeuSegundoCerebro/01_Projects/Insi/Veiling%20Holambra/DEL-R2R-009%20-%20Bloqueio%20e%20Desbloqueio%20massivo%20de%20clientes%20inadimplentes/Objetos/ZC_FI_CLIENTE_INADIMPLENTE%20(MDE).md#L60-L125) abaixo.
+6. Ative o objeto com **`Ctrl + F3`**.
+   *(Importante: Assegure-se de que a CDS `ZC_FI_CLIENTE_INADIMPLENTE` possua a anotação `@Metadata.allowExtensions: true` para que os metadados visuais de filtros e botões sejam devidamente reconhecidos no Fiori).*
+
+---
+
 ## 💻 Snippet de Código
 
+### 📝 Código Comentado (Para Estudo e Referência)
 ```abap
 @Metadata.layer: #CORE
 @UI: {
@@ -103,5 +119,71 @@ annotate entity ZC_FI_CLIENTE_INADIMPLENTE with                      // Estende 
 
   @UI.hidden: true
   OrdemProposta;                                                       // Campo técnico oculto na tabela (utilizado no sortOrder inicial)
+}
+```
+
+---
+
+### 🚀 Código Limpo (Sem Comentários - Para Copiar e Colar)
+
+```abap
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Cliente',
+    typeNamePlural: 'Clientes',
+    title: { type: #STANDARD, value: 'NomeCliente' },
+    description: { type: #STANDARD, value: 'PartnerMatriz' }
+  },
+  presentationVariant: [{
+    sortOrder: [
+      { by: 'OrdemProposta', direction: #ASC },
+      { by: 'ValorTotalVencido', direction: #DESC }
+    ],
+    visualizations: [{ type: #AS_LINEITEM }]
+  }]
+}
+annotate entity ZC_FI_CLIENTE_INADIMPLENTE with
+{
+  @UI.lineItem: [
+    { position: 10, importance: #HIGH },
+    { type: #FOR_ACTION, dataAction: 'bloquearCliente',    label: 'Bloquear' },
+    { type: #FOR_ACTION, dataAction: 'desbloquearCliente', label: 'Desbloquear' }
+  ]
+  @UI.selectionField: [{ position: 10 }]
+  AcaoProposta;
+
+  @UI.lineItem: [{ position: 20, importance: #HIGH }]
+  @UI.selectionField: [{ position: 20 }]
+  PartnerMatriz;
+
+  @UI.lineItem: [{ position: 30, importance: #HIGH }]
+  NomeCliente;
+
+  @UI.lineItem: [{ position: 40, importance: #MEDIUM }]
+  PartnerOrigem;
+
+  @UI.lineItem: [{ position: 50, importance: #HIGH }]
+  @UI.selectionField: [{ position: 30 }]
+  GroupFeature;
+
+  @UI.lineItem: [{ position: 60, importance: #HIGH }]
+  @UI.selectionField: [{ position: 40 }]
+  RiskClass;
+
+  @UI.lineItem: [{ position: 70, importance: #HIGH }]
+  ValorTotalVencido;
+
+  @UI.lineItem: [{ position: 80, importance: #MEDIUM }]
+  DiasAtraso;
+
+  @UI.lineItem: [{ position: 90, importance: #HIGH }]
+  IsBlocked;
+
+  @UI.lineItem: [{ position: 100, importance: #MEDIUM }]
+  BlockReason;
+
+  @UI.hidden: true
+  OrdemProposta;
 }
 ```

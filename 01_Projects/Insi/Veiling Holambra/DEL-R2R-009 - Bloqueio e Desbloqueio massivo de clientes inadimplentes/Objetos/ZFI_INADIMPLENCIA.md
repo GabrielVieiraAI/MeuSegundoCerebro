@@ -33,8 +33,23 @@ A **`ZFI_INADIMPLENCIA`** é a **Classe de Mensagens** (transação `SE91` / Mes
 
 ---
 
+## 🛠️ Passo a Passo da Criação do Objeto
+
+1. **No Eclipse ADT** (ou transação `SE91` no SAP GUI):
+   - Clique com o botão direito sobre o pacote de desenvolvimento `ZFI_BLOQ_INADIMPLENTES` -> **`New`** -> **`Other ABAP Repository Object`**.
+   - Na caixa de pesquisa, digite **`Message Class`** (na categoria *Texts* ou *Dictionary*) e clique em **Next**.
+2. Preencha as propriedades da classe de mensagens:
+   - **Name:** `ZFI_INADIMPLENCIA`
+   - **Description:** `DEL-R2R-009: Mensagens Bloqueio Inadimplentes`
+3. Selecione a sua ordem de transporte (TR) de desenvolvimento e clique em **Finish**.
+4. No editor de mensagens, cadastre os números de mensagem de `001` a `006` com seus respectivos textos e marcadores de posição (`&1`, `&2`) conforme detalhado no snippet abaixo.
+5. Salve e ative o objeto com **`Ctrl + F3`**.
+
+---
+
 ## 💻 Snippet de Código
 
+### 📝 Código Comentado (Para Estudo e Referência)
 ```yaml
 Message Class: ZFI_INADIMPLENCIA                                    # Nome técnico da Classe de Mensagens (SE91 / Eclipse ADT)
 Descrição: "DEL-R2R-009: Mensagens de Bloqueio/Desbloqueio de Inad."# Descrição curta da classe de mensagens
@@ -46,4 +61,21 @@ Mensagens Previstas:
   004: "Sem autorização para bloquear clientes na empresa &1 / segmento &2."   # Falha no AUTHORITY-CHECK ZFI_BLOQ (Atividade 05)
   005: "Sem autorização para desbloquear clientes na empresa &1 / segmento &2." # Falha no AUTHORITY-CHECK ZFI_BLOQ (Atividade 43)
   006: "Cliente &1 possui bloqueio por motivo &2 (diferente de 10 - Inadimplência)." # Alerta quando cliente já tem outro bloqueio
+```
+
+---
+
+### 🚀 Código Limpo (Sem Comentários - Para Copiar e Colar)
+
+```yaml
+Message Class: ZFI_INADIMPLENCIA
+Descrição: "DEL-R2R-009: Mensagens de Bloqueio/Desbloqueio de Inad."
+
+Mensagens Previstas:
+  001: "Cliente &1 bloqueado com sucesso no segmento &2 (Motivo 10)."
+  002: "Cliente &1 desbloqueado com sucesso no segmento &2."
+  003: "Erro ao atualizar bloqueio do cliente &1: &2"
+  004: "Sem autorização para bloquear clientes na empresa &1 / segmento &2."
+  005: "Sem autorização para desbloquear clientes na empresa &1 / segmento &2."
+  006: "Cliente &1 possui bloqueio por motivo &2 (diferente de 10 - Inadimplência)."
 ```

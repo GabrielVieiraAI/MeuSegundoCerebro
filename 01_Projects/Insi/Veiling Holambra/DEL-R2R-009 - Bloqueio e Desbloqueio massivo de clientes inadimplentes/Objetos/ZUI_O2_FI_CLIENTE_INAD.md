@@ -35,7 +35,31 @@ O **Service Binding** `ZUI_O2_FI_CLIENTE_INAD` vincula o Service Definition (`[[
 
 ---
 
+## 🛠️ Passo a Passo da Criação do Objeto
+
+1. **No Eclipse ADT:** Clique com o botão direito sobre o Service Definition `ZUI_FI_CLIENTE_INAD` -> **`New Service Binding`**.
+2. Preencha os campos do assistente:
+   - **Name:** `ZUI_O2_FI_CLIENTE_INAD`
+   - **Description:** `DEL-R2R-009: Service Binding OData V2 - Clientes Inad.`
+   - **Binding Type:** Selecione **`ODATA V2 - UI`** *(essencial para consumo via Fiori Elements e compatibilidade com o padrão adotado na Veiling)*.
+   - **Service Definition:** `ZUI_FI_CLIENTE_INAD` *(preenchido automaticamente)*.
+3. Clique em **Next**, selecione a Ordem de Transporte (TR) do projeto e clique em **Finish**.
+4. **Publicação do Serviço no SAP Gateway (`Publish`):**
+   - No editor visual do Service Binding, localize o botão **`Publish`** no canto superior direito da seção de detalhes.
+   - Clique em **`Publish`** e aguarde até que o status mude para **`Active / Local Service Endpoint Published`** (com o indicador em verde). O Gateway registrará o endpoint `/sap/opu/odata/sap/ZUI_O2_FI_CLIENTE_INAD`.
+5. **Pré-visualização do Fiori Elements (`Preview`):**
+   - Na tabela **Entity Set and Association**, selecione a entidade `ClienteInadimplente`.
+   - Clique com o botão direito sobre ela e selecione **`Open Fiori Elements App Preview`** (ou clique no botão **Preview** à direita).
+   - O Eclipse abrirá uma aba no navegador exibindo a tela Fiori Elements em tempo de execução:
+     - Clique em **Go** para carregar os clientes;
+     - Verifique se os filtros superiores (Ação Proposta, Autosserviço, Classe de Risco, Matriz) funcionam;
+     - Verifique se as colunas e os botões **Bloquear** e **Desbloquear** estão presentes na barra de ferramentas da tabela.
+
+---
+
 ## 💻 Snippet de Código
+
+### 📝 Código Comentado (Para Estudo e Referência)
 
 > *Nota: O Service Binding é um objeto criado via assistente visual no Eclipse ADT (New -> Service Binding), não possuindo código-fonte textual editável. Abaixo estão os parâmetros exatos de configuração do objeto:*
 
@@ -46,4 +70,17 @@ Service Definition: ZUI_FI_CLIENTE_INAD                             # Service De
 Binding Type: OData V2 - UI                                         # Protocolo de binding OData V2 com suporte a UI (Fiori Elements)
 Entidade Principal: ClienteInadimplente (ZC_FI_CLIENTE_INADIMPLENTE)# Entidade raiz consumida pelo app e testada no App Preview do ADT
 Status de Publicação: Local Service Endpoint Published              # Status após clicar em 'Publish' (gera os endpoints no SAP Gateway)
+```
+
+---
+
+### 🚀 Código Limpo (Sem Comentários - Para Copiar e Colar)
+
+```yaml
+Nome do Objeto: ZUI_O2_FI_CLIENTE_INAD
+Descrição: "DEL-R2R-009: Service Binding OData V2 - Clientes Inad."
+Service Definition: ZUI_FI_CLIENTE_INAD
+Binding Type: OData V2 - UI
+Entidade Principal: ClienteInadimplente (ZC_FI_CLIENTE_INADIMPLENTE)
+Status de Publicação: Local Service Endpoint Published
 ```

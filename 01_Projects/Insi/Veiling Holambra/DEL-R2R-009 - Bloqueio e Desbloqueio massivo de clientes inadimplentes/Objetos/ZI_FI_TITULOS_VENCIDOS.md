@@ -41,8 +41,22 @@ A responsabilidade técnica dela é ler as partidas contábeis da CDS standard d
 
 ---
 
+## 🛠️ Passo a Passo da Criação do Objeto
+
+1. **No Eclipse ADT:** Clique com o botão direito sobre o pacote de desenvolvimento `ZFI_BLOQ_INADIMPLENTES` -> **`New`** -> **`Data Definition`**.
+2. Preencha as propriedades da CDS View:
+   - **Name:** `ZI_FI_TITULOS_VENCIDOS`
+   - **Description:** `DEL-R2R-009: Agregação Títulos Vencidos por Cliente`
+3. Clique em **Next**, selecione a sua ordem de transporte (TR) e clique em **Next** para a seleção de templates.
+4. Escolha o template **`Define View Entity`** e clique em **Finish**.
+5. Substitua o código gerado pelo snippet abaixo e ative o objeto com **`Ctrl + F3`**.
+6. **Validação dos Dados (`F8 - Data Preview`):** Pressione `F8` no Eclipse para abrir o visualizador de dados e confirmar se os títulos vencidos estão somados corretamente em exatamente uma linha por cliente (`Customer`).
+
+---
+
 ## 💻 Snippet de Código
 
+### 📝 Código Comentado (Para Estudo e Referência)
 ```abap
 @AbapCatalog.viewEnhancementCategory: [#NONE]                       // Impede extensões desnecessárias que possam degradar a performance
 @AccessControl.authorizationCheck: #NOT_REQUIRED                   // Leitura analítica agregada; a segurança é validada na camada de topo
@@ -77,4 +91,44 @@ group by
   Item.CompanyCode,                                                // Agrupa por empresa
   Item.Customer,                                                   // Agrupa por cliente (garante exatamente 1 linha por cliente devedor)
   Item.CompanyCodeCurrency                                         // Agrupa por moeda para garantir coerência monetária na soma
+```
+
+---
+
+### 🚀 Código Limpo (Sem Comentários - Para Copiar e Colar)
+
+```abap
+@AbapCatalog.viewEnhancementCategory: [#NONE]
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'DEL-R2R-009: Agregação Títulos Vencidos'
+@Metadata.ignorePropagatedAnnotations: true
+@ObjectModel.usageType:{
+  serviceQuality: #X,
+  sizeCategory: #XL,
+  dataClass: #TRANSACTIONAL
+}
+define view entity ZI_FI_TITULOS_VENCIDOS
+  as select from I_OperationalAcctgDocItem as Item
+{
+  key Item.CompanyCode,
+  key Item.Customer,
+
+      Item.CompanyCodeCurrency,
+
+      @Semantics.amount.currencyCode: 'CompanyCodeCurrency'
+      sum( Item.AmountInCompanyCodeCurrency ) as ValorTotalVencido,
+
+      min( Item.NetDueDate )                  as MenorDataVencimento,
+
+      count( distinct Item.AccountingDocument ) as QtdTitulosVencidos
+}
+where
+      Item.FinancialAccountType = 'D'
+  and Item.CompanyCode          = 'CVH1'
+  and Item.ClearingDate         is initial
+  and Item.NetDueDate           < $session.system_date
+group by
+  Item.CompanyCode,
+  Item.Customer,
+  Item.CompanyCodeCurrency
 ```

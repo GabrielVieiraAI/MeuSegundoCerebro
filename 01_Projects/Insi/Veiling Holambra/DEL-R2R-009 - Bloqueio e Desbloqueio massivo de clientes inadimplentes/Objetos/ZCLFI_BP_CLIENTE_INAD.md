@@ -38,11 +38,39 @@ A classe **`ZCLFI_BP_CLIENTE_INAD`** é o **Behavior Pool** (classe de implement
    - Na ação **Desbloquear (`D`)**: limpa `XBLOCKED = ''` e `BLOCK_REASON = ''` no segmento `1000` da Matriz (desde que o cliente não tenha sido bloqueado por outro motivo fiscal/jurídico `<> '10'`).
 3. **Processamento Independente Cliente a Cliente:** Se o usuário selecionar 50 clientes e 2 falharem (ex.: cliente sendo editado por outro usuário no momento), os outros 48 são processados e gravados normalmente, retornando um único resumo consolidado na tela (Message View).
 4. **Gravação via Classes Standard + Auditoria (`ZTFI_LOG_INADIMP`):** Toda alteração de bloqueio utiliza `CL_UKM_BUPA_FACTORY` / `CL_UKM_ACCOUNT` (para gerar os documentos de modificação standard lidos pelas integrações legadas) e insere o registro correspondente na tabela `[[ZTFI_LOG_INADIMP]]`.
+5. **Validação Defensiva de Parâmetros Corporativos Clean Core (`zclca_tabela_parametros`):** Antes de bloquear, o método `bloquearCliente` consulta a Tabela de Parâmetros corporativa da Veiling via `zclca_tabela_parametros=>m_get_range` (Módulo: `'FI'`, Chaves: `'DEL_R2R_009'` / `'RISK_CLASS'` / `'EXCLUIR'`). Se o cliente pertencer a uma classe do range de exclusão (ex.: Classe 5 – CVH Interna), a ação é rejeitada para aquele parceiro com gravação de status `'E'` no log e aviso amigável, sem interromper os demais clientes.
+
+---
+
+## 🛠️ Passo a Passo da Criação do Objeto
+
+1. **Geração Automática via Quick Fix no Eclipse ADT:**
+   - Abra a Behavior Definition `[[ZI_FI_CLIENTE_INADIMPLENTE (BDEF)]]`.
+   - Posicione o cursor sobre o nome da classe `zclfi_bp_cliente_inad` (que estará sublinhado em amarelo indicando que a classe ainda não existe).
+   - Pressione **`Ctrl + 1`** (atalho de Quick Fix) e selecione a opção **`Create behavior implementation class zclfi_bp_cliente_inad`**.
+   - No assistente de criação, selecione a Ordem de Transporte (TR) do projeto e clique em **Finish**. O Eclipse criará a classe com a definição `FOR BEHAVIOR OF zi_fi_cliente_inadimplente`.
+2. **Entendendo a Divisão de Abas no Eclipse:**
+   - **Aba `Global Class`:** É a casca pública do Behavior Pool. Ela deve conter apenas a declaração vazia standard do compilador RAP:
+     ```abap
+     CLASS zclfi_bp_cliente_inad DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_fi_cliente_inadimplente.
+     ENDCLASS.
+
+     CLASS zclfi_bp_cliente_inad IMPLEMENTATION.
+     ENDCLASS.
+     ```
+   - **Aba `Local Types` (Include `CCIMP`):** É onde a lógica real é programada. Clique na aba inferior **`Local Types`** para inserir as classes locais de manipulação (`lhc_*`) e salvamento (`lsc_*`).
+3. **Inserção do Código em `Local Types`:**
+   - Cole o código das classes `lhc_clienteinadimplente` e `lsc_zi_fi_cliente_inadimplente` fornecido na seção [Snippet de Código](file:///c:/Users/gabriel.vsouza/source/MeuSegundoCerebro/01_Projects/Insi/Veiling%20Holambra/DEL-R2R-009%20-%20Bloqueio%20e%20Desbloqueio%20massivo%20de%20clientes%20inadimplentes/Objetos/ZCLFI_BP_CLIENTE_INAD.md#L65-L290) abaixo.
+   - *(Atenção à sintaxe de comentários)*: Em classes ABAP, comentários inline devem obrigatoriamente utilizar aspas duplas (`"`), pois o uso de barras duplas (`//`) causa erro de compilação.
+   - *(Redefinição obrigatória do Saver)*: Em cenários `unmanaged`, a classe `lsc_...` que herda de `cl_abap_behavior_saver` exige a redefinição do método `save` (`METHODS save REDEFINITION.` e `METHOD save. ENDMETHOD.`), mesmo que o salvamento das APIs seja imediato. Sem isso, o compilador exibirá o erro fatal *"The BEHAVIOR method SAVE must be redefined"*.
+   - *(Instanciação da Factory)*: Para instanciar a factory do FSCM, utilize o método singleton correto `cl_ukm_bupa_factory=>create( )` (o método `get_instance` não existe nesta classe standard).
+4. **Ativação:** Pressione **`Ctrl + F3`** para ativar a classe `ZCLFI_BP_CLIENTE_INAD`. Em seguida, retorne ao BDEF `ZI_FI_CLIENTE_INADIMPLENTE` e pressione **`Ctrl + F3`** para garantir que a amarração entre o BDEF e o Behavior Pool esteja 100% ativa.
 
 ---
 
 ## 💻 Snippet de Código
 
+### 📝 Código Comentado (Para Estudo e Referência)
 ```abap
 CLASS lhc_clienteinadimplente DEFINITION INHERITING FROM cl_abap_behavior_handler.
   PRIVATE SECTION.
@@ -101,7 +129,23 @@ CLASS lhc_clienteinadimplente IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD bloquearCliente.
-    DATA lt_log TYPE STANDARD TABLE OF ztfi_log_inadimp.          " Tabela interna para acúmulo dos logs de auditoria
+    DATA lt_log               TYPE STANDARD TABLE OF ztfi_log_inadimp. " Tabela interna para acúmulo dos logs de auditoria
+    DATA lr_classes_excluidas TYPE RANGE OF ukm_risk_class.            " Range para classes desconsideradas (ex: CVH Interna)
+
+    " 🟢 LÊ A TABELA DE PARÂMETROS DA VEILING VIA MÉTODO OFICIAL
+    TRY.
+        zclca_tabela_parametros=>m_get_range(
+          EXPORTING
+            iv_modulo = 'FI'
+            iv_chave1 = 'DEL_R2R_009'
+            iv_chave2 = 'RISK_CLASS'
+            iv_chave3 = 'EXCLUIR'
+          IMPORTING
+            et_range  = lr_classes_excluidas ).
+      CATCH cx_root.
+        " Fallback de segurança caso a tabela de parâmetros não esteja preenchida
+        lr_classes_excluidas = VALUE #( ( sign = 'I' option = 'EQ' low = '5' ) ).
+    ENDTRY.
 
     " Lê os dados atuais dos clientes selecionados pelo operador na tela do Fiori
     READ ENTITIES OF ZI_FI_CLIENTE_INADIMPLENTE IN LOCAL MODE
@@ -113,6 +157,31 @@ CLASS lhc_clienteinadimplente IMPLEMENTATION.
 
     " Processa cliente por cliente de forma independente (resiliência em lote)
     LOOP AT lt_clientes ASSIGNING FIELD-SYMBOL(<ls_cliente>).
+
+      " 🟢 VALIDAÇÃO DEFENSIVA: Se a classe de risco for excluída (ex: conta interna), não bloqueia!
+      IF <ls_cliente>-RiskClass IN lr_classes_excluidas.
+        APPEND VALUE #(
+          log_id         = cl_system_uuid=>create_uuid_x16_static( )
+          partner        = <ls_cliente>-PartnerMatriz
+          partner_origem = <ls_cliente>-PartnerOrigem
+          credit_sgmnt   = <ls_cliente>-CreditSegment
+          acao           = gc_acao_bloquear
+          block_reason   = space
+          status         = 'E'                                    " E = Erro/Rejeitado
+          mensagem       = |Cliente { <ls_cliente>-PartnerMatriz } pertence à classe { <ls_cliente>-RiskClass } (excluída) e não pode ser bloqueado.|
+          risk_class     = <ls_cliente>-RiskClass
+          moeda          = <ls_cliente>-Moeda
+          vlr_vencido    = <ls_cliente>-ValorTotalVencido
+          dias_atraso    = <ls_cliente>-DiasAtraso
+          created_by     = sy-uname
+          created_at     = utclong_current( )
+        ) TO lt_log.
+
+        APPEND VALUE #( %tky   = <ls_cliente>-%tky
+                        %param = <ls_cliente> ) TO result.
+        CONTINUE.
+      ENDIF.
+
       TRY.
           " Obtém a conta de crédito da Matriz no segmento 1000
           DATA(lo_account) = CAST cl_ukm_account(
@@ -254,5 +323,281 @@ CLASS lhc_clienteinadimplente IMPLEMENTATION.
     ENDIF.
   ENDMETHOD.
 
+ENDCLASS.
+
+CLASS lsc_zi_fi_cliente_inadimplente DEFINITION INHERITING FROM cl_abap_behavior_saver.
+  PROTECTED SECTION.
+    " Redefinição obrigatória do método save exigida pelo compilador em unmanaged RAP
+    METHODS save REDEFINITION.
+    METHODS cleanup REDEFINITION.
+    METHODS cleanup_finalize REDEFINITION.
+ENDCLASS.
+
+CLASS lsc_zi_fi_cliente_inadimplente IMPLEMENTATION.
+  METHOD save.
+    " As gravações já foram executadas e persistidas diretamente nos métodos das ações
+  ENDMETHOD.
+
+  METHOD cleanup.
+  ENDMETHOD.
+
+  METHOD cleanup_finalize.
+  ENDMETHOD.
+ENDCLASS.
+```
+
+---
+
+### 🚀 Código Limpo (Sem Comentários - Para Copiar e Colar)
+
+```abap
+CLASS lhc_clienteinadimplente DEFINITION INHERITING FROM cl_abap_behavior_handler.
+  PRIVATE SECTION.
+    CONSTANTS:
+      gc_motivo_inadimplencia TYPE ukm_block_reason VALUE '10',
+      gc_segmento_credito     TYPE ukm_credit_sgmnt VALUE '1000',
+      gc_acao_bloquear        TYPE c LENGTH 1       VALUE 'B',
+      gc_acao_desbloquear     TYPE c LENGTH 1       VALUE 'D'.
+
+    METHODS get_instance_authorizations FOR INSTANCE AUTHORIZATION
+      IMPORTING keys REQUEST requested_authorizations FOR ClienteInadimplente RESULT result.
+
+    METHODS bloquearCliente FOR MODIFY
+      IMPORTING keys FOR ACTION ClienteInadimplente~bloquearCliente RESULT result.
+
+    METHODS desbloquearCliente FOR MODIFY
+      IMPORTING keys FOR ACTION ClienteInadimplente~desbloquearCliente RESULT result.
+ENDCLASS.
+
+CLASS lhc_clienteinadimplente IMPLEMENTATION.
+
+  METHOD get_instance_authorizations.
+    LOOP AT keys ASSIGNING FIELD-SYMBOL(<ls_key>).
+
+      AUTHORITY-CHECK OBJECT 'ZFI_BLOQ'
+        ID 'BUKRS'     FIELD 'CVH1'
+        ID 'UKM_SGMNT' FIELD <ls_key>-CreditSegment
+        ID 'ACTVT'     FIELD '05'.
+
+      DATA(lv_pode_bloquear) = COND #( WHEN sy-subrc = 0
+                                       THEN if_abap_behv=>auth-allowed
+                                       ELSE if_abap_behv=>auth-unauthorized ).
+
+      AUTHORITY-CHECK OBJECT 'ZFI_BLOQ'
+        ID 'BUKRS'     FIELD 'CVH1'
+        ID 'UKM_SGMNT' FIELD <ls_key>-CreditSegment
+        ID 'ACTVT'     FIELD '43'.
+
+      DATA(lv_pode_desbloquear) = COND #( WHEN sy-subrc = 0
+                                          THEN if_abap_behv=>auth-allowed
+                                          ELSE if_abap_behv=>auth-unauthorized ).
+
+      APPEND VALUE #(
+        %tky                        = <ls_key>-%tky
+        %action-bloquearCliente    = lv_pode_bloquear
+        %action-desbloquearCliente  = lv_pode_desbloquear
+      ) TO result.
+    ENDLOOP.
+  ENDMETHOD.
+
+  METHOD bloquearCliente.
+    DATA lt_log               TYPE STANDARD TABLE OF ztfi_log_inadimp.
+    DATA lr_classes_excluidas TYPE RANGE OF ukm_risk_class.
+
+    TRY.
+        zclca_tabela_parametros=>m_get_range(
+          EXPORTING
+            iv_modulo = 'FI'
+            iv_chave1 = 'DEL_R2R_009'
+            iv_chave2 = 'RISK_CLASS'
+            iv_chave3 = 'EXCLUIR'
+          IMPORTING
+            et_range  = lr_classes_excluidas ).
+      CATCH cx_root.
+        lr_classes_excluidas = VALUE #( ( sign = 'I' option = 'EQ' low = '5' ) ).
+    ENDTRY.
+
+    READ ENTITIES OF ZI_FI_CLIENTE_INADIMPLENTE IN LOCAL MODE
+      ENTITY ClienteInadimplente
+      ALL FIELDS WITH CORRESPONDING #( keys )
+      RESULT DATA(lt_clientes).
+
+    DATA(lo_bupa_factory) = cl_ukm_bupa_factory=>create( ).
+
+    LOOP AT lt_clientes ASSIGNING FIELD-SYMBOL(<ls_cliente>).
+
+      IF <ls_cliente>-RiskClass IN lr_classes_excluidas.
+        APPEND VALUE #(
+          log_id         = cl_system_uuid=>create_uuid_x16_static( )
+          partner        = <ls_cliente>-PartnerMatriz
+          partner_origem = <ls_cliente>-PartnerOrigem
+          credit_sgmnt   = <ls_cliente>-CreditSegment
+          acao           = gc_acao_bloquear
+          block_reason   = space
+          status         = 'E'
+          mensagem       = |Cliente { <ls_cliente>-PartnerMatriz } pertence à classe { <ls_cliente>-RiskClass } (excluída) e não pode ser bloqueado.|
+          risk_class     = <ls_cliente>-RiskClass
+          moeda          = <ls_cliente>-Moeda
+          vlr_vencido    = <ls_cliente>-ValorTotalVencido
+          dias_atraso    = <ls_cliente>-DiasAtraso
+          created_by     = sy-uname
+          created_at     = utclong_current( )
+        ) TO lt_log.
+
+        APPEND VALUE #( %tky   = <ls_cliente>-%tky
+                        %param = <ls_cliente> ) TO result.
+        CONTINUE.
+      ENDIF.
+
+      TRY.
+          DATA(lo_account) = CAST cl_ukm_account(
+            lo_bupa_factory->get_credit_account(
+              i_partner      = <ls_cliente>-PartnerMatriz
+              i_credit_sgmnt = <ls_cliente>-CreditSegment ) ).
+
+          lo_account->get_bp_cms_sgm( IMPORTING es_bp_cms_sgm = DATA(ls_sgm) ).
+          ls_sgm-xblocked     = abap_true.
+          ls_sgm-block_reason = gc_motivo_inadimplencia.
+          lo_account->set_bp_cms_sgm( EXPORTING is_bp_cms_sgm = ls_sgm ).
+
+          APPEND VALUE #(
+            log_id         = cl_system_uuid=>create_uuid_x16_static( )
+            partner        = <ls_cliente>-PartnerMatriz
+            partner_origem = <ls_cliente>-PartnerOrigem
+            credit_sgmnt   = <ls_cliente>-CreditSegment
+            acao           = gc_acao_bloquear
+            block_reason   = gc_motivo_inadimplencia
+            status         = 'S'
+            mensagem       = 'Cliente bloqueado com sucesso.'
+            risk_class     = <ls_cliente>-RiskClass
+            moeda          = <ls_cliente>-Moeda
+            vlr_vencido    = <ls_cliente>-ValorTotalVencido
+            dias_atraso    = <ls_cliente>-DiasAtraso
+            created_by     = sy-uname
+            created_at     = utclong_current( )
+          ) TO lt_log.
+
+          <ls_cliente>-IsBlocked   = abap_true.
+          <ls_cliente>-BlockReason = gc_motivo_inadimplencia.
+
+        CATCH cx_root INTO DATA(lx_erro).
+          APPEND VALUE #(
+            log_id         = cl_system_uuid=>create_uuid_x16_static( )
+            partner        = <ls_cliente>-PartnerMatriz
+            partner_origem = <ls_cliente>-PartnerOrigem
+            credit_sgmnt   = <ls_cliente>-CreditSegment
+            acao           = gc_acao_bloquear
+            block_reason   = gc_motivo_inadimplencia
+            status         = 'E'
+            mensagem       = lx_erro->get_text( )
+            risk_class     = <ls_cliente>-RiskClass
+            moeda          = <ls_cliente>-Moeda
+            vlr_vencido    = <ls_cliente>-ValorTotalVencido
+            dias_atraso    = <ls_cliente>-DiasAtraso
+            created_by     = sy-uname
+            created_at     = utclong_current( )
+          ) TO lt_log.
+      ENDTRY.
+
+      APPEND VALUE #( %tky   = <ls_cliente>-%tky
+                      %param = <ls_cliente> ) TO result.
+    ENDLOOP.
+
+    lo_bupa_factory->save_all( i_upd_task = abap_false ).
+
+    IF lt_log IS NOT INITIAL.
+      INSERT ztfi_log_inadimp FROM TABLE @lt_log.
+    ENDIF.
+  ENDMETHOD.
+
+  METHOD desbloquearCliente.
+    DATA lt_log TYPE STANDARD TABLE OF ztfi_log_inadimp.
+
+    READ ENTITIES OF ZI_FI_CLIENTE_INADIMPLENTE IN LOCAL MODE
+      ENTITY ClienteInadimplente
+      ALL FIELDS WITH CORRESPONDING #( keys )
+      RESULT DATA(lt_clientes).
+
+    DATA(lo_bupa_factory) = cl_ukm_bupa_factory=>create( ).
+
+    LOOP AT lt_clientes ASSIGNING FIELD-SYMBOL(<ls_cliente>).
+      TRY.
+          DATA(lo_account) = CAST cl_ukm_account(
+            lo_bupa_factory->get_credit_account(
+              i_partner      = <ls_cliente>-PartnerMatriz
+              i_credit_sgmnt = <ls_cliente>-CreditSegment ) ).
+
+          lo_account->get_bp_cms_sgm( IMPORTING es_bp_cms_sgm = DATA(ls_sgm) ).
+          ls_sgm-xblocked     = abap_false.
+          CLEAR ls_sgm-block_reason.
+          lo_account->set_bp_cms_sgm( EXPORTING is_bp_cms_sgm = ls_sgm ).
+
+          APPEND VALUE #(
+            log_id         = cl_system_uuid=>create_uuid_x16_static( )
+            partner        = <ls_cliente>-PartnerMatriz
+            partner_origem = <ls_cliente>-PartnerOrigem
+            credit_sgmnt   = <ls_cliente>-CreditSegment
+            acao           = gc_acao_desbloquear
+            block_reason   = space
+            status         = 'S'
+            mensagem       = 'Cliente desbloqueado com sucesso.'
+            risk_class     = <ls_cliente>-RiskClass
+            moeda          = <ls_cliente>-Moeda
+            vlr_vencido    = <ls_cliente>-ValorTotalVencido
+            dias_atraso    = <ls_cliente>-DiasAtraso
+            created_by     = sy-uname
+            created_at     = utclong_current( )
+          ) TO lt_log.
+
+          <ls_cliente>-IsBlocked   = abap_false.
+          CLEAR <ls_cliente>-BlockReason.
+
+        CATCH cx_root INTO DATA(lx_erro).
+          APPEND VALUE #(
+            log_id         = cl_system_uuid=>create_uuid_x16_static( )
+            partner        = <ls_cliente>-PartnerMatriz
+            partner_origem = <ls_cliente>-PartnerOrigem
+            credit_sgmnt   = <ls_cliente>-CreditSegment
+            acao           = gc_acao_desbloquear
+            block_reason   = space
+            status         = 'E'
+            mensagem       = lx_erro->get_text( )
+            risk_class     = <ls_cliente>-RiskClass
+            moeda          = <ls_cliente>-Moeda
+            vlr_vencido    = <ls_cliente>-ValorTotalVencido
+            dias_atraso    = <ls_cliente>-DiasAtraso
+            created_by     = sy-uname
+            created_at     = utclong_current( )
+          ) TO lt_log.
+      ENDTRY.
+
+      APPEND VALUE #( %tky   = <ls_cliente>-%tky
+                      %param = <ls_cliente> ) TO result.
+    ENDLOOP.
+
+    lo_bupa_factory->save_all( i_upd_task = abap_false ).
+    IF lt_log IS NOT INITIAL.
+      INSERT ztfi_log_inadimp FROM TABLE @lt_log.
+    ENDIF.
+  ENDMETHOD.
+
+ENDCLASS.
+
+CLASS lsc_zi_fi_cliente_inadimplente DEFINITION INHERITING FROM cl_abap_behavior_saver.
+  PROTECTED SECTION.
+    METHODS save REDEFINITION.
+    METHODS cleanup REDEFINITION.
+    METHODS cleanup_finalize REDEFINITION.
+ENDCLASS.
+
+CLASS lsc_zi_fi_cliente_inadimplente IMPLEMENTATION.
+  METHOD save.
+  ENDMETHOD.
+
+  METHOD cleanup.
+  ENDMETHOD.
+
+  METHOD cleanup_finalize.
+  ENDMETHOD.
 ENDCLASS.
 ```

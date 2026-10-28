@@ -35,8 +35,23 @@ No modelo RAP, nenhuma ação definida no BDEF Raiz (`[[ZI_FI_CLIENTE_INADIMPLEN
 
 ---
 
+## 🛠️ Passo a Passo da Criação do Objeto
+
+1. **No Eclipse ADT:** Clique com o botão direito sobre a CDS View de Projeção `ZC_FI_CLIENTE_INADIMPLENTE` -> **`New Behavior Definition`**.
+2. No assistente de criação:
+   - **Root Entity:** `ZC_FI_CLIENTE_INADIMPLENTE` *(preenchido automaticamente)*.
+   - **Description:** `DEL-R2R-009: Behavior Projeção Inadimplentes`
+   - O ADT detecta que a CDS é uma projeção e sugere o tipo **Projection**.
+3. Clique em **Next**, selecione a Ordem de Transporte (TR) do projeto e clique em **Finish**.
+4. Substitua o código gerado pelo conteúdo da seção [Snippet de Código](file:///c:/Users/gabriel.vsouza/source/MeuSegundoCerebro/01_Projects/Insi/Veiling%20Holambra/DEL-R2R-009%20-%20Bloqueio%20e%20Desbloqueio%20massivo%20de%20clientes%20inadimplentes/Objetos/ZC_FI_CLIENTE_INADIMPLENTE%20(BDEF).md#L45-L65) abaixo.
+   *(Nota técnica: A palavra-chave `projection;` informa que este artefato projeta comportamentos do BDEF base. Os comandos `use action bloquearCliente;` e `use action desbloquearCliente;` conectam os botões da tela Fiori diretamente aos métodos implementados no Behavior Pool).*
+5. Ative o objeto com **`Ctrl + F3`**.
+
+---
+
 ## 💻 Snippet de Código
 
+### 📝 Código Comentado (Para Estudo e Referência)
 ```abap
 projection;                                                           // Define que este Behavior Definition é uma projeção de consumo
 strict ( 2 );                                                          // Validação estrita de sintaxe do framework RAP versão 2
@@ -45,5 +60,20 @@ define behavior for ZC_FI_CLIENTE_INADIMPLENTE alias ClienteInadimplente // Proj
 {
   use action bloquearCliente;                                          // Habilita o botão 'Bloquear' na tela do Fiori Elements
   use action desbloquearCliente;                                        // Habilita o botão 'Desbloquear' na tela do Fiori Elements
+}
+```
+
+---
+
+### 🚀 Código Limpo (Sem Comentários - Para Copiar e Colar)
+
+```abap
+projection;
+strict ( 2 );
+
+define behavior for ZC_FI_CLIENTE_INADIMPLENTE alias ClienteInadimplente
+{
+  use action bloquearCliente;
+  use action desbloquearCliente;
 }
 ```
