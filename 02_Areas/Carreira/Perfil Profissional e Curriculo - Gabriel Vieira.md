@@ -119,6 +119,10 @@ No desenvolvimento SAP contemporâneo, a transição do ambiente legado para sol
 
 ## 📄 5. Currículo Formatado para Exportação (Markdown)
 
+> [!TIP] Versão Otimizada
+> O currículo direto e otimizado para ATS e recrutadores encontra-se em [[Currículo Gabriel Vieira Consultor ABAP]].
+
+
 ```markdown
 # GABRIEL VIEIRA DE SOUZA
 Consultor SAP ABAP | ABAP Cloud · SAP Fiori / RAP · SAP S/4HANA & ECC
@@ -172,6 +176,7 @@ Dez/2020 – Dez/2025 | Vila Velha, ES
 - Desenvolvimento de APIs RESTful escaláveis em C# e .NET Core, aplicando SOLID, padrões GoF e Clean Code.
 - Construção de interfaces responsivas em Angular (TypeScript, RxJS) para sistemas corporativos internos.
 - Otimização de queries SQL e modelagem de banco de dados relacional.
+- Destaques de Projetos (Autônomos / Ponta a Ponta em Produção): Projeto CEFE (back-end .NET Core e SQL Server com provisionamento corporativo) e Plataforma Arcabee (APIs RESTful e SPA Angular com foco em performance).
 
 --------------------------------------------------------------------------------
 

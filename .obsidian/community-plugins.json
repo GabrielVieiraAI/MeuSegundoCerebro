@@ -6,9 +6,8 @@
   "quickadd",
   "dataview",
   "contribution-graph",
-  "obsidian-spaced-repetition",
-  "obsidian-mind-map",
-  "native-powerpoint-doc-editor",
   "obsidian-excalidraw-plugin",
-  "sheet-plus"
+  "native-powerpoint-doc-editor",
+  "obsidian-spaced-repetition",
+  "mineru-converter"
 ]
