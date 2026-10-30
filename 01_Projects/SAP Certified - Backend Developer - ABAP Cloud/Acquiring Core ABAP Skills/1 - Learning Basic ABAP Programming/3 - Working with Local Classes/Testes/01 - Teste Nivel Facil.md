@@ -83,12 +83,12 @@ Qual seletor deve ser utilizado para acessar um componente **estático** da clas
 
 - **A.** `->`
 - **B.** `::`
-- **C.** **`=>`**
+- **C.** **=>**
 - **D.** `.`
 
 > [!success]- Gabarito e Explicação
 > **Resposta Correta:** **C**  
-> **Conceito:** O seletor de classe/estático é o sinal duplo de igualdade com maior que (**`=>`**), utilizado na forma `nome_da_classe**=>**componente`. A seta simples (`->`) é reservada para acesso a componentes de instâncias a partir de variáveis de referência (`referencia->componente`).
+> **Conceito:** O seletor de classe/estático é o sinal duplo de igualdade com maior que (**=>**), utilizado na forma `nome_da_classe**=>**componente`. A seta simples (`->`) é reservada para acesso a componentes de instâncias a partir de variáveis de referência (`referencia->componente`).
 
 ---
 

@@ -39,13 +39,18 @@ data_conclusao:
 * **Quantidade de Cartões:** 25 cartões ativos
 
 ---
+## Exercícios Práticos
+
+* **Laboratório Hands-On:** [[01_Projects/SAP Certified - Backend Developer - ABAP Cloud/Acquiring Core ABAP Skills/1 - Learning Basic ABAP Programming/3 - Working with Local Classes/Exercicios Praticos - Local Classes|🛠️ 5 Exercícios Práticos de Fixação Rápida]]
+
+---
 ## Testes
 
-| Nível            | Arquivo do Teste                                                                                                                                                                                                                           | Data | Score Obtido |   Status   |
-| :--------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--: | :----------: | :--------: |
-| **Fácil**        | [[01_Projects/SAP Certified - Backend Developer - ABAP Cloud/Acquiring Core ABAP Skills/1 - Learning Basic ABAP Programming/3 - Working with Local Classes/Testes/01 - Teste Nivel Facil\|01 - Teste Nivel Facil]]                        |      |      %       | ⚪ Pendente |
-| **Médio**        | [[01_Projects/SAP Certified - Backend Developer - ABAP Cloud/Acquiring Core ABAP Skills/1 - Learning Basic ABAP Programming/3 - Working with Local Classes/Testes/02 - Teste Nivel Medio\|02 - Teste Nivel Medio]]                        |      |      %       | ⚪ Pendente |
-| **Difícil (T1)** | [[01_Projects/SAP Certified - Backend Developer - ABAP Cloud/Acquiring Core ABAP Skills/1 - Learning Basic ABAP Programming/3 - Working with Local Classes/Testes/03 - Teste Nivel Dificil (Tentativa 1)\|03 - Teste Nivel Dificil (T1)]] |      |      %       | ⚪ Pendente |
+| Nível            | Arquivo do Teste                                                                                                                                                                                                                          | Data | Score Obtido |   Status    |
+| :--------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--: | :----------: | :---------: |
+| **Fácil**        | [[01_Projects/SAP Certified - Backend Developer - ABAP Cloud/Acquiring Core ABAP Skills/1 - Learning Basic ABAP Programming/3 - Working with Local Classes/Testes/01 - Teste Nivel Facil\|01 - Teste Nivel Facil]]                        |      |      %       | 🟢Concluído |
+| **Médio**        | [[01_Projects/SAP Certified - Backend Developer - ABAP Cloud/Acquiring Core ABAP Skills/1 - Learning Basic ABAP Programming/3 - Working with Local Classes/Testes/02 - Teste Nivel Medio\|02 - Teste Nivel Medio]]                        |      |      %       | 🟢Concluído |
+| **Difícil (T1)** | [[01_Projects/SAP Certified - Backend Developer - ABAP Cloud/Acquiring Core ABAP Skills/1 - Learning Basic ABAP Programming/3 - Working with Local Classes/Testes/03 - Teste Nivel Dificil (Tentativa 1)\|03 - Teste Nivel Dificil (T1)]] |      |      %       | ⚪ Pendente  |
 
 ---
 ## Mapa Mental (Excalidraw)

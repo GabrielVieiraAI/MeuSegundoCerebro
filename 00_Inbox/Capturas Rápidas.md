@@ -25,7 +25,7 @@ status: draft
 	-  "A benção do Senhor já está sobre mim."
 	Dar é melhor que Receber
 	-  "Não traga uma oferta sem um pedido e não peça sem uma oferta."
-	-  "Quem dá primeiro é maior."=
+	-  "Quem dá primeiro é maior."
 ---
 ## 💻 Tecnologia & Estudos 
 - [ ] Criar uma nota detalhada de como realizar a publicação de um serviço **OData** através do **SAP GUI**.
