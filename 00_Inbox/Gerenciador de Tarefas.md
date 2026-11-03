@@ -7,7 +7,6 @@ tags:
 # 📋 Central de Tarefas 
 
 > ⚡ **Ações Rápidas:** `BUTTON[btn-add-tarefa]` `BUTTON[btn-nova-rotina]` 
-> 📊 **Hábitos & Performance:** [[Dashboard Hábitos|Ver Dashboard Consolidado de Hábitos]]
 > 🚀 **Git & Nuvem:** [[Painel de Controle Git|Abrir Painel de Controle Git]]
 
 ---

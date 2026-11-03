@@ -31,7 +31,7 @@ Esta skill orienta a produção, revisão e tradução de conteúdo técnico de 
 * **Estrutura escaneável:**
   * Use **tabelas comparativas** sempre que houver opções, runtimes ou alternativas (ex: *On-Stack vs. Side-by-Side*, *Trial vs. Free Tier*).
   * Use **listas pontuais** com marcadores claros.
-  * Use **diagramas Mermaid** (`flowchart TD` ou `flowchart LR`) para ilustrar fluxos de dados, hierarquias ou conexões entre sistemas.
+  * Use diagramas e esquemas no **Excalidraw** para ilustrar fluxos de dados, hierarquias ou conexões entre sistemas (proibido o uso de Mermaid).
 
 ### 3. Foco Prático no "Por Quê" (O Problema e a Solução)
 * Para cada tecnologia ou padrão de arquitetura abordado, mostre a razão prática de sua existência:
