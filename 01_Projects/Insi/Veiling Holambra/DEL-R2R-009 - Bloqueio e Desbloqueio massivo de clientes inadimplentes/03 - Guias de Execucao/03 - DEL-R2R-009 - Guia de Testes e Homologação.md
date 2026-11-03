@@ -243,76 +243,59 @@ Esta tabela reflete exatamente a estrutura de 4 colunas exigida pelo template of
 
 ---
 
-### 3.4.8. Passo 8 - T08: Bloqueio de Clientes Vinculados (Matriz x Filiais)
+### ==🟢3.4.8. Passo 8 - T08: Bloqueio de Clientes Vinculados (Matriz x Filiais)
 
 * **Objetivo:** Validar a consolidação da dívida originada em filial e a aplicação centralizada da trava na conta de crédito da Matriz via relação `UKM001`.
 * **Dados de Entrada:** BP Matriz vinculado à Filial (1000195 - Pet Center) via `UKM001`; fatura vencida de R$ 600,00 na empresa `CVH1` lançada exclusivamente no BP da Filial.
 * **Resultado Esperado:** O app exibe a Matriz no campo principal e a Filial no BP de Origem; o bloqueio no FSCM é aplicado na Matriz; o log grava a Matriz em `PARTNER` e a Filial em `PARTNER_ORIGEM`.
 * **Executor:** Gabriel Souza (Desenvolvedor)
-* **Status:** `[ ] Pendente` | `[ ] Aprovado` | `[ ] Reprovado`
+* **Status:** `[ ] Pendente` | `[x] Aprovado` | `[ ] Reprovado`
 
 #### Etapa 1: Identificação da Matriz e da Filial Devedora no Fiori (Antes da Ação)
 *Comprova a coluna Cliente (Matriz), BP de Origem = 0001000195, Valor Vencido = R$ 600,00 e Ação Proposta = 'Bloquear'.*
-```markdown
-[Cole aqui o print da listagem Fiori com a Matriz e o BP de Origem]
-```
+![[Pasted image 20261030132140.png]]
 
 #### Etapa 2: Execução do Bloqueio no App Fiori
 *Comprova a notificação de sucesso e a atualização de status.*
-```markdown
-[Cole aqui o print da execução do bloqueio no Fiori]
-```
-
+![[Pasted image 20261030182357.png]]
 #### Etapa 3: Confirmação da Trava FSCM na Conta de Crédito da Matriz (`/nBP`)
 *Comprova que a conta que recebeu a trava física `XBLOCKED = 'X'` e `BLOCK_REASON = '10'` foi a Matriz.*
-```markdown
-[Cole aqui o print da /nBP da Matriz mostrando o bloqueio gravado]
-```
+![[Pasted image 20261030182636.png]]
 
 #### Etapa 4: Auditoria com Rastreabilidade de Matriz e Origem na `ZTFI_LOG_INADIMP`
 *Comprova PARTNER = Matriz e PARTNER_ORIGEM = 0001000195 na SE16N da tabela de log.*
-```markdown
-[Cole aqui o print da SE16N na ZTFI_LOG_INADIMP evidenciando Matriz e Origem]
-```
+![[Pasted image 20261030182813.png]]
 
 ---
 
-### 3.4.9. Passo 9 - T09: Grupo Econômico Parcialmente Regularizado
+### ==🟢3.4.9. Passo 9 - T09: Grupo Econômico Parcialmente Regularizado
 
 * **Objetivo:** Garantir a segurança de crédito do grupo econômico, mantendo a Matriz bloqueada enquanto qualquer filial ainda possuir pendências financeiras.
 * **Dados de Entrada:** Grupo econômico com Matriz e 2 filiais bloqueado; faturas da Filial 1 são compensadas, mas Filial 2 permanece com títulos vencidos.
 * **Resultado Esperado:** O app NÃO propõe desbloqueio para a Matriz, exibindo a pendência residual da Filial 2.
 * **Executor:** Gabriel Souza (Desenvolvedor)
-* **Status:** `[ ] Pendente` | `[ ] Aprovado` | `[ ] Reprovado`
+* **Status:** `[ ] Pendente` | `[x] Aprovado` | `[ ] Reprovado`
 
 #### Etapa 1: Evidência da Compensação Parcial da Filial 1
 *Mostra que a Filial 1 regularizou a sua dívida no financeiro.*
-```markdown
-[Cole aqui o print comprovando a baixa dos títulos da Filial 1]
-```
-
+![[Pasted image 20261030183422.png]]
 #### Etapa 2: Consulta da Matriz no App Fiori Mantendo a Proposta Residual
 *Comprova que o app mantém a Matriz bloqueada devido ao saldo vencido da Filial 2.*
-```markdown
-[Cole aqui o print do Fiori comprovando que não há proposta de desbloqueio para a Matriz]
-```
+![[Pasted image 20261030183434.png]]
 
 ---
 
-### 3.4.10. Passo 10 - T10: Filtro Dinâmico por Segmento de Atuação (Autosserviço)
+### ==🟢3.4.10. Passo 10 - T10: Filtro Dinâmico por Segmento de Atuação (Autosserviço)
 
 * **Objetivo:** Validar o filtro por característica de agrupamento (`BP001-GROUP_FEATURE`), permitindo isolar canais específicos como Autosserviço / Supermercados.
 * **Dados de Entrada:** Base de clientes com segmentos variados cadastrados; seleção do filtro "Segmento de Atuação" na barra superior do Fiori.
 * **Resultado Esperado:** A tabela exibe exclusivamente os clientes correspondentes ao segmento filtrado.
 * **Executor:** Gabriel Souza (Desenvolvedor)
-* **Status:** `[ ] Pendente` | `[ ] Aprovado` | `[ ] Reprovado`
+* **Status:** `[ ] Pendente` | `[x] Aprovado` | `[ ] Reprovado`
 
 #### Etapa 1: Aplicação do Filtro de Segmento de Atuação no Fiori
 *Mostra o filtro preenchido na barra de seleção e os clientes retornados.*
-```markdown
-[Cole aqui o print do filtro de segmento de atuação no Fiori]
-```
-
+![[Pasted image 20261030183505.png]]
 #### Etapa 2: Validação dos Registros Retornados
 *Comprova que todos os registros exibidos pertencem à categoria filtrada.*
 ```markdown
@@ -321,11 +304,4 @@ Esta tabela reflete exatamente a estrutura de 4 colunas exigida pelo template of
 
 ---
 
-## 5. Termo de Aceite Técnico do Desenvolvedor
-
-Após a conclusão e aprovação de todos os 10 passos acima no mandante 100, este desenvolvimento é considerado formalmente validado no nível unitário/técnico e liberado para homologação integrada junto à consultoria funcional e aos usuários-chave da Cooperativa Veiling Holambra.
-
-| Responsabilidade         | Nome Completo               | Papel no Projeto                             | Status da Validação |        Data        |
-| :----------------------- | :-------------------------- | :------------------------------------------- | :-----------------: | :----------------: |
-| **Executor dos Testes:** | **Gabriel Souza**           | Desenvolvedor ABAP Cloud / Clean Core (Insi) |   `[ ] Concluído`   | ____/____/________ |
 
