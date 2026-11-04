@@ -69,11 +69,11 @@ Acesse diretamente o caderno de estudo de cada módulo e acompanhe os ciclos de 
 
 Simulados gerais alimentando o NotebookLM com o acervo completo das 39 lições para testar cenários reais da prova oficial SAP:
 
-| Simulado | Escopo | Data | Score Obtido | Meta Mínima | Status |
-| :--- | :--- | :---: | :---: | :---: | :---: |
-| **Simulado 1 (Diagnóstico Geral)** | Módulos 01 ao 09 (40 Questões) | | % | ≥ 85% | ⚪ Pendente |
-| **Simulado 2 (Nível Certificação)** | Casos Práticos & Clean Core (50 Questões) | | % | ≥ 90% | ⚪ Pendente |
-| **Simulado 3 (Reta Final / Blindagem)** | Questões Pegadinha & Sintaxe Moderna | | % | ≥ 90% | ⚪ Pendente |
+| Simulado                                | Escopo                                    | Data | Score Obtido | Meta Mínima |   Status   |
+| :-------------------------------------- | :---------------------------------------- | :--: | :----------: | :---------: | :--------: |
+| **Simulado 1 (Diagnóstico Geral)**      | Módulos 01 ao 09 (40 Questões)            |      |      %       |    ≥ 85%    | ⚪ Pendente |
+| **Simulado 2 (Nível Certificação)**     | Casos Práticos & Clean Core (50 Questões) |      |      %       |    ≥ 90%    | ⚪ Pendente |
+| **Simulado 3 (Reta Final / Blindagem)** | Questões Pegadinha & Sintaxe Moderna      |      |      %       |    ≥ 90%    | ⚪ Pendente |
 
 ---
 
