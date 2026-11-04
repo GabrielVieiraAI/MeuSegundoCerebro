@@ -9,6 +9,7 @@ fonte: "https://www.youtube.com/watch?v=gyCphRGx4w8"
 status: ativo
 ---
 
+
 # Framework de Vídeos Virais: Ideia, Embalagem e Roteiro
 ## Tese Central
 A performance e retenção de um vídeo são regidas por uma única dinâmica: **gerar uma expectativa forte e cumprir exatamente essa expectativa**.

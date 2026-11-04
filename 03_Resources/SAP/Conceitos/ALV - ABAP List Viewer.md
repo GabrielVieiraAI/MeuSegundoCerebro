@@ -1,56 +1,37 @@
 ---
-aliases: ["ALV", "ABAP List Viewer", "SAP List Viewer", "O que é ALV"]
+aliases: ["ALV", "ABAP List Viewer", "SAP List Viewer"]
 tags: [sap, abap, alv, relatorio, dynpro]
 type: "concept"
-status: "draft"
-summary: "Ferramenta padrão do SAP para exibir dados tabulares em relatórios ABAP, com ordenação, filtros, totais e exportação prontos para o usuário."
+status: "active"
+summary: "Ferramenta padrão do SAP GUI para exibição de dados tabulares em ABAP com ordenação, filtros e exportação."
 ---
 # ALV - ABAP List Viewer
 
 **Relacionado:** [[CDS - Core Data Services|CDS]], [[RAP - ABAP RESTful Application Programming Model|RAP]], [[Roteiro de Estudos SAP]]
 
-## O que é o ALV?
+O **ALV (ABAP List Viewer)** é a ferramenta padrão do SAP GUI (*Graphical User Interface*, interface gráfica do SAP) para renderização de dados tabulares em relatórios e telas ABAP. A partir de uma tabela interna fornecida pelo desenvolvedor, o componente gera uma grade com recursos nativos de navegação.
 
-O **ALV (ABAP List Viewer)**, também chamado de **SAP List Viewer**, é a ferramenta padrão do SAP para exibir dados em formato de tabela em relatórios e telas ABAP. O desenvolvedor entrega uma tabela interna e a descrição das colunas, e o ALV fornece automaticamente a interface com recursos que o usuário já conhece.
+---
+## Árvore de Decisão: Qual Abordagem Utilizar?
 
-Em termos práticos, imagine o ALV como uma **planilha pronta**: o programa só preenche os dados, e o usuário ganha de graça ordenação, filtros, totais, escolha de colunas e exportação para Excel, sem que o desenvolvedor precise programar cada um desses recursos.
+| Abordagem                            | Objeto Principal                                    | Indicação de Uso                                                                                                                    |                                                                                              |
+| :----------------------------------- | :-------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| **SALV (Padrão Moderno)**            | `CL_SALV_TABLE`                                     | Relatórios de exibição simples (somente leitura). Gera metadados automaticamente e exige o menor volume de código.                  |                                                                                              |
+| **GUI ALV Grid**                     | `CL_GUI_ALV_GRID`                                   | Relatórios que exigem **edição direta de células** pelo usuário ou controle posicionado dentro de telas Dynpro (*Dynamic Program*). |                                                                                              |
+| **ALV IDA (Integrated Data Access)** | `CL_SALV_GUI_TABLE_IDA`                             | Relatórios sobre SAP HANA ou [[CDS - Core Data Services                                                                             | CDS Views]] com grande volume de dados. Delega paginação, filtros e agregações para o banco. |
+| **Funções Reutilizáveis (Legado)**   | `REUSE_ALV_GRID_DISPLAY` / `REUSE_ALV_LIST_DISPLAY` | Manutenção de programas legados. **Não utilizar em novos desenvolvimentos.**                                                        |                                                                                              |
 
-## Recursos que o ALV oferece
+---
+## Componentes Essenciais
 
-- Ordenação por uma ou mais colunas.
-- Filtros por coluna.
-- Totais e subtotais.
-- Escolha, ocultação e reordenação de colunas.
-- Layouts (variantes) salvos por usuário.
-- Exportação para planilha (Excel), PDF e arquivo local.
-- Impressão e visualização de impressão.
-- Botões e funções customizadas na barra de ferramentas.
-- Eventos de usuário, como duplo clique em linha ou clique em hyperlink.
-- Edição direta de células, quando habilitada.
+- **Tabela de Saída:** Tabela interna que contém os registros a serem renderizados.
+- **Field Catalog (Catálogo de Campos):** Estrutura que define as propriedades técnicas de cada coluna (título, tipo, largura, alinhamento e se é editável). *Na `CL_SALV_TABLE`, é derivado automaticamente do tipo de dados.*
+- **Layout:** Estrutura de configuração visual do grid (linhas alternadas/zebra, seleção de linha única ou múltipla, dimensionamento otimizado).
+- **Eventos:** Tratamento de ações do usuário disparadas na tela (duplo clique na linha, botões personalizados na barra de ferramentas).
 
-## Tipos de ALV
+---
 
-| Tipo | Como funciona | Observação |
-| :--- | :--- | :--- |
-| **ALV em lista (clássico)** | Funções `REUSE_ALV_LIST_DISPLAY` | Exibição em formato de lista simples. Considerado legado. |
-| **ALV em grid (função)** | Função `REUSE_ALV_GRID_DISPLAY` | Mais usado no ABAP antigo. Exibe em grade, tela cheia. |
-| **ALV orientado a objetos** | Classe `CL_GUI_ALV_GRID` | Exibe em um container e permite combinar o ALV com outros controles na tela. |
-| **ALV com `CL_SALV_TABLE`** | Classe `CL_SALV_TABLE` | Modelo simplificado e recomendado para a maioria dos relatórios. |
-| **ALV hierárquico** | Funções ou `CL_SALV_HIERSEQ_TABLE` | Exibe dados em cabeçalho e itens. |
-| **ALV em árvore** | `CL_SALV_TREE` | Exibe dados em formato de árvore, com nós expansíveis. |
-| **IDA (Integrated Data Access)** | Classe `CL_SALV_GUI_TABLE_IDA` | Lê os dados direto da CDS ou tabela no banco, com paginação, filtros e ordenação feitos no banco, sem carregar tudo na tabela interna. |
-
-## Principais componentes
-
-| Componente | Para que serve |
-| :--- | :--- |
-| **Tabela de saída** | Tabela interna com os dados que serão exibidos. |
-| **Field catalog** | Descreve cada coluna: título, tamanho, tipo, formatação, se é somável. |
-| **Layout** | Opções gerais de exibição, como zebra, largura otimizada e seleção de linhas. |
-| **Eventos** | Respostas a ações do usuário, como duplo clique, clique em botão ou edição. |
-| **Variante de layout** | Configuração de colunas, filtros e ordenação salva pelo usuário. |
-
-## Exemplo mínimo com `CL_SALV_TABLE`
+## Exemplo Mínimo: `CL_SALV_TABLE`
 
 ```abap
 DATA: lt_flights TYPE STANDARD TABLE OF sflight,
@@ -61,12 +42,18 @@ SELECT * FROM sflight
   UP TO 100 ROWS.
 
 TRY.
+    " Instanciação e vinculo com a tabela interna
     cl_salv_table=>factory(
       IMPORTING r_salv_table = lo_alv
       CHANGING  t_table      = lt_flights ).
 
+    " Habilita a barra de ferramentas padrão (filtros, ordenação, exportação)
     lo_alv->get_functions( )->set_all( abap_true ).
+
+    " Ajusta largura das colunas ao conteúdo
     lo_alv->get_columns( )->set_optimize( abap_true ).
+
+    " Renderiza o grid na tela
     lo_alv->display( ).
 
   CATCH cx_salv_msg INTO DATA(lx_msg).
@@ -74,10 +61,9 @@ TRY.
 ENDTRY.
 ```
 
-## ALV e CDS
+---
 
-Com o ALV tradicional, o programa lê os dados para uma tabela interna e depois os exibe, o que pode ser pesado para grandes volumes. Combinado com o [[CDS - Core Data Services|Code Pushdown]], o **ALV IDA** delega para o banco a leitura, a ordenação, os filtros e a paginação, exibindo só o que o usuário precisa.
+## Limitações e Gotchas
 
-## ALV vs. Fiori
-
-O ALV é uma tecnologia do **SAP GUI**: roda dentro de transações e programas ABAP clássicos. Em aplicações modernas baseadas em [[RAP - ABAP RESTful Application Programming Model|RAP]] e Fiori Elements, a tabela equivalente é a do **List Report**, gerada automaticamente a partir das anotações da CDS. Ainda assim, o ALV segue muito presente em relatórios de manutenção, consultas rápidas e sistemas legados.
+- **`CL_SALV_TABLE` não suporta edição nativa:** Se o requisito de negócio exige que o usuário edite campos diretamente na tabela, a classe indicada é a `CL_GUI_ALV_GRID`. O `CL_SALV_TABLE` foi desenhado estritamente para relatórios de consulta (*read-only*).
+- **Escopo de Tecnologia:** O ALV é restrito ao SAP GUI. Em arquiteturas modernas com [[RAP - ABAP RESTful Application Programming Model|RAP]] e SAP Fiori, a exibição tabular equivalente é feita via **List Report**, gerada pelas anotações da CDS.
