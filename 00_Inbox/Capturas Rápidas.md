@@ -9,7 +9,7 @@ status: draft
  - [ ] 
 ---
 ## 📚 Leituras & Reflexões
-
+- [ ] Assistir um documentário sobre a formiga para me tornar mais sábio conforme provérbios 6.
 ---
 ## 💻 Tecnologia & Estudos 
 - [ ] Criar uma nota detalhada de como realizar a publicação de um serviço **OData** através do **SAP GUI**.
