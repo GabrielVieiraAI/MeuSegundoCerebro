@@ -20,21 +20,22 @@ data_criacao: 2026-11-04
 
 ## Fase 1: Criação e Configuração da Conta no YouTube
 
-- [ ] **1.1. Criar o Canal de Marca (*Brand Account*)**
+- [x] **1.1. Criar o Canal de Marca (*Brand Account*)** ✅ 2026-11-05
   - Acessar o YouTube logado na sua conta Google existente.
   - Ir em **Configurações > Adicionar ou gerenciar seus canais > Criar um canal**.
   - *Vantagem técnica:* Cria um canal isolado do seu e-mail pessoal, permitindo nome personalizado e preservando a segurança da sua conta principal.
-- [ ] **1.2. Definir o Nome e Identificador (@handle)**
+- [x] **1.2. Definir o Nome e Identificador (@handle)** ✅ 2026-11-05
   - **Nome Definido:** `Gabriel Vieira | ABAP Cloud`
   - **@handle sugerido:** `@gabrielvieira.abap` (ou `@gabrielvieira.abapcloud`)
-- [ ] **1.3. Identidade Visual Básica (feita em 10 minutos)**
-  - **Foto de Perfil:** Um ícone sóbrio com as iniciais **GV** estilizadas ou uma arte minimalista ligada a código/SAP.
-  - **Banner do Canal:** Uma imagem horizontal simples com o título do canal e a proposta central: *"Gabriel Vieira | Certificação SAP ABAP Cloud, Clean Core & Estudos Práticos"*.
-- [ ] **1.4. Redigir a Descrição do Canal (SEO)**
+- [x] **1.3. Identidade Visual Básica (feita em 10 minutos)** ✅ 2026-11-05
+  - **Foto de Perfil:** Foto oficial com fundo Dark Mode Tech e iluminação rim light em ciano ([foto_perfil_gabriel_vieira.jpg](file:///C:/Users/gabriel.vsouza/source/MeuSegundoCerebro/01_Projects/YouTube/GabrielVieira_ABAPCloud/foto_perfil_gabriel_vieira.jpg)).
+  - **Banner do Canal:** Resolução otimizada 2560x1440 e 2048x1152 com o título e proposta central ([banner_canal_gabriel_vieira_2560x1440.jpg](file:///C:/Users/gabriel.vsouza/source/MeuSegundoCerebro/01_Projects/YouTube/GabrielVieira_ABAPCloud/banner_canal_gabriel_vieira_2560x1440.jpg)).
+  - **Marca d'Água:** Ícones de 150x150 em PNG transparente prontos para o player de vídeo ([marca_dagua_gv_badge.png](file:///C:/Users/gabriel.vsouza/source/MeuSegundoCerebro/01_Projects/YouTube/GabrielVieira_ABAPCloud/marca_dagua_gv_badge.png)).
+- [x] **1.4. Redigir a Descrição do Canal (SEO)** ✅ 2026-11-05
   - Copiar e colar o texto base no campo "Sobre" do canal:
     > *"Desenvolvedor focado em SAP ABAP Cloud, arquitetura moderna e certificação técnica. Documento aqui meus estudos diários, resolução de cenários de certificação e práticas de Clean Core no S/4HANA. Conecte-se comigo no LinkedIn: [seu link]."*
   - Inserir link para seu LinkedIn profissional.
-- [ ] **1.5. Ativar Recursos Intermediários (CRÍTICO)**
+- [x] **1.5. Ativar Recursos Intermediários (CRÍTICO)** ✅ 2026-11-05
   - No YouTube Studio, acessar **Configurações > Canal > Qualificação para recursos**.
   - Validar o número de telefone por SMS para ativar os **Recursos Intermediários**.
   - *Por que é obrigatório:* Sem essa validação, o YouTube bloqueia o upload de miniaturas personalizadas (*thumbnails*) e limita vídeos a menos de 15 minutos.
@@ -43,7 +44,7 @@ data_criacao: 2026-11-04
 
 ## Fase 2: Setup do Ambiente de Gravação (OBS Studio)
 
-- [ ] **2.1. Instalar o OBS Studio (*Open Broadcaster Software*)**
+- [ ] **2.1. Instalar o OBS Studio**
   - Baixar a versão oficial gratuita do OBS Studio para Windows.
 - [ ] **2.2. Configurar o Perfil de Shorts (Vertical: 1080x1920)**
   - Ir em **Configurações > Vídeo**:
@@ -73,7 +74,7 @@ data_criacao: 2026-11-04
 
 ---
 
-## Fase 4: Setup do Editor de Vídeo (CapCut)
+## Fase 4: Setup do Editor de Vídeo
 
 - [ ] **4.1. Instalação e Criação de Projeto Modelo**
   - Instalar o CapCut Desktop (gratuito).
@@ -86,7 +87,7 @@ data_criacao: 2026-11-04
 
 ---
 
-## Fase 5: O "Piloto de Teste" (Validação de 30 Segundos)
+## Fase 5: O "Piloto de Teste" 
 
 - [ ] **5.1. Gravar um Teste de 30 Segundos**
   - Abrir o Obsidian em uma questão de simulado.
