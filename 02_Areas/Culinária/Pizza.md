@@ -42,7 +42,7 @@ summary: "Receita de pizza caseira do Gabriel com massa artesanal de alta hidrat
 - **Farinha de trigo:** 500 g
 - **Água:** 400 g
 - **Sal:** 15 g
-- **Fermento biológico:** 5 g seco (ou 10 g fresco / lievito di birra)
+- **Fermento biológico:** 5 g seco (ou 10 g fresco )
 - **Açúcar:** 15 g (1 colher)
 - **Óleo:** 2 colheres
 

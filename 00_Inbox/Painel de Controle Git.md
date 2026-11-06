@@ -16,20 +16,23 @@ summary: Painel interativo para sincronização rápida com GitHub, salvamento e
 ---
 
 ```dataviewjs
-const path = require('path');
-const vaultPath = (app.vault.adapter.getBasePath ? app.vault.adapter.getBasePath() : app.vault.adapter.basePath) || "";
-const scriptPath = path.join(vaultPath, '.obsidian', 'scripts', 'git-manager.js');
-let gitManager;
+const isMobile = app.isMobile || typeof require === 'undefined';
+let gitManager = null;
 let loadError = null;
 
-try {
-    if (require.cache && require.resolve && require.cache[require.resolve(scriptPath)]) {
-        delete require.cache[require.resolve(scriptPath)];
+if (!isMobile) {
+    try {
+        const path = require('path');
+        const vaultPath = (app.vault.adapter.getBasePath ? app.vault.adapter.getBasePath() : app.vault.adapter.basePath) || "";
+        const scriptPath = path.join(vaultPath, '.obsidian', 'scripts', 'git-manager.js');
+        if (require.cache && require.resolve && require.cache[require.resolve(scriptPath)]) {
+            delete require.cache[require.resolve(scriptPath)];
+        }
+        gitManager = require(scriptPath);
+    } catch (e) {
+        loadError = e;
+        console.error("Erro ao carregar git-manager:", e);
     }
-    gitManager = require(scriptPath);
-} catch (e) {
-    loadError = e;
-    console.error("Erro ao carregar git-manager:", e);
 }
 
 const wrapper = dv.el('div', '', { cls: 'git-panel-card' });
@@ -42,12 +45,16 @@ wrapper.style.borderRadius = '12px';
 wrapper.style.border = '1px solid var(--background-modifier-border)';
 wrapper.style.margin = '15px 0';
 
-const title = wrapper.createEl('h3', { text: '⚡ Ações de Sincronização' });
+const title = wrapper.createEl('h3', { 
+    text: isMobile ? '📱 Ações de Sincronização (Mobile - GitSync Portal)' : '⚡ Ações de Sincronização (Desktop)' 
+});
 title.style.marginTop = '0';
 title.style.marginBottom = '5px';
 
 const subtitle = wrapper.createEl('p', { 
-    text: 'Clique no botão desejado para executar a sincronização em tempo real:' 
+    text: isMobile 
+        ? 'Sincronização mobile integrada via GitSync Portal (API GitHub):' 
+        : 'Clique no botão desejado para executar a sincronização em tempo real:' 
 });
 subtitle.style.margin = '0 0 10px 0';
 subtitle.style.color = 'var(--text-muted)';
@@ -73,7 +80,14 @@ btnPush.style.transition = 'transform 0.1s ease';
 btnPush.onclick = async () => {
     btnPush.disabled = true;
     try {
-        if (gitManager) {
+        if (isMobile) {
+            const executed = app.commands.executeCommandById("gitsync-portal:push-github-now");
+            if (executed) {
+                new Notice("⏳ Enviando alterações para o GitHub via GitSync Portal...");
+            } else {
+                new Notice("⚠️ Plugin GitSync Portal não encontrado. Ative-o nas configurações.");
+            }
+        } else if (gitManager) {
             await gitManager.pushVault(app);
         } else {
             new Notice("❌ Erro ao carregar git-manager.js:\n" + (loadError ? loadError.message : "Arquivo não encontrado"));
@@ -83,9 +97,9 @@ btnPush.onclick = async () => {
     }
 };
 
-// --- Botão 2: Smart Pull ---
+// --- Botão 2: Pull ---
 const btnPull = btnRow.createEl('button', {
-    text: '🔄 Atualizar do GitHub (Smart Pull)',
+    text: isMobile ? '🔄 Atualizar do GitHub (Pull)' : '🔄 Atualizar do GitHub (Smart Pull)',
     cls: 'mod-warning'
 });
 btnPull.style.padding = '12px 22px';
@@ -96,12 +110,41 @@ btnPull.style.borderRadius = '8px';
 btnPull.style.transition = 'transform 0.1s ease';
 
 btnPull.onclick = () => {
-    if (gitManager) {
+    if (isMobile) {
+        const executed = app.commands.executeCommandById("gitsync-portal:pull-github-now");
+        if (executed) {
+            new Notice("⏳ Puxando atualizações do GitHub via GitSync Portal...");
+        } else {
+            new Notice("⚠️ Plugin GitSync Portal não encontrado. Ative-o nas configurações.");
+        }
+    } else if (gitManager) {
         gitManager.pullWithPrompt(app);
     } else {
         new Notice("❌ Erro ao carregar git-manager.js:\n" + (loadError ? loadError.message : "Arquivo não encontrado"));
     }
 };
+
+// --- Botão 3: Two-Way Sync (Exclusivo Mobile) ---
+if (isMobile) {
+    const btnSync = btnRow.createEl('button', {
+        text: '⚡ Sincronização Dupla (Sync)',
+        cls: 'mod-primary'
+    });
+    btnSync.style.padding = '12px 22px';
+    btnSync.style.fontSize = '14px';
+    btnSync.style.fontWeight = '600';
+    btnSync.style.cursor = 'pointer';
+    btnSync.style.borderRadius = '8px';
+
+    btnSync.onclick = () => {
+        const executed = app.commands.executeCommandById("gitsync-portal:sync-github-now");
+        if (executed) {
+            new Notice("⏳ Executando sincronização bidirecional...");
+        } else {
+            new Notice("⚠️ Plugin GitSync Portal não encontrado.");
+        }
+    };
+}
 ```
 
 ---

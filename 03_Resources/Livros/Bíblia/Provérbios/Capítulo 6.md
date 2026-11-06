@@ -31,3 +31,8 @@ tags:
 9. "assim a pobreza lhe sobrevirá como um assaltante, e a sua necessidade como um homem armado."
 	- A escassez e o prejuízo profissional chegam de surpresa para quem negligenciou o tempo de semeadura.
 	- O antídoto é o domínio próprio ([[Provérbios/Capitulo 25|Pv 25:28]]) e a postura de realizar o trabalho como culto a Deus ([[Colossenses/Capítulo 3|Cl 3:23]]).
+16 - "Há sei coisas que o Senhor Odeia, sete coisas que ele detesta:"
+17 - "Olhos altivos, língua mentirosa, mãos que derramam sangue inocente"
+18 - "coração que traça planos perversos, pés que se apressam para fazer o mal,"
+19 - "a testemunha falsa que espalha mentiras e aquele que provoca discórdia entre irmãos"
+	

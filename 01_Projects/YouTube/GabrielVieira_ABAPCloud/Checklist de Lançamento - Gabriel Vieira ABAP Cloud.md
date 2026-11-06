@@ -44,7 +44,7 @@ data_criacao: 2026-11-04
 
 ## Fase 2: Setup do Ambiente de Gravação (OBS Studio)
 
-- [ ] **2.1. Instalar o OBS Studio**
+- [x] **2.1. Instalar o OBS Studio** ✅ 2026-11-06
   - Baixar a versão oficial gratuita do OBS Studio para Windows.
 - [ ] **2.2. Configurar o Perfil de Shorts (Vertical: 1080x1920)**
   - Ir em **Configurações > Vídeo**:
