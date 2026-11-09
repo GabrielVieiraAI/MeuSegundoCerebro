@@ -1,0 +1,33 @@
+# ==========================================
+# Obsidian - Arquivos de Layout e Cache Local
+# ==========================================
+# Layouts de abas e estados de tela (mudam a cada clique/dispositivo)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/page-preview.json
+.obsidian/cache/
+
+# ==========================================
+# Cópias de Conflito de Sincronização
+# ==========================================
+# Cópias geradas pelo GitSync Portal e outras ferramentas
+*.conflict-*
+**/*.conflict-*
+
+# Estados locais do plugin GitSync Portal
+.obsidian/plugins/gitsync-portal/local-sync-state.json
+.obsidian/plugins/gitsync-portal/sync-state.json
+.obsidian/plugins/gitsync-portal/*.conflict-*
+
+# ==========================================
+# Dependências e Arquivos Temporários de Plugins
+# ==========================================
+.obsidian/plugins/**/node_modules/
+
+# ==========================================
+# Arquivos de Sistema Operacional
+# ==========================================
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/

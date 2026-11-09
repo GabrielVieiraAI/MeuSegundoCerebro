@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Layout OBS: Horizontal Aprovado & Vertical Perfeito (Padrão 7.0)</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    .phone-frame {
+      aspect-ratio: 9 / 16;
+      max-width: 380px;
+    }
+    .monitor-frame {
+      aspect-ratio: 16 / 9;
+      max-width: 760px;
+    }
+    .tech-grid {
+      background-size: 24px 24px;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+    }
+    .webcam-glow {
+      box-shadow: 0 0 14px rgba(6, 182, 212, 0.4), 0 6px 18px rgba(0, 0, 0, 0.7);
+    }
+    .card-shadow {
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.65);
+    }
+    .badge-glow {
+      box-shadow: 0 0 10px rgba(37, 99, 235, 0.4);
+    }
+    .hero-question-glow {
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.25), inset 0 0 10px rgba(245, 158, 11, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-[#0a0d14] text-neutral-100 antialiased p-6">
+  <div class="max-w-6xl mx-auto space-y-8">
+    
+    <!-- Top Header -->
+    <div class="border-b border-neutral-800 pb-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-2">
+        <span>✅ Ordem Exata Aplicada • Topo ➔ Obsidian ➔ Webcam ➔ CTA</span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">Layout Final: Horizontal & Vertical Refinados</h1>
+      <p class="text-xs sm:text-sm text-neutral-400 mt-1 max-w-3xl leading-relaxed">
+        O vertical agora segue rigorosamente a sequência solicitada: <strong>1º Pergunta curta em linha única</strong> no topo, <strong>2º Tela do Obsidian</strong> com código e alternativas, <strong>3º Webcam</strong> logo abaixo do Obsidian, e <strong>4º Última linha com CTA tripla</strong> (comentar, like e inscrever-se).
+      </p>
+    </div>
+
+    <!-- MODO HORIZONTAL (YOUTUBE • 16:9) - 100% VALIDADO -->
+    <div class="space-y-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+            <span>📺 Horizontal Aprovado (YouTube • 16:9 • 1920x1080)</span>
+            <span class="text-xs bg-emerald-500/20 text-emerald-400 font-bold px-2 py-0.5 rounded-full border border-emerald-500/30">✓ Validado</span>
+          </h2>
+          <p class="text-xs text-neutral-400">Linha única no topo. 94% de área útil para o Obsidian. PIP no canto inferior direito.</p>
+        </div>
+      </div>
+
+      <div class="bg-neutral-900/90 border border-neutral-800 rounded-xl p-4 sm:p-5 shadow-lg space-y-4">
+        
+        <!-- Simulador do Monitor 16:9 -->
+        <div class="flex justify-center">
+          <div class="monitor-frame w-full bg-[#080b12] tech-grid rounded-xl border-2 border-neutral-800 p-2.5 flex flex-col justify-between relative overflow-hidden shadow-2xl">
+            
+            <!-- 1. CABEÇALHO ULTRA-SLIM DE LINHA ÚNICA (APENAS 40PX NO OBS) -->
+            <div class="bg-neutral-900/90 border border-neutral-800/80 rounded-lg px-3 py-1.5 flex items-center justify-between card-shadow">
+              
+              <!-- Esquerda: Nicho + Foco Técnico Conciso -->
+              <div class="flex items-center gap-2.5">
+                <div class="inline-flex items-center gap-1 bg-blue-600 px-2 py-0.5 rounded text-[11px] font-extrabold text-white tracking-wide badge-glow">
+                  <span>SAP ABAP CLOUD</span>
+                </div>
+                <span class="text-neutral-600 text-xs">•</span>
+                <span class="text-xs font-semibold text-cyan-400 tracking-wide">Clean Core & Modern ABAP</span>
+              </div>
+
+              <!-- Direita: Canal Oficial + CTA Direta de Inscrição -->
+              <div class="flex items-center gap-2">
+                <div class="flex items-center gap-1.5 bg-neutral-950/80 border border-neutral-800 px-2 py-0.5 rounded-full">
+                  <div class="w-4 h-4 rounded-full bg-cyan-400 flex items-center justify-center text-[9px] text-black font-extrabold">
+                    GV
+                  </div>
+                  <span class="text-[11px] font-bold text-neutral-200">@gabrielvieira.abapcloud</span>
+                </div>
+                
+                <a href="#" class="inline-flex items-center gap-1 bg-red-600 hover:bg-red-500 text-white text-[11px] font-bold px-2 py-0.5 rounded transition">
+                  <span>Inscreva-se</span>
+                  <span class="text-[10px]">↗</span>
+                </a>
+              </div>
+
+            </div>
+
+            <!-- 2. MIOLO: OBSIDIAN GIGANTESCO (MÁXIMA ALTURA & LEITURA) -->
+            <div class="w-full flex-1 bg-[#141414] rounded-lg border border-neutral-800/80 p-4 flex flex-col justify-between card-shadow relative my-2 overflow-hidden">
+              <div class="space-y-3">
+                <div class="flex items-center justify-between border-b border-neutral-800/80 pb-2">
+                  <div class="text-xs font-bold text-neutral-200 flex items-center gap-2">
+                    <span class="text-cyan-400 font-mono">#</span> Resolução de Questões • Core Data Services (CDS Views)
+                  </div>
+                  <span class="text-[10px] font-mono text-neutral-500">Obsidian • 03_Resources/SAP</span>
+                </div>
+
+                <p class="text-xs text-neutral-300 leading-relaxed max-w-xl">
+                  Ao modelar CDS View Entities no ABAP Cloud, certifique-se de aplicar a anotação de controle de acesso correta para evitar violações de segurança no runtime:
+                </p>
+
+                <div class="bg-neutral-900/90 border border-neutral-800 rounded p-3 text-xs font-mono text-emerald-400 max-w-lg shadow-inner">
+                  @AccessControl.authorizationCheck: #NOT_REQUIRED<br/>
+                  define view entity Z_OrderCDS as select from /dmo/booking { ... }
+                </div>
+              </div>
+
+              <!-- WEBCAM EMOLDURADA NO CANTO INFERIOR DIREITO -->
+              <div class="absolute right-3.5 bottom-3.5 w-36 h-24 rounded-lg border-2 border-cyan-400 bg-neutral-800 overflow-hidden webcam-glow flex flex-col justify-end p-2 shadow-2xl">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent"></div>
+                <div class="relative z-10 flex items-center justify-between text-[11px] text-white font-semibold">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Gabriel V.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MODO VERTICAL (SHORTS • 9:16) - PADRÃO 7.0 RIGOROSO -->
+    <div class="space-y-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+            <span>📱 Vertical Padrão 7.0 (Shorts • 9:16 • 1080x1920)</span>
+            <span class="text-xs bg-cyan-500/20 text-cyan-400 font-bold px-2 py-0.5 rounded-full border border-cyan-500/30">Ordem Exata Solicitada</span>
+          </h2>
+          <p class="text-xs text-neutral-400">1º Pergunta curta (1 linha) ➔ 2º Obsidian ➔ 3º Webcam ➔ 4º CTA tripla em 1 linha.</p>
+        </div>
+      </div>
+
+      <div class="bg-neutral-900/90 border border-neutral-800 rounded-xl p-4 sm:p-5 shadow-lg space-y-4">
+        
+        <div class="flex justify-center">
+          <!-- Moldura Celular Pro (1080 x 1920 Proporcional) -->
+          <div class="phone-frame w-full bg-gradient-to-b from-[#090d18] via-[#0c1324] to-[#070910] tech-grid rounded-2xl border-2 border-cyan-500/50 p-3 flex flex-col justify-between relative overflow-hidden shadow-2xl">
+            
+            <!-- 1º ELEMENTO: TOPO COM PERGUNTA CURTA EM LINHA ÚNICA (Y: 0 a 140) -->
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between">
+                <div class="inline-flex items-center gap-1 bg-blue-600 px-2 py-0.5 rounded text-[10px] font-extrabold text-white tracking-wide badge-glow">
+                  <span>SAP ABAP CLOUD</span>
+                </div>
+                
+                <div class="flex items-center gap-1.5 bg-neutral-900/90 border border-neutral-800 px-2 py-0.5 rounded-full shadow-sm">
+                  <div class="w-3.5 h-3.5 rounded-full bg-cyan-400 flex items-center justify-center text-[8px] text-black font-extrabold">
+                    GV
+                  </div>
+                  <span class="text-[10px] font-bold text-neutral-300">@gabrielvieira.abapcloud</span>
+                </div>
+              </div>
+
+              <!-- PERGUNTA CONCISA EM LINHA ÚNICA (CABE COM FOLGA SEM QUEBRAR) -->
+              <div class="bg-gradient-to-r from-amber-500/20 via-orange-500/15 to-amber-500/20 border-2 border-amber-400/80 rounded-lg py-1.5 px-2.5 text-center hero-question-glow">
+                <h3 class="text-xs font-black text-amber-300 tracking-tight uppercase truncate">
+                  Qual é a pegadinha dessa questão? 🧐
+                </h3>
+              </div>
+            </div>
+
+            <!-- 2º ELEMENTO: TELA DO OBSIDIAN (LOGO DEPOIS DA PERGUNTA) (Y: 150 a 980) -->
+            <div class="bg-[#141414]/95 border border-neutral-700/80 rounded-xl p-3 card-shadow space-y-2 my-1">
+              <div class="flex items-center justify-between border-b border-neutral-800 pb-1">
+                <span class="text-[11px] font-bold text-neutral-200 font-mono"># Core Data Services (CDS)</span>
+                <span class="text-[9px] text-cyan-400 font-semibold">Q.01</span>
+              </div>
+              
+              <div class="text-xs text-neutral-200 leading-snug font-medium">
+                "Qual anotação é obrigatória para definir uma View Entity no ABAP Cloud?"
+              </div>
+
+              <div class="bg-neutral-900/90 border border-neutral-800 rounded p-2 text-[11px] font-mono text-cyan-300 shadow-inner">
+                @AccessControl.authorizationCheck: #NOT_REQUIRED<br/>
+                define view entity Z_DemoCDS ...
+              </div>
+
+              <!-- Alternativas -->
+              <div class="space-y-1 text-xs text-neutral-300 pt-0.5">
+                <div class="p-1.5 rounded bg-neutral-800/60 border border-neutral-700/50 flex items-center justify-between">
+                  <span><strong>[A]</strong> define view</span>
+                </div>
+                <div class="p-1.5 rounded bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 font-semibold flex items-center justify-between">
+                  <span><strong>[B]</strong> define view entity</span>
+                  <span class="text-xs font-bold text-emerald-400">✓</span>
+                </div>
+                <div class="p-1.5 rounded bg-neutral-800/60 border border-neutral-700/50 flex items-center justify-between">
+                  <span><strong>[C]</strong> define table function</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3º ELEMENTO: WEBCAM (LOCALIZADA DEPOIS DO OBSIDIAN) (Y: 990 a 1380) -->
+            <div class="w-full h-32 rounded-xl border-2 border-cyan-400 bg-neutral-800 overflow-hidden webcam-glow relative flex flex-col justify-end p-2.5 my-1 shadow-xl">
+              <div class="absolute inset-0 bg-gradient-to-tr from-neutral-900 via-neutral-800 to-[#101b33] flex items-center justify-center">
+                <div class="text-center opacity-40">
+                  <span class="text-3xl">👨‍💻</span>
+                  <p class="text-[10px] font-mono mt-1 text-cyan-300">Webcam HD • Gabriel Vieira</p>
+                </div>
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent"></div>
+              
+              <div class="relative z-10 flex items-center justify-between text-[11px] text-white font-semibold">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span class="font-bold">Gabriel Vieira</span>
+                </div>
+                <span class="text-[9px] bg-cyan-500/20 text-cyan-300 px-1.5 py-0.5 rounded border border-cyan-500/30 font-mono">1080p</span>
+              </div>
+            </div>
+
+            <!-- 4º ELEMENTO (ÚLTIMA LINHA): CTA TRIPLA NA MESMA LINHA (Y: 1390 a 1480) -->
+            <div class="bg-neutral-900/95 border border-neutral-800 rounded-lg px-2.5 py-1.5 flex items-center justify-between text-xs card-shadow">
+              <!-- Comentar -->
+              <div class="flex items-center gap-1 font-bold text-amber-300 text-[11px]">
+                <span>💬</span>
+                <span>Comente [A, B, C]</span>
+              </div>
+
+              <span class="text-neutral-700 text-xs">•</span>
+
+              <!-- Deixar o Like -->
+              <div class="flex items-center gap-1 font-semibold text-neutral-200 text-[11px]">
+                <span class="text-blue-400">👍</span>
+                <span>Like</span>
+              </div>
+
+              <span class="text-neutral-700 text-xs">•</span>
+
+              <!-- Inscrever-se -->
+              <a href="#" class="inline-flex items-center gap-1 bg-red-600 hover:bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded transition">
+                <span>Inscreva-se</span>
+                <span>↗</span>
+              </a>
+            </div>
+
+            <!-- 5º SAFE ZONE LIVRE (Y: 1490 a 1920) -->
+            <div class="h-8 flex items-center justify-center text-[9px] text-neutral-600 font-mono">
+              [Safe Zone: botões nativos do YouTube Shorts]
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TABELA COMPLETA DE COORDENADAS PARA O OBS STUDIO -->
+    <div class="bg-neutral-900/80 border border-neutral-800 rounded-xl p-4 sm:p-5 space-y-3">
+      <h3 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
+        <span>📐 Coordenadas Oficiais para Configurar o OBS Studio</span>
+      </h3>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs border border-neutral-800 rounded-lg overflow-hidden">
+          <thead class="bg-neutral-800/60 text-neutral-300 font-semibold">
+            <tr>
+              <th class="p-2.5 border-b border-neutral-800">Formato / Cena</th>
+              <th class="p-2.5 border-b border-neutral-800">Elemento</th>
+              <th class="p-2.5 border-b border-neutral-800">Tipo de Fonte OBS</th>
+              <th class="p-2.5 border-b border-neutral-800">Resolução (L x A)</th>
+              <th class="p-2.5 border-b border-neutral-800">Posição (X, Y)</th>
+              <th class="p-2.5 border-b border-neutral-800">Ordem Visual</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-neutral-800 text-neutral-300">
+            <!-- Horizontal -->
+            <tr class="hover:bg-neutral-800/30">
+              <td class="p-2.5 font-bold text-emerald-400">Horizontal (1920x1080)</td>
+              <td class="p-2.5 text-cyan-400">Barra Superior</td>
+              <td class="p-2.5">Fonte de Imagem</td>
+              <td class="p-2.5 font-mono">1920 x 1080 px</td>
+              <td class="p-2.5 font-mono">X: 0, Y: 0</td>
+              <td class="p-2.5 text-neutral-400">Linha única: nicho, @ e CTA (Y: 4 a 50)</td>
+            </tr>
+            <tr class="hover:bg-neutral-800/30">
+              <td class="p-2.5 font-bold text-emerald-400">Horizontal (1920x1080)</td>
+              <td class="p-2.5 text-white">Obsidian Principal</td>
+              <td class="p-2.5">Captura de Janela</td>
+              <td class="p-2.5 font-mono font-bold text-emerald-400">1920 x 1028 px</td>
+              <td class="p-2.5 font-mono">X: 0, Y: 52</td>
+              <td class="p-2.5 text-neutral-400">Ocupa tela cheia abaixo da barra (95%+)</td>
+            </tr>
+            <tr class="hover:bg-neutral-800/30">
+              <td class="p-2.5 font-bold text-emerald-400">Horizontal (1920x1080)</td>
+              <td class="p-2.5 text-blue-400">Webcam PIP + Moldura</td>
+              <td class="p-2.5">Captura de Vídeo + Imagem</td>
+              <td class="p-2.5 font-mono">420 x 260 px (Moldura: 426x266)</td>
+              <td class="p-2.5 font-mono">X: 1473, Y: 765</td>
+              <td class="p-2.5 text-neutral-400">Canto inferior direito com moldura cyan</td>
+            </tr>
+            <!-- Vertical -->
+            <tr class="hover:bg-neutral-800/30">
+              <td class="p-2.5 font-bold text-cyan-400">Vertical (1080x1920)</td>
+              <td class="p-2.5 text-amber-400">1º Topo: Badge + Handle + Pergunta</td>
+              <td class="p-2.5">Fonte de Imagem</td>
+              <td class="p-2.5 font-mono">1080 x 165 px</td>
+              <td class="p-2.5 font-mono">X: 0, Y: 30</td>
+              <td class="p-2.5 font-bold text-white">1º no Topo (1 linha de destaque)</td>
+            </tr>
+            <tr class="hover:bg-neutral-800/30">
+              <td class="p-2.5 font-bold text-cyan-400">Vertical (1080x1920)</td>
+              <td class="p-2.5 text-white">2º Obsidian (Questão & Código)</td>
+              <td class="p-2.5">Captura de Janela</td>
+              <td class="p-2.5 font-mono font-bold text-emerald-400">1000 x 880 px</td>
+              <td class="p-2.5 font-mono">X: 40, Y: 210</td>
+              <td class="p-2.5 font-bold text-white">2º Ocupa toda a largura lateral (sem bordas pretas)</td>
+            </tr>
+            <tr class="hover:bg-neutral-800/30">
+              <td class="p-2.5 font-bold text-cyan-400">Vertical (1080x1920)</td>
+              <td class="p-2.5 text-blue-400">3º Webcam HD + Moldura</td>
+              <td class="p-2.5">Captura de Vídeo + Imagem</td>
+              <td class="p-2.5 font-mono font-bold text-cyan-300">1000 x 430 px (Moldura: 1006x436)</td>
+              <td class="p-2.5 font-mono">X: 40, Y: 1110</td>
+              <td class="p-2.5 font-bold text-white">3º Logo abaixo do Obsidian preenchendo a tela</td>
+            </tr>
+            <tr class="hover:bg-neutral-800/30">
+              <td class="p-2.5 font-bold text-cyan-400">Vertical (1080x1920)</td>
+              <td class="p-2.5 text-red-400">4º CTA Tripla Unificada (1 Linha)</td>
+              <td class="p-2.5">Fonte de Imagem</td>
+              <td class="p-2.5 font-mono font-bold text-amber-300">1080 x 75 px</td>
+              <td class="p-2.5 font-mono">X: 0, Y: 1560</td>
+              <td class="p-2.5 font-bold text-white">4º Última linha antes da Safe Zone dos Shorts</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

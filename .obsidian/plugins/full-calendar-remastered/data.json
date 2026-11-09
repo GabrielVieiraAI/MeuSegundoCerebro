@@ -1,0 +1,119 @@
+{
+  "calendarSources": [
+    {
+      "type": "tasks",
+      "id": "tasks-source",
+      "name": "Obsidian Tasks",
+      "color": "#4f46e5"
+    }
+  ],
+  "defaultCalendarId": "tasks-source",
+  "firstDay": 1,
+  "initialView": {
+    "desktop": "timeGridWeek",
+    "mobile": "timeGrid3Days"
+  },
+  "timeFormat24h": false,
+  "clickToCreateEventFromMonthView": true,
+  "displayTimezone": "America/Sao_Paulo",
+  "lastSystemTimezone": "America/Sao_Paulo",
+  "enableAdvancedCategorization": false,
+  "chrono_analyser_config": null,
+  "categorySettings": [],
+  "useCustomGoogleClient": false,
+  "googleClientId": "",
+  "googleClientSecret": "",
+  "googleUseCopyPasteAuth": false,
+  "googleAccounts": [],
+  "useCustomMicrosoftClient": false,
+  "microsoftClientId": "",
+  "microsoftProxyBaseUrl": "",
+  "microsoftAccounts": [],
+  "enableLocalServer": false,
+  "localServerPort": 8540,
+  "useLegacyPlaintextCredentials": false,
+  "businessHours": {
+    "enabled": false,
+    "daysOfWeek": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "startTime": "09:00",
+    "endTime": "17:00"
+  },
+  "enableBackgroundEvents": true,
+  "enableReminders": true,
+  "enableDefaultReminder": true,
+  "defaultReminderMinutes": 10,
+  "workspaces": [],
+  "activeWorkspace": null,
+  "showEventInStatusBar": false,
+  "highlightCurrentOrNextEvent": true,
+  "enableLivePreview": true,
+  "slotMinTime": "04:00",
+  "slotMaxTime": "21:00",
+  "allDaySlot": true,
+  "timeGridDayHeaderFormat": "day-ddmm",
+  "weekends": true,
+  "hiddenDays": [],
+  "dayMaxEvents": false,
+  "activityWatch": {
+    "enabled": false,
+    "apiUrl": "http://127.0.0.1:5600",
+    "lastSyncTime": 0,
+    "autoSyncEnabled": false,
+    "autoSyncIntervalMins": 10,
+    "targetCalendarId": "",
+    "syncStrategy": "auto",
+    "customDateStart": "",
+    "customDateEnd": "",
+    "profiles": []
+  },
+  "tasksIntegration": {
+    "backlogDateTarget": "dueDate",
+    "calendarDisplayDateTarget": "dueDate",
+    "openEditModalAfterBacklogDrop": false,
+    "taskDisplayFormat": "dayPlanner",
+    "includeGlobalQueryInBacklog": false,
+    "backlogQuery": ""
+  },
+  "fcrReminderCompanion": {
+    "enabled": false,
+    "apiUrl": "http://127.0.0.1:45677"
+  },
+  "apiTokens": {},
+  "authorizedTokens": {},
+  "milestones": {
+    "counters": {},
+    "unlockedAt": {},
+    "shown": {}
+  },
+  "enableMonthlyStatsReport": false,
+  "lastMonthlyMilestonesGeneratedMonth": null,
+  "lastMonthlyMilestonesCheckDate": null,
+  "milestoneNotifierDuration": 8000,
+  "currentVersion": "0.13.6",
+  "linkedNotesDirectory": "",
+  "linkedNoteLinkStrategy": "deadline",
+  "taskBacklogLastProviderId": "",
+  "caldavTaskInboxLastCalendarId": "",
+  "linkedNoteTemplate": "# {{title}}\n\n**Date**: {{date}}\n**Time**: {{timeString}}\n**Location**: {{location}}\n**Calendar**: {{calendarName}}\n\n## Description\n{{description}}\n\n## Notes\n- ",
+  "enableLinkedNoteTemplatesPreset": false,
+  "linkedNoteTemplatesPresets": [],
+  "weatherCity": "",
+  "weatherLatitude": null,
+  "weatherLongitude": null,
+  "weatherHide": true,
+  "weatherInputMode": "city",
+  "weatherUnit": "C",
+  "openDailyNoteOnDateClick": false,
+  "breakTimer": {
+    "enabled": false,
+    "intervalMins": 60,
+    "idleThresholdMins": 30,
+    "breakDurationSecs": 30
+  }
+}
