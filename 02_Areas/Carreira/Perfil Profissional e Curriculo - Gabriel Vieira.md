@@ -88,7 +88,7 @@ No desenvolvimento SAP contemporâneo, a transição do ambiente legado para sol
 ## 💼 4. Portfólio de Projetos & Casos Reais Entregues
 
 ### 🚀 Caso 1: Aplicativo Fiori — Gestão da Tabela de Parâmetros Corporativos
-* **Nota Técnica Detalhada:** [[APP Tabela de Parametros]]
+* **Nota Técnica Detalhada:** [[01 - APP Tabela de Parâmetros Veiling Holambra]]
 * **Cliente / Contexto:** Insi / Veiling Holambra
 * **Problema Resolvido:** Parametrizações corporativas eram feitas de maneira arcaica através da transação standard [[STVARV e TVARVC - Variaveis de Selecao e Parametros|TVARVC/STVARV]], sem governança de acesso por departamento e propensa a erros manuais operacionais.
 * **Solução Técnica Implementada:**

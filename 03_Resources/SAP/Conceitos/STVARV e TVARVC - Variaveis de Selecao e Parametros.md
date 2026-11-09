@@ -8,7 +8,7 @@ summary: "Tabela e transações padrão do SAP (STVARV/STVARVC) utilizadas para 
 
 # STVARV e TVARVC - Variáveis de Seleção e Parâmetros
 
-**Relacionado:** [[APP Tabela de Parametros]], [[ALV - ABAP List Viewer|ALV]], [[ABAP Cloud]], [[Clean Core]], [[Roteiro de Estudos SAP]]
+**Relacionado:** [[01 - APP Tabela de Parâmetros Veiling Holambra]], [[ALV - ABAP List Viewer|ALV]], [[ABAP Cloud]], [[Clean Core]], [[Roteiro de Estudos SAP]]
 
 ---
 
@@ -108,7 +108,7 @@ sequenceDiagram
 
 ## 5. Por que as Empresas Criam Soluções Próprias (Limitações da TVARVC)
 
-Apesar de útil e nativa, a TVARVC possui limitações graves de arquitetura em grandes corporações, o que motiva o surgimento de ferramentas como o [[APP Tabela de Parametros]]:
+Apesar de útil e nativa, a TVARVC possui limitações graves de arquitetura em grandes corporações, o que motiva o surgimento de ferramentas como o [[01 - APP Tabela de Parâmetros Veiling Holambra]]:
 
 | Limitação da TVARVC | Como a TVARVC opera | Como uma Tabela/App de Parâmetros resolve |
 | :--- | :--- | :--- |

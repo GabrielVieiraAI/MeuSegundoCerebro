@@ -41,7 +41,7 @@ A solução para a demanda **DEL-R2R-009 (Bloqueio e Desbloqueio Massivo de Clie
 
 ## 🧱 Lista Consolidada de Objetos Técnicos
 
-A nomenclatura segue estritamente o [[0 - Padrão de Nomenclatura ABAP Veiling Holambra|Padrão de Nomenclatura ABAP Veiling Holambra]] (módulo **FI**, separador `_`, descrições em português).
+A nomenclatura segue estritamente o [[00 - Padrão de Nomenclatura ABAP Veiling Holambra|Padrão de Nomenclatura ABAP Veiling Holambra]] (módulo **FI**, separador `_`, descrições em português).
 
 ### 1. Camada de Dicionário de Dados (ABAP Dictionary - DDL via Eclipse ADT)
 
