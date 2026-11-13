@@ -31,11 +31,11 @@ Este documento sintetiza o fluxo de trabalho padrão para conduzir qualquer dema
 ## Etapa 1 · `01 - Requisitos e Negocio`
 **Objetivo:** Entender os requisitos de negócio, extrair as especificações sem ruídos do material bruto e alinhar todas as dúvidas com o consultor funcional antes de desenhar a solução.
 
-| Subpasta | Conteúdo e Finalidade | Comando (Skill) | Templates Relacionados |
-| :--- | :--- | :--- | :--- |
-| **`Anexos/`** | Arquivos originais recebidos do consultor (apresentação PowerPoint do DPS — *Desenho de Proposta de Solução*, planilhas de estimativa, templates de Especificação Técnica). | [[iniciar-demanda-sap\|`/iniciar-demanda-sap`]] | — |
-| **`Especificacao/`** | Notas em Markdown divididas conforme as seções do PowerPoint, mantendo apenas a especificação limpa (sem capa, sem sumário e sem termos de aceite). | [[iniciar-demanda-sap\|`/iniciar-demanda-sap`]] | — |
-| **`Reunioes/`** | Notas individuais por reunião (contendo resumo, tabela de decisões e transcrição) e uma nota consolidada que reúne apenas as decisões tomadas em todas as reuniões. | [[registrar-reuniao-sap\|`/registrar-reuniao-sap`]] | • [[Template_Reuniao]]<br>• [[Template_Consolidado_Decisoes]] |
+| Subpasta             | Conteúdo e Finalidade                                                                                                                                                        | Comando (Skill)                                             | Templates Relacionados                                        |
+| :------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------- | :------------------------------------------------------------ |
+| **`Anexos/`**        | Arquivos originais recebidos do consultor (apresentação PowerPoint do DPS — *Desenho de Proposta de Solução*, planilhas de estimativa, templates de Especificação Técnica).  | [[iniciar-demanda-sap\|`/iniciar-demanda-sap`]]             | —                                                             |
+| **`Especificacao/`** | Especificação funcional consolidada em alto nível nos 6 pilares essenciais (para desenvolvedores, consultores e key users), com rastreabilidade de slides e zero inferência. | [[extrair-especificacao-sap\|`/extrair-especificacao-sap`]] | —                                                             |
+| **`Reunioes/`**      | Notas individuais por reunião (contendo resumo, tabela de decisões e transcrição) e uma nota consolidada que reúne apenas as decisões tomadas em todas as reuniões.          | [[registrar-reuniao-sap\|`/registrar-reuniao-sap`]]         | • [[Template_Reuniao]]<br>• [[Template_Consolidado_Decisoes]] |
 
 ---
 ## Etapa 2 · `02 - Arquitetura e Design`
@@ -77,10 +77,9 @@ As instruções abaixo destinam-se exclusivamente a orientar agentes de IA ao cr
    * Nunca utilize demandas anteriores como referência para não contaminar a nova demanda com regras de negócio alheias.
    * Sempre leia o template correspondente listado nas tabelas acima antes de gerar qualquer arquivo das Etapas 1, 2, 3 ou 4.
 4. **Regras Específicas da Etapa 1 (`Especificacao/`):**
-   * Adapte a quantidade de notas conforme as seções do PowerPoint (ex.: `01 - Contexto Atual...md`, `02 - Estratégia da Solução.md`, `03 - Detalhamento para Desenvolvimento.md`, `04 - Governança Técnica...md`).
-   * **Não crie** nota `00` de Sumário.
-   * Remova capas divisórias e termos de aceite/assinaturas.
-   * **Não adicione** marcações de dúvidas por conta própria na extração; extraia apenas a especificação limpa do documento.
+   * Crie a nota unificada `01 - Especificação Funcional (Visão da Solução).md` estruturada nos **6 Pilares Essenciais**: (1) Contexto do Cliente, (2) O que precisa ser criado com Desenvolvimento ABAP (detalhando quantos e quais aplicativos/programas serão criados, quem usa, função e regras de cada um), (3) Escopo Negativo, (4) Detalhamento das Regras de Negócio e Dados, (5) Cenários de Testes e (6) Lacunas, Dúvidas e Ambiguidades.
+   * **Zero Inferência e Citação Obrigatória:** Extraia apenas fatos presentes na apresentação com referência obrigatória do slide `(Slide X)`.
+   * Remova capas divisórias, termos de aceite/assinaturas e seções administrativas/burocráticas (como "Identificação da Solicitação" e "Requerimentos dependentes e relacionados").
 5. **Regras Específicas da Etapa 2 e 4 (Nomenclatura de Objetos e Arquivos):**
    * **Padrão de Nomenclatura por Empresa:** Cada empresa possui uma pasta de regras globais (ex.: `Regras Globais da <Empresa>`). Os nomes de objetos ABAP/CDS/Fiori devem seguir estritamente o padrão de nomenclatura contido na pasta da empresa à qual a demanda pertence. Caso a empresa não possua um padrão próprio documentado, utilize o [[Padrão de Nomenclatura ABAP Geral]].
    * Na pasta `04 - Objetos Tecnicos/`, numere os arquivos na mesma sequência de criação do Guia de Implementação (`01 - <NOME_OBJETO>.md`, `02 - <NOME_OBJETO>.md`...). Quando objetos diferentes compartilharem o mesmo nome técnico (comum no RAP), diferencie o nome do arquivo com sufixo entre parênteses: `(CDS)`, `(BDEF)`, `(MDE)`.

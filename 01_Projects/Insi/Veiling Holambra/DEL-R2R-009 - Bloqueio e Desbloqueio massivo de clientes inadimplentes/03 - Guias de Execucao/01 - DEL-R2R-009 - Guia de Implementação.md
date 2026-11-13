@@ -35,7 +35,7 @@ aliases:
 ###  Fase 1: Fundação, Segurança e Dicionário de Dados
 > **Objetivo:** Criar todos os objetos de suporte que não dependem de ninguém, mas que serão chamados pelo código ABAP mais adiante.
 
-- [x] Passo 1 — Criar a tabela de auditoria [[01 - ZTFI_LOG_INADIMP|ZTFI_LOG_INADIMP]] ✅ 2026-10-28
+- [x] Passo 1 — Criar a tabela de auditoria [[01 - ZTFI_LOG_INADIMP|ZTFI_LOG_INADIMP]] ✅ 2026-11-11
 - [x] Passo 2 — Criar a classe de mensagens [[03 - ZFI_INADIMPLENCIA|ZFI_INADIMPLENCIA]] ✅ 2026-10-28
 - [x] Passo 3 — Criar o objeto de autorização [[02 - ZFI_BLOQ|ZFI_BLOQ]] ✅ 2026-10-28
 
