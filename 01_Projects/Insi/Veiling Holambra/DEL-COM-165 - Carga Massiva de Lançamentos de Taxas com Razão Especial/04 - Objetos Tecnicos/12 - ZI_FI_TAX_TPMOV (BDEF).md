@@ -20,13 +20,13 @@ aliases:
 
 # 📦 `ZI_FI_TAX_TPMOV (BDEF)` (Behavior Definition Root — Tipos de Movimento)
 
-⬅️ [[02 - DEL-COM-165 - Arquitetura App 2 (Tipos de Movimento)|Voltar para Arquitetura App 2]] | 🎨 [[02 - DEL-COM-165 - Arquitetura Técnica App 2 (Tipos de Movimento).excalidraw|Ver no Diagrama Excalidraw App 2]]
+⬅️ [[02 - DEL-COM-165 - Arquitetura (Tipos de Movimento)|Voltar para Arquitetura (Tipos de Movimento)]] | 🎨 [[02 - DEL-COM-165 - Arquitetura Técnica (Tipos de Movimento).excalidraw|Ver no Diagrama Excalidraw (Tipos de Movimento)]]
 
 ---
 
 ## 📌 Visão Geral do Objeto
 
-O Behavior Definition `ZI_FI_TAX_TPMOV` define o comportamento transacional **Managed com Draft** do **Aplicativo 2** (Manutenção de Tipos de Movimento), vinculando a entidade raiz [[11 - ZI_FI_TAX_TPMOV (CDS)|ZI_FI_TAX_TPMOV]] à tabela ativa [[01 - ZTFI_TAX_TPMOV|ZTFI_TAX_TPMOV]], à tabela de rascunho [[02 - ZTFI_TAX_TPMOV_D|ZTFI_TAX_TPMOV_D]] e à classe de implementação [[13 - ZCLFI_BP_TAX_TPMOV|ZCLFI_BP_TAX_TPMOV]].
+O Behavior Definition `ZI_FI_TAX_TPMOV` define o comportamento transacional **Managed com Draft** do **Aplicativo de Tipos de Movimento (`ZFI_TAX_TPMOV`)** (Manutenção de Tipos de Movimento), vinculando a entidade raiz [[11 - ZI_FI_TAX_TPMOV (CDS)|ZI_FI_TAX_TPMOV]] à tabela ativa [[01 - ZTFI_TAX_TPMOV|ZTFI_TAX_TPMOV]], à tabela de rascunho [[02 - ZTFI_TAX_TPMOV_D|ZTFI_TAX_TPMOV_D]] e à classe de implementação [[13 - ZCLFI_BP_TAX_TPMOV|ZCLFI_BP_TAX_TPMOV]].
 
 ---
 
@@ -39,6 +39,18 @@ O Behavior Definition `ZI_FI_TAX_TPMOV` define o comportamento transacional **Ma
 ---
 
 ## 🛠️ Passo a Passo da Criação do Objeto
+
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "BDEF/BDO"
+packageName: "ZFI_TAX_TPMOV"
+name: "ZI_FI_TAX_TPMOV"
+description: "DEL-COM-165: Behavior Root Tipos de Movimento"
+extraParams:
+  rootEntity: "ZI_FI_TAX_TPMOV"
+  implementationType: "Managed"
+```
 
 1. **No Eclipse ADT:** Clique com o botão direito sobre a CDS View [[11 - ZI_FI_TAX_TPMOV (CDS)|ZI_FI_TAX_TPMOV]] -> **`New Behavior Definition`**.
 2. Preencha as propriedades:

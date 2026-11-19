@@ -27,7 +27,7 @@ Esta skill executa a **Etapa 2 (`02 - Arquitetura e Design/`)** e a **Etapa 4 (`
      * [[Template_Arquitetura_Tecnica_Completa_Excalidraw]]
      * [[Template_Objeto_Tecnico]]
    * Responda no chat explicando de forma direta o que você entendeu que precisa fazer:
-     * As **Decisões Fundamentais de Arquitetura** propostas.
+     * As **Decisões Fundamentais de Arquitetura** propostas (incluindo necessidade de criação de novos pacotes `DEVC/K` e encapsulamento, quando aplicável).
      * A tabela resumida dos **Objetos Técnicos** que serão criados por camada (respeitando o padrão de nomenclatura da empresa) e a ordem numerada das notas na pasta `04 - Objetos Tecnicos/`.
      * Eventuais pontos técnicos que precisem de definição do usuário antes de gerar os arquivos.
    * **Não crie nem edite nenhum arquivo antes da autorização do usuário.**
@@ -50,6 +50,6 @@ Esta skill executa a **Etapa 2 (`02 - Arquitetura e Design/`)** e a **Etapa 4 (`
    * Cada nota deve conter:
      1. **📌 Visão Geral do Objeto**
      2. **⚖️ Regras de Negócio Aplicadas**
-     3. **🛠️ Passo a Passo da Criação do Objeto**
-     4. **💻 Snippet de Código** dividido em **📝 Código Comentado (Para Estudo e Referência)** e **🚀 Código Limpo (Sem Comentários - Para Copiar e Colar)**.
+     3. **🛠️ Passo a Passo da Criação do Objeto**, incluindo obrigatoriamente o bloco estruturado de **Metadados ADT** preenchido (`objectType`, `packageName`, `name`, `description` com até 60 caracteres e `extraParams` quando aplicável).
+     4. **💻 Snippet de Código** dividido em **📝 Código Comentado (Para Estudo e Referência)** e **🚀 Código Limpo (Sem Comentários - Para Copiar e Colar)**. Para objetos multi-arquivo (como *Behavior Pool* `CLAS/OC` com *Local Types* / `CCIMP`, `CCDEF` ou *Test Classes*), separe sub-blocos explícitos por arquivo/aba **AFF** (*ABAP File Format*) dentro das duas seções.
    * Nunca utilize o seletor estático ABAP isolado entre crases; utilize sempre em negrito (**`**=>**`**) ou com escape (**`` `\=>` ``**).

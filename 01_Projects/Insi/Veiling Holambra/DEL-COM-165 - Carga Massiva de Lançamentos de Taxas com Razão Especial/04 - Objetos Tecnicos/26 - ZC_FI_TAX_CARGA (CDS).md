@@ -21,13 +21,13 @@ aliases:
 
 # 📦 `ZC_FI_TAX_CARGA (CDS)` (CDS Root Projection View — Monitor de Lotes de Carga)
 
-⬅️ [[01 - DEL-COM-165 - Arquitetura App 1 (Carga Massiva de Taxas)|Voltar para Arquitetura App 1]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica App 1 (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw App 1]]
+⬅️ [[01 - DEL-COM-165 - Arquitetura (Carga Massiva de Taxas)|Voltar para Arquitetura (Carga Massiva de Taxas)]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw (Carga Massiva)]]
 
 ---
 
 ## 📌 Visão Geral do Objeto
 
-A CDS View `ZC_FI_TAX_CARGA` é a **Entidade Raiz de Projeção (*Root Projection View*)** do **Aplicativo 1** (Carga Massiva e Monitor de Taxas com Razão Especial), projetando [[19 - ZI_FI_TAX_CARGA (CDS)|ZI_FI_TAX_CARGA]] e redirecionando a composição `_Documentos` para [[27 - ZC_FI_TAX_DOC (CDS)|ZC_FI_TAX_DOC]].
+A CDS View `ZC_FI_TAX_CARGA` é a **Entidade Raiz de Projeção (*Root Projection View*)** do **Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA`)** (Carga Massiva e Monitor de Taxas com Razão Especial), projetando [[19 - ZI_FI_TAX_CARGA (CDS)|ZI_FI_TAX_CARGA]] e redirecionando a composição `_Documentos` para [[27 - ZC_FI_TAX_DOC (CDS)|ZC_FI_TAX_DOC]].
 
 ---
 
@@ -39,7 +39,18 @@ A CDS View `ZC_FI_TAX_CARGA` é a **Entidade Raiz de Projeção (*Root Projectio
 
 ## 🛠️ Passo a Passo da Criação do Objeto
 
-1. **No Eclipse ADT:** Conecte-se ao sistema e acesse o pacote `ZFI_CARGA_TAXAS`.
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "DDLS/DF"
+packageName: "ZFI_TAX_CARGA"
+name: "ZC_FI_TAX_CARGA"
+description: "DEL-COM-165: Projection Root Monitor de Lotes de Carga"
+extraParams:
+  circularActivationGroup: "Passos 25-27 (ZC_FI_TAX_CARGA, ZC_FI_TAX_DOC, ZC_FI_TAX_ITEM)"
+```
+
+1. **No Eclipse ADT:** Conecte-se ao sistema e acesse o pacote `ZFI_TAX_CARGA`.
 2. Clique com o botão direito -> **`New`** -> **`Data Definition`**.
 3. Preencha as propriedades:
    - **Name:** `ZC_FI_TAX_CARGA`

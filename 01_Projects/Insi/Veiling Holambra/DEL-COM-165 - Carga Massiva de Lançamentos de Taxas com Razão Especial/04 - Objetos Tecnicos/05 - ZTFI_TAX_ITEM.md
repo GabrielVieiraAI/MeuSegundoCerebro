@@ -19,13 +19,13 @@ aliases:
 
 # 📦 `ZTFI_TAX_ITEM` (Tabela Transparente — Partidas Individuais do Documento)
 
-⬅️ [[01 - DEL-COM-165 - Arquitetura App 1 (Carga Massiva de Taxas)|Voltar para Arquitetura App 1]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica App 1 (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw App 1]]
+⬅️ [[01 - DEL-COM-165 - Arquitetura (Carga Massiva de Taxas)|Voltar para Arquitetura (Carga Massiva de Taxas)]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw (Carga Massiva)]]
 
 ---
 
 ## 📌 Visão Geral do Objeto
 
-A tabela transparente `ZTFI_TAX_ITEM` representa o **nível 3 (Entidade Neta / Partida Contábil)** na hierarquia do Aplicativo 1. Ela persiste cada linha de lançamento pertencente a um documento ([[04 - ZTFI_TAX_DOC|ZTFI_TAX_DOC]]), incluindo tanto as partidas de fornecedor/cooperado informadas nas colunas I a O da planilha Excel quanto a partida de contrapartida contábil gerada automaticamente pelo sistema para o movimento `DS-ATR` (conta `2205010002`).
+A tabela transparente `ZTFI_TAX_ITEM` representa o **nível 3 (Entidade Neta / Partida Contábil)** na hierarquia do Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA`). Ela persiste cada linha de lançamento pertencente a um documento ([[04 - ZTFI_TAX_DOC|ZTFI_TAX_DOC]]), incluindo tanto as partidas de fornecedor/cooperado informadas nas colunas I a O da planilha Excel quanto a partida de contrapartida contábil gerada automaticamente pelo sistema para o movimento `DS-ATR` (conta `2205010002`).
 
 ---
 
@@ -43,7 +43,16 @@ A tabela transparente `ZTFI_TAX_ITEM` representa o **nível 3 (Entidade Neta / P
 
 ## 🛠️ Passo a Passo da Criação do Objeto
 
-1. **No Eclipse ADT:** Conecte-se ao sistema e acesse o pacote `ZFI_CARGA_TAXAS`.
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "TABL/DT"
+packageName: "ZFI_TAX_CARGA"
+name: "ZTFI_TAX_ITEM"
+description: "DEL-COM-165: Partidas dos Documentos do Lote de Carga"
+```
+
+1. **No Eclipse ADT:** Conecte-se ao sistema e acesse o pacote `ZFI_TAX_CARGA`.
 2. Clique com o botão direito -> **`New`** -> **`Database Table`**.
 3. Preencha as propriedades:
    - **Name:** `ZTFI_TAX_ITEM`

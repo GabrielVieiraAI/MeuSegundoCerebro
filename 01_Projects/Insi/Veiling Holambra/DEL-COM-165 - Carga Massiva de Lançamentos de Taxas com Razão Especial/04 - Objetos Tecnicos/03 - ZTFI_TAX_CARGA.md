@@ -19,13 +19,13 @@ aliases:
 
 # 📦 `ZTFI_TAX_CARGA` (Tabela Transparente — Cabeçalho do Lote de Carga)
 
-⬅️ [[01 - DEL-COM-165 - Arquitetura App 1 (Carga Massiva de Taxas)|Voltar para Arquitetura App 1]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica App 1 (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw App 1]]
+⬅️ [[01 - DEL-COM-165 - Arquitetura (Carga Massiva de Taxas)|Voltar para Arquitetura (Carga Massiva de Taxas)]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw (Carga Massiva)]]
 
 ---
 
 ## 📌 Visão Geral do Objeto
 
-A tabela transparente `ZTFI_TAX_CARGA` representa o **nível 1 (Raiz / Cabeçalho do Lote)** na hierarquia de 3 níveis do Aplicativo 1 ([[35 - taxascarga (App Fiori)|taxascarga]]). Cada upload de planilha Excel realizado pelo operador financeiro gera um registro único nesta tabela identificado por `carga_id` (obtido do intervalo de numeração [[08 - ZTAXCARNR|ZTAXCARNR]]), consolidando os contadores de documentos (total, válidos, com erro e lançados), os somatórios financeiros de débito e crédito do lote e os metadados de auditoria (usuário, data/hora e nome do arquivo).
+A tabela transparente `ZTFI_TAX_CARGA` representa o **nível 1 (Raiz / Cabeçalho do Lote)** na hierarquia de 3 níveis do Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA`) ([[35 - taxascarga (App Fiori)|taxascarga]]). Cada upload de planilha Excel realizado pelo operador financeiro gera um registro único nesta tabela identificado por `carga_id` (obtido do intervalo de numeração [[08 - ZTAXCARNR|ZTAXCARNR]]), consolidando os contadores de documentos (total, válidos, com erro e lançados), os somatórios financeiros de débito e crédito do lote e os metadados de auditoria (usuário, data/hora e nome do arquivo).
 
 ---
 
@@ -43,7 +43,16 @@ A tabela transparente `ZTFI_TAX_CARGA` representa o **nível 1 (Raiz / Cabeçalh
 
 ## 🛠️ Passo a Passo da Criação do Objeto
 
-1. **No Eclipse ADT:** Conecte-se ao sistema e acesse o pacote `ZFI_CARGA_TAXAS`.
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "TABL/DT"
+packageName: "ZFI_TAX_CARGA"
+name: "ZTFI_TAX_CARGA"
+description: "DEL-COM-165: Cabeçalho do Lote de Carga de Taxas"
+```
+
+1. **No Eclipse ADT:** Conecte-se ao sistema e acesse o pacote `ZFI_TAX_CARGA`.
 2. Clique com o botão direito -> **`New`** -> **`Database Table`**.
 3. Preencha as propriedades:
    - **Name:** `ZTFI_TAX_CARGA`

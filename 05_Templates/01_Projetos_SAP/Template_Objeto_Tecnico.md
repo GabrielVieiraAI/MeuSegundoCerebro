@@ -38,17 +38,41 @@ aliases:
 
 ## 🛠️ Passo a Passo da Criação do Objeto
 
+### 🔖 Metadados ADT (*ABAP Development Tools* — Obrigatório para MCP `sap-adt`)
+
+```yaml
+objectType: "[Código técnico ADT, ex.: DEVC/K, DDLS/DF, BDEF/BDO, DDLX/EX, DCLS/DL, CLAS/OC, SRVD/SRV, SRVB/SVB]"
+packageName: "[ZPACOTE_DEMANDA]"
+name: "{{title}}"
+description: "[Descrição curta com no máximo 60 caracteres]"
+extraParams: {} # Campos extras exigidos pelo tipo no ADT (ex.: serviceDefinition, bindingType, rootEntity, parentObject, transportLayer, supportsRecordChanges)
+```
+
+> [!IMPORTANT] Regra de Limite e Consistência
+> `description` não pode ultrapassar **60 caracteres** (limite padrão do dicionário SAP/ADT). Caso o objeto exija ação manual ou não seja criável via **MCP** (*Model Context Protocol*), mantenha o preenchimento para rastreabilidade e sinalize `[Manual]` no Guia de Implementação.
+
+### 📋 Passo a Passo no ADT / SAP GUI
+
 1. **No [Eclipse ADT / SAP GUI / BAS]:** Conecte-se ao sistema e acesse o pacote `[ZPACOTE_DEMANDA]`.
 2. Clique com o botão direito -> **`New`** -> **`[Tipo do Objeto no ADT ou Transação SAP GUI]`**.
 3. Preencha as propriedades:
    - **Name:** `{{title}}`
-   - **Description:** `[ID-DEMANDA]: [Descrição em português]`
+   - **Description:** `[Descrição curta com no máximo 60 caracteres]`
 4. Selecione a Request (TR) de desenvolvimento e conclua o assistente.
 5. Substitua o código gerado pelo snippet abaixo e ative com **`Ctrl + F3`**.
 
 ---
 
 ## 💻 Snippet de Código
+
+> [!TIP] Objetos Multi-Arquivo (ex.: *Behavior Pool* `CLAS/OC`)
+> Se o objeto possuir múltiplas abas/arquivos **AFF** (*ABAP File Format*, representação em arquivos do ADT), divida tanto `📝 Código Comentado` quanto `🚀 Código Limpo` em sub-blocos nomeados por aba e arquivo destino:
+> - ``#### Aba: Global Class (`<nome>.clas.abap`)``
+> - ``#### Aba: Local Types / CCIMP (`<nome>.clas.locals_imp.abap`)``
+> - ``#### Aba: Local Definitions / CCDEF (`<nome>.clas.locals_def.abap`)``
+> - ``#### Aba: Test Classes (`<nome>.clas.testclasses.abap`)``
+>
+> Para objetos de arquivo único (como CDS View, `BDEF`, `MDE` ou `SRVD`), mantenha um único bloco de código diretamente em cada seção.
 
 ### 📝 Código Comentado (Para Estudo e Referência)
 

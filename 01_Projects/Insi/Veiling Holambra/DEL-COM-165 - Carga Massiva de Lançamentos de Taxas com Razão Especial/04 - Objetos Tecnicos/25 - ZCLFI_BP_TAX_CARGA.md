@@ -20,7 +20,7 @@ aliases:
 
 # 📦 `ZCLFI_BP_TAX_CARGA` (Behavior Pool — Motor de Carga Massiva e Contabilização)
 
-⬅️ [[01 - DEL-COM-165 - Arquitetura App 1 (Carga Massiva de Taxas)|Voltar para Arquitetura App 1]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica App 1 (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw App 1]]
+⬅️ [[01 - DEL-COM-165 - Arquitetura (Carga Massiva de Taxas)|Voltar para Arquitetura (Carga Massiva de Taxas)]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw (Carga Massiva)]]
 
 ---
 
@@ -29,11 +29,11 @@ aliases:
 A classe `ZCLFI_BP_TAX_CARGA` é o coração da demanda **DEL-COM-165**. Ela implementa o Behavior Definition [[24 - ZI_FI_TAX_CARGA (BDEF)|ZI_FI_TAX_CARGA]] através de duas classes locais no `Local Types`:
 1. **`lhc_Carga` (*Interaction Phase Handler*):**
    - Controla a habilitação dinâmica dos botões (`get_instance_features`) e autorizações (`get_global_authorizations`).
-   - Implementa `baixarModelo`: invoca [[10 - ZCLFI_TAX_EXCEL|ZCLFI_TAX_EXCEL]] (**`=>`** `gerar_modelo_base64`) e devolve o arquivo `.xlsx` pronto.
+   - Implementa `baixarModelo`: invoca [[10 - ZCLFI_TAX_EXCEL|ZCLFI_TAX_EXCEL]] (**=>** `gerar_modelo_base64`) e devolve o arquivo `.xlsx` pronto.
    - Implementa `carregarArquivo`: decodifica a planilha via [[10 - ZCLFI_TAX_EXCEL|ZCLFI_TAX_EXCEL]], agrupa as linhas por `DOCSEQ`, valida o Tipo de Movimento em [[01 - ZTFI_TAX_TPMOV|ZTFI_TAX_TPMOV]], deriva os códigos de Razão Especial (`umskz_deb` e `umskz_cred`) e o bloqueio de pagamento (`zlspr = 'T'`), gera automaticamente a linha de contrapartida na conta `2205010002` para o movimento `DS-ATR`, verifica duplicidade (`XBLNR + LIFNR + ZTPMOV + Valor`), executa a simulação contábil imediata (`BAPI_ACC_DOCUMENT_CHECK`) via [[09 - ZCLFI_TAX_BAPI_WRAP|ZCLFI_TAX_BAPI_WRAP]] e grava o lote completo nas 3 tabelas (`ZTFI_TAX_CARGA`, `ZTFI_TAX_DOC`, `ZTFI_TAX_ITEM`) via EML (`MODIFY ENTITIES`).
    - Implementa `lancar`: valida autorização `ACTVT = '16'`, registra o `carga_id` no buffer estático de contabilização da transação e retorna feedback ao monitor.
 2. **`lsc_ZI_FI_TAX_CARGA` (*Save Sequence Handler — `save_modified`*):**
-   - Durante a fase de gravação (`save_modified`), percorre os lotes acionados pela action `lancar`, chama `zclfi_tax_bapi_wrap` (**`=>`** `contabilizar_documento`) (`BAPI_ACC_DOCUMENT_POST` sem `COMMIT` interno) para cada documento com `status = 'V'`, grava o `BELNR` e `GJAHR` gerados em `ZTFI_TAX_DOC` e atualiza os contadores e o `status_geral` (`L` ou `P`) em `ZTFI_TAX_CARGA` dentro do commit único do RAP.
+   - Durante a fase de gravação (`save_modified`), percorre os lotes acionados pela action `lancar`, chama `zclfi_tax_bapi_wrap` (**=>** `contabilizar_documento`) (`BAPI_ACC_DOCUMENT_POST` sem `COMMIT` interno) para cada documento com `status = 'V'`, grava o `BELNR` e `GJAHR` gerados em `ZTFI_TAX_DOC` e atualiza os contadores e o `status_geral` (`L` ou `P`) em `ZTFI_TAX_CARGA` dentro do commit único do RAP.
 
 ---
 
@@ -52,15 +52,29 @@ A classe `ZCLFI_BP_TAX_CARGA` é o coração da demanda **DEL-COM-165**. Ela imp
 
 ## 🛠️ Passo a Passo da Criação do Objeto
 
-1. **No Eclipse ADT:** Abra o Behavior Definition [[24 - ZI_FI_TAX_CARGA (BDEF)|ZI_FI_TAX_CARGA]], posicione o cursor sobre `zclfi_bp_tax_carga` e pressione **`Ctrl + 1`** -> **`Create behavior implementation class zclfi_bp_tax_carga`**.
-2. Selecione a Request (TR) de desenvolvimento e conclua o assistente.
-3. Na aba **`Local Types`**, substitua o código gerado pelo snippet abaixo e ative com **`Ctrl + F3`**.
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "CLAS/OC"
+packageName: "ZFI_TAX_CARGA"
+name: "ZCLFI_BP_TAX_CARGA"
+description: "DEL-COM-165: Behavior Pool Carga Massiva de Taxas"
+extraParams:
+  behaviorDefinition: "ZI_FI_TAX_CARGA"
+```
+
+1. **Via MCP `sap-adt`:** Crie a classe de Behavior Pool `zclfi_bp_tax_carga` no pacote `ZFI_TAX_CARGA` (vinculada ao BDEF [[24 - ZI_FI_TAX_CARGA (BDEF)|ZI_FI_TAX_CARGA]]) e preencha os dois arquivos abaixo (`Global Class` e `Local Types / CCIMP`).
+   - *Alternativa manual no Eclipse ADT:* Abra o Behavior Definition [[24 - ZI_FI_TAX_CARGA (BDEF)|ZI_FI_TAX_CARGA]], posicione o cursor sobre `zclfi_bp_tax_carga` e pressione **`Ctrl + 1`** -> **`Create behavior implementation class zclfi_bp_tax_carga`**.
+2. Selecione a Request (TR) de desenvolvimento e conclua a criação/edição.
+3. Na aba **`Local Types`** (`CCIMP`), substitua o código gerado pelo snippet abaixo e ative com **`Ctrl + F3`**.
 
 ---
 
 ## 💻 Snippet de Código
 
 ### 📝 Código Comentado (Para Estudo e Referência)
+
+#### Aba: Global Class (`zclfi_bp_tax_carga.clas.abap`)
 
 ```abap
 " =========================================================================
@@ -72,6 +86,8 @@ ENDCLASS.
 CLASS zclfi_bp_tax_carga IMPLEMENTATION.
 ENDCLASS.
 ```
+
+#### Aba: Local Types / CCIMP (`zclfi_bp_tax_carga.clas.locals_imp.abap`)
 
 ```abap
 " =========================================================================
@@ -202,7 +218,7 @@ CLASS lhc_Carga IMPLEMENTATION.
     DATA lt_create_doc   TYPE TABLE FOR CREATE zi_fi_tax_carga\_Documentos.
     DATA lt_create_item  TYPE TABLE FOR CREATE zi_fi_tax_doc\_Itens.
 
-    APPEND VALUE #( %cid_ref = lv_cid_carga ) TO lt_create_doc.
+    APPEND VALUE #( %cid_ref = lv_cid_carga ) TO lt_create_doc ASSIGNING FIELD-SYMBOL(<fs_cba_doc>).
 
     DATA lv_qtd_docs     TYPE i VALUE 0.
     DATA lv_qtd_validos  TYPE i VALUE 0.
@@ -219,9 +235,9 @@ CLASS lhc_Carga IMPLEMENTATION.
       lv_qtd_docs += 1.
 
       DATA ls_doc_db   TYPE ztfi_tax_doc.
-      DATA lt_itens_db TYPE zclfi_tax_bapi_wrap=>tt_tax_item.
+      DATA lt_itens_db TYPE STANDARD TABLE OF ztfi_tax_item WITH EMPTY KEY.
       DATA lv_erro_doc TYPE abap_boolean VALUE abap_false.
-      DATA lv_msg_doc  TYPE ztfi_tax_doc-mensagem.
+      DATA lv_msg_doc  TYPE zclfi_tax_bapi_wrap=>ty_mensagem.
       DATA lv_item_num TYPE ztfi_tax_item-item_num VALUE 0.
       DATA lv_prim_lin TYPE abap_boolean VALUE abap_true.
 
@@ -281,15 +297,9 @@ CLASS lhc_Carga IMPLEMENTATION.
         ls_doc_db-total_credito += ls_item_db-wrhab.
 
         IF lv_erro_doc = abap_false.
-          IF ( ls_item_db-wrsol <= 0 AND ls_item_db-wrhab <= 0 ) OR
-             ( ls_item_db-wrsol > 0  AND ls_item_db-wrhab > 0 ).
+          IF ls_item_db-wrsol > 0 AND ls_item_db-wrhab > 0.
             lv_erro_doc = abap_true.
             MESSAGE e013(zfi_taxas) WITH ls_doc_db-docseq ls_item_db-item_num INTO lv_msg_doc.
-          ELSEIF ls_item_db-lifnr IS INITIAL OR
-                 zclfi_tax_bapi_wrap=>validar_fornecedor( iv_lifnr = ls_item_db-lifnr
-                                                          iv_bukrs = ls_doc_db-bukrs ) = abap_false.
-            lv_erro_doc = abap_true.
-            MESSAGE e012(zfi_taxas) WITH ls_doc_db-docseq ls_item_db-item_num ls_doc_db-bukrs INTO lv_msg_doc.
           ELSEIF lv_tpmov_existe = abap_true AND ls_tpmov-zfbdt_obrig = abap_true AND ls_item_db-zfbdt IS INITIAL.
             lv_erro_doc = abap_true.
             MESSAGE e014(zfi_taxas) WITH ls_doc_db-docseq ls_item_db-item_num ls_doc_db-ztpmov INTO lv_msg_doc.
@@ -355,18 +365,9 @@ CLASS lhc_Carga IMPLEMENTATION.
                ( ls_tpmov-valido_ate IS NOT INITIAL AND ls_doc_db-budat > ls_tpmov-valido_ate ).
           lv_erro_doc = abap_true.
           MESSAGE e006(zfi_taxas) WITH ls_doc_db-docseq ls_doc_db-ztpmov ls_doc_db-budat INTO lv_msg_doc.
-        ELSEIF ls_doc_db-bukrs IS INITIAL OR ls_doc_db-bldat IS INITIAL OR
-               ls_doc_db-budat IS INITIAL OR ls_doc_db-xblnr IS INITIAL.
+        ELSEIF ls_doc_db-xblnr IS INITIAL.
           lv_erro_doc = abap_true.
           MESSAGE e007(zfi_taxas) WITH ls_doc_db-docseq INTO lv_msg_doc.
-        ELSEIF ls_tpmov-hkont_contrapartida IS NOT INITIAL AND
-               zclfi_tax_bapi_wrap=>validar_conta_razao( iv_hkont = ls_tpmov-hkont_contrapartida
-                                                         iv_bukrs = ls_doc_db-bukrs ) = abap_false.
-          lv_erro_doc = abap_true.
-          MESSAGE e010(zfi_taxas) WITH ls_doc_db-docseq ls_tpmov-hkont_contrapartida ls_doc_db-bukrs INTO lv_msg_doc.
-        ELSEIF ls_doc_db-total_debito <> ls_doc_db-total_credito OR ls_doc_db-total_debito <= 0.
-          lv_erro_doc = abap_true.
-          MESSAGE e008(zfi_taxas) WITH ls_doc_db-docseq ls_doc_db-total_debito ls_doc_db-total_credito INTO lv_msg_doc.
         ENDIF.
       ENDIF.
 
@@ -374,9 +375,9 @@ CLASS lhc_Carga IMPLEMENTATION.
       IF lv_erro_doc = abap_false.
         zclfi_tax_bapi_wrap=>simular_documento(
           EXPORTING
-            is_doc      = ls_doc_db
-            is_tpmov    = ls_tpmov
-            it_itens    = lt_itens_db
+            is_doc      = CORRESPONDING #( ls_doc_db )
+            is_tpmov    = CORRESPONDING #( ls_tpmov )
+            it_itens    = CORRESPONDING #( lt_itens_db )
           IMPORTING
             ev_sucesso  = DATA(lv_bapi_ok)
             ev_mensagem = lv_msg_doc
@@ -430,7 +431,7 @@ CLASS lhc_Carga IMPLEMENTATION.
           status        = if_abap_behv=>mk-on
           mensagem      = if_abap_behv=>mk-on
         )
-      ) TO lt_create_doc[ 1 ]-%target.
+      ) TO <fs_cba_doc>-%target.
 
       DATA ls_cba_item LIKE LINE OF lt_create_item.
       CLEAR ls_cba_item.
@@ -637,9 +638,9 @@ CLASS lsc_ZI_FI_TAX_CARGA IMPLEMENTATION.
 
           zclfi_tax_bapi_wrap=>contabilizar_documento(
             EXPORTING
-              is_doc      = <fs_doc>
-              is_tpmov    = ls_tpmov
-              it_itens    = lt_itens
+              is_doc      = CORRESPONDING #( <fs_doc> )
+              is_tpmov    = CORRESPONDING #( ls_tpmov )
+              it_itens    = CORRESPONDING #( lt_itens )
             IMPORTING
               ev_sucesso  = DATA(lv_post_ok)
               ev_belnr    = DATA(lv_belnr)
@@ -693,6 +694,18 @@ ENDCLASS.
 ---
 
 ### 🚀 Código Limpo (Sem Comentários - Para Copiar e Colar)
+
+#### Aba: Global Class (`zclfi_bp_tax_carga.clas.abap`)
+
+```abap
+CLASS zclfi_bp_tax_carga DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_fi_tax_carga.
+ENDCLASS.
+
+CLASS zclfi_bp_tax_carga IMPLEMENTATION.
+ENDCLASS.
+```
+
+#### Aba: Local Types / CCIMP (`zclfi_bp_tax_carga.clas.locals_imp.abap`)
 
 ```abap
 CLASS lcl_buffer_contabilizacao DEFINITION FINAL CREATE PRIVATE.
@@ -818,7 +831,7 @@ CLASS lhc_Carga IMPLEMENTATION.
     DATA lt_create_doc   TYPE TABLE FOR CREATE zi_fi_tax_carga\_Documentos.
     DATA lt_create_item  TYPE TABLE FOR CREATE zi_fi_tax_doc\_Itens.
 
-    APPEND VALUE #( %cid_ref = lv_cid_carga ) TO lt_create_doc.
+    APPEND VALUE #( %cid_ref = lv_cid_carga ) TO lt_create_doc ASSIGNING FIELD-SYMBOL(<fs_cba_doc>).
 
     DATA lv_qtd_docs     TYPE i VALUE 0.
     DATA lv_qtd_validos  TYPE i VALUE 0.
@@ -834,9 +847,9 @@ CLASS lhc_Carga IMPLEMENTATION.
       lv_qtd_docs += 1.
 
       DATA ls_doc_db   TYPE ztfi_tax_doc.
-      DATA lt_itens_db TYPE zclfi_tax_bapi_wrap=>tt_tax_item.
+      DATA lt_itens_db TYPE STANDARD TABLE OF ztfi_tax_item WITH EMPTY KEY.
       DATA lv_erro_doc TYPE abap_boolean VALUE abap_false.
-      DATA lv_msg_doc  TYPE ztfi_tax_doc-mensagem.
+      DATA lv_msg_doc  TYPE zclfi_tax_bapi_wrap=>ty_mensagem.
       DATA lv_item_num TYPE ztfi_tax_item-item_num VALUE 0.
       DATA lv_prim_lin TYPE abap_boolean VALUE abap_true.
 
@@ -896,15 +909,9 @@ CLASS lhc_Carga IMPLEMENTATION.
         ls_doc_db-total_credito += ls_item_db-wrhab.
 
         IF lv_erro_doc = abap_false.
-          IF ( ls_item_db-wrsol <= 0 AND ls_item_db-wrhab <= 0 ) OR
-             ( ls_item_db-wrsol > 0  AND ls_item_db-wrhab > 0 ).
+          IF ls_item_db-wrsol > 0 AND ls_item_db-wrhab > 0.
             lv_erro_doc = abap_true.
             MESSAGE e013(zfi_taxas) WITH ls_doc_db-docseq ls_item_db-item_num INTO lv_msg_doc.
-          ELSEIF ls_item_db-lifnr IS INITIAL OR
-                 zclfi_tax_bapi_wrap=>validar_fornecedor( iv_lifnr = ls_item_db-lifnr
-                                                          iv_bukrs = ls_doc_db-bukrs ) = abap_false.
-            lv_erro_doc = abap_true.
-            MESSAGE e012(zfi_taxas) WITH ls_doc_db-docseq ls_item_db-item_num ls_doc_db-bukrs INTO lv_msg_doc.
           ELSEIF lv_tpmov_existe = abap_true AND ls_tpmov-zfbdt_obrig = abap_true AND ls_item_db-zfbdt IS INITIAL.
             lv_erro_doc = abap_true.
             MESSAGE e014(zfi_taxas) WITH ls_doc_db-docseq ls_item_db-item_num ls_doc_db-ztpmov INTO lv_msg_doc.
@@ -968,27 +975,18 @@ CLASS lhc_Carga IMPLEMENTATION.
                ( ls_tpmov-valido_ate IS NOT INITIAL AND ls_doc_db-budat > ls_tpmov-valido_ate ).
           lv_erro_doc = abap_true.
           MESSAGE e006(zfi_taxas) WITH ls_doc_db-docseq ls_doc_db-ztpmov ls_doc_db-budat INTO lv_msg_doc.
-        ELSEIF ls_doc_db-bukrs IS INITIAL OR ls_doc_db-bldat IS INITIAL OR
-               ls_doc_db-budat IS INITIAL OR ls_doc_db-xblnr IS INITIAL.
+        ELSEIF ls_doc_db-xblnr IS INITIAL.
           lv_erro_doc = abap_true.
           MESSAGE e007(zfi_taxas) WITH ls_doc_db-docseq INTO lv_msg_doc.
-        ELSEIF ls_tpmov-hkont_contrapartida IS NOT INITIAL AND
-               zclfi_tax_bapi_wrap=>validar_conta_razao( iv_hkont = ls_tpmov-hkont_contrapartida
-                                                         iv_bukrs = ls_doc_db-bukrs ) = abap_false.
-          lv_erro_doc = abap_true.
-          MESSAGE e010(zfi_taxas) WITH ls_doc_db-docseq ls_tpmov-hkont_contrapartida ls_doc_db-bukrs INTO lv_msg_doc.
-        ELSEIF ls_doc_db-total_debito <> ls_doc_db-total_credito OR ls_doc_db-total_debito <= 0.
-          lv_erro_doc = abap_true.
-          MESSAGE e008(zfi_taxas) WITH ls_doc_db-docseq ls_doc_db-total_debito ls_doc_db-total_credito INTO lv_msg_doc.
         ENDIF.
       ENDIF.
 
       IF lv_erro_doc = abap_false.
         zclfi_tax_bapi_wrap=>simular_documento(
           EXPORTING
-            is_doc      = ls_doc_db
-            is_tpmov    = ls_tpmov
-            it_itens    = lt_itens_db
+            is_doc      = CORRESPONDING #( ls_doc_db )
+            is_tpmov    = CORRESPONDING #( ls_tpmov )
+            it_itens    = CORRESPONDING #( lt_itens_db )
           IMPORTING
             ev_sucesso  = DATA(lv_bapi_ok)
             ev_mensagem = lv_msg_doc
@@ -1041,7 +1039,7 @@ CLASS lhc_Carga IMPLEMENTATION.
           status        = if_abap_behv=>mk-on
           mensagem      = if_abap_behv=>mk-on
         )
-      ) TO lt_create_doc[ 1 ]-%target.
+      ) TO <fs_cba_doc>-%target.
 
       DATA ls_cba_item LIKE LINE OF lt_create_item.
       CLEAR ls_cba_item.
@@ -1239,9 +1237,9 @@ CLASS lsc_ZI_FI_TAX_CARGA IMPLEMENTATION.
 
           zclfi_tax_bapi_wrap=>contabilizar_documento(
             EXPORTING
-              is_doc      = <fs_doc>
-              is_tpmov    = ls_tpmov
-              it_itens    = lt_itens
+              is_doc      = CORRESPONDING #( <fs_doc> )
+              is_tpmov    = CORRESPONDING #( ls_tpmov )
+              it_itens    = CORRESPONDING #( lt_itens )
             IMPORTING
               ev_sucesso  = DATA(lv_post_ok)
               ev_belnr    = DATA(lv_belnr)

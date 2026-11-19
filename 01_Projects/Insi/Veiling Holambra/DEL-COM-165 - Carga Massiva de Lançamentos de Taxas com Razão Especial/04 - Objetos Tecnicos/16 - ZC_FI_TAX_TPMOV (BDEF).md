@@ -20,13 +20,13 @@ aliases:
 
 # 📦 `ZC_FI_TAX_TPMOV (BDEF)` (Behavior Definition Projection — Tipos de Movimento)
 
-⬅️ [[02 - DEL-COM-165 - Arquitetura App 2 (Tipos de Movimento)|Voltar para Arquitetura App 2]] | 🎨 [[02 - DEL-COM-165 - Arquitetura Técnica App 2 (Tipos de Movimento).excalidraw|Ver no Diagrama Excalidraw App 2]]
+⬅️ [[02 - DEL-COM-165 - Arquitetura (Tipos de Movimento)|Voltar para Arquitetura (Tipos de Movimento)]] | 🎨 [[02 - DEL-COM-165 - Arquitetura Técnica (Tipos de Movimento).excalidraw|Ver no Diagrama Excalidraw (Tipos de Movimento)]]
 
 ---
 
 ## 📌 Visão Geral do Objeto
 
-O Behavior Definition de Projeção `ZC_FI_TAX_TPMOV` expõe as operações transacionais (`create`, `update`, `delete`) e as ações de gerenciamento de *Draft* definidas em [[12 - ZI_FI_TAX_TPMOV (BDEF)|ZI_FI_TAX_TPMOV]] para consumo pelo serviço OData V4 do **Aplicativo 2**.
+O Behavior Definition de Projeção `ZC_FI_TAX_TPMOV` expõe as operações transacionais (`create`, `update`, `delete`) e as ações de gerenciamento de *Draft* definidas em [[12 - ZI_FI_TAX_TPMOV (BDEF)|ZI_FI_TAX_TPMOV]] para consumo pelo serviço OData V4 do **Aplicativo de Tipos de Movimento (`ZFI_TAX_TPMOV`)**.
 
 ---
 
@@ -37,6 +37,18 @@ O Behavior Definition de Projeção `ZC_FI_TAX_TPMOV` expõe as operações tran
 ---
 
 ## 🛠️ Passo a Passo da Criação do Objeto
+
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "BDEF/BDO"
+packageName: "ZFI_TAX_TPMOV"
+name: "ZC_FI_TAX_TPMOV"
+description: "DEL-COM-165: Behavior Projection Tipos de Movimento"
+extraParams:
+  rootEntity: "ZC_FI_TAX_TPMOV"
+  implementationType: "Projection"
+```
 
 1. **No Eclipse ADT:** Clique com o botão direito sobre a CDS View [[14 - ZC_FI_TAX_TPMOV (CDS)|ZC_FI_TAX_TPMOV]] -> **`New Behavior Definition`**.
 2. Preencha as propriedades:

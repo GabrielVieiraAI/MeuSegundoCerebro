@@ -21,15 +21,15 @@ aliases:
   - "ZZ1_TAXCARGA"
 ---
 
-# 📦 `taxascarga` (Aplicativo 1 — SAP Fiori Elements + Controller Extension Excel)
+# 📦 `taxascarga` (Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA`) — SAP Fiori Elements + Controller Extension Excel)
 
-⬅️ [[01 - DEL-COM-165 - Arquitetura App 1 (Carga Massiva de Taxas)|Voltar para Arquitetura App 1]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica App 1 (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw App 1]]
+⬅️ [[01 - DEL-COM-165 - Arquitetura (Carga Massiva de Taxas)|Voltar para Arquitetura (Carga Massiva de Taxas)]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw (Carga Massiva)]]
 
 ---
 
 ## 📌 Visão Geral do Objeto
 
-O aplicativo `taxascarga` (repositório BSP `ZZ1_TAXCARGA`) é o **Aplicativo 1 — Carga Massiva e Monitor de Taxas com Razão Especial**, gerado no template **SAP Fiori Elements for OData V4 (List Report + Object Page)** sobre o serviço [[34 - ZUI_O4_FI_TAX_CARGA|ZUI_O4_FI_TAX_CARGA]].
+O aplicativo `taxascarga` (repositório BSP `ZZ1_TAXCARGA`) é o **Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA`)**, gerado no template **SAP Fiori Elements for OData V4 (List Report + Object Page)** sobre o serviço [[34 - ZUI_O4_FI_TAX_CARGA|ZUI_O4_FI_TAX_CARGA]].
 
 Para permitir o envio de arquivos `.xlsx` locais sem exigir infraestrutura externa e fazer o download direto do template gerado pela `XCO_CP_XLSX`, o aplicativo inclui uma **Controller Extension** enxuta (`webapp/ext/controller/ListReportExt.controller.js`) com dois botões customizados na barra da tabela:
 1. **`Carregar Planilha (.xlsx)`:** Abre o seletor de arquivos nativo do navegador (`<input type="file" accept=".xlsx">`), converte o arquivo selecionado para `Base64`, chama a action OData V4 `carregarArquivo` e atualiza a lista automaticamente com o resultado da verificação (`BAPI_ACC_DOCUMENT_CHECK`).
@@ -52,18 +52,76 @@ Para permitir o envio de arquivos `.xlsx` locais sem exigir infraestrutura exter
 
 ## 🛠️ Passo a Passo da Criação do Objeto
 
-1. **No VS Code / SAP Business Application Studio (BAS):** Abra o **Template Wizard** (`Ctrl + Shift + P` -> `Fiori: Open Application Generator`).
-2. Selecione **`SAP Fiori Elements`** -> **`List Report Page`**.
-3. Conecte-se ao sistema S/4HANA e selecione o serviço OData V4 **`ZUI_O4_FI_TAX_CARGA`**.
-4. Na seleção de entidades:
-   - **Main Entity:** `Carga`
-   - **Navigation Entity:** `_Documentos`
-5. Preencha os atributos do projeto:
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "BSP / SAPUI5 (Manual)"
+packageName: "ZFI_TAX_CARGA"
+name: "ZZ1_TAXCARGA"
+description: "DEL-COM-165: App Fiori Carga Massiva de Taxas"
+extraParams:
+  fioriModule: "taxascarga"
+  odataService: "ZUI_O4_FI_TAX_CARGA"
+  semanticObject: "ZFI_TAXAS_CARGA"
+```
+
+### 1. Pré-requisitos no VS Code
+
+* **Extensão instalada:** `SAP Fiori tools - Extension Pack` (extensão oficial da SAP no VS Code).
+* **Node.js:** Versão LTS (*Long Term Support*, ex.: v18 ou v20).
+* **Backend ativo:** O *Service Binding* (*vínculo de serviço*) [[34 - ZUI_O4_FI_TAX_CARGA|ZUI_O4_FI_TAX_CARGA]] deve estar publicado e ativo no sistema `S4D`.
+
+### 2. Geração do Projeto e Customização da Controller Extension
+
+1. **No VS Code ou SAP Business Application Studio (BAS):** Abra a paleta de comandos (`Ctrl + Shift + P`) e selecione **`Fiori: Open Application Generator`**.
+2. Em **Template Selection**, selecione **`SAP Fiori Elements`** -> **`List Report Page`** e clique em **Next**.
+3. Em **Data Source and Service Selection**:
+   - **Data source:** `Connect to a System`
+   - **System:** Selecione a conexão do S/4HANA de desenvolvimento (ex.: `S4D, client 100 Veiling [GVSOUZA]`).
+   - **Service:** Selecione o serviço OData V4 **`ZUI_O4_FI_TAX_CARGA`** e clique em **Next**.
+4. Em **Entity Selection**:
+   - **Main entity:** `Carga`
+   - **Navigation entity:** `_Documentos`
+   - Clique em **Next**.
+5. Em **Project Attributes**, preencha os atributos do projeto:
    - **Module name:** `taxascarga`
    - **Application title:** `Carga Massiva de Taxas com Razão Especial`
-   - **Application namespace:** `br.com.veiling.fi`
-6. Após gerar o projeto, crie o arquivo `webapp/ext/controller/ListReportExt.controller.js` e adicione o bloco `extends` e `customActions` no `webapp/manifest.json` conforme os snippets abaixo.
-7. Execute `npm run deploy-config` e `npm run deploy` informando o pacote `ZFI_CARGA_TAXAS` e o nome BSP **`ZZ1_TAXCARGA`**.
+   - **Application namespace:** `br.com.veiling.fi` *(forma o ID UI5 completo `br.com.veiling.fi.taxascarga` usado nos snippets abaixo)*
+   - **Add deployment configuration:** Selecione **`Yes`** se quiser configurar o deploy imediatamente durante a criação (ou deixe `No` para configurar depois pela aba *Application Info*, conforme o passo 3 abaixo).
+   - Clique em **Next** (ou **Finish**, caso não tenha marcado `Add deployment configuration` ainda).
+6. Após gerar o projeto, crie o arquivo `webapp/ext/controller/ListReportExt.controller.js` e ajuste o `webapp/manifest.json` (blocos `routing.targets`, `controlConfiguration` e `extends`) conforme os snippets da seção **Snippet de Código** abaixo, antes de executar o deploy para o SAP.
+
+### 3. Configuração do Deploy pela Extensão Fiori (`Deployment Configuration Generator`)
+
+Caso tenha selecionado `Add deployment configuration: Yes` na criação, o wizard já abrirá esta etapa automaticamente. Se o projeto já foi gerado e você está com ele aberto no VS Code:
+
+1. **Abra o configurador de deploy** de uma das três formas:
+   - Na aba **`Application Info`** (que abre após gerar o projeto, ou via `Ctrl + Shift + P` -> **`Fiori: Open Application Info`**), clique em **`Add Deployment Configuration`**; **ou**
+   - Pela paleta de comandos (`Ctrl + Shift + P`), execute **`Fiori: Add Deployment Configuration`**; **ou**
+   - Pelo terminal integrado do VS Code (`Ctrl + '`), execute `npm run deploy-config`.
+2. Na tela **`Deployment Configuration Generator`**, preencha os campos na ordem abaixo:
+   - **Please choose the target (Target Type):** Selecione **`ABAP`**.
+   - **Select Target System:** Selecione o sistema SAP conectado (ex.: **`S4D, client 100 Veiling [GVSOUZA] (Source system)`**).
+   - **SAPUI5 ABAP Repository (`*`):** Digite **`ZZ1_TAXCARGA`** *(nome técnico da aplicação **BSP** — Business Server Pages — no repositório ABAP; obrigatório ter no máximo **15 caracteres**, usando apenas letras, números ou `_`, e ser único no servidor)*.
+   - **Deployment Description:** Digite **`DEL-COM-165: App Fiori Carga Massiva de Taxas`** *(descrição breve exibida no repositório BSP do SAP)*.
+   - **Select How You Want to Enter the Package (`*`):** Selecione **`Enter Manually`** *(ou `List Existing Packages`, caso prefira selecionar da lista)*.
+   - **Package (`*`):** Apague o valor padrão **`$TMP`** (pacote local que não permite transporte entre ambientes) e informe **`ZFI_TAX_CARGA`**.
+   - **Configuração da Ordem de Transporte — TR (*Transport Request*):** Assim que você substituir `$TMP` por `ZFI_TAX_CARGA`, a tela exibirá os campos de transporte logo abaixo de *Package*:
+     - **Select How You Want to Enter the Transport Request:** Selecione **`Enter Manually`** *(ou `Choose from Existing` para escolher uma TR aberta no seu usuário)*.
+     - **Transport Request:** Informe a TR da demanda (**`S4DK901042`** ou a TR de desenvolvimento ativa no momento).
+3. Confira se todos os campos obrigatórios (`*`) estão preenchidos e clique no botão **`Finish`** no rodapé da tela.
+4. A extensão Fiori criará/atualizará automaticamente o arquivo **`ui5-deploy.yaml`** na raiz do projeto e configurará o script `"deploy"` no arquivo **`package.json`**.
+
+### 4. Execução do Deploy e Validação no SAP
+
+1. *(Opcional, mas recomendado)* Antes do deploy, teste o app localmente executando **`npm start`** no terminal integrado (`Ctrl + '`) para validar se os botões **`Carregar Planilha (.xlsx)`** e **`Baixar Modelo Excel`** aparecem na barra da tabela e respondem corretamente.
+2. Com o projeto e a *Controller Extension* salvos e validados, execute o comando de deploy no terminal integrado do VS Code:
+   ```bash
+   npm run deploy
+   ```
+3. Se o terminal pedir confirmação com o resumo do pacote, BSP e TR (*Start deployment (y/N)*), digite **`y`** e pressione **`Enter`**.
+4. Aguarde o término do *build* (compilação da pasta `dist`) e o envio dos arquivos para o SAP até visualizar a mensagem de conclusão (ex.: **`Deployment Successful.`**).
+5. **Validação no Eclipse ADT (*ABAP Development Tools*):** No *Project Explorer*, atualize (`F5`) o pacote **`ZFI_TAX_CARGA`** e confirme que o objeto **`ZZ1_TAXCARGA`** aparece em **`BSP Library -> BSP Applications`**.
 
 ---
 

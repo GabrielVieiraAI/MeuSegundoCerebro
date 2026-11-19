@@ -20,23 +20,32 @@ aliases:
 
 # 📦 `ZUI_FI_TAX_TPMOV` (Service Definition — Tipos de Movimento)
 
-⬅️ [[02 - DEL-COM-165 - Arquitetura App 2 (Tipos de Movimento)|Voltar para Arquitetura App 2]] | 🎨 [[02 - DEL-COM-165 - Arquitetura Técnica App 2 (Tipos de Movimento).excalidraw|Ver no Diagrama Excalidraw App 2]]
+⬅️ [[02 - DEL-COM-165 - Arquitetura (Tipos de Movimento)|Voltar para Arquitetura (Tipos de Movimento)]] | 🎨 [[02 - DEL-COM-165 - Arquitetura Técnica (Tipos de Movimento).excalidraw|Ver no Diagrama Excalidraw (Tipos de Movimento)]]
 
 ---
 
 ## 📌 Visão Geral do Objeto
 
-A Service Definition `ZUI_FI_TAX_TPMOV` declara o escopo de entidades expostas para o serviço OData do **Aplicativo 2** (Manutenção de Tipos de Movimento), publicando a entidade de projeção [[14 - ZC_FI_TAX_TPMOV (CDS)|ZC_FI_TAX_TPMOV]] com o alias `TipoMovimento`.
+A Service Definition `ZUI_FI_TAX_TPMOV` declara o escopo de entidades expostas para o serviço OData do **Aplicativo de Tipos de Movimento (`ZFI_TAX_TPMOV`)** (Manutenção de Tipos de Movimento), publicando a entidade de projeção [[14 - ZC_FI_TAX_TPMOV (CDS)|ZC_FI_TAX_TPMOV]] com o alias `TipoMovimento`.
 
 ---
 
 ## ⚖️ Regras de Negócio Aplicadas
 
-1. **Isolamento de Serviço do App 2:** Permite publicar e autorizar o serviço de configuração de Tipos de Movimento separadamente do serviço de carga massiva (App 1).
+1. **Isolamento de Serviço do Aplicativo de Tipos de Movimento (`ZFI_TAX_TPMOV`):** Permite publicar e autorizar o serviço de configuração de Tipos de Movimento separadamente do serviço de carga massiva (Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA`)).
 
 ---
 
 ## 🛠️ Passo a Passo da Criação do Objeto
+
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "SRVD/SRV"
+packageName: "ZFI_TAX_TPMOV"
+name: "ZUI_FI_TAX_TPMOV"
+description: "DEL-COM-165: Service Definition Tipos de Movimento"
+```
 
 1. **No Eclipse ADT:** Clique com o botão direito sobre [[14 - ZC_FI_TAX_TPMOV (CDS)|ZC_FI_TAX_TPMOV]] -> **`New Service Definition`**.
 2. Preencha as propriedades:
@@ -54,7 +63,7 @@ A Service Definition `ZUI_FI_TAX_TPMOV` declara o escopo de entidades expostas p
 ```abap
 @EndUserText.label: 'DEL-COM-165: Serviço Tipos de Movimento'
 define service ZUI_FI_TAX_TPMOV {
-  // Expõe a entidade de projeção de Tipos de Movimento para o App 2
+  // Expõe a entidade de projeção de Tipos de Movimento para o Aplicativo de Tipos de Movimento (`ZFI_TAX_TPMOV`)
   expose ZC_FI_TAX_TPMOV as TipoMovimento;
 }
 ```

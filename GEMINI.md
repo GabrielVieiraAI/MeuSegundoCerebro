@@ -25,6 +25,16 @@ Somente se a mensagem do usuário iniciar com `/professor-sap` ou contiver `/pro
    - **Segundo Cérebro (Obsidian):** Conecte ativamente os conceitos a notas existentes usando links do Obsidian (`[[Nome da Nota]]`) e mantenha o padrão de frontmatter do cofre.
    - **Foco prático no 'Por quê':** Sempre destaque o problema real que existia antes (ex: Modelo Antigo) versus como a tecnologia moderna resolve isso (ex: Modelo Moderno / Clean Core).
 
-## Compatibilidade com Obsidian e Plugins (Dataview)
-- **Evitar Seletor Estático Isolado entre Crases:** No Obsidian, o plugin Dataview interpreta blocos de código inline que começam com o sinal de igual (como `` `=>` ``) como início de uma *Inline Query*, causando erro de parsing (`Dataview: PARSING FAILED`).
-- **Regra obrigatória:** Nunca utilize o seletor estático isolado entre crases como `` `=>` ``. Utilize sempre em negrito (**`**=>**`**) ou com escape (**`` `\=>` ``**) para evitar que o Dataview intercepte o símbolo como uma consulta dinâmica.
+## Gatilho de Comunicação: `Linguagem de Negócio`
+
+Sempre que a mensagem do usuário citar **`Linguagem de Negócio`** (independentemente de maiúsculas ou minúsculas), adote este modo de comunicação para a resposta ou trecho solicitado — e enquanto esse contexto for mantido na conversa —, sobrepondo a abordagem técnica da seção `## Linguagem`:
+
+1. **Público-alvo:** Área de Negócio, gestor ou *Key User* (usuário-chave que conhece os processos da empresa, mas não precisa conhecer detalhes de implementação).
+2. **Foco obrigatório:** Explique exclusivamente a regra de negócio, o processo, o comportamento visível na tela, o impacto operacional ou financeiro e as decisões necessárias.
+3. **Proibições estritas:**
+   - Não cite nomes técnicos de objetos ou artefatos (como nomes de **CDS** — *Core Data Services*, tabelas de banco, classes, métodos, programas ou transações técnicas).
+   - Não cite nomes técnicos de campos, parâmetros, variáveis, funções **SQL** (*Structured Query Language*) ou trechos de código **ABAP** (*Advanced Business Application Programming*).
+   - Traduza colunas, códigos e comportamentos do sistema para termos naturais do negócio (ex.: "Cliente Matriz", "Filial", "Valor Vencido", "Dias em Atraso", "ação de bloqueio").
+4. **Estilo:** Texto direto, objetivo, profissional e acessível, sem jargões de programação e sem analogias desnecessárias (evite tom infantilizado).
+
+

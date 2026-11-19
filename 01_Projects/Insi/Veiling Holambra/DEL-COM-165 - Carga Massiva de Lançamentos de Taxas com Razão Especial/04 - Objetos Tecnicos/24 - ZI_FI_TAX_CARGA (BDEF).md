@@ -20,13 +20,13 @@ aliases:
 
 # 📦 `ZI_FI_TAX_CARGA (BDEF)` (Behavior Definition Root — Carga Massiva de Taxas)
 
-⬅️ [[01 - DEL-COM-165 - Arquitetura App 1 (Carga Massiva de Taxas)|Voltar para Arquitetura App 1]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica App 1 (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw App 1]]
+⬅️ [[01 - DEL-COM-165 - Arquitetura (Carga Massiva de Taxas)|Voltar para Arquitetura (Carga Massiva de Taxas)]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw (Carga Massiva)]]
 
 ---
 
 ## 📌 Visão Geral do Objeto
 
-O Behavior Definition `ZI_FI_TAX_CARGA` define o comportamento transacional da hierarquia de 3 níveis (`Carga -> Documento -> Item`) do **Aplicativo 1**, implementado pela classe [[25 - ZCLFI_BP_TAX_CARGA|ZCLFI_BP_TAX_CARGA]]. Ele utiliza o modelo **Managed with additional save** (sem Draft), garantindo que a persistência das tabelas customizadas (`ZTFI_TAX_CARGA`, `ZTFI_TAX_DOC`, `ZTFI_TAX_ITEM`) seja gerenciada pelo RAP e que a contabilização efetiva via `BAPI_ACC_DOCUMENT_POST` ocorra dentro da fase `save_modified` em um único `COMMIT WORK`.
+O Behavior Definition `ZI_FI_TAX_CARGA` define o comportamento transacional da hierarquia de 3 níveis (`Carga -> Documento -> Item`) do **Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA`)**, implementado pela classe [[25 - ZCLFI_BP_TAX_CARGA|ZCLFI_BP_TAX_CARGA]]. Ele utiliza o modelo **Managed with additional save** (sem Draft), garantindo que a persistência das tabelas customizadas (`ZTFI_TAX_CARGA`, `ZTFI_TAX_DOC`, `ZTFI_TAX_ITEM`) seja gerenciada pelo RAP e que a contabilização efetiva via `BAPI_ACC_DOCUMENT_POST` ocorra dentro da fase `save_modified` em um único `COMMIT WORK`.
 
 ---
 
@@ -43,6 +43,18 @@ O Behavior Definition `ZI_FI_TAX_CARGA` define o comportamento transacional da h
 ---
 
 ## 🛠️ Passo a Passo da Criação do Objeto
+
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "BDEF/BDO"
+packageName: "ZFI_TAX_CARGA"
+name: "ZI_FI_TAX_CARGA"
+description: "DEL-COM-165: Behavior Root Carga Massiva de Taxas"
+extraParams:
+  rootEntity: "ZI_FI_TAX_CARGA"
+  implementationType: "Managed"
+```
 
 1. **No Eclipse ADT:** Clique com o botão direito sobre a CDS View [[19 - ZI_FI_TAX_CARGA (CDS)|ZI_FI_TAX_CARGA]] -> **`New Behavior Definition`**.
 2. Preencha as propriedades:
@@ -79,8 +91,8 @@ etag master alterado_em
                      qtd_docs, qtd_validos, qtd_erros, qtd_lancados, waers,
                      total_debito, total_credito, criado_por, criado_em, alterado_por, alterado_em;
 
-  // Criação interna dos documentos filhos durante o upload da planilha
-  internal association _Documentos { internal create; }
+  // Exposição da associação de composição (criação mantida interna)
+  association _Documentos { internal create; }
 
   // Action estática 1: Upload da planilha Excel (.xlsx) + Validação + BAPI_ACC_DOCUMENT_CHECK automático
   static action carregarArquivo parameter ZI_FI_TAX_ARQUIVO result [1] $self;
@@ -108,7 +120,7 @@ authorization dependent by _Carga
                      belnr, gjahr, mensagem;
 
   association _Carga;
-  internal association _Itens { internal create; }
+  association _Itens { internal create; }
 }
 
 // =========================================================================
@@ -153,7 +165,7 @@ etag master alterado_em
                      qtd_docs, qtd_validos, qtd_erros, qtd_lancados, waers,
                      total_debito, total_credito, criado_por, criado_em, alterado_por, alterado_em;
 
-  internal association _Documentos { internal create; }
+  association _Documentos { internal create; }
 
   static action carregarArquivo parameter ZI_FI_TAX_ARQUIVO result [1] $self;
   static action baixarModelo result [1] ZI_FI_TAX_ARQUIVO;
@@ -173,7 +185,7 @@ authorization dependent by _Carga
                      belnr, gjahr, mensagem;
 
   association _Carga;
-  internal association _Itens { internal create; }
+  association _Itens { internal create; }
 }
 
 define behavior for ZI_FI_TAX_ITEM alias Item

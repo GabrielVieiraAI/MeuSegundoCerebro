@@ -64,3 +64,4 @@ data: 2026-10-03
 * **04** – [[04 - Governança Técnica da Solução|Governança Técnica da Solução]]
 * **Reuniões** – [[01 - Primeira reunião com consultores|Primeira Reunião com Consultores (22/10/2026)]]
 * **Reuniões** – [[02 - Segunda reunião com consultor|Segunda Reunião com Consultor (22/10/2026)]]
+* 🔍 **[[00 - DEL-R2R-009 - Escada Code Review 1.excalidraw|Code Review 1 (17/11/2026) — Escada de Ajustes]]** *(Request `S4DK900952`)*

@@ -81,24 +81,24 @@ Esta seção detalha o fluxo completo de geração, configuração e deploy da a
 * **Application namespace:** `br.com.veiling`
 * **Description:** `DEL-R2R-009: Bloqueio e Desbloqueio massivo de clientes inadimplentes`
 * **Project folder path:** Selecione a pasta do seu computador onde o projeto será criado.
-* **Minimum SAPUI5 version:** Selecione a versão recomendada compatível com o S/4HANA da Veiling (ex.: `1.108.x` ou superior).
+* **Minimum SAPUI5 version:** `1.136.0` (compatível com o S/4HANA da Veiling).
 * **Add deployment configuration:** Marque **`Yes`** (para configurar o deploy ABAP de imediato).
 * **Add FLP configuration:** Marque **`Yes`** (para testar em ambiente sandbox do Fiori Launchpad).
 * Clique em **Next**.
 
 #### 🔹 Etapa 5: Deployment Configuration (Destino no Servidor ABAP)
 * **Please choose the target:** `ABAP`
-* **Select Target System:** Selecione o sistema conectado (ex.: `S4D, client 100 [GVSOUZA] (Source system)`).
+* **Select Target System:** Selecione o sistema conectado (`https://vhcvhs4dci.sap.cvh.com.br:44300`, client `100`).
 * **SAPUI5 ABAP Repository:** **`ZZ1_BLOQ_INAD`** *(Nome técnico da aplicação BSP no SAP, máximo de 15 caracteres)*.
 * **Deployment Description:** `DEL-R2R-009: Bloqueio Inadimplentes` *(Descrição breve do artefato no repositório)*.
 * **Select How You Want to Enter the Package:** `Enter Manually`
 * **Package:** **`ZFI_BLOQ_INADIMPLENTES`** *(Substitua o `$TMP` padrão pelo pacote de transporte oficial da demanda)*.
-* **Transport Request (TR):** *(Exibido após informar o pacote não-temporário)* Selecione ou informe a sua ordem de transporte de desenvolvimento (`S4DK900...`).
+* **Transport Request (TR):** `S4DK900952` *(Ordem de transporte configurada no `ui5-deploy.yaml`)*.
 * Clique em **Next**.
 
 #### 🔹 Etapa 6: Fiori Launchpad Configuration (Navegação FLP)
-* **Semantic Object:** `Cliente` (ou `ZClienteInad`)
-* **Action:** `bloquear` (ou `manage`)
+* **Semantic Object:** `ZClienteInad`
+* **Action:** `manage`
 * **Title:** `Bloquear/Desbloquear Clientes Inadimplentes`
 * Clique em **Finish**. O assistente iniciará o download dos pacotes via `npm install`.
 
@@ -211,7 +211,7 @@ Trecho principal de configuração do `manifest.json` da aplicação Fiori Eleme
 
 ```jsonc
 {
-  "_version": "1.59.0",
+  "_version": "1.73.1",
   "sap.app": {
     "id": "br.com.veiling.bloqinadimplente",                           // Identificador único da aplicação UI5 no repositório BSP
     "type": "application",                                            // Tipo de artefato: aplicação executável
@@ -222,6 +222,11 @@ Trecho principal de configuração do `manifest.json` da aplicação Fiori Eleme
         "uri": "/sap/opu/odata/sap/ZUI_O2_FI_CLIENTE_INAD/",           // Endpoint do serviço OData V2 publicado no SAP Gateway
         "type": "OData",                                               // Protocolo de comunicação baseado em padrões abertos OData
         "settings": {
+          "annotations": [
+            "ZUI_O2_FI_CLIENTE_INAD_VAN",                              // Anotações vindas do backend/Gateway (MDE)
+            "annotation"                                               // Anotações locais do projeto
+          ],
+          "localUri": "localService/mainService/metadata.xml",
           "odataVersion": "2.0"                                        // Versão do protocolo OData consumida pelo List Report
         }
       }
@@ -232,15 +237,27 @@ Trecho principal de configuração do `manifest.json` da aplicação Fiori Eleme
           "semanticObject": "ZClienteInad",                            // Objeto semântico para navegação no Fiori Launchpad
           "action": "manage",                                          // Ação de gerenciamento do aplicativo
           "title": "{{ZClienteInad-manage.flpTitle}}",
-          "subTitle": "{{ZClienteInad-manage.flpSubtitle}}"
+          "subTitle": "{{ZClienteInad-manage.flpSubtitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
         }
       }
+    }
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.136.0"                                       // Versão mínima SAPUI5 configurada no projeto
     }
   },
   "sap.ui.generic.app": {
     "_version": "1.3.0",
     "settings": {
-      "forceGlobalRefresh": true                                       // Recarrega os dados da tela após a execução de ações em massa
+      "forceGlobalRefresh": true,                                      // Recarrega os dados da tela após a execução de ações em massa
+      "objectPageHeaderType": "Dynamic",
+      "considerAnalyticalParameters": true,
+      "showDraftToggle": false
     },
     "pages": {
       "ListReport|ClienteInadimplente": {
@@ -252,6 +269,11 @@ Trecho principal de configuração do `manifest.json` da aplicação Fiori Eleme
             "condensedTableLayout": true,                              // Layout compacto da tabela para visualizar mais linhas
             "smartVariantManagement": true,                            // Habilita salvar variantes de filtro/visão por usuário
             "enableTableFilterInPageVariant": true,                    // Sincroniza a barra de filtros com a variante da página
+            "filterSettings": {
+              "dateSettings": {
+                "useDateRange": true
+              }
+            },
             "tableSettings": {
               "type": "ResponsiveTable",                               // Tabela responsiva padrão SAPUI5
               "multiSelect": true                                      // Habilita checkboxes para seleção e processamento em lote
@@ -270,7 +292,7 @@ Trecho principal de configuração do `manifest.json` da aplicação Fiori Eleme
 
 ```jsonc
 {
-  "_version": "1.59.0",
+  "_version": "1.73.1",
   "sap.app": {
     "id": "br.com.veiling.bloqinadimplente",
     "type": "application",
@@ -281,6 +303,11 @@ Trecho principal de configuração do `manifest.json` da aplicação Fiori Eleme
         "uri": "/sap/opu/odata/sap/ZUI_O2_FI_CLIENTE_INAD/",
         "type": "OData",
         "settings": {
+          "annotations": [
+            "ZUI_O2_FI_CLIENTE_INAD_VAN",
+            "annotation"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
           "odataVersion": "2.0"
         }
       }
@@ -291,15 +318,27 @@ Trecho principal de configuração do `manifest.json` da aplicação Fiori Eleme
           "semanticObject": "ZClienteInad",
           "action": "manage",
           "title": "{{ZClienteInad-manage.flpTitle}}",
-          "subTitle": "{{ZClienteInad-manage.flpSubtitle}}"
+          "subTitle": "{{ZClienteInad-manage.flpSubtitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
         }
       }
+    }
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.136.0"
     }
   },
   "sap.ui.generic.app": {
     "_version": "1.3.0",
     "settings": {
-      "forceGlobalRefresh": true
+      "forceGlobalRefresh": true,
+      "objectPageHeaderType": "Dynamic",
+      "considerAnalyticalParameters": true,
+      "showDraftToggle": false
     },
     "pages": {
       "ListReport|ClienteInadimplente": {
@@ -311,6 +350,11 @@ Trecho principal de configuração do `manifest.json` da aplicação Fiori Eleme
             "condensedTableLayout": true,
             "smartVariantManagement": true,
             "enableTableFilterInPageVariant": true,
+            "filterSettings": {
+              "dateSettings": {
+                "useDateRange": true
+              }
+            },
             "tableSettings": {
               "type": "ResponsiveTable",
               "multiSelect": true

@@ -42,51 +42,51 @@ summary: "Guia prático de referência com as principais transações (TCodes) d
 
 Esta tabela reúne todas as transações indispensáveis utilizadas rotineiramente por um desenvolvedor sênior para codificação, depuração em tempo real, auditoria de performance, testes de APIs Fiori, integrações e governança.
 
-| Transação | Categoria | Nome / Função | Uso Diário pelo Desenvolvedor Sênior |
-| :--- | :--- | :--- | :--- |
-| **`SE80`** | Desenvolvimento | *Object Navigator* | Navegação central por pacotes, programas, classes, funções e dicionário de dados. |
-| **`SE24`** | Desenvolvimento | *Class Builder* | Criação e manutenção de classes globais, métodos e interfaces orientadas a objetos (*ABAP OO*). |
-| **`SE38`** | Desenvolvimento | *ABAP Editor* | Edição e execução de relatórios, programas executáveis e rotinas de inclusão (*Includes*). |
-| **`SE11`** | Dicionário de Dados | *ABAP Dictionary (DDIC)* | Modelagem de tabelas transparentes, estruturas, domínios, elementos de dados e visões clássicas. |
-| **`SE16N`** | Dicionário de Dados | *General Table Display* | Inspeção direta de dados em tabelas do banco, validação de chaves e checagem de integridade. |
-| **`SE14`** | Dicionário de Dados | *Database Utility* | Ajuste estrutural de tabelas físicas no banco quando há inconsistências de campos ou chaves. |
-| **`SE37`** | Desenvolvimento | *Function Builder* | Criação, documentação e execução de testes unitários em Módulos de Função e RFCs. |
-| **`SE93`** | Desenvolvimento | *Maintain Transaction Codes* | Criação e amarração de transações customizadas (`Z`/`Y`) a programas, métodos e telas. |
-| **`SE91`** | Desenvolvimento | *Message Maintenance* | Criação e gestão de classes de mensagens padronizadas de retorno para o usuário ou logs. |
-| **`SE18`** | Ampliações | *BAdI Builder (Definition)* | Análise da definição de pontos de ampliação standard da SAP (*Business Add-Ins*). |
-| **`SE19`** | Ampliações | *BAdI Builder (Implementation)* | Implementação de lógica customizada em BAdIs clássicas e novas (*Kernel BAdIs*). |
-| **`/h`** | Depuração | *Activate Debugging* | Comando digitado no campo de transação para interceptar e depurar a tela ativa imediatamente. |
-| **`ST22`** | Troubleshooting | *ABAP Dump Analysis* | Análise da causa-raiz de erros fatais (*Short Dumps*), pilha de chamadas e variáveis de memória. |
-| **`SM50`** | Troubleshooting | *Work Process Overview* | Monitoramento dos processos de trabalho da instância, identificação de rotinas presas e loops infinitos. |
-| **`SM66`** | Troubleshooting | *System-Wide Work Processes* | Visão consolidada de processos de trabalho de todos os servidores do ambiente para checar travamentos globais. |
-| **`SM12`** | Troubleshooting | *Lock Entries (Enqueue)* | Identificação de deadlocks, conflitos de concorrência e eliminação controlada de bloqueios órfãos. |
-| **`SLG1`** | Troubleshooting | *Application Log* | Consulta e auditoria de logs de negócio gravados por rotinas automáticas e interfaces. |
-| **`ST05`** | Performance | *Performance Trace (SQL Trace)* | Gravação de trace de banco de dados para analisar tempo de query, índices e planos de execução no HANA. |
-| **`SAT`** | Performance | *ABAP Runtime Analysis* | Medição de consumo de tempo e memória dividida entre Lógica ABAP vs. Banco de Dados vs. Sistema. |
-| **`/IWFND/GW_CLIENT`** | Fiori & OData | *SAP Gateway Client* | Simulação de chamadas HTTP (GET, POST, PATCH) para testar serviços OData diretamente no SAP GUI. |
-| **`/IWFND/MAINT_SERVICE`** | Fiori & OData | *Activate and Maintain Services* | Publicação, ativação e amarração de serviços OData do SAP Gateway a artefatos CDS/RAP. |
-| **`/IWFND/ERROR_LOG`** | Fiori & OData | *Gateway Error Log* | Diagnóstico imediato de erros de requisições HTTP e payloads JSON vindos de aplicativos Fiori. |
-| **`/UI2/FLP`** | Fiori & OData | *Fiori Launchpad* | Acesso ao portal Fiori no navegador para teste funcional da visão final do usuário. |
-| **`/UI2/INVAL_CACHES`** | Fiori & OData | *Invalidate All Caches* | Limpeza de cache estático do Fiori quando alterações visuais ou metadados de UI não atualizam. |
-| **`SM37`** | Background | *Job Overview* | Acompanhamento do status de execução, cancelamento e leitura de logs de rotinas em background. |
-| **`SM36`** | Background | *Define Background Job* | Agendamento de programas executáveis vinculados a variantes de seleção específicas. |
-| **`STVARV`** | Background | *Selection Variables* | Manutenção de parâmetros dinâmicos e variáveis de seleção globais na tabela `TVARVC`. |
-| **`SM59`** | Integração | *RFC Destinations* | Testes de conexão de rede, autorização, certificados SSL e configuração de destinos RFC/HTTP externos. |
-| **`WE02` / `WE05`** | Integração | *IDoc List* | Monitoramento de mensageria assíncrona, status de transmissão e erros de preenchimento em IDocs. |
-| **`WE19`** | Integração | *IDoc Test Tool* | Disparo de testes e injeção controlada de payloads de IDocs sem depender de sistemas legados. |
-| **`SOAMANAGER`** | Integração | *SOA Management* | Configuração técnica de Web Services SOAP, criação de endpoints, chaves de segurança e WSDLs. |
-| **`AL11`** | Integração | *SAP Server Directories* | Consulta de pastas, arquivos e diretórios de interface no sistema operacional do servidor SAP. |
-| **`CG3Y` / `CG3Z`** | Integração | *Download / Upload File* | Transferência direta de arquivos planos entre a máquina local e os diretórios do servidor (`AL11`). |
-| **`SE09` / `SE10`** | Governança | *Transport Organizer* | Criação de tarefas, documentação, liberação e consulta de Ordens de Transporte (*Workbench* e *Customizing*). |
-| **`STMS`** | Governança | *Transport Management System* | Consulta da fila de importação de ordens para checar o avanço de deploys entre DEV, QAS e PRD. |
-| **`SU53`** | Segurança | *Display Authorization Check* | Verificação imediata do último objeto de autorização que falhou no teste de permissão do usuário. |
-| **`PFCG`** | Segurança | *Role Maintenance* | Inspeção de papéis (*Roles*), objetos de autorização atribuídos e menus de acesso dos perfis. |
-| **`SU01`** | Segurança | *User Maintenance* | Checagem de parâmetros de sessão (*Parameter IDs*), tipo de usuário e papéis atribuídos para testes. |
-| **`SNOTE`** | Manutenção | *SAP Note Assistant* | Busca, análise de impacto e aplicação de notas técnicas oficiais de correção de bugs liberadas pela SAP. |
-| **`SPRO`** | Customizing | *SAP Reference IMG* | Navegação pela estrutura de parametrização funcional para entender como as regras de negócio estão configuradas. |
-| **`BP`** | Dados Mestres | *Business Partner* | Consulta e validação de cadastros unificados de parceiros de negócio (Clientes, Fornecedores e Crédito). |
-| **`FB03`** | Negócio (FI) | *Display Document* | Exibição de lançamentos contábeis gerados por programas, interfaces ou faturamentos para validação técnica. |
-| **`FBL5N` / `FBL1N`** | Negócio (FI) | *Customer / Vendor Line Items* | Consulta de partidas em aberto e compensadas para validação de conciliações e desenvolvimentos financeiros. |
+| Transação                  | Categoria           | Nome / Função                    | Uso Diário pelo Desenvolvedor Sênior                                                                             |
+| :------------------------- | :------------------ | :------------------------------- | :--------------------------------------------------------------------------------------------------------------- |
+| **`SE80`**                 | Desenvolvimento     | *Object Navigator*               | Navegação central por pacotes, programas, classes, funções e dicionário de dados.                                |
+| **`SE24`**                 | Desenvolvimento     | *Class Builder*                  | Criação e manutenção de classes globais, métodos e interfaces orientadas a objetos (*ABAP OO*).                  |
+| **`SE38`**                 | Desenvolvimento     | *ABAP Editor*                    | Edição e execução de relatórios, programas executáveis e rotinas de inclusão (*Includes*).                       |
+| **`SE11`**                 | Dicionário de Dados | *ABAP Dictionary (DDIC)*         | Modelagem de tabelas transparentes, estruturas, domínios, elementos de dados e visões clássicas.                 |
+| **`SE16N`**                | Dicionário de Dados | *General Table Display*          | Inspeção direta de dados em tabelas do banco, validação de chaves e checagem de integridade.                     |
+| **`SE14`**                 | Dicionário de Dados | *Database Utility*               | Ajuste estrutural de tabelas físicas no banco quando há inconsistências de campos ou chaves.                     |
+| **`SE37`**                 | Desenvolvimento     | *Function Builder*               | Criação, documentação e execução de testes unitários em Módulos de Função e RFCs.                                |
+| **`SE93`**                 | Desenvolvimento     | *Maintain Transaction Codes*     | Criação e amarração de transações customizadas (`Z`/`Y`) a programas, métodos e telas.                           |
+| **`SE91`**                 | Desenvolvimento     | *Message Maintenance*            | Criação e gestão de classes de mensagens padronizadas de retorno para o usuário ou logs.                         |
+| **`SE18`**                 | Ampliações          | *BAdI Builder (Definition)*      | Análise da definição de pontos de ampliação standard da SAP (*Business Add-Ins*).                                |
+| **`SE19`**                 | Ampliações          | *BAdI Builder (Implementation)*  | Implementação de lógica customizada em BAdIs clássicas e novas (*Kernel BAdIs*).                                 |
+| **`/h`**                   | Depuração           | *Activate Debugging*             | Comando digitado no campo de transação para interceptar e depurar a tela ativa imediatamente.                    |
+| **`ST22`**                 | Troubleshooting     | *ABAP Dump Analysis*             | Análise da causa-raiz de erros fatais (*Short Dumps*), pilha de chamadas e variáveis de memória.                 |
+| **`SM50`**                 | Troubleshooting     | *Work Process Overview*          | Monitoramento dos processos de trabalho da instância, identificação de rotinas presas e loops infinitos.         |
+| **`SM66`**                 | Troubleshooting     | *System-Wide Work Processes*     | Visão consolidada de processos de trabalho de todos os servidores do ambiente para checar travamentos globais.   |
+| **`SM12`**                 | Troubleshooting     | *Lock Entries (Enqueue)*         | Identificação de deadlocks, conflitos de concorrência e eliminação controlada de bloqueios órfãos.               |
+| **`SLG1`**                 | Troubleshooting     | *Application Log*                | Consulta e auditoria de logs de negócio gravados por rotinas automáticas e interfaces.                           |
+| **`ST05`**                 | Performance         | *Performance Trace (SQL Trace)*  | Gravação de trace de banco de dados para analisar tempo de query, índices e planos de execução no HANA.          |
+| **`SAT`**                  | Performance         | *ABAP Runtime Analysis*          | Medição de consumo de tempo e memória dividida entre Lógica ABAP vs. Banco de Dados vs. Sistema.                 |
+| **`/IWFND/GW_CLIENT`**     | Fiori & OData       | *SAP Gateway Client*             | Simulação de chamadas HTTP (GET, POST, PATCH) para testar serviços OData diretamente no SAP GUI.                 |
+| **`/IWFND/MAINT_SERVICE`** | Fiori & OData       | *Activate and Maintain Services* | Publicação, ativação e amarração de serviços OData do SAP Gateway a artefatos CDS/RAP.                           |
+| **`/IWFND/ERROR_LOG`**     | Fiori & OData       | *Gateway Error Log*              | Diagnóstico imediato de erros de requisições HTTP e payloads JSON vindos de aplicativos Fiori.                   |
+| **`/UI2/FLP`**             | Fiori & OData       | *Fiori Launchpad*                | Acesso ao portal Fiori no navegador para teste funcional da visão final do usuário.                              |
+| **`/UI2/INVAL_CACHES`**    | Fiori & OData       | *Invalidate All Caches*          | Limpeza de cache estático do Fiori quando alterações visuais ou metadados de UI não atualizam.                   |
+| **`SM37`**                 | Background          | *Job Overview*                   | Acompanhamento do status de execução, cancelamento e leitura de logs de rotinas em background.                   |
+| **`SM36`**                 | Background          | *Define Background Job*          | Agendamento de programas executáveis vinculados a variantes de seleção específicas.                              |
+| **`STVARV`**               | Background          | *Selection Variables*            | Manutenção de parâmetros dinâmicos e variáveis de seleção globais na tabela `TVARVC`.                            |
+| **`SM59`**                 | Integração          | *RFC Destinations*               | Testes de conexão de rede, autorização, certificados SSL e configuração de destinos RFC/HTTP externos.           |
+| **`WE02` / `WE05`**        | Integração          | *IDoc List*                      | Monitoramento de mensageria assíncrona, status de transmissão e erros de preenchimento em IDocs.                 |
+| **`WE19`**                 | Integração          | *IDoc Test Tool*                 | Disparo de testes e injeção controlada de payloads de IDocs sem depender de sistemas legados.                    |
+| **`SOAMANAGER`**           | Integração          | *SOA Management*                 | Configuração técnica de Web Services SOAP, criação de endpoints, chaves de segurança e WSDLs.                    |
+| **`AL11`**                 | Integração          | *SAP Server Directories*         | Consulta de pastas, arquivos e diretórios de interface no sistema operacional do servidor SAP.                   |
+| **`CG3Y` / `CG3Z`**        | Integração          | *Download / Upload File*         | Transferência direta de arquivos planos entre a máquina local e os diretórios do servidor (`AL11`).              |
+| **`SE09` / `SE10`**        | Governança          | *Transport Organizer*            | Criação de tarefas, documentação, liberação e consulta de Ordens de Transporte (*Workbench* e *Customizing*).    |
+| **`STMS`**                 | Governança          | *Transport Management System*    | Consulta da fila de importação de ordens para checar o avanço de deploys entre DEV, QAS e PRD.                   |
+| **`SU53`**                 | Segurança           | *Display Authorization Check*    | Verificação imediata do último objeto de autorização que falhou no teste de permissão do usuário.                |
+| **`PFCG`**                 | Segurança           | *Role Maintenance*               | Inspeção de papéis (*Roles*), objetos de autorização atribuídos e menus de acesso dos perfis.                    |
+| **`SU01`**                 | Segurança           | *User Maintenance*               | Checagem de parâmetros de sessão (*Parameter IDs*), tipo de usuário e papéis atribuídos para testes.             |
+| **`SNOTE`**                | Manutenção          | *SAP Note Assistant*             | Busca, análise de impacto e aplicação de notas técnicas oficiais de correção de bugs liberadas pela SAP.         |
+| **`SPRO`**                 | Customizing         | *SAP Reference IMG*              | Navegação pela estrutura de parametrização funcional para entender como as regras de negócio estão configuradas. |
+| **`BP`**                   | Dados Mestres       | *Business Partner*               | Consulta e validação de cadastros unificados de parceiros de negócio (Clientes, Fornecedores e Crédito).         |
+| **`FB03`**                 | Negócio (FI)        | *Display Document*               | Exibição de lançamentos contábeis gerados por programas, interfaces ou faturamentos para validação técnica.      |
+| **`FBL5N` / `FBL1N`**      | Negócio (FI)        | *Customer / Vendor Line Items*   | Consulta de partidas em aberto e compensadas para validação de conciliações e desenvolvimentos financeiros.      |
 
 ---
 

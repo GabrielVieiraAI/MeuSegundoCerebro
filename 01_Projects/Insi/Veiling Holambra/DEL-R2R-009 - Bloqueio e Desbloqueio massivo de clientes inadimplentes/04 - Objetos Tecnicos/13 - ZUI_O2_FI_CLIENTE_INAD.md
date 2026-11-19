@@ -40,16 +40,30 @@ O **Service Binding** `ZUI_O2_FI_CLIENTE_INAD` vincula o Service Definition (`[[
 
 ## 🛠️ Passo a Passo da Criação do Objeto
 
+### 🔖 Metadados ADT (*ABAP Development Tools* — Obrigatório para MCP `sap-adt`)
+
+```yaml
+objectType: "SRVB/SVB"
+packageName: "ZFI_BLOQ_INADIMPLENTES"
+name: "ZUI_O2_FI_CLIENTE_INAD"
+description: "DEL-R2R-009: Service Binding OData V2 Inadimplentes"
+extraParams:
+  serviceDefinition: "ZUI_FI_CLIENTE_INAD"
+  bindingType: "ODATA V2 - UI"
+```
+
+### 📋 Passo a Passo no ADT / SAP GUI
+
 1. **No Eclipse ADT:** Clique com o botão direito sobre o Service Definition `ZUI_FI_CLIENTE_INAD` -> **`New Service Binding`**.
 2. Preencha os campos do assistente:
    - **Name:** `ZUI_O2_FI_CLIENTE_INAD`
-   - **Description:** `DEL-R2R-009: Service Binding OData V2 - Clientes Inad.`
+   - **Description:** `DEL-R2R-009: Service Binding OData V2 Inadimplentes`
    - **Binding Type:** Selecione **`ODATA V2 - UI`** *(essencial para consumo via Fiori Elements e compatibilidade com o padrão adotado na Veiling)*.
    - **Service Definition:** `ZUI_FI_CLIENTE_INAD` *(preenchido automaticamente)*.
 3. Clique em **Next**, selecione a Ordem de Transporte (TR) do projeto e clique em **Finish**.
-4. **Publicação do Serviço no SAP Gateway (`Publish`):**
-   - No editor visual do Service Binding, localize o botão **`Publish`** no canto superior direito da seção de detalhes.
-   - Clique em **`Publish`** e aguarde até que o status mude para **`Active / Local Service Endpoint Published`** (com o indicador em verde). O Gateway registrará o endpoint `/sap/opu/odata/sap/ZUI_O2_FI_CLIENTE_INAD`.
+4. **Publicação / Republicação do Serviço no SAP Gateway (`Unpublish` / `Publish`):**
+   - No editor visual do Service Binding, localize os botões **`Unpublish`** / **`Publish`** no canto superior direito da seção de detalhes *(ou execute via ações MCP `odatav2unpublish` $\rightarrow$ `odatav2publish` sempre que houver alteração de chave ou estrutura nas CDSs)*.
+   - Clique em **`Publish`** e aguarde até que o status mude para **`Active / Local Service Endpoint Published`** (com o indicador em verde). O Gateway registrará/atualizará o `$metadata` e o endpoint `/sap/opu/odata/sap/ZUI_O2_FI_CLIENTE_INAD`.
 5. **Pré-visualização do Fiori Elements (`Preview`):**
    - Na tabela **Entity Set and Association**, selecione a entidade `ClienteInadimplente`.
    - Clique com o botão direito sobre ela e selecione **`Open Fiori Elements App Preview`** (ou clique no botão **Preview** à direita).
@@ -68,9 +82,10 @@ O **Service Binding** `ZUI_O2_FI_CLIENTE_INAD` vincula o Service Definition (`[[
 
 ```yaml
 Nome do Objeto: ZUI_O2_FI_CLIENTE_INAD                               # Nome técnico do Service Binding seguindo a convenção ZUI_O2_[MD]_<desc>
-Descrição: "DEL-R2R-009: Service Binding OData V2 - Clientes Inad." # Descrição no dicionário ABAP (máx. 60 caracteres)
+Descrição: "DEL-R2R-009: Service Binding OData V2 Inadimplentes"      # Descrição no dicionário ABAP (máx. 60 caracteres)
 Service Definition: ZUI_FI_CLIENTE_INAD                             # Service Definition de origem que declara as entidades expostas
 Binding Type: OData V2 - UI                                         # Protocolo de binding OData V2 com suporte a UI (Fiori Elements)
+Service Version: 1.0.0 (Gateway: 0001)                              # Versão do serviço OData registrada no Binding
 Entidade Principal: ClienteInadimplente (ZC_FI_CLIENTE_INADIMPLENTE)# Entidade raiz consumida pelo app e testada no App Preview do ADT
 Status de Publicação: Local Service Endpoint Published              # Status após clicar em 'Publish' (gera os endpoints no SAP Gateway)
 ```
@@ -81,9 +96,10 @@ Status de Publicação: Local Service Endpoint Published              # Status a
 
 ```yaml
 Nome do Objeto: ZUI_O2_FI_CLIENTE_INAD
-Descrição: "DEL-R2R-009: Service Binding OData V2 - Clientes Inad."
+Descrição: "DEL-R2R-009: Service Binding OData V2 Inadimplentes"
 Service Definition: ZUI_FI_CLIENTE_INAD
 Binding Type: OData V2 - UI
+Service Version: 1.0.0 (Gateway: 0001)
 Entidade Principal: ClienteInadimplente (ZC_FI_CLIENTE_INADIMPLENTE)
 Status de Publicação: Local Service Endpoint Published
 ```

@@ -43,10 +43,24 @@ Como os dados de bloqueio são gravados nas tabelas standard de crédito via cla
 
 ## 🛠️ Passo a Passo da Criação do Objeto
 
+### 🔖 Metadados ADT (*ABAP Development Tools* — Obrigatório para MCP `sap-adt`)
+
+```yaml
+objectType: "BDEF/BDO"
+packageName: "ZFI_BLOQ_INADIMPLENTES"
+name: "ZI_FI_CLIENTE_INADIMPLENTE"
+description: "DEL-R2R-009: Comportamento Clientes Inadimplentes"
+extraParams:
+  rootEntity: "ZI_FI_CLIENTE_INADIMPLENTE"
+  implementationType: "Unmanaged"
+```
+
+### 📋 Passo a Passo no ADT / SAP GUI
+
 1. **No Eclipse ADT:** Clique com o botão direito sobre a CDS View raiz `ZI_FI_CLIENTE_INADIMPLENTE` -> **`New Behavior Definition`**.
 2. No diálogo de criação:
    - **Root Entity:** `ZI_FI_CLIENTE_INADIMPLENTE` *(preenchido automaticamente)*.
-   - **Description:** `DEL-R2R-009: Behavior Root Inadimplentes`
+   - **Description:** `DEL-R2R-009: Comportamento Clientes Inadimplentes`
    - **Implementation Type:** Pode manter o padrão sugerido pelo assistente, pois o modificador `unmanaged` será definido diretamente na sintaxe do arquivo.
 3. Clique em **Next**, selecione a Ordem de Transporte (TR) do projeto e clique em **Finish**.
 4. Substitua o esqueleto padrão gerado pelo código presente na seção [Snippet de Código](file:///c:/Users/gabriel.vsouza/source/MeuSegundoCerebro/01_Projects/Insi/Veiling%20Holambra/DEL-R2R-009%20-%20Bloqueio%20e%20Desbloqueio%20massivo%20de%20clientes%20inadimplentes/Objetos/ZI_FI_CLIENTE_INADIMPLENTE%20(BDEF).md#L55-L90) abaixo.
@@ -101,22 +115,22 @@ lock master
 authorization master ( instance )
 {
   field ( readonly )
-    PartnerMatriz,
-    CreditSegment,
-    PartnerOrigem,
-    NomeCliente,
-    RiskClass,
-    GroupFeature,
-    IsBlocked,
-    BlockReason,
-    Moeda,
-    ValorTotalVencido,
-    MenorDataVencimento,
-    DiasAtraso,
-    AcaoProposta,
-    OrdemProposta;
+  PartnerMatriz,
+  CreditSegment,
+  PartnerOrigem,
+  NomeCliente,
+  RiskClass,
+  GroupFeature,
+  IsBlocked,
+  BlockReason,
+  Moeda,
+  ValorTotalVencido,
+  MenorDataVencimento,
+  DiasAtraso,
+  AcaoProposta,
+  OrdemProposta;
 
-  action bloquearCliente    result [1] $self;
+  action bloquearCliente result [1] $self;
   action desbloquearCliente result [1] $self;
 }
 ```

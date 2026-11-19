@@ -47,19 +47,19 @@ Ele é verificado tanto na leitura dos dados quanto na execução dos botões **
 ## 🛠️ Passo a Passo da Criação do Objeto
 
 1. **No SAP GUI:** Acesse a transação **`SU21`** (ou no Eclipse ADT: clique com o botão direito no pacote -> **`New`** -> **`Other ABAP Repository Object`** -> **`Authorization Object`**).
-2. Localize a classe de objetos de autorização financeira (ex.: **`ZFI`**) ou crie-a se necessário.
+2. Localize a classe de objetos de autorização financeira (`FI` — *Contabilidade financeira*).
 3. Clique em **Criar Objeto de Autorização** e preencha:
    - **Objeto:** `ZFI_BLOQ`
-   - **Texto Breve:** `DEL-R2R-009: Aut. Bloqueio Clientes Inadimplentes`
-   - **Classe de Objetos:** `ZFI`
+   - **Texto Breve:** `ZFI_BLOQ`
+   - **Classe de Objetos:** `FI`
 4. Na aba **Campos de Autorização**, adicione os três campos:
    - `BUKRS` (Empresa)
-   - `UKM_SGMNT` (Segmento de Crédito FSCM)
+   - `UKM_SGMNT` (Segmento de crédito)
    - `ACTVT` (Atividade)
 5. Na configuração do campo `ACTVT` (Atividades Permitidas), marque:
    - `03` = Exibir
    - `05` = Bloquear
-   - `43` = Liberar (Desbloquear)
+   - `43` = Liberar
 6. Salve o objeto na sua ordem de transporte (TR) de desenvolvimento.
 
 ---

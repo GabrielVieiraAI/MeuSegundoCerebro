@@ -21,7 +21,7 @@ aliases:
 
 # 📦 `ZC_FI_TAX_DOC (CDS)` (CDS Child Projection View — Documentos do Lote)
 
-⬅️ [[01 - DEL-COM-165 - Arquitetura App 1 (Carga Massiva de Taxas)|Voltar para Arquitetura App 1]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica App 1 (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw App 1]]
+⬅️ [[01 - DEL-COM-165 - Arquitetura (Carga Massiva de Taxas)|Voltar para Arquitetura (Carga Massiva de Taxas)]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw (Carga Massiva)]]
 
 ---
 
@@ -39,7 +39,18 @@ A CDS View `ZC_FI_TAX_DOC` projeta a entidade filha [[21 - ZI_FI_TAX_DOC|ZI_FI_T
 
 ## 🛠️ Passo a Passo da Criação do Objeto
 
-1. **No Eclipse ADT:** Conecte-se ao sistema e acesse o pacote `ZFI_CARGA_TAXAS`.
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "DDLS/DF"
+packageName: "ZFI_TAX_CARGA"
+name: "ZC_FI_TAX_DOC"
+description: "DEL-COM-165: Projection Child Documentos do Lote"
+extraParams:
+  circularActivationGroup: "Passos 25-27 (ZC_FI_TAX_CARGA, ZC_FI_TAX_DOC, ZC_FI_TAX_ITEM)"
+```
+
+1. **No Eclipse ADT:** Conecte-se ao sistema e acesse o pacote `ZFI_TAX_CARGA`.
 2. Clique com o botão direito -> **`New`** -> **`Data Definition`**.
 3. Preencha as propriedades:
    - **Name:** `ZC_FI_TAX_DOC`

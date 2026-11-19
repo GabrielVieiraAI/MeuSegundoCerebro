@@ -20,13 +20,13 @@ aliases:
 
 # 📦 `ZTFI_TAX_TPMOV_D` (Tabela Transparente de Draft — Tipos de Movimento)
 
-⬅️ [[02 - DEL-COM-165 - Arquitetura App 2 (Tipos de Movimento)|Voltar para Arquitetura App 2]] | 🎨 [[02 - DEL-COM-165 - Arquitetura Técnica App 2 (Tipos de Movimento).excalidraw|Ver no Diagrama Excalidraw App 2]]
+⬅️ [[02 - DEL-COM-165 - Arquitetura (Tipos de Movimento)|Voltar para Arquitetura (Tipos de Movimento)]] | 🎨 [[02 - DEL-COM-165 - Arquitetura Técnica (Tipos de Movimento).excalidraw|Ver no Diagrama Excalidraw (Tipos de Movimento)]]
 
 ---
 
 ## 📌 Visão Geral do Objeto
 
-A tabela `ZTFI_TAX_TPMOV_D` é a tabela de **Draft** (rascunho) exigida pelo framework **RAP** para suportar a edição concorrente, salvamento automático temporário e bloqueio otimista no **Aplicativo 2** ([[36 - taxastipomov (App Fiori)|taxastipomov]]). Ela espelha exatamente os campos da entidade raiz [[11 - ZI_FI_TAX_TPMOV (CDS)|ZI_FI_TAX_TPMOV]] e adiciona a estrutura administrativa standard `sych_bdl_draft_admin_inc`.
+A tabela `ZTFI_TAX_TPMOV_D` é a tabela de **Draft** (rascunho) exigida pelo framework **RAP** para suportar a edição concorrente, salvamento automático temporário e bloqueio otimista no **Aplicativo de Tipos de Movimento (`ZFI_TAX_TPMOV`)** ([[36 - taxastipomov (App Fiori)|taxastipomov]]). Ela espelha exatamente os campos da entidade raiz [[11 - ZI_FI_TAX_TPMOV (CDS)|ZI_FI_TAX_TPMOV]] e adiciona a estrutura administrativa standard `sych_bdl_draft_admin_inc`.
 
 ---
 
@@ -38,7 +38,16 @@ A tabela `ZTFI_TAX_TPMOV_D` é a tabela de **Draft** (rascunho) exigida pelo fra
 
 ## 🛠️ Passo a Passo da Criação do Objeto
 
-1. **No Eclipse ADT:** Conecte-se ao sistema e acesse o pacote `ZFI_CARGA_TAXAS`.
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "TABL/DT"
+packageName: "ZFI_TAX_TPMOV"
+name: "ZTFI_TAX_TPMOV_D"
+description: "DEL-COM-165: Draft de Tipos de Movimento de Taxas"
+```
+
+1. **No Eclipse ADT:** Conecte-se ao sistema e acesse o pacote `ZFI_TAX_TPMOV`.
 2. Clique com o botão direito -> **`New`** -> **`Database Table`** (ou utilize o *Quick Fix* `Ctrl + 1` na linha `draft table ztfi_tax_tpmov_d` dentro do Behavior Definition [[12 - ZI_FI_TAX_TPMOV (BDEF)|ZI_FI_TAX_TPMOV]]).
 3. Preencha as propriedades:
    - **Name:** `ZTFI_TAX_TPMOV_D`

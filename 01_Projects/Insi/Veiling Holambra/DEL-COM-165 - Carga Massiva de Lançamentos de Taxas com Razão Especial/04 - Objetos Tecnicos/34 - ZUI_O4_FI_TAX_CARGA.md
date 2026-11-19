@@ -20,7 +20,7 @@ aliases:
 
 # 📦 `ZUI_O4_FI_TAX_CARGA` (Service Binding OData V4 — Carga Massiva de Taxas)
 
-⬅️ [[01 - DEL-COM-165 - Arquitetura App 1 (Carga Massiva de Taxas)|Voltar para Arquitetura App 1]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica App 1 (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw App 1]]
+⬅️ [[01 - DEL-COM-165 - Arquitetura (Carga Massiva de Taxas)|Voltar para Arquitetura (Carga Massiva de Taxas)]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw (Carga Massiva)]]
 
 ---
 
@@ -37,6 +37,19 @@ O Service Binding `ZUI_O4_FI_TAX_CARGA` publica a Service Definition [[33 - ZUI_
 ---
 
 ## 🛠️ Passo a Passo da Criação do Objeto
+
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "SRVB/SVB"
+packageName: "ZFI_TAX_CARGA"
+name: "ZUI_O4_FI_TAX_CARGA"
+description: "DEL-COM-165: Service Binding OData V4 Carga Massiva de Taxas"
+extraParams:
+  serviceDefinition: "ZUI_FI_TAX_CARGA"
+  bindingType: "ODATA_V4_UI"
+  postActivationAction: "publish"
+```
 
 1. **No Eclipse ADT:** Clique com o botão direito sobre a Service Definition [[33 - ZUI_FI_TAX_CARGA|ZUI_FI_TAX_CARGA]] -> **`New Service Binding`**.
 2. Preencha as propriedades:

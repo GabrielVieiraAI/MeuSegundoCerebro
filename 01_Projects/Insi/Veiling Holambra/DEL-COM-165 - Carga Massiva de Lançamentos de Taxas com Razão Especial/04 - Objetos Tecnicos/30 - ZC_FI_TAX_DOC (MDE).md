@@ -20,7 +20,7 @@ aliases:
 
 # 📦 `ZC_FI_TAX_DOC (MDE)` (Metadata Extension — Documentos do Lote)
 
-⬅️ [[01 - DEL-COM-165 - Arquitetura App 1 (Carga Massiva de Taxas)|Voltar para Arquitetura App 1]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica App 1 (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw App 1]]
+⬅️ [[01 - DEL-COM-165 - Arquitetura (Carga Massiva de Taxas)|Voltar para Arquitetura (Carga Massiva de Taxas)]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw (Carga Massiva)]]
 
 ---
 
@@ -37,6 +37,15 @@ O Metadata Extension `ZC_FI_TAX_DOC` configura as colunas da tabela de **Documen
 ---
 
 ## 🛠️ Passo a Passo da Criação do Objeto
+
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "DDLX/EX"
+packageName: "ZFI_TAX_CARGA"
+name: "ZC_FI_TAX_DOC"
+description: "DEL-COM-165: UI Annotations Documentos do Lote"
+```
 
 1. **No Eclipse ADT:** Clique com o botão direito sobre a CDS View [[27 - ZC_FI_TAX_DOC (CDS)|ZC_FI_TAX_DOC]] -> **`New Metadata Extension`**.
 2. Preencha as propriedades:

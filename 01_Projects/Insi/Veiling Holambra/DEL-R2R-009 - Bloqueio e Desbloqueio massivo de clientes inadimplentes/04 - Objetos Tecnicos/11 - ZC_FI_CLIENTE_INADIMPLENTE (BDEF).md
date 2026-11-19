@@ -40,10 +40,24 @@ No modelo RAP, nenhuma ação definida no BDEF Raiz (`[[07 - ZI_FI_CLIENTE_INADI
 
 ## 🛠️ Passo a Passo da Criação do Objeto
 
+### 🔖 Metadados ADT (*ABAP Development Tools* — Obrigatório para MCP `sap-adt`)
+
+```yaml
+objectType: "BDEF/BDO"
+packageName: "ZFI_BLOQ_INADIMPLENTES"
+name: "ZC_FI_CLIENTE_INADIMPLENTE"
+description: "DEL-R2R-009: Projeção Inadimplentes"
+extraParams:
+  rootEntity: "ZC_FI_CLIENTE_INADIMPLENTE"
+  implementationType: "Projection"
+```
+
+### 📋 Passo a Passo no ADT / SAP GUI
+
 1. **No Eclipse ADT:** Clique com o botão direito sobre a CDS View de Projeção `ZC_FI_CLIENTE_INADIMPLENTE` -> **`New Behavior Definition`**.
 2. No assistente de criação:
    - **Root Entity:** `ZC_FI_CLIENTE_INADIMPLENTE` *(preenchido automaticamente)*.
-   - **Description:** `DEL-R2R-009: Behavior Projeção Inadimplentes`
+   - **Description:** `DEL-R2R-009: Projeção Inadimplentes`
    - O ADT detecta que a CDS é uma projeção e sugere o tipo **Projection**.
 3. Clique em **Next**, selecione a Ordem de Transporte (TR) do projeto e clique em **Finish**.
 4. Substitua o código gerado pelo conteúdo da seção [Snippet de Código](file:///c:/Users/gabriel.vsouza/source/MeuSegundoCerebro/01_Projects/Insi/Veiling%20Holambra/DEL-R2R-009%20-%20Bloqueio%20e%20Desbloqueio%20massivo%20de%20clientes%20inadimplentes/Objetos/ZC_FI_CLIENTE_INADIMPLENTE%20(BDEF).md#L45-L65) abaixo.

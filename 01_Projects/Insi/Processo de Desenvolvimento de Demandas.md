@@ -52,7 +52,7 @@ Este documento sintetiza o fluxo de trabalho padrão para conduzir qualquer dema
 
 | Guia | Obrigatoriedade | Finalidade | Comando (Skill) | Template Relacionado |
 | :--- | :---: | :--- | :--- | :--- |
-| **1. Guia de Implementação**<br>(`01 - <ID> - Guia de Implementação.md`) | Obrigatório | Define a ordem cronológica (checklist em fases) para criar no SAP tudo o que foi arquitetado na Etapa 2, acompanhado do seu diagrama de fluxo no Excalidraw. | [[gerar-guia-implementacao-sap\|`/gerar-guia-implementacao-sap`]] | • [[Template_Guia_Implementacao_Novo_App]]<br>• [[Template_Fluxo_Implementacao_Excalidraw]] |
+| **1. Guia de Implementação**<br>(`01 - <ID> - Guia de Implementação.md`) | Obrigatório | Define a ordem cronológica (checklist em fases, incluindo **Fase 0 condicional** de pacotes/encapsulamento quando aplicável) com tags `[MCP]` / `[Manual]` por passo, marcação `[Ativação em Massa: Ctrl + Shift + F3]` em blocos circulares e campos YAML (`sap_destination`, `transport_requests`), acompanhado do diagrama de fluxo no Excalidraw. | [[gerar-guia-implementacao-sap\|`/gerar-guia-implementacao-sap`]] | • [[Template_Guia_Implementacao_Novo_App]]<br>• [[Template_Fluxo_Implementacao_Excalidraw]] |
 | **2. Guia de Testes e Homologação**<br>(`02 - <ID> - Guia de Testes e Homologação.md`) | Obrigatório | Documenta os testes do PowerPoint já no formato das seções da Especificação Técnica (ETD), facilitando a validação e a geração futura do documento final. | [[gerar-guia-testes-sap\|`/gerar-guia-testes-sap`]] | [[Template_Guia_Testes_Homologacao]] |
 | **3. Guia de Atualização**<br>(`03 - <ID> - Guia de Atualização (<Tema>).md`) | Opcional | Criado apenas se os testes exigirem correção ou mudança na arquitetura. Volta-se à Etapa 2 para ajustar o desenho e documenta-se aqui o passo a passo da atualização. | [[gerar-guia-atualizacao-sap\|`/gerar-guia-atualizacao-sap`]] | [[Template_Guia_Atualizacao]] |
 
@@ -60,8 +60,17 @@ Este documento sintetiza o fluxo de trabalho padrão para conduzir qualquer dema
 ## Etapa 4 · `04 - Objetos Tecnicos`
 **Objetivo:** Guardar os objetos técnicos da demanda e seus códigos-fonte.
 
-* **Funcionamento:** Já durante a **Etapa 2 (Arquitetura e Design)**, o comando [[arquitetar-demanda-sap|`/arquitetar-demanda-sap`]] cria uma nota para cada objeto previsto contendo a visão geral, regras aplicadas, passo a passo de criação, código comentado (para estudo) e código limpo (para copiar e colar).
+* **Funcionamento:** Já durante a **Etapa 2 (Arquitetura e Design)**, o comando [[arquitetar-demanda-sap|`/arquitetar-demanda-sap`]] cria uma nota para cada objeto previsto contendo a visão geral, regras aplicadas, **Metadados ADT** (*ABAP Development Tools* — `objectType`, `packageName`, `name`, `description` <= 60 caracteres e `extraParams`), passo a passo de criação, código comentado (para estudo) e código limpo (para copiar e colar), separando sub-blocos por arquivo/aba **AFF** (*ABAP File Format*) em objetos multi-arquivo.
 * **Template Obrigatório:** [[Template_Objeto_Tecnico]]
+
+---
+## Etapa 5 · Execução no SAP (`DEV`)
+**Objetivo:** Implementar no ambiente SAP de Desenvolvimento (`DEV`), passo a passo, os objetos planejados nas Etapas 3 e 4 mantendo o cofre sincronizado.
+
+| Escopo | Finalidade | Comando (Skill) | Pré-Requisitos |
+| :--- | :--- | :--- | :--- |
+| **Passos `[MCP]` (ou bloco circular)** | Executa um **passo único** (direto no chat) ou uma **fase inteira** (via subagente isolado por passo/bloco com passagem do contexto prévio), exibindo apenas checklist sucinto (`🟢` ok / `🔴` ação humana, sem código no chat), executando criação/edição, checagem, ativação (em lote quando `[Ativação em Massa: Ctrl + Shift + F3]`), ações pós-ativação e **ATC** (*ABAP Test Cockpit*), sincronizando `📝 Código Comentado` e `🚀 Código Limpo` e marcando `[x]` no Guia automaticamente (parando em passos `[Manual]`, `🔴` ou erro Nível 2). | [[implementar-demanda-sap\|`/implementar-demanda-sap`]] | • Guia classificado com `[MCP]` / `[Manual]`<br>• Nota com **Metadados ADT**<br>• Destino `DEV` e **TR** (*Transport Request*) válidos |
+| **Passos `[Manual]`** | Objetos não suportados pelo MCP (como `SU21`/`SUSO`, *Behavior Extension*, `SAJC`, app **SAPUI5**/deploy **BSP**, *Business Server Pages*, e `PFCG`/Launchpad) são executados diretamente pelo desenvolvedor humano no **ADT**, **SAP GUI** ou **BAS** (*SAP Business Application Studio*). | — *(execução humana)* | Nota técnica correspondente na pasta `04 - Objetos Tecnicos/` |
 
 ---
 ## 🤖 Diretrizes para IA (Contexto de Automação)
@@ -80,6 +89,12 @@ As instruções abaixo destinam-se exclusivamente a orientar agentes de IA ao cr
    * Crie a nota unificada `01 - Especificação Funcional (Visão da Solução).md` estruturada nos **6 Pilares Essenciais**: (1) Contexto do Cliente, (2) O que precisa ser criado com Desenvolvimento ABAP (detalhando quantos e quais aplicativos/programas serão criados, quem usa, função e regras de cada um), (3) Escopo Negativo, (4) Detalhamento das Regras de Negócio e Dados, (5) Cenários de Testes e (6) Lacunas, Dúvidas e Ambiguidades.
    * **Zero Inferência e Citação Obrigatória:** Extraia apenas fatos presentes na apresentação com referência obrigatória do slide `(Slide X)`.
    * Remova capas divisórias, termos de aceite/assinaturas e seções administrativas/burocráticas (como "Identificação da Solicitação" e "Requerimentos dependentes e relacionados").
-5. **Regras Específicas da Etapa 2 e 4 (Nomenclatura de Objetos e Arquivos):**
+5. **Regras Específicas das Etapas 2, 3 e 4 (Nomenclatura, Classificação e Metadados ADT):**
    * **Padrão de Nomenclatura por Empresa:** Cada empresa possui uma pasta de regras globais (ex.: `Regras Globais da <Empresa>`). Os nomes de objetos ABAP/CDS/Fiori devem seguir estritamente o padrão de nomenclatura contido na pasta da empresa à qual a demanda pertence. Caso a empresa não possua um padrão próprio documentado, utilize o [[Padrão de Nomenclatura ABAP Geral]].
    * Na pasta `04 - Objetos Tecnicos/`, numere os arquivos na mesma sequência de criação do Guia de Implementação (`01 - <NOME_OBJETO>.md`, `02 - <NOME_OBJETO>.md`...). Quando objetos diferentes compartilharem o mesmo nome técnico (comum no RAP), diferencie o nome do arquivo com sufixo entre parênteses: `(CDS)`, `(BDEF)`, `(MDE)`.
+   * Preencha obrigatoriamente o bloco **Metadados ADT** nas notas de objeto (`objectType`, `packageName`, `name`, `description` <= 60 caracteres e `extraParams`) e separe sub-blocos por arquivo/aba AFF em objetos multi-arquivo (como `CLAS/OC`).
+   * No Guia de Implementação (`03 - Guias de Execucao/01 - <ID> - Guia de Implementação.md`), inclua **Fase 0 (condicional)** quando houver criação de novos pacotes, classifique todos os passos com **`[MCP]`** ou **`[Manual]`** e sinalize blocos circulares com **`[Ativação em Massa: Ctrl + Shift + F3]`**.
+6. **Regras Específicas da Etapa 5 (Execução no SAP via `/implementar-demanda-sap`):**
+   * Nunca grave credenciais SAP no cofre, em scripts ou nas skills; nunca crie objetos em `$TMP` sem autorização explícita; bloqueie automaticamente destinos `QAS`/`PRD`/`PROD`/`S4Q`/`S4P` e nunca autoselecione **TR**.
+   * Exiba pré-checagens apenas em checklist sucinto de até 1 linha por item (`🟢` ok / `🔴` ação humana, sem colar código no chat), execute diretamente no SAP quando tudo estiver `🟢` (em modo **Passo único** direto no chat ou em modo **Fase** via subagente isolado por passo com passagem de contexto prévio, parando em `[Manual]`, `🔴` ou erro Nível 2), atualize o cofre (`📝 Código Comentado` e `🚀 Código Limpo`) somente após ativação com sucesso no SAP e marque `[x]` no Guia automaticamente ao concluir sem erros críticos.
+   * **Isenção das demandas:** nunca grave nomes de skills ou comandos `/...-sap` dentro das notas das demandas nem nos templates em `05_Templates/01_Projetos_SAP/`.

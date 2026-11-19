@@ -21,13 +21,13 @@ aliases:
 
 # 📦 `ZI_FI_TAX_CARGA (CDS)` (CDS Root View Entity — Lote de Carga)
 
-⬅️ [[01 - DEL-COM-165 - Arquitetura App 1 (Carga Massiva de Taxas)|Voltar para Arquitetura App 1]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica App 1 (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw App 1]]
+⬅️ [[01 - DEL-COM-165 - Arquitetura (Carga Massiva de Taxas)|Voltar para Arquitetura (Carga Massiva de Taxas)]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw (Carga Massiva)]]
 
 ---
 
 ## 📌 Visão Geral do Objeto
 
-A CDS View `ZI_FI_TAX_CARGA` é a **Entidade Raiz (*Root View Entity*)** da hierarquia de 3 níveis do **Aplicativo 1** (Carga Massiva de Lançamentos de Taxas com Razão Especial). Ela seleciona os dados da tabela [[03 - ZTFI_TAX_CARGA|ZTFI_TAX_CARGA]], declara a relação de composição `composition [0..*] of ZI_FI_TAX_DOC as _Documentos` e calcula o texto descritivo (`status_texto`) e o código de cor (`criticidade_status`) exibidos no monitor Fiori.
+A CDS View `ZI_FI_TAX_CARGA` é a **Entidade Raiz (*Root View Entity*)** da hierarquia de 3 níveis do **Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA`)** (Carga Massiva de Lançamentos de Taxas com Razão Especial). Ela seleciona os dados da tabela [[03 - ZTFI_TAX_CARGA|ZTFI_TAX_CARGA]], declara a relação de composição `composition [0..*] of ZI_FI_TAX_DOC as _Documentos` e calcula o texto descritivo (`status_texto`) e o código de cor (`criticidade_status`) exibidos no monitor Fiori.
 
 ---
 
@@ -44,7 +44,18 @@ A CDS View `ZI_FI_TAX_CARGA` é a **Entidade Raiz (*Root View Entity*)** da hier
 
 ## 🛠️ Passo a Passo da Criação do Objeto
 
-1. **No Eclipse ADT:** Conecte-se ao sistema e acesse o pacote `ZFI_CARGA_TAXAS`.
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "DDLS/DF"
+packageName: "ZFI_TAX_CARGA"
+name: "ZI_FI_TAX_CARGA"
+description: "DEL-COM-165: Root CDS Cabeçalho do Lote de Carga"
+extraParams:
+  circularActivationGroup: "Passos 21-23 (ZI_FI_TAX_CARGA, ZI_FI_TAX_DOC, ZI_FI_TAX_ITEM)"
+```
+
+1. **No Eclipse ADT:** Conecte-se ao sistema e acesse o pacote `ZFI_TAX_CARGA`.
 2. Clique com o botão direito -> **`New`** -> **`Data Definition`**.
 3. Preencha as propriedades:
    - **Name:** `ZI_FI_TAX_CARGA`

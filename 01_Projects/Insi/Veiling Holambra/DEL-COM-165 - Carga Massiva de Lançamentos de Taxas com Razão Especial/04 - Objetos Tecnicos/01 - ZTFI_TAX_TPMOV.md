@@ -19,13 +19,13 @@ aliases:
 
 # 📦 `ZTFI_TAX_TPMOV` (Tabela Transparente — Tipos de Movimento)
 
-⬅️ [[02 - DEL-COM-165 - Arquitetura App 2 (Tipos de Movimento)|Voltar para Arquitetura App 2]] | 🎨 [[02 - DEL-COM-165 - Arquitetura Técnica App 2 (Tipos de Movimento).excalidraw|Ver no Diagrama Excalidraw App 2]]
+⬅️ [[02 - DEL-COM-165 - Arquitetura (Tipos de Movimento)|Voltar para Arquitetura (Tipos de Movimento)]] | 🎨 [[02 - DEL-COM-165 - Arquitetura Técnica (Tipos de Movimento).excalidraw|Ver no Diagrama Excalidraw (Tipos de Movimento)]]
 
 ---
 
 ## 📌 Visão Geral do Objeto
 
-A tabela transparente `ZTFI_TAX_TPMOV` armazena a parametrização dos **Tipos de Movimento** utilizados na carga massiva de taxas e retenções da Veiling Holambra. Ela é mantida diretamente pelos usuários chave no **Aplicativo 2** ([[36 - taxastipomov (App Fiori)|taxastipomov]]) via modelo **RAP** (*ABAP RESTful Application Programming Model*) com suporte a rascunho (*Draft* na tabela [[02 - ZTFI_TAX_TPMOV_D|ZTFI_TAX_TPMOV_D]]) e consumida pelo motor de validação e contabilização do **Aplicativo 1** ([[25 - ZCLFI_BP_TAX_CARGA|ZCLFI_BP_TAX_CARGA]]).
+A tabela transparente `ZTFI_TAX_TPMOV` armazena a parametrização dos **Tipos de Movimento** utilizados na carga massiva de taxas e retenções da Veiling Holambra. Ela é mantida diretamente pelos usuários chave no **Aplicativo de Tipos de Movimento (`ZFI_TAX_TPMOV`)** ([[36 - taxastipomov (App Fiori)|taxastipomov]]) via modelo **RAP** (*ABAP RESTful Application Programming Model*) com suporte a rascunho (*Draft* na tabela [[02 - ZTFI_TAX_TPMOV_D|ZTFI_TAX_TPMOV_D]]) e consumida pelo motor de validação e contabilização do **Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA`)** ([[25 - ZCLFI_BP_TAX_CARGA|ZCLFI_BP_TAX_CARGA]]).
 
 Seguindo a diretriz **ABAP Cloud Lean**, a tabela combina tipos primitivos embutidos (`abap.char`, `abap.dats`) e elementos de dados standard liberados (`umskz`, `hkont`, `blart`, `dzlspr`, `abap_boolean`), sem criação de elementos de dados ou domínios customizados redundantes.
 
@@ -47,7 +47,16 @@ Seguindo a diretriz **ABAP Cloud Lean**, a tabela combina tipos primitivos embut
 
 ## 🛠️ Passo a Passo da Criação do Objeto
 
-1. **No Eclipse ADT (*ABAP Development Tools*):** Conecte-se ao sistema S/4HANA e acesse o pacote `ZFI_CARGA_TAXAS`.
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "TABL/DT"
+packageName: "ZFI_TAX_COMUM"
+name: "ZTFI_TAX_TPMOV"
+description: "DEL-COM-165: Configuração de Tipos de Movimento de Taxas"
+```
+
+1. **No Eclipse ADT (*ABAP Development Tools*):** Conecte-se ao sistema S/4HANA e acesse o pacote `ZFI_TAX_COMUM`.
 2. Clique com o botão direito sobre a pasta **`Dictionary`** (ou diretamente no pacote) -> **`New`** -> **`Database Table`**.
 3. Preencha as propriedades:
    - **Name:** `ZTFI_TAX_TPMOV`

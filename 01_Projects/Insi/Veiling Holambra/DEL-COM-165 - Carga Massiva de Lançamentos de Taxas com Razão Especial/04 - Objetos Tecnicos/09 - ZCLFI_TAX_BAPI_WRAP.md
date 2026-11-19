@@ -20,7 +20,7 @@ aliases:
 
 # 📦 `ZCLFI_TAX_BAPI_WRAP` (Classe ABAP Wrapper C1 — BAPI e Validações Standard)
 
-⬅️ [[01 - DEL-COM-165 - Arquitetura App 1 (Carga Massiva de Taxas)|Voltar para Arquitetura App 1]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica App 1 (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw App 1]]
+⬅️ [[01 - DEL-COM-165 - Arquitetura (Carga Massiva de Taxas)|Voltar para Arquitetura (Carga Massiva de Taxas)]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw (Carga Massiva)]]
 
 ---
 
@@ -28,11 +28,10 @@ aliases:
 
 A classe `ZCLFI_TAX_BAPI_WRAP` é a ponte arquitetural (*Wrapper* com contrato de liberação **C1 - Use System-Internally**) entre o mundo **ABAP Cloud (RAP)** e as funções clássicas do S/4HANA que ainda não possuem equivalente nativo liberado para lançamentos de fornecedor com **Razão Especial** (`UMSKZ`).
 
-Ela é criada com a versão de linguagem **Standard ABAP (Unicode)** e liberada internamente via *API State C1*, expondo métodos limpos e tipados com tabelas do dicionário (`ZTFI_TAX_DOC`, `ZTFI_TAX_ITEM` e `ZTFI_TAX_TPMOV`) para:
+Ela é criada com a versão de linguagem **Standard ABAP (Unicode)** (`CREATE PRIVATE`) e liberada internamente via *API State C1*, expondo tipos próprios desacoplados na `PUBLIC SECTION` (`ty_carga_id`, `ty_mensagem`, `ty_doc`, `ty_tpmov`, `ty_tax_item` e `tt_tax_item`) com tipos elementares nativos/liberados para atender às validações da API C1 sem referenciar tabelas transparentes na assinatura pública, para:
 1. Obter o próximo número sequencial do lote (`ZTAXCARNR`).
-2. Validar existência e bloqueios básicos de Fornecedor (`LFA1`/`LFB1`) e Conta do Razão (`SKA1`/`SKB1`).
-3. Simular o documento contábil via `BAPI_ACC_DOCUMENT_CHECK`.
-4. Contabilizar efetivamente o documento via `BAPI_ACC_DOCUMENT_POST` (sem executar `COMMIT WORK` interno, respeitando a transação única do `save_modified` do RAP).
+2. Simular o documento contábil via `BAPI_ACC_DOCUMENT_CHECK`.
+3. Contabilizar efetivamente o documento via `BAPI_ACC_DOCUMENT_POST` (sem executar `COMMIT WORK` interno, respeitando a transação única do `save_modified` do RAP).
 
 ---
 
@@ -64,7 +63,19 @@ Ela é criada com a versão de linguagem **Standard ABAP (Unicode)** e liberada 
 
 ## 🛠️ Passo a Passo da Criação do Objeto
 
-1. **No Eclipse ADT:** Conecte-se ao sistema e acesse o pacote `ZFI_CARGA_TAXAS`.
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "CLAS/OC"
+packageName: "ZFI_TAX_COMUM"
+name: "ZCLFI_TAX_BAPI_WRAP"
+description: "DEL-COM-165: Wrapper C1 para BAPI_ACC_DOCUMENT e Cadastros"
+extraParams:
+  abapLanguageVersion: "Standard ABAP"
+  apiStateManual: "C1 - Use System-Internally (Passo 9B [Manual])"
+```
+
+1. **No Eclipse ADT (ou via MCP `sap-adt`):** Conecte-se ao sistema e acesse o pacote `ZFI_TAX_COMUM`.
 2. Clique com o botão direito -> **`New`** -> **`ABAP Class`**.
 3. Preencha as propriedades:
    - **Name:** `ZCLFI_TAX_BAPI_WRAP`
@@ -79,65 +90,84 @@ Ela é criada com a versão de linguagem **Standard ABAP (Unicode)** e liberada 
 
 ### 📝 Código Comentado (Para Estudo e Referência)
 
+#### Aba: Global Class (`zclfi_tax_bapi_wrap.clas.abap`)
+
 ```abap
 CLASS zclfi_tax_bapi_wrap DEFINITION
   PUBLIC
   FINAL
-  CREATE PUBLIC.
+  CREATE PRIVATE. " Exigido pelo contrato C1 para classes utilitárias estáticas
 
   PUBLIC SECTION.
+    " Tipos públicos próprios desacoplados das tabelas ZTFI_TAX_* (exigência do contrato C1)
+    TYPES ty_carga_id TYPE n LENGTH 10.
+    TYPES ty_mensagem TYPE c LENGTH 220.
+
+    TYPES: BEGIN OF ty_doc,
+             carga_id TYPE n LENGTH 10,
+             ztpmov   TYPE c LENGTH 6,
+             bukrs    TYPE c LENGTH 4,
+             bldat    TYPE d,
+             budat    TYPE d,
+             xblnr    TYPE c LENGTH 16,
+             bktxt    TYPE c LENGTH 25,
+             waers    TYPE c LENGTH 5,
+           END OF ty_doc.
+
+    TYPES: BEGIN OF ty_tpmov,
+             blart TYPE c LENGTH 2,
+           END OF ty_tpmov.
+
+    TYPES: BEGIN OF ty_tax_item,
+             lifnr TYPE c LENGTH 10,
+             hkont TYPE c LENGTH 10,
+             shkzg TYPE c LENGTH 1,
+             umskz TYPE c LENGTH 1,
+             zfbdt TYPE d,
+             zterm TYPE c LENGTH 4,
+             zlspr TYPE c LENGTH 1,
+             sgtxt TYPE c LENGTH 50,
+             zuonr TYPE c LENGTH 18,
+             wrsol TYPE p LENGTH 7 DECIMALS 2,
+             wrhab TYPE p LENGTH 7 DECIMALS 2,
+           END OF ty_tax_item.
+
     " Tipo de tabela para receber os itens de um documento na simulação/contabilização
-    TYPES tt_tax_item TYPE STANDARD TABLE OF ztfi_tax_item WITH EMPTY KEY.
+    TYPES tt_tax_item TYPE STANDARD TABLE OF ty_tax_item WITH EMPTY KEY.
 
     " Obtém o próximo número sequencial de lote no objeto SNRO ZTAXCARNR
     CLASS-METHODS obter_proximo_carga_id
       RETURNING
-        VALUE(rv_carga_id) TYPE ztfi_tax_carga-carga_id.
-
-    " Verifica se o fornecedor (LIFNR) existe na empresa (LFA1 / LFB1)
-    CLASS-METHODS validar_fornecedor
-      IMPORTING
-        iv_lifnr         TYPE lifnr
-        iv_bukrs         TYPE bukrs
-      RETURNING
-        VALUE(rv_valido) TYPE abap_boolean.
-
-    " Verifica se a conta contábil de contrapartida (HKONT) existe na empresa (SKB1)
-    CLASS-METHODS validar_conta_razao
-      IMPORTING
-        iv_hkont         TYPE hkont
-        iv_bukrs         TYPE bukrs
-      RETURNING
-        VALUE(rv_valido) TYPE abap_boolean.
+        VALUE(rv_carga_id) TYPE ty_carga_id.
 
     " Executa a simulação contábil via BAPI_ACC_DOCUMENT_CHECK
     CLASS-METHODS simular_documento
       IMPORTING
-        is_doc      TYPE ztfi_tax_doc
-        is_tpmov    TYPE ztfi_tax_tpmov
+        is_doc      TYPE ty_doc
+        is_tpmov    TYPE ty_tpmov
         it_itens    TYPE tt_tax_item
       EXPORTING
         ev_sucesso  TYPE abap_boolean
-        ev_mensagem TYPE ztfi_tax_doc-mensagem.
+        ev_mensagem TYPE ty_mensagem.
 
     " Executa a contabilização efetiva via BAPI_ACC_DOCUMENT_POST (sem COMMIT interno)
     CLASS-METHODS contabilizar_documento
       IMPORTING
-        is_doc      TYPE ztfi_tax_doc
-        is_tpmov    TYPE ztfi_tax_tpmov
+        is_doc      TYPE ty_doc
+        is_tpmov    TYPE ty_tpmov
         it_itens    TYPE tt_tax_item
       EXPORTING
         ev_sucesso  TYPE abap_boolean
         ev_belnr    TYPE belnr_d
         ev_gjahr    TYPE gjahr
-        ev_mensagem TYPE ztfi_tax_doc-mensagem.
+        ev_mensagem TYPE ty_mensagem.
 
   PRIVATE SECTION.
     " Monta as estruturas internas da BAPI para reutilização entre o CHECK e o POST
     CLASS-METHODS montar_dados_bapi
       IMPORTING
-        is_doc            TYPE ztfi_tax_doc
-        is_tpmov          TYPE ztfi_tax_tpmov
+        is_doc            TYPE ty_doc
+        is_tpmov          TYPE ty_tpmov
         it_itens          TYPE tt_tax_item
       EXPORTING
         es_doc_header     TYPE bapiache09
@@ -151,7 +181,7 @@ CLASS zclfi_tax_bapi_wrap DEFINITION
         it_return   TYPE bapiret2_t
       EXPORTING
         ev_sucesso  TYPE abap_boolean
-        ev_mensagem TYPE ztfi_tax_doc-mensagem.
+        ev_mensagem TYPE ty_mensagem.
 ENDCLASS.
 
 
@@ -186,34 +216,6 @@ CLASS zclfi_tax_bapi_wrap IMPLEMENTATION.
       DATA(lv_ts_str) = |{ lv_ts }|.
       rv_carga_id = lv_ts_str+4(10).
     ENDIF.
-  ENDMETHOD.
-
-
-  METHOD validar_fornecedor.
-    DATA lv_lifnr_in TYPE lifnr.
-    lv_lifnr_in = |{ iv_lifnr ALPHA = IN }|.
-
-    SELECT SINGLE lifnr
-      FROM lfb1
-      WHERE lifnr = @lv_lifnr_in
-        AND bukrs = @iv_bukrs
-      INTO @DATA(lv_found).
-
-    rv_valido = xsdbool( sy-subrc = 0 ).
-  ENDMETHOD.
-
-
-  METHOD validar_conta_razao.
-    DATA lv_hkont_in TYPE hkont.
-    lv_hkont_in = |{ iv_hkont ALPHA = IN }|.
-
-    SELECT SINGLE saknr
-      FROM skb1
-      WHERE saknr = @lv_hkont_in
-        AND bukrs = @iv_bukrs
-      INTO @DATA(lv_found).
-
-    rv_valido = xsdbool( sy-subrc = 0 ).
   ENDMETHOD.
 
 
@@ -402,7 +404,7 @@ CLASS zclfi_tax_bapi_wrap IMPLEMENTATION.
     ENDLOOP.
 
     IF ev_sucesso = abap_true.
-      MESSAGE s011(zfi_taxas) WITH is_doc-docseq INTO ev_mensagem.
+      MESSAGE s011(zfi_taxas) WITH '' INTO ev_mensagem.
     ENDIF.
   ENDMETHOD.
 
@@ -413,58 +415,78 @@ ENDCLASS.
 
 ### 🚀 Código Limpo (Sem Comentários - Para Copiar e Colar)
 
+#### Aba: Global Class (`zclfi_tax_bapi_wrap.clas.abap`)
+
 ```abap
 CLASS zclfi_tax_bapi_wrap DEFINITION
   PUBLIC
   FINAL
-  CREATE PUBLIC.
+  CREATE PRIVATE.
 
   PUBLIC SECTION.
-    TYPES tt_tax_item TYPE STANDARD TABLE OF ztfi_tax_item WITH EMPTY KEY.
+    TYPES ty_carga_id TYPE n LENGTH 10.
+    TYPES ty_mensagem TYPE c LENGTH 220.
+
+    TYPES: BEGIN OF ty_doc,
+             carga_id TYPE n LENGTH 10,
+             ztpmov   TYPE c LENGTH 6,
+             bukrs    TYPE c LENGTH 4,
+             bldat    TYPE d,
+             budat    TYPE d,
+             xblnr    TYPE c LENGTH 16,
+             bktxt    TYPE c LENGTH 25,
+             waers    TYPE c LENGTH 5,
+           END OF ty_doc.
+
+    TYPES: BEGIN OF ty_tpmov,
+             blart TYPE c LENGTH 2,
+           END OF ty_tpmov.
+
+    TYPES: BEGIN OF ty_tax_item,
+             lifnr TYPE c LENGTH 10,
+             hkont TYPE c LENGTH 10,
+             shkzg TYPE c LENGTH 1,
+             umskz TYPE c LENGTH 1,
+             zfbdt TYPE d,
+             zterm TYPE c LENGTH 4,
+             zlspr TYPE c LENGTH 1,
+             sgtxt TYPE c LENGTH 50,
+             zuonr TYPE c LENGTH 18,
+             wrsol TYPE p LENGTH 7 DECIMALS 2,
+             wrhab TYPE p LENGTH 7 DECIMALS 2,
+           END OF ty_tax_item.
+
+    TYPES tt_tax_item TYPE STANDARD TABLE OF ty_tax_item WITH EMPTY KEY.
 
     CLASS-METHODS obter_proximo_carga_id
       RETURNING
-        VALUE(rv_carga_id) TYPE ztfi_tax_carga-carga_id.
-
-    CLASS-METHODS validar_fornecedor
-      IMPORTING
-        iv_lifnr         TYPE lifnr
-        iv_bukrs         TYPE bukrs
-      RETURNING
-        VALUE(rv_valido) TYPE abap_boolean.
-
-    CLASS-METHODS validar_conta_razao
-      IMPORTING
-        iv_hkont         TYPE hkont
-        iv_bukrs         TYPE bukrs
-      RETURNING
-        VALUE(rv_valido) TYPE abap_boolean.
+        VALUE(rv_carga_id) TYPE ty_carga_id.
 
     CLASS-METHODS simular_documento
       IMPORTING
-        is_doc      TYPE ztfi_tax_doc
-        is_tpmov    TYPE ztfi_tax_tpmov
+        is_doc      TYPE ty_doc
+        is_tpmov    TYPE ty_tpmov
         it_itens    TYPE tt_tax_item
       EXPORTING
         ev_sucesso  TYPE abap_boolean
-        ev_mensagem TYPE ztfi_tax_doc-mensagem.
+        ev_mensagem TYPE ty_mensagem.
 
     CLASS-METHODS contabilizar_documento
       IMPORTING
-        is_doc      TYPE ztfi_tax_doc
-        is_tpmov    TYPE ztfi_tax_tpmov
+        is_doc      TYPE ty_doc
+        is_tpmov    TYPE ty_tpmov
         it_itens    TYPE tt_tax_item
       EXPORTING
         ev_sucesso  TYPE abap_boolean
         ev_belnr    TYPE belnr_d
         ev_gjahr    TYPE gjahr
-        ev_mensagem TYPE ztfi_tax_doc-mensagem.
+        ev_mensagem TYPE ty_mensagem.
 
   PRIVATE SECTION.
     CLASS-METHODS montar_dados_bapi
       IMPORTING
-        is_doc            TYPE ztfi_tax_doc
-        is_tpmov          TYPE ztfi_tax_tpmov
+        is_doc            TYPE ty_doc
+        is_tpmov          TYPE ty_tpmov
         it_itens          TYPE tt_tax_item
       EXPORTING
         es_doc_header     TYPE bapiache09
@@ -477,7 +499,7 @@ CLASS zclfi_tax_bapi_wrap DEFINITION
         it_return   TYPE bapiret2_t
       EXPORTING
         ev_sucesso  TYPE abap_boolean
-        ev_mensagem TYPE ztfi_tax_doc-mensagem.
+        ev_mensagem TYPE ty_mensagem.
 ENDCLASS.
 
 
@@ -510,34 +532,6 @@ CLASS zclfi_tax_bapi_wrap IMPLEMENTATION.
       DATA(lv_ts_str) = |{ lv_ts }|.
       rv_carga_id = lv_ts_str+4(10).
     ENDIF.
-  ENDMETHOD.
-
-
-  METHOD validar_fornecedor.
-    DATA lv_lifnr_in TYPE lifnr.
-    lv_lifnr_in = |{ iv_lifnr ALPHA = IN }|.
-
-    SELECT SINGLE lifnr
-      FROM lfb1
-      WHERE lifnr = @lv_lifnr_in
-        AND bukrs = @iv_bukrs
-      INTO @DATA(lv_found).
-
-    rv_valido = xsdbool( sy-subrc = 0 ).
-  ENDMETHOD.
-
-
-  METHOD validar_conta_razao.
-    DATA lv_hkont_in TYPE hkont.
-    lv_hkont_in = |{ iv_hkont ALPHA = IN }|.
-
-    SELECT SINGLE saknr
-      FROM skb1
-      WHERE saknr = @lv_hkont_in
-        AND bukrs = @iv_bukrs
-      INTO @DATA(lv_found).
-
-    rv_valido = xsdbool( sy-subrc = 0 ).
   ENDMETHOD.
 
 

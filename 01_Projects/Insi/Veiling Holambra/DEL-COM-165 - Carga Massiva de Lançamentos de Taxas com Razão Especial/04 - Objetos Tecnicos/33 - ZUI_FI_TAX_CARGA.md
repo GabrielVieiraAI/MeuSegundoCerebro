@@ -20,13 +20,13 @@ aliases:
 
 # 📦 `ZUI_FI_TAX_CARGA` (Service Definition — Carga Massiva de Taxas)
 
-⬅️ [[01 - DEL-COM-165 - Arquitetura App 1 (Carga Massiva de Taxas)|Voltar para Arquitetura App 1]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica App 1 (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw App 1]]
+⬅️ [[01 - DEL-COM-165 - Arquitetura (Carga Massiva de Taxas)|Voltar para Arquitetura (Carga Massiva de Taxas)]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw (Carga Massiva)]]
 
 ---
 
 ## 📌 Visão Geral do Objeto
 
-A Service Definition `ZUI_FI_TAX_CARGA` declara o escopo do serviço OData V4 do **Aplicativo 1** (Carga Massiva e Monitor de Taxas), expondo a hierarquia completa de projeção (`ZC_FI_TAX_CARGA`, `ZC_FI_TAX_DOC`, `ZC_FI_TAX_ITEM`) e a entidade de ajuda de pesquisa [[11 - ZI_FI_TAX_TPMOV (CDS)|ZI_FI_TAX_TPMOV]].
+A Service Definition `ZUI_FI_TAX_CARGA` declara o escopo do serviço OData V4 do **Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA`)** (Carga Massiva e Monitor de Taxas), expondo a hierarquia completa de projeção (`ZC_FI_TAX_CARGA`, `ZC_FI_TAX_DOC`, `ZC_FI_TAX_ITEM`) e a entidade de ajuda de pesquisa [[11 - ZI_FI_TAX_TPMOV (CDS)|ZI_FI_TAX_TPMOV]].
 
 ---
 
@@ -37,6 +37,15 @@ A Service Definition `ZUI_FI_TAX_CARGA` declara o escopo do serviço OData V4 do
 ---
 
 ## 🛠️ Passo a Passo da Criação do Objeto
+
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "SRVD/SRV"
+packageName: "ZFI_TAX_CARGA"
+name: "ZUI_FI_TAX_CARGA"
+description: "DEL-COM-165: Service Definition Carga Massiva de Taxas"
+```
 
 1. **No Eclipse ADT:** Clique com o botão direito sobre [[26 - ZC_FI_TAX_CARGA (CDS)|ZC_FI_TAX_CARGA]] -> **`New Service Definition`**.
 2. Preencha as propriedades:

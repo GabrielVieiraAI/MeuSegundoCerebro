@@ -37,7 +37,7 @@ A responsabilidade técnica dela é ler as partidas contábeis da CDS standard d
 1. **Avaliação no Nível de Parcela (Item):** A base `I_OperationalAcctgDocItem` tem como chave `CompanyCode`, `AccountingDocument`, `FiscalYear` e `AccountingDocumentItem`. O filtro de vencimento atua sobre cada item/parcela individualmente, pois uma mesma fatura pode ter parcelas vencidas e parcelas a vencer.
 2. **Aplicação Estrita dos 4 Filtros Definidos pela Consultora:**
    - `FinancialAccountType = 'D'`: Filtra exclusivamente lançamentos de contas de **Clientes** (*Debitor*).
-   - `CompanyCode = 'CVH1'`: Filtra os lançamentos da Cooperativa Veiling Holambra (lido via parâmetro para aderência ao Clean Core).
+   - `CompanyCode` via tabela corporativa de parâmetros (`ZI_CA_GET_PARAMETER`): Filtra dinamicamente os lançamentos das empresas parametrizadas para a demanda (`Modulo = 'FI'`, `Chave1 = 'DEL_R2R_009'`, `Chave2 = 'BUKRS'`, `Chave3 = 'EMPRESA'`).
    - `ClearingDate is initial`: Garante que apenas **títulos em aberto** (não compensados/não pagos) sejam considerados.
    - `NetDueDate < $session.system_date`: Garante que apenas **títulos vencidos** há pelo menos 1 dia entrem no cálculo.
 3. **Consolidação por Cliente (`GROUP BY`):** Soma o montante em moeda da empresa (`SUM(AmountInCompanyCodeCurrency)`) e obtém o vencimento mais antigo (`MIN(NetDueDate)`) por cliente, entregando o saldo pronto para a CDS Raiz (`[[06 - ZI_FI_CLIENTE_INADIMPLENTE (CDS)|ZI_FI_CLIENTE_INADIMPLENTE]]`) avaliar a régua de proposta de bloqueio.
@@ -46,14 +46,26 @@ A responsabilidade técnica dela é ler as partidas contábeis da CDS standard d
 
 ## 🛠️ Passo a Passo da Criação do Objeto
 
+### 🔖 Metadados ADT (*ABAP Development Tools* — Obrigatório para MCP `sap-adt`)
+
+```yaml
+objectType: "DDLS/DF"
+packageName: "ZFI_BLOQ_INADIMPLENTES"
+name: "ZI_FI_TITULOS_VENCIDOS"
+description: "DEL-R2R-009: Agregação de Títulos Vencidos por Cliente"
+extraParams: {}
+```
+
+### 📋 Passo a Passo no ADT / SAP GUI
+
 1. **No Eclipse ADT:** Clique com o botão direito sobre o pacote de desenvolvimento `ZFI_BLOQ_INADIMPLENTES` -> **`New`** -> **`Data Definition`**.
 2. Preencha as propriedades da CDS View:
    - **Name:** `ZI_FI_TITULOS_VENCIDOS`
-   - **Description:** `DEL-R2R-009: Agregação Títulos Vencidos por Cliente`
+   - **Description:** `DEL-R2R-009: Agregação de Títulos Vencidos por Cliente`
 3. Clique em **Next**, selecione a sua ordem de transporte (TR) e clique em **Next** para a seleção de templates.
 4. Escolha o template **`Define View Entity`** e clique em **Finish**.
 5. Substitua o código gerado pelo snippet abaixo e ative o objeto com **`Ctrl + F3`**.
-6. **Validação dos Dados (`F8 - Data Preview`):** Pressione `F8` no Eclipse para abrir o visualizador de dados e confirmar se os títulos vencidos estão somados corretamente em exatamente uma linha por cliente (`Customer`).
+6. **Validação dos Dados (`F8 - Data Preview`):** Pressione `F8` no Eclipse para abrir o visualizador de dados e confirmar se os títulos vencidos estão somados corretamente em exatamente uma linha por cliente (`Customer`) para a empresa parametrizada.
 
 ---
 
@@ -72,24 +84,31 @@ A responsabilidade técnica dela é ler as partidas contábeis da CDS standard d
 }
 define view entity ZI_FI_TITULOS_VENCIDOS
   as select from I_OperationalAcctgDocItem as Item                 // CDS Standard SAP de itens contábeis operacionais (ACDOCA / BSEG)
+    inner join   ZI_CA_GET_PARAMETER       as ParamEmpresa         // Leitura centralizada da empresa avaliada na tabela de parâmetros (CR-105)
+      on  ParamEmpresa.Modulo = 'FI'
+      and ParamEmpresa.Chave1 = 'DEL_R2R_009'
+      and ParamEmpresa.Chave2 = 'BUKRS'
+      and ParamEmpresa.Chave3 = 'EMPRESA'
+      and ParamEmpresa.Sign   = 'I'
+      and ParamEmpresa.Opt    = 'EQ'
+      and ParamEmpresa.Low    = Item.CompanyCode
 {
-  key Item.CompanyCode,                                            // Chave 1: Empresa contábil responsável pelo lançamento (ex.: CVH1)
+  key Item.CompanyCode,                                            // Chave 1: Empresa contábil parametrizada responsável pelo lançamento
   key Item.Customer,                                               // Chave 2: Código do Cliente devedor (base do agrupamento financeiro)
 
       Item.CompanyCodeCurrency,                                    // Moeda da empresa: obrigatória para associação semântica de valores
 
       @Semantics.amount.currencyCode: 'CompanyCodeCurrency'
-      sum( Item.AmountInCompanyCodeCurrency ) as ValorTotalVencido,  // Montante total: soma do valor líquido de todas as parcelas vencidas
+      sum( Item.AmountInCompanyCodeCurrency )   as ValorTotalVencido,   // Montante total: soma do valor líquido de todas as parcelas vencidas
 
-      min( Item.NetDueDate )                  as MenorDataVencimento,// Vencimento mais antigo: usado na CDS Raiz para calcular dias de atraso
+      min( Item.NetDueDate )                    as MenorDataVencimento, // Vencimento mais antigo: usado na CDS Raiz para calcular dias de atraso
 
-      count( distinct Item.AccountingDocument ) as QtdTitulosVencidos // Quantidade de títulos: total de faturas distintas em aberto vencidas
+      count( distinct Item.AccountingDocument ) as QtdTitulosVencidos  // Quantidade de títulos: total de faturas distintas em aberto vencidas
 }
 where
       Item.FinancialAccountType = 'D'                              // Filtro 1: Somente partidas de Clientes (D = Debitor / FI-AR)
-  and Item.CompanyCode          = 'CVH1'                           // Filtro 2: Empresa da Veiling (via parâmetro no Clean Core)
-  and Item.ClearingDate         is initial                         // Filtro 3: Somente títulos em aberto (sem data de compensação/baixa)
-  and Item.NetDueDate           < $session.system_date             // Filtro 4: Somente títulos vencidos há pelo menos 1 dia da data atual
+  and Item.ClearingDate         is initial                         // Filtro 2: Somente títulos em aberto (sem data de compensação/baixa)
+  and Item.NetDueDate           < $session.system_date             // Filtro 3: Somente títulos vencidos há pelo menos 1 dia da data atual
 group by
   Item.CompanyCode,                                                // Agrupa por empresa
   Item.Customer,                                                   // Agrupa por cliente (garante exatamente 1 linha por cliente devedor)
@@ -112,6 +131,13 @@ group by
 }
 define view entity ZI_FI_TITULOS_VENCIDOS
   as select from I_OperationalAcctgDocItem as Item
+    inner join   ZI_CA_GET_PARAMETER       as ParamEmpresa on  ParamEmpresa.Modulo = 'FI'
+                                                           and ParamEmpresa.Chave1 = 'DEL_R2R_009'
+                                                           and ParamEmpresa.Chave2 = 'BUKRS'
+                                                           and ParamEmpresa.Chave3 = 'EMPRESA'
+                                                           and ParamEmpresa.Sign   = 'I'
+                                                           and ParamEmpresa.Opt    = 'EQ'
+                                                           and ParamEmpresa.Low    = Item.CompanyCode
 {
   key Item.CompanyCode,
   key Item.Customer,
@@ -119,15 +145,14 @@ define view entity ZI_FI_TITULOS_VENCIDOS
       Item.CompanyCodeCurrency,
 
       @Semantics.amount.currencyCode: 'CompanyCodeCurrency'
-      sum( Item.AmountInCompanyCodeCurrency ) as ValorTotalVencido,
+      sum( Item.AmountInCompanyCodeCurrency )   as ValorTotalVencido,
 
-      min( Item.NetDueDate )                  as MenorDataVencimento,
+      min( Item.NetDueDate )                    as MenorDataVencimento,
 
       count( distinct Item.AccountingDocument ) as QtdTitulosVencidos
 }
 where
       Item.FinancialAccountType = 'D'
-  and Item.CompanyCode          = 'CVH1'
   and Item.ClearingDate         is initial
   and Item.NetDueDate           < $session.system_date
 group by

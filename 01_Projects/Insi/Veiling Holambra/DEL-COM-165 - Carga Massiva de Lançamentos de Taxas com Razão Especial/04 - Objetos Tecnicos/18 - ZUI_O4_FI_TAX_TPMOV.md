@@ -20,7 +20,7 @@ aliases:
 
 # 📦 `ZUI_O4_FI_TAX_TPMOV` (Service Binding OData V4 — Tipos de Movimento)
 
-⬅️ [[02 - DEL-COM-165 - Arquitetura App 2 (Tipos de Movimento)|Voltar para Arquitetura App 2]] | 🎨 [[02 - DEL-COM-165 - Arquitetura Técnica App 2 (Tipos de Movimento).excalidraw|Ver no Diagrama Excalidraw App 2]]
+⬅️ [[02 - DEL-COM-165 - Arquitetura (Tipos de Movimento)|Voltar para Arquitetura (Tipos de Movimento)]] | 🎨 [[02 - DEL-COM-165 - Arquitetura Técnica (Tipos de Movimento).excalidraw|Ver no Diagrama Excalidraw (Tipos de Movimento)]]
 
 ---
 
@@ -37,6 +37,19 @@ O Service Binding `ZUI_O4_FI_TAX_TPMOV` vincula a Service Definition [[17 - ZUI_
 ---
 
 ## 🛠️ Passo a Passo da Criação do Objeto
+
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "SRVB/SVB"
+packageName: "ZFI_TAX_TPMOV"
+name: "ZUI_O4_FI_TAX_TPMOV"
+description: "DEL-COM-165: Service Binding OData V4 Tipos de Movimento"
+extraParams:
+  serviceDefinition: "ZUI_FI_TAX_TPMOV"
+  bindingType: "ODATA_V4_UI"
+  postActivationAction: "publish"
+```
 
 1. **No Eclipse ADT:** Clique com o botão direito sobre a Service Definition [[17 - ZUI_FI_TAX_TPMOV|ZUI_FI_TAX_TPMOV]] -> **`New Service Binding`**.
 2. Preencha as propriedades:

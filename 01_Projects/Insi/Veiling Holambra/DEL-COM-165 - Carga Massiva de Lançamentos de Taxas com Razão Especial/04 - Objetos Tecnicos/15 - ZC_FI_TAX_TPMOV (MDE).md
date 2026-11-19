@@ -20,13 +20,13 @@ aliases:
 
 # 📦 `ZC_FI_TAX_TPMOV (MDE)` (Metadata Extension — Tipos de Movimento)
 
-⬅️ [[02 - DEL-COM-165 - Arquitetura App 2 (Tipos de Movimento)|Voltar para Arquitetura App 2]] | 🎨 [[02 - DEL-COM-165 - Arquitetura Técnica App 2 (Tipos de Movimento).excalidraw|Ver no Diagrama Excalidraw App 2]]
+⬅️ [[02 - DEL-COM-165 - Arquitetura (Tipos de Movimento)|Voltar para Arquitetura (Tipos de Movimento)]] | 🎨 [[02 - DEL-COM-165 - Arquitetura Técnica (Tipos de Movimento).excalidraw|Ver no Diagrama Excalidraw (Tipos de Movimento)]]
 
 ---
 
 ## 📌 Visão Geral do Objeto
 
-O Metadata Extension `ZC_FI_TAX_TPMOV` define toda a estrutura visual do **Aplicativo 2** ([[36 - taxastipomov (App Fiori)|taxastipomov]]) no SAP Fiori Elements: filtros de pesquisa (`@UI.selectionField`), colunas da tabela principal (`@UI.lineItem`) e seções organizadas da página de detalhes (`@UI.facet` e `@UI.fieldGroup`).
+O Metadata Extension `ZC_FI_TAX_TPMOV` define toda a estrutura visual do **Aplicativo de Tipos de Movimento (`ZFI_TAX_TPMOV`)** ([[36 - taxastipomov (App Fiori)|taxastipomov]]) no SAP Fiori Elements: filtros de pesquisa (`@UI.selectionField`), colunas da tabela principal (`@UI.lineItem`) e seções organizadas da página de detalhes (`@UI.facet` e `@UI.fieldGroup`).
 
 ---
 
@@ -40,6 +40,15 @@ O Metadata Extension `ZC_FI_TAX_TPMOV` define toda a estrutura visual do **Aplic
 ---
 
 ## 🛠️ Passo a Passo da Criação do Objeto
+
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "DDLX/EX"
+packageName: "ZFI_TAX_TPMOV"
+name: "ZC_FI_TAX_TPMOV"
+description: "DEL-COM-165: UI Annotations Tipos de Movimento"
+```
 
 1. **No Eclipse ADT:** Clique com o botão direito sobre a CDS View [[14 - ZC_FI_TAX_TPMOV (CDS)|ZC_FI_TAX_TPMOV]] -> **`New Metadata Extension`**.
 2. Preencha as propriedades:

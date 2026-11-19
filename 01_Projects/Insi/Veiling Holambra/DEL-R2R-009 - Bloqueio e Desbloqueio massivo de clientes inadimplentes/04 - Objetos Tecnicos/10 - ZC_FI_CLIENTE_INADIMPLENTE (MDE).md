@@ -50,7 +50,7 @@ A **Metadata Extension (MDE)** `ZC_FI_CLIENTE_INADIMPLENTE` é um artefato separ
 1. **No Eclipse ADT:** Clique com o botão direito sobre a CDS View de Projeção `ZC_FI_CLIENTE_INADIMPLENTE` (ou sobre o pacote `ZFI_BLOQ_INADIMPLENTES` na pasta `Core Data Services` -> `Metadata Extensions`) -> **`New`** -> **`Metadata Extension`**.
 2. Preencha os campos do assistente:
    - **Name:** `ZC_FI_CLIENTE_INADIMPLENTE` *(por convenção SAP, utiliza-se exatamente o mesmo nome da CDS que ela estende)*.
-   - **Description:** `DEL-R2R-009: Metadados UI Inadimplentes`
+   - **Description:** `DEL-R2R-009: Projeção de Clientes Inadimplentes`
    - **Extended Entity:** Certifique-se de que está preenchido com `ZC_FI_CLIENTE_INADIMPLENTE`.
 3. Clique em **Next**, selecione a Ordem de Transporte (TR) do projeto e clique em **Next** para a tela de templates.
 4. Escolha o template **`annotate entity`** (ou `annotate view`) e clique em **Finish**.

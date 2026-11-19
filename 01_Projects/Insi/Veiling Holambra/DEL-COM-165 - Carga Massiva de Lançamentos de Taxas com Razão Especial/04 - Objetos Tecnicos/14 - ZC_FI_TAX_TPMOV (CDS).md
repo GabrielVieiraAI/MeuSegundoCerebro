@@ -21,13 +21,13 @@ aliases:
 
 # 📦 `ZC_FI_TAX_TPMOV (CDS)` (CDS Projection View — Tipos de Movimento)
 
-⬅️ [[02 - DEL-COM-165 - Arquitetura App 2 (Tipos de Movimento)|Voltar para Arquitetura App 2]] | 🎨 [[02 - DEL-COM-165 - Arquitetura Técnica App 2 (Tipos de Movimento).excalidraw|Ver no Diagrama Excalidraw App 2]]
+⬅️ [[02 - DEL-COM-165 - Arquitetura (Tipos de Movimento)|Voltar para Arquitetura (Tipos de Movimento)]] | 🎨 [[02 - DEL-COM-165 - Arquitetura Técnica (Tipos de Movimento).excalidraw|Ver no Diagrama Excalidraw (Tipos de Movimento)]]
 
 ---
 
 ## 📌 Visão Geral do Objeto
 
-A CDS View `ZC_FI_TAX_TPMOV` é a visão de consumo (*Projection View*) da entidade raiz [[11 - ZI_FI_TAX_TPMOV (CDS)|ZI_FI_TAX_TPMOV]], responsável por expor os campos de parametrização dos Tipos de Movimento para o serviço OData V4 do **Aplicativo 2** ([[18 - ZUI_O4_FI_TAX_TPMOV|ZUI_O4_FI_TAX_TPMOV]]).
+A CDS View `ZC_FI_TAX_TPMOV` é a visão de consumo (*Projection View*) da entidade raiz [[11 - ZI_FI_TAX_TPMOV (CDS)|ZI_FI_TAX_TPMOV]], responsável por expor os campos de parametrização dos Tipos de Movimento para o serviço OData V4 do **Aplicativo de Tipos de Movimento (`ZFI_TAX_TPMOV`)** ([[18 - ZUI_O4_FI_TAX_TPMOV|ZUI_O4_FI_TAX_TPMOV]]).
 
 ---
 
@@ -40,7 +40,16 @@ A CDS View `ZC_FI_TAX_TPMOV` é a visão de consumo (*Projection View*) da entid
 
 ## 🛠️ Passo a Passo da Criação do Objeto
 
-1. **No Eclipse ADT:** Conecte-se ao sistema e acesse o pacote `ZFI_CARGA_TAXAS`.
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "DDLS/DF"
+packageName: "ZFI_TAX_TPMOV"
+name: "ZC_FI_TAX_TPMOV"
+description: "DEL-COM-165: Projection CDS Tipos de Movimento de Taxas"
+```
+
+1. **No Eclipse ADT:** Conecte-se ao sistema e acesse o pacote `ZFI_TAX_TPMOV`.
 2. Clique com o botão direito -> **`New`** -> **`Data Definition`**.
 3. Preencha as propriedades:
    - **Name:** `ZC_FI_TAX_TPMOV`

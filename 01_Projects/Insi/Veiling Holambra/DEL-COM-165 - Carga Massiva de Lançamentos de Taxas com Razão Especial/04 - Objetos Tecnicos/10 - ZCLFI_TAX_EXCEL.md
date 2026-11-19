@@ -21,14 +21,14 @@ aliases:
 
 # 📦 `ZCLFI_TAX_EXCEL` (Classe ABAP — Motor de Leitura e Geração Excel via `XCO_CP_XLSX`)
 
-⬅️ [[01 - DEL-COM-165 - Arquitetura App 1 (Carga Massiva de Taxas)|Voltar para Arquitetura App 1]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica App 1 (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw App 1]]
+⬅️ [[01 - DEL-COM-165 - Arquitetura (Carga Massiva de Taxas)|Voltar para Arquitetura (Carga Massiva de Taxas)]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw (Carga Massiva)]]
 
 ---
 
 ## 📌 Visão Geral do Objeto
 
 A classe `ZCLFI_TAX_EXCEL` encapsula toda a manipulação de arquivos Excel (`.xlsx`) da solução utilizando exclusivamente a biblioteca standard **`XCO_CP_XLSX`** (*XCO XLSX Library*, confirmada no ambiente S/4HANA 2025). Ela provê dois métodos estáticos principais consumidos pelo *Behavior Pool* [[25 - ZCLFI_BP_TAX_CARGA|ZCLFI_BP_TAX_CARGA]]:
-1. `ler_planilha_base64`: Recebe o conteúdo `Base64` enviado pelo Fiori, converte para `xstring`, abre a pasta de trabalho via `xco_cp_xlsx` (**`=>`** `document->for_file_content`), localiza a aba `Carga` (ou a primeira aba de dados) e lê as **15 colunas oficiais** a partir da **linha 6**.
+1. `ler_planilha_base64`: Recebe o conteúdo `Base64` enviado pelo Fiori, converte para `xstring`, abre a pasta de trabalho via `xco_cp_xlsx` (**=>** `document->for_file_content`), localiza a aba `Carga` (ou a primeira aba de dados) e lê as **15 colunas oficiais** a partir da **linha 6**.
 2. `gerar_modelo_base64`: Cria dinamicamente um arquivo `.xlsx` em memória com as abas `Carga` (contendo os cabeçalhos técnicos na linha 4 e os rótulos amigáveis na linha 5) e `Tipos de Movimento` (listando os códigos ativos cadastrados em [[01 - ZTFI_TAX_TPMOV|ZTFI_TAX_TPMOV]]), retornando o arquivo codificado em `Base64` para download imediato no navegador.
 
 ---
@@ -46,7 +46,18 @@ A classe `ZCLFI_TAX_EXCEL` encapsula toda a manipulação de arquivos Excel (`.x
 
 ## 🛠️ Passo a Passo da Criação do Objeto
 
-1. **No Eclipse ADT:** Conecte-se ao sistema e acesse o pacote `ZFI_CARGA_TAXAS`.
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "CLAS/OC"
+packageName: "ZFI_TAX_COMUM"
+name: "ZCLFI_TAX_EXCEL"
+description: "DEL-COM-165: Leitura e Geração de Excel via XCO_CP_XLSX"
+extraParams:
+  abapLanguageVersion: "Standard ABAP"
+```
+
+1. **No Eclipse ADT (ou via MCP `sap-adt`):** Conecte-se ao sistema e acesse o pacote `ZFI_TAX_COMUM`.
 2. Clique com o botão direito -> **`New`** -> **`ABAP Class`**.
 3. Preencha as propriedades:
    - **Name:** `ZCLFI_TAX_EXCEL`
@@ -59,6 +70,8 @@ A classe `ZCLFI_TAX_EXCEL` encapsula toda a manipulação de arquivos Excel (`.x
 ## 💻 Snippet de Código
 
 ### 📝 Código Comentado (Para Estudo e Referência)
+
+#### Aba: Global Class (`zclfi_tax_excel.clas.abap`)
 
 ```abap
 CLASS zclfi_tax_excel DEFINITION
@@ -337,7 +350,7 @@ CLASS zclfi_tax_excel IMPLEMENTATION.
       ) TO lt_tpmov_sheet.
     ENDLOOP.
 
-    DATA(lo_sheet_tpmov) = lo_write_doc->get_workbook( )->worksheet->add( 'Tipos de Movimento' ).
+    DATA(lo_sheet_tpmov) = lo_write_doc->get_workbook( )->add_new_sheet( 'Tipos de Movimento' ).
     DATA(lo_pattern_tpmov) = xco_cp_xlsx_selection=>pattern_builder->simple_from_to(
       )->from_column( xco_cp_xlsx=>coordinate->for_alphabetic_value( 'A' )
       )->to_column( xco_cp_xlsx=>coordinate->for_alphabetic_value( 'I' )
@@ -408,6 +421,8 @@ ENDCLASS.
 ---
 
 ### 🚀 Código Limpo (Sem Comentários - Para Copiar e Colar)
+
+#### Aba: Global Class (`zclfi_tax_excel.clas.abap`)
 
 ```abap
 CLASS zclfi_tax_excel DEFINITION
@@ -669,7 +684,7 @@ CLASS zclfi_tax_excel IMPLEMENTATION.
       ) TO lt_tpmov_sheet.
     ENDLOOP.
 
-    DATA(lo_sheet_tpmov) = lo_write_doc->get_workbook( )->worksheet->add( 'Tipos de Movimento' ).
+    DATA(lo_sheet_tpmov) = lo_write_doc->get_workbook( )->add_new_sheet( 'Tipos de Movimento' ).
     DATA(lo_pattern_tpmov) = xco_cp_xlsx_selection=>pattern_builder->simple_from_to(
       )->from_column( xco_cp_xlsx=>coordinate->for_alphabetic_value( 'A' )
       )->to_column( xco_cp_xlsx=>coordinate->for_alphabetic_value( 'I' )

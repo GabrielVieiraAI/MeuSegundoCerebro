@@ -20,7 +20,7 @@ aliases:
 
 # 📦 `ZI_FI_TAX_CARGA (DCL)` (Access Control DCL — Lote de Carga)
 
-⬅️ [[01 - DEL-COM-165 - Arquitetura App 1 (Carga Massiva de Taxas)|Voltar para Arquitetura App 1]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica App 1 (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw App 1]]
+⬅️ [[01 - DEL-COM-165 - Arquitetura (Carga Massiva de Taxas)|Voltar para Arquitetura (Carga Massiva de Taxas)]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw (Carga Massiva)]]
 
 ---
 
@@ -37,6 +37,15 @@ O objeto de Controle de Acesso (**DCL** — *Data Control Language*) `ZI_FI_TAX_
 ---
 
 ## 🛠️ Passo a Passo da Criação do Objeto
+
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "DCLS/DL"
+packageName: "ZFI_TAX_CARGA"
+name: "ZI_FI_TAX_CARGA"
+description: "DEL-COM-165: Controle de Acesso DCL Lote de Carga"
+```
 
 1. **No Eclipse ADT:** Clique com o botão direito sobre a CDS View [[19 - ZI_FI_TAX_CARGA (CDS)|ZI_FI_TAX_CARGA]] -> **`New Access Control`**.
 2. Preencha as propriedades:

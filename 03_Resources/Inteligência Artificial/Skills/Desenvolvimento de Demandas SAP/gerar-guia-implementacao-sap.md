@@ -26,7 +26,7 @@ Esta skill cria exclusivamente o **Guia de Implementação** (`03 - Guias de Exe
      * [[Template_Fluxo_Implementacao_Excalidraw]]
    * Responda no chat explicando de forma direta o que você entendeu que precisa fazer:
      * Os 2 arquivos que serão criados (`01 - <ID> - Guia de Implementação.md` e `02 - <ID> - Fluxo de Implementação.excalidraw.md`).
-     * A sequência exata de Passos dividida pelas Fases de implementação (do Passo 1 ao último objeto).
+     * A sequência exata de Passos dividida pelas Fases de implementação (incluindo **Fase 0 / Passo 0** de pacotes e encapsulamento quando a demanda exigir novo pacote, até o último objeto), já sinalizando quais passos são **`[MCP]`**, quais são **`[Manual]`** e eventuais blocos **`[Ativação em Massa: Ctrl + Shift + F3]`**.
    * **Não crie nem edite nenhum arquivo antes da autorização do usuário.**
 2. **Segundo Passo (Execução após Autorização):**
    * Após a autorização do usuário, crie os 2 arquivos conforme a Seção 2.
@@ -39,4 +39,7 @@ Esta skill cria exclusivamente o **Guia de Implementação** (`03 - Guias de Exe
    * Siga estritamente [[Template_Fluxo_Implementacao_Excalidraw]], atualizando os passos, links (`## Element Links`) e o bloco `compressed-json` válido.
 2. **Criar o Guia de Implementação (`03 - Guias de Execucao/01 - <ID> - Guia de Implementação.md`):**
    * Siga estritamente [[Template_Guia_Implementacao_Novo_App]].
-   * Organize os checkboxes (`- [ ] Passo X — Criar ... [[Link da Nota do Objeto]]`) respeitando rigorosamente a ordem de dependência de ativação no SAP.
+   * Mantenha no YAML do topo os campos `sap_destination: ""` e `transport_requests: []`.
+   * Inclua a **Fase 0 (Estrutura de Pacotes e Encapsulamento)** com Passo 0 sempre que a demanda exigir criação de novo pacote (`DEVC/K`) ou configuração de encapsulamento (*Package Interface*).
+   * Organize os checkboxes incluindo obrigatoriamente a tag de execução **`[MCP]`** ou **`[Manual]`** em **todos os passos** (`- [ ] Passo X [MCP] — Criar ... [[Link da Nota do Objeto]]`), respeitando rigorosamente a ordem de dependência de ativação no SAP. Use `[Manual]` para objetos fora do MCP (ex.: `SU21`/`SUSO`, *Behavior Extension*, `SAJC`, configurações de *Package Interface*/*Use Access*/*API State `C1`*, app **UI5**/deploy **BSP** e `PFCG`/Launchpad).
+   * Sinalize blocos com dependência circular mútua (como CDS pai e filho) com a marcação explícita **`[Ativação em Massa: Ctrl + Shift + F3]`**.

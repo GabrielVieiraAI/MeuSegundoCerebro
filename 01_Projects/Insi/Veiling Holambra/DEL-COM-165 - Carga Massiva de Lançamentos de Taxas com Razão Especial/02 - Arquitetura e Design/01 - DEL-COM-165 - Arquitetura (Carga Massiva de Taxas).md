@@ -10,28 +10,28 @@ tags:
   - abap-cloud
   - del-com-165
   - arquitetura
-  - app1
+  - taxascarga
 id_demanda: DEL-COM-165
 tipo: arquitetura-tecnica
 data: 2026-11-11
 aliases:
-  - "01 - DEL-COM-165 - Arquitetura App 1 (Carga Massiva de Taxas)"
+  - "01 - DEL-COM-165 - Arquitetura (Carga Massiva de Taxas)"
 ---
 
-# DEL-COM-165 · Arquitetura Técnica — Aplicativo 1 (Carga Massiva e Monitor de Taxas)
+# DEL-COM-165 · Arquitetura Técnica — Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA`)
 
-⬅️ [[00 - DEL-COM-165 - Visão Integrada e Infraestrutura|Visão Integrada]] | ⚙️ [[02 - DEL-COM-165 - Arquitetura App 2 (Tipos de Movimento)|Ir para Arquitetura App 2]] | 🗺️ [[03 - DEL-COM-165 - Jornada do Dado dos Apps (Fluxo End-to-End).excalidraw|Jornada do Dado (End-to-End)]] | 📄 [[01 - Especificação Funcional (Visão da Solução)|Especificação Funcional]] | 📋 [[Consolidado de decisões tomadas em todas as reuniões|Decisões das Reuniões]]
+⬅️ [[00 - DEL-COM-165 - Visão Integrada e Infraestrutura|Visão Integrada]] | ⚙️ [[02 - DEL-COM-165 - Arquitetura (Tipos de Movimento)|Ir para Arquitetura (Tipos de Movimento)]] | 🗺️ [[03 - DEL-COM-165 - Jornada do Dado dos Apps (Fluxo End-to-End).excalidraw|Jornada do Dado (End-to-End)]] | 📄 [[01 - Especificação Funcional (Visão da Solução)|Especificação Funcional]] | 📋 [[Consolidado de decisões tomadas em todas as reuniões|Decisões das Reuniões]]
 
 ---
 
-## 📌 Visão Geral da Arquitetura do Aplicativo 1
+## 📌 Visão Geral da Arquitetura do Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA`)
 
-🎨 **Diagrama Visual Exclusivo do App 1:** [[01 - DEL-COM-165 - Arquitetura Técnica App 1 (Carga Massiva).excalidraw|Visualizar no Excalidraw]]
-![[01 - DEL-COM-165 - Arquitetura Técnica App 1 (Carga Massiva).excalidraw]]
+🎨 **Diagrama Visual Exclusivo do Aplicativo de Carga Massiva de Taxas:** [[01 - DEL-COM-165 - Arquitetura Técnica (Carga Massiva).excalidraw|Visualizar no Excalidraw]]
+![[01 - DEL-COM-165 - Arquitetura Técnica (Carga Massiva).excalidraw]]
 
-O **Aplicativo 1 (`taxascarga` / BSP `ZZ1_TAXCARGA`)** é um monitor transacional e motor de carga massiva em lote via planilha Excel (`.xlsx`), construído em **RAP (*Managed with Additional Save*)** e exposto via **OData V4**. Diferente de um cadastro simples, ele modela uma **hierarquia composicional de 3 níveis** (`Carga -> Documento -> Item`) e integra leitura nativa de Excel (`XCO_CP_XLSX`) com simulação e lançamento contábil via BAPI (`BAPI_ACC_DOCUMENT_CHECK` / `BAPI_ACC_DOCUMENT_POST`).
+O **Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA` / `taxascarga` / BSP `ZZ1_TAXCARGA`)** é um monitor transacional e motor de carga massiva em lote via planilha Excel (`.xlsx`), construído em **RAP (*Managed with Additional Save*)** e exposto via **OData V4**. Diferente de um cadastro simples, ele modela uma **hierarquia composicional de 3 níveis** (`Carga -> Documento -> Item`) e integra leitura nativa de Excel (`XCO_CP_XLSX`) com simulação e lançamento contábil via BAPI (`BAPI_ACC_DOCUMENT_CHECK` / `BAPI_ACC_DOCUMENT_POST`).
 
-### Decisões Fundamentais de Arquitetura do App 1:
+### Decisões Fundamentais de Arquitetura do Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA`):
 
 1. **Hierarquia Transacional de 3 Níveis (Sem Draft):**
    - **Nível 1 — Cabeçalho do Lote ([[03 - ZTFI_TAX_CARGA|ZTFI_TAX_CARGA]] / [[19 - ZI_FI_TAX_CARGA (CDS)|ZI_FI_TAX_CARGA]]):** Representa o arquivo carregado (`carga_id` gerado pelo objeto [[08 - ZTAXCARNR|ZTAXCARNR]]), consolidando total de documentos, válidos, com erro, lançados e somatórios de débito e crédito.
@@ -52,11 +52,11 @@ O **Aplicativo 1 (`taxascarga` / BSP `ZZ1_TAXCARGA`)** é um monitor transaciona
 
 ---
 
-## 🧱 Lista Consolidada de Objetos Técnicos — Aplicativo 1
+## 🧱 Lista Consolidada de Objetos Técnicos — Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA`)
 
 ### 1. Camada de Dicionário de Dados (ABAP Dictionary)
 
-| Tipo de Objeto | Padrão | Nome do Objeto | Responsabilidade Técnica no App 1 |
+| Tipo de Objeto | Padrão | Nome do Objeto | Responsabilidade Técnica no Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA`) |
 | :--- | :--- | :--- | :--- |
 | **Tabela Transparente (Nível 1)** | `ZTFI_<desc>` | [[03 - ZTFI_TAX_CARGA\|ZTFI_TAX_CARGA]] | Cabeçalho do lote de carga (`carga_id`, `nome_arquivo`, `status_geral`, contadores `qtd_docs`/`qtd_validos`/`qtd_erros`/`qtd_lancados`, somatórios e auditoria). |
 | **Tabela Transparente (Nível 2)** | `ZTFI_<desc>` | [[04 - ZTFI_TAX_DOC\|ZTFI_TAX_DOC]] | Documentos contábeis agrupados por `DOCSEQ` (`ztpmov`, `bukrs`, `bldat`, `budat`, `xblnr`, `bktxt`, `waers`, `status`, `belnr`, `gjahr`, `mensagem`). |
@@ -66,7 +66,7 @@ O **Aplicativo 1 (`taxascarga` / BSP `ZZ1_TAXCARGA`)** é um monitor transaciona
 
 ### 2. Camada de Modelagem de Dados (CDS Views — Hierarquia de 3 Níveis + DCL + Abstract)
 
-| Tipo de Objeto | Padrão | Nome do Objeto | Responsabilidade Técnica no App 1 |
+| Tipo de Objeto | Padrão | Nome do Objeto | Responsabilidade Técnica no Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA`) |
 | :--- | :--- | :--- | :--- |
 | **CDS Interface (Root - Nível 1)** | `ZI_FI_<desc>` | [[19 - ZI_FI_TAX_CARGA (CDS)\|ZI_FI_TAX_CARGA]] | Entidade raiz do lote de carga sobre `ZTFI_TAX_CARGA`, com `composition [0..*] of ZI_FI_TAX_DOC as _Documentos` e cálculo de criticidade semântica. |
 | **Access Control (DCL)** | Mesmo nome da CDS | [[20 - ZI_FI_TAX_CARGA (DCL)\|ZI_FI_TAX_CARGA]] | Restringe a leitura dos lotes ao objeto de autorização [[07 - ZTAXCARGA\|ZTAXCARGA]] com `ACTVT = '03'`. |
@@ -84,21 +84,21 @@ O **Aplicativo 1 (`taxascarga` / BSP `ZZ1_TAXCARGA`)** é um monitor transaciona
 
 ### 3. Camada de Comportamento de Negócio e Motores (RAP / Classes ABAP)
 
-| Tipo de Objeto | Padrão | Nome do Objeto | Responsabilidade Técnica no App 1 |
+| Tipo de Objeto | Padrão | Nome do Objeto | Responsabilidade Técnica no Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA`) |
 | :--- | :--- | :--- | :--- |
 | **Behavior Definition (Root)** | Mesmo nome da CDS | [[24 - ZI_FI_TAX_CARGA (BDEF)\|ZI_FI_TAX_CARGA]] | BDEF *Managed with additional save* para os 3 níveis (`Carga`, `Documento`, `Item`) e declaração das actions `carregarArquivo`, `baixarModelo` e `lancar`. |
 | **Behavior Definition (Projection)** | Mesmo nome da CDS | [[32 - ZC_FI_TAX_CARGA (BDEF)\|ZC_FI_TAX_CARGA]] | Projeta as actions `carregarArquivo`, `baixarModelo` e `lancar` e as associações para o OData V4. |
 | **Classe ABAP (Behavior Pool)** | `ZCLFI_BP_<desc>` | [[25 - ZCLFI_BP_TAX_CARGA\|ZCLFI_BP_TAX_CARGA]] | Implementa o upload com agrupamento por `DOCSEQ`, derivação de `UMSKZ`/`ZLSPR`, geração automática da conta `2205010002` no `DS-ATR`, checagem de duplicidade, simulação imediata (`CHECK`) e contabilização no `save_modified` (`POST`). |
 | **Classe ABAP (Motor Excel XCO)** | `ZCLFI_<desc>` | [[10 - ZCLFI_TAX_EXCEL\|ZCLFI_TAX_EXCEL]] | Lê as 15 colunas da aba `Carga` (a partir da linha 6) e gera dinamicamente o template `.xlsx` via `XCO_CP_XLSX`. |
-| **Classe ABAP (Wrapper C1 BAPI)** | `ZCLFI_<desc>` | [[09 - ZCLFI_TAX_BAPI_WRAP\|ZCLFI_TAX_BAPI_WRAP]] | Classe *Standard ABAP* com contrato C1 que encapsula `BAPI_ACC_DOCUMENT_CHECK`, `BAPI_ACC_DOCUMENT_POST` (`XREF1`/`XREF3`), `NUMBER_GET_NEXT` (`ZTAXCARNR`) e validações `LFB1`/`SKB1`. |
+| **Classe ABAP (Wrapper C1 BAPI)** | `ZCLFI_<desc>` | [[09 - ZCLFI_TAX_BAPI_WRAP\|ZCLFI_TAX_BAPI_WRAP]] | Classe *Standard ABAP* com contrato C1 que encapsula `BAPI_ACC_DOCUMENT_CHECK`, `BAPI_ACC_DOCUMENT_POST` (`XREF1`/`XREF3`) e `NUMBER_GET_NEXT` (`ZTAXCARNR`). |
 
 ---
 
 ### 4. Camada de Segurança, Mensagens e Numeração (Compartilhada)
 
-| Tipo de Objeto | Padrão | Nome do Objeto | Responsabilidade Técnica no App 1 |
+| Tipo de Objeto | Padrão | Nome do Objeto | Responsabilidade Técnica no Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA`) |
 | :--- | :--- | :--- | :--- |
-| **Classe de Mensagens (SE91)** | `ZFI_<desc>` | [[06 - ZFI_TAXAS\|ZFI_TAXAS]] | Mensagens `001` a `021` e `025` (erros de planilha, saldo, duplicidade, fornecedor e retorno de contabilização). |
+| **Classe de Mensagens (SE91)** | `ZFI_<desc>` | [[06 - ZFI_TAXAS\|ZFI_TAXAS]] | Mensagens ativas no intervalo `001`–`021` e `025` (layout da planilha, parametrização, duplicidade e retorno da BAPI; validações contábeis/cadastrais são nativas da BAPI). |
 | **Objeto de Autorização (SU21)** | `Z<desc>` | [[07 - ZTAXCARGA\|ZTAXCARGA]] | Controle por `BUKRS` e `ACTVT` (`01` Upload, `03` Exibir, `16` Contabilizar). |
 | **Intervalo de Numeração (SNRO)** | `Z<desc>` | [[08 - ZTAXCARNR\|ZTAXCARNR]] | Numeração sequencial de 10 dígitos para `carga_id`. |
 
@@ -106,7 +106,7 @@ O **Aplicativo 1 (`taxascarga` / BSP `ZZ1_TAXCARGA`)** é um monitor transaciona
 
 ### 5. Camada de Serviço e Exposição (OData V4)
 
-| Tipo de Objeto | Padrão | Nome do Objeto | Responsabilidade Técnica no App 1 |
+| Tipo de Objeto | Padrão | Nome do Objeto | Responsabilidade Técnica no Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA`) |
 | :--- | :--- | :--- | :--- |
 | **Service Definition** | `ZUI_FI_<desc>` | [[33 - ZUI_FI_TAX_CARGA\|ZUI_FI_TAX_CARGA]] | Expõe `ZC_FI_TAX_CARGA as Carga`, `ZC_FI_TAX_DOC as Documento`, `ZC_FI_TAX_ITEM as Item` e `ZI_FI_TAX_TPMOV as TipoMovimento`. |
 | **Service Binding** | `ZUI_O4_FI_<desc>` | [[34 - ZUI_O4_FI_TAX_CARGA\|ZUI_O4_FI_TAX_CARGA]] | Publica o serviço **OData V4 - UI** para o aplicativo de Carga Massiva. |
@@ -115,6 +115,6 @@ O **Aplicativo 1 (`taxascarga` / BSP `ZZ1_TAXCARGA`)** é um monitor transaciona
 
 ### 6. Camada Frontend (SAP Fiori & Launchpad)
 
-| Tipo de Objeto | Padrão | Nome do Objeto | Responsabilidade Técnica no App 1 |
+| Tipo de Objeto | Padrão | Nome do Objeto | Responsabilidade Técnica no Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA`) |
 | :--- | :--- | :--- | :--- |
 | **Aplicativo SAP Fiori** | `<desc>` | [[35 - taxascarga (App Fiori)\|taxascarga]] | App Fiori Elements OData V4 em 3 níveis + *Controller Extension* (`ListReportExt.controller.js`) para upload/download de `.xlsx` em Base64. BSP: `ZZ1_TAXCARGA`. |

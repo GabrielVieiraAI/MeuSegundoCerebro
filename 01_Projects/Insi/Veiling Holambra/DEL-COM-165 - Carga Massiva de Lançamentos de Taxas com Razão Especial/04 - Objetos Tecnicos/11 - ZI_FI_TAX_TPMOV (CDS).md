@@ -21,13 +21,13 @@ aliases:
 
 # 📦 `ZI_FI_TAX_TPMOV (CDS)` (CDS Root View Entity — Tipos de Movimento)
 
-⬅️ [[02 - DEL-COM-165 - Arquitetura App 2 (Tipos de Movimento)|Voltar para Arquitetura App 2]] | 🎨 [[02 - DEL-COM-165 - Arquitetura Técnica App 2 (Tipos de Movimento).excalidraw|Ver no Diagrama Excalidraw App 2]]
+⬅️ [[02 - DEL-COM-165 - Arquitetura (Tipos de Movimento)|Voltar para Arquitetura (Tipos de Movimento)]] | 🎨 [[02 - DEL-COM-165 - Arquitetura Técnica (Tipos de Movimento).excalidraw|Ver no Diagrama Excalidraw (Tipos de Movimento)]]
 
 ---
 
 ## 📌 Visão Geral do Objeto
 
-A CDS View `ZI_FI_TAX_TPMOV` é a **Entidade Raiz (*Root View Entity*)** do modelo de dados do **Aplicativo 2** (Manutenção de Tipos de Movimento), construída diretamente sobre a tabela transparente [[01 - ZTFI_TAX_TPMOV|ZTFI_TAX_TPMOV]]. Além de servir como base para o serviço OData V4 de configuração, ela também fornece ajuda de pesquisa (*Value Help*) para o campo `ztpmov` no Aplicativo 1.
+A CDS View `ZI_FI_TAX_TPMOV` é a **Entidade Raiz (*Root View Entity*)** do modelo de dados do **Aplicativo de Tipos de Movimento (`ZFI_TAX_TPMOV`)** (Manutenção de Tipos de Movimento), construída diretamente sobre a tabela transparente [[01 - ZTFI_TAX_TPMOV|ZTFI_TAX_TPMOV]]. Além de servir como base para o serviço OData V4 de configuração, ela também fornece ajuda de pesquisa (*Value Help*) para o campo `ztpmov` no Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA`).
 
 ---
 
@@ -40,7 +40,16 @@ A CDS View `ZI_FI_TAX_TPMOV` é a **Entidade Raiz (*Root View Entity*)** do mode
 
 ## 🛠️ Passo a Passo da Criação do Objeto
 
-1. **No Eclipse ADT:** Conecte-se ao sistema e acesse o pacote `ZFI_CARGA_TAXAS`.
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "DDLS/DF"
+packageName: "ZFI_TAX_COMUM"
+name: "ZI_FI_TAX_TPMOV"
+description: "DEL-COM-165: Root CDS Tipos de Movimento de Taxas"
+```
+
+1. **No Eclipse ADT:** Conecte-se ao sistema e acesse o pacote `ZFI_TAX_COMUM`.
 2. Clique com o botão direito -> **`New`** -> **`Data Definition`**.
 3. Preencha as propriedades:
    - **Name:** `ZI_FI_TAX_TPMOV`

@@ -19,13 +19,13 @@ aliases:
 
 # 📦 `ZTFI_TAX_DOC` (Tabela Transparente — Documentos Contábeis do Lote)
 
-⬅️ [[01 - DEL-COM-165 - Arquitetura App 1 (Carga Massiva de Taxas)|Voltar para Arquitetura App 1]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica App 1 (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw App 1]]
+⬅️ [[01 - DEL-COM-165 - Arquitetura (Carga Massiva de Taxas)|Voltar para Arquitetura (Carga Massiva de Taxas)]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw (Carga Massiva)]]
 
 ---
 
 ## 📌 Visão Geral do Objeto
 
-A tabela transparente `ZTFI_TAX_DOC` representa o **nível 2 (Entidade Filha / Documento Contábil)** na hierarquia do Aplicativo 1. Cada valor distinto da coluna `DOCSEQ` (Sequencial de Documento) na planilha Excel origina um registro em `ZTFI_TAX_DOC`, contendo os dados de cabeçalho do documento contábil (`BKPF`), os somatórios de débito e crédito das suas partidas, o status individual (`V`, `E` ou `L`), o número do documento contábil gerado (`belnr` + `gjahr`) e a mensagem principal retornada pela validação ou pela BAPI (`mensagem`).
+A tabela transparente `ZTFI_TAX_DOC` representa o **nível 2 (Entidade Filha / Documento Contábil)** na hierarquia do Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA`). Cada valor distinto da coluna `DOCSEQ` (Sequencial de Documento) na planilha Excel origina um registro em `ZTFI_TAX_DOC`, contendo os dados de cabeçalho do documento contábil (`BKPF`), os somatórios de débito e crédito das suas partidas, o status individual (`V`, `E` ou `L`), o número do documento contábil gerado (`belnr` + `gjahr`) e a mensagem principal retornada pela validação ou pela BAPI (`mensagem`).
 
 ---
 
@@ -44,7 +44,16 @@ A tabela transparente `ZTFI_TAX_DOC` representa o **nível 2 (Entidade Filha / D
 
 ## 🛠️ Passo a Passo da Criação do Objeto
 
-1. **No Eclipse ADT:** Conecte-se ao sistema e acesse o pacote `ZFI_CARGA_TAXAS`.
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "TABL/DT"
+packageName: "ZFI_TAX_CARGA"
+name: "ZTFI_TAX_DOC"
+description: "DEL-COM-165: Documentos Contábeis do Lote de Carga"
+```
+
+1. **No Eclipse ADT:** Conecte-se ao sistema e acesse o pacote `ZFI_TAX_CARGA`.
 2. Clique com o botão direito -> **`New`** -> **`Database Table`**.
 3. Preencha as propriedades:
    - **Name:** `ZTFI_TAX_DOC`

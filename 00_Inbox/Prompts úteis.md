@@ -35,3 +35,24 @@ Siga rigorosamente estas regras:
 
 Assunto: [INSIRA O ASSUNTO AQUI]
 ```
+---
+## Linguagem de Negócio (Alto Nível e Enxuta)
+```markdown
+Explique o ponto abaixo como se a área de negócio precisasse entender, traduzindo o comportamento técnico para o impacto real no processo e na tela.
+
+Siga rigorosamente estas regras:
+
+1. LINGUAGEM 100% DE NEGÓCIO:
+   - Escreva para alguém que não é da área técnica (como um usuário-chave ou analista de negócio).
+   - Proibido citar nomes de objetos técnicos (views, tabelas, classes, programas, métodos), nomes de campos técnicos, comandos ou funções de código e siglas de arquitetura/programação.
+
+2. FOCO NO IMPACTO REAL:
+   - Explique o que acontece na prática na tela ou no processo, quando o problema ocorre e qual a consequência para o usuário ou para a operação.
+   - Mantenha total precisão lógica com o funcionamento real (não simplifique a ponto de distorcer a regra).
+
+3. MÁXIMA CONCISÃO (ZERO RUÍDO):
+   - Seja enxuto e direto ao ponto, de preferência em 1 única linha (ou no limite de linhas que eu pedir).
+   - Sem saudações, sem introduções, sem analogias forçadas e sem conclusões.
+
+Contexto / Apontamento: [INSIRA AQUI O QUE PRECISA SER EXPLICADO]
+```

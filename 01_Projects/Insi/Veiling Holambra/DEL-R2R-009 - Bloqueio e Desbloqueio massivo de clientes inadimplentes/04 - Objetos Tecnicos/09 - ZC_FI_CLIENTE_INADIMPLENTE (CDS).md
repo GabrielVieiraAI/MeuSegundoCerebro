@@ -49,16 +49,28 @@ Enquanto a CDS Raiz (`[[06 - ZI_FI_CLIENTE_INADIMPLENTE (CDS)|ZI_FI_CLIENTE_INAD
 
 ## 🛠️ Passo a Passo da Criação do Objeto
 
+### 🔖 Metadados ADT (*ABAP Development Tools* — Obrigatório para MCP `sap-adt`)
+
+```yaml
+objectType: "DDLS/DF"
+packageName: "ZFI_BLOQ_INADIMPLENTES"
+name: "ZC_FI_CLIENTE_INADIMPLENTE"
+description: "DEL-R2R-009: Projeção Inadimplentes"
+extraParams: {}
+```
+
+### 📋 Passo a Passo no ADT / SAP GUI
+
 1. **No Eclipse ADT:** Clique com o botão direito sobre a CDS View raiz `ZI_FI_CLIENTE_INADIMPLENTE` (ou sobre o pacote `ZFI_BLOQ_INADIMPLENTES` em `Core Data Services` -> `Data Definitions`) -> **`New`** -> **`Data Definition`**.
 2. Preencha os dados do objeto:
    - **Name:** `ZC_FI_CLIENTE_INADIMPLENTE`
-   - **Description:** `DEL-R2R-009: Projeção Inadimplentes (Consumption)`
+   - **Description:** `DEL-R2R-009: Projeção Inadimplentes`
 3. Clique em **Next**, selecione a Ordem de Transporte (TR) e clique em **Next** para a seleção de templates.
 4. Escolha o template padrão **`Define Root View Entity`** (ou template em branco) e clique em **Finish**.
    *(Nota: A declaração `as projection on ZI_FI_CLIENTE_INADIMPLENTE` com o contrato `provider contract transactional_query` converte a entidade para uma Projeção Transacional no RAP, que herda as capacidades da raiz e permite o consumo limpo no SAP Fiori).*
-5. Substitua o conteúdo pelo código presente na seção [Snippet de Código](file:///c:/Users/gabriel.vsouza/source/MeuSegundoCerebro/01_Projects/Insi/Veiling%20Holambra/DEL-R2R-009%20-%20Bloqueio%20e%20Desbloqueio%20massivo%20de%20clientes%20inadimplentes/Objetos/ZC_FI_CLIENTE_INADIMPLENTE%20(CDS).md#L62-L118) abaixo.
-6. Ative o objeto pressionando **`Ctrl + F3`**.
-7. **Validação dos Dados (`F8 - Data Preview`):** Pressione `F8` na CDS View de Projeção para verificar se os dados são exibidos com os textos de rótulo corretos e se os campos de chave e moeda estão devidamente amarrados.
+5. Substitua o conteúdo pelo código presente na seção [Snippet de Código](file:///c:/Users/gabriel.vsouza/source/MeuSegundoCerebro/01_Projects/Insi/Veiling%20Holambra/DEL-R2R-009%20-%20Bloqueio%20e%20Desbloqueio%20massivo%20de%20clientes%20inadimplentes/04%20-%20Objetos%20Tecnicos/09%20-%20ZC_FI_CLIENTE_INADIMPLENTE%20(CDS).md) abaixo.
+6. Ative o objeto pressionando **`Ctrl + F3`** *(ou em massa junto à CDS Raiz e aos BDEFs quando houver alteração simultânea de chave)*.
+7. **Validação dos Dados (`F8 - Data Preview`):** Pressione `F8` na CDS View de Projeção para verificar se os dados são exibidos com os textos de rótulo corretos e se a chave tripla (`PartnerMatriz + CreditSegment + PartnerOrigem`) e moeda estão devidamente amarradas.
 
 ---
 
@@ -66,7 +78,7 @@ Enquanto a CDS Raiz (`[[06 - ZI_FI_CLIENTE_INADIMPLENTE (CDS)|ZI_FI_CLIENTE_INAD
 
 ### 📝 Código Comentado (Para Estudo e Referência)
 ```abap
-@AccessControl.authorizationCheck: #CHECK
+@AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'DEL-R2R-009: Projeção Inadimplentes'
 @Metadata.allowExtensions: true
 @Search.searchable: true
@@ -75,7 +87,7 @@ define root view entity ZC_FI_CLIENTE_INADIMPLENTE
   as projection on ZI_FI_CLIENTE_INADIMPLENTE                          // Projeta diretamente os campos da CDS Raiz (Passo 06)
 {
       @Search.defaultSearchElement: true
-      @EndUserText.label: 'Cliente (Matriz)'
+      @EndUserText.label: 'Cliente'
   key PartnerMatriz,                                                   // Chave 1: BP Matriz (alvo do bloqueio/desbloqueio)
 
       @EndUserText.label: 'Segmento de Crédito'
@@ -83,7 +95,10 @@ define root view entity ZC_FI_CLIENTE_INADIMPLENTE
 
       @Search.defaultSearchElement: true
       @EndUserText.label: 'BP de Origem'
-      PartnerOrigem,                                                   // BP da filial devedora (ou Matriz se não houver filial)
+  key PartnerOrigem,                                                   // Chave 3: BP de Origem da dívida (Matriz ou filial vinculada)
+
+      @UI.hidden: true
+      CompanyCode,                                                     // Empresa parametrizada do registro (para autorização e DCL)
 
       @Search.defaultSearchElement: true
       @Search.fuzzinessThreshold: 0.8
@@ -107,7 +122,7 @@ define root view entity ZC_FI_CLIENTE_INADIMPLENTE
 
       @Semantics.amount.currencyCode: 'Moeda'
       @EndUserText.label: 'Valor Vencido'
-      ValorTotalVencido,                                               // Saldo total vencido do cliente
+      ValorTotalVencido,                                               // Saldo total vencido da empresa
 
       @EndUserText.label: 'Vencimento Mais Antigo'
       MenorDataVencimento,                                             // Data da parcela em atraso mais antiga
@@ -127,7 +142,7 @@ define root view entity ZC_FI_CLIENTE_INADIMPLENTE
 ### 🚀 Código Limpo (Sem Comentários - Para Copiar e Colar)
 
 ```abap
-@AccessControl.authorizationCheck: #CHECK
+@AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'DEL-R2R-009: Projeção Inadimplentes'
 @Metadata.allowExtensions: true
 @Search.searchable: true
@@ -136,7 +151,7 @@ define root view entity ZC_FI_CLIENTE_INADIMPLENTE
   as projection on ZI_FI_CLIENTE_INADIMPLENTE
 {
       @Search.defaultSearchElement: true
-      @EndUserText.label: 'Cliente (Matriz)'
+      @EndUserText.label: 'Cliente'
   key PartnerMatriz,
 
       @EndUserText.label: 'Segmento de Crédito'
@@ -144,7 +159,10 @@ define root view entity ZC_FI_CLIENTE_INADIMPLENTE
 
       @Search.defaultSearchElement: true
       @EndUserText.label: 'BP de Origem'
-      PartnerOrigem,
+  key PartnerOrigem,
+
+      @UI.hidden: true
+      CompanyCode,
 
       @Search.defaultSearchElement: true
       @Search.fuzzinessThreshold: 0.8

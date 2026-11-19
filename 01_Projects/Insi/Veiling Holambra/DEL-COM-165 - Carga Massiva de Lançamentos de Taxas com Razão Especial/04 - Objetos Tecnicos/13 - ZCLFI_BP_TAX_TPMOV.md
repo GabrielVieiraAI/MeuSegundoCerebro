@@ -20,20 +20,20 @@ aliases:
 
 # 📦 `ZCLFI_BP_TAX_TPMOV` (Behavior Pool — Manutenção de Tipos de Movimento)
 
-⬅️ [[02 - DEL-COM-165 - Arquitetura App 2 (Tipos de Movimento)|Voltar para Arquitetura App 2]] | 🎨 [[02 - DEL-COM-165 - Arquitetura Técnica App 2 (Tipos de Movimento).excalidraw|Ver no Diagrama Excalidraw App 2]]
+⬅️ [[02 - DEL-COM-165 - Arquitetura (Tipos de Movimento)|Voltar para Arquitetura (Tipos de Movimento)]] | 🎨 [[02 - DEL-COM-165 - Arquitetura Técnica (Tipos de Movimento).excalidraw|Ver no Diagrama Excalidraw (Tipos de Movimento)]]
 
 ---
 
 ## 📌 Visão Geral do Objeto
 
-A classe `ZCLFI_BP_TAX_TPMOV` é o **Behavior Pool** que implementa as regras de negócio declaradas no Behavior Definition [[12 - ZI_FI_TAX_TPMOV (BDEF)|ZI_FI_TAX_TPMOV]] para o **Aplicativo 2** (Manutenção de Tipos de Movimento).
+A classe `ZCLFI_BP_TAX_TPMOV` é o **Behavior Pool** que implementa as regras de negócio declaradas no Behavior Definition [[12 - ZI_FI_TAX_TPMOV (BDEF)|ZI_FI_TAX_TPMOV]] para o **Aplicativo de Tipos de Movimento (`ZFI_TAX_TPMOV`)** (Manutenção de Tipos de Movimento).
 
 ---
 
 ## ⚖️ Regras de Negócio Aplicadas
 
 1. **Verificação de Autorização (`get_global_authorizations`):** Checa o objeto [[07 - ZTAXCARGA|ZTAXCARGA]] com `ACTVT = '02'` (Modificar) para liberar a criação, alteração ou exclusão de Tipos de Movimento.
-2. **Preenchimento de Valores Padrão (`preencherDefaults`):** Ao clicar em **Criar** no App 2, já sugere `blart = 'Z1'`, `zlspr = 'T'`, `ativo = 'X'`, `valido_de = data atual` e `valido_ate = '31.12.9999'`, reduzindo digitação manual.
+2. **Preenchimento de Valores Padrão (`preencherDefaults`):** Ao clicar em **Criar** no Aplicativo de Tipos de Movimento (`ZFI_TAX_TPMOV`), já sugere `blart = 'Z1'`, `zlspr = 'T'`, `ativo = 'X'`, `valido_de = data atual` e `valido_ate = '31.12.9999'`, reduzindo digitação manual.
 3. **Validação de Consistência (`validarRegistro`):**
    - Impede salvar sem descrição (`ZFI_TAXAS 022`).
    - Impede `valido_de > valido_ate` (`ZFI_TAXAS 023`).
@@ -43,15 +43,29 @@ A classe `ZCLFI_BP_TAX_TPMOV` é o **Behavior Pool** que implementa as regras de
 
 ## 🛠️ Passo a Passo da Criação do Objeto
 
-1. **No Eclipse ADT:** Abra o Behavior Definition [[12 - ZI_FI_TAX_TPMOV (BDEF)|ZI_FI_TAX_TPMOV]], posicione o cursor sobre `zclfi_bp_tax_tpmov` e pressione **`Ctrl + 1`** (*Quick Fix*) -> **`Create behavior implementation class zclfi_bp_tax_tpmov`**.
-2. Selecione a Request (TR) de desenvolvimento e conclua o assistente.
-3. Na aba **`Local Types`**, substitua o código gerado pelo snippet correspondente abaixo e ative com **`Ctrl + F3`**.
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "CLAS/OC"
+packageName: "ZFI_TAX_TPMOV"
+name: "ZCLFI_BP_TAX_TPMOV"
+description: "DEL-COM-165: Behavior Pool Tipos de Movimento"
+extraParams:
+  behaviorDefinition: "ZI_FI_TAX_TPMOV"
+```
+
+1. **Via MCP `sap-adt`:** Crie a classe de Behavior Pool `zclfi_bp_tax_tpmov` no pacote `ZFI_TAX_TPMOV` (vinculada ao BDEF [[12 - ZI_FI_TAX_TPMOV (BDEF)|ZI_FI_TAX_TPMOV]]) e preencha os dois arquivos abaixo (`Global Class` e `Local Types / CCIMP`).
+   - *Alternativa manual no Eclipse ADT:* Abra o Behavior Definition [[12 - ZI_FI_TAX_TPMOV (BDEF)|ZI_FI_TAX_TPMOV]], posicione o cursor sobre `zclfi_bp_tax_tpmov` e pressione **`Ctrl + 1`** (*Quick Fix*) -> **`Create behavior implementation class zclfi_bp_tax_tpmov`**.
+2. Selecione a Request (TR) de desenvolvimento e conclua a criação/edição.
+3. Na aba **`Local Types`** (`CCIMP`), substitua o código gerado pelo snippet correspondente abaixo e ative com **`Ctrl + F3`**.
 
 ---
 
 ## 💻 Snippet de Código
 
 ### 📝 Código Comentado (Para Estudo e Referência)
+
+#### Aba: Global Class (`zclfi_bp_tax_tpmov.clas.abap`)
 
 ```abap
 " =========================================================================
@@ -63,6 +77,8 @@ ENDCLASS.
 CLASS zclfi_bp_tax_tpmov IMPLEMENTATION.
 ENDCLASS.
 ```
+
+#### Aba: Local Types / CCIMP (`zclfi_bp_tax_tpmov.clas.locals_imp.abap`)
 
 ```abap
 " =========================================================================
@@ -196,6 +212,18 @@ ENDCLASS.
 ---
 
 ### 🚀 Código Limpo (Sem Comentários - Para Copiar e Colar)
+
+#### Aba: Global Class (`zclfi_bp_tax_tpmov.clas.abap`)
+
+```abap
+CLASS zclfi_bp_tax_tpmov DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_fi_tax_tpmov.
+ENDCLASS.
+
+CLASS zclfi_bp_tax_tpmov IMPLEMENTATION.
+ENDCLASS.
+```
+
+#### Aba: Local Types / CCIMP (`zclfi_bp_tax_tpmov.clas.locals_imp.abap`)
 
 ```abap
 CLASS lhc_TipoMovimento DEFINITION INHERITING FROM cl_abap_behavior_handler.

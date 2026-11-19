@@ -20,13 +20,13 @@ aliases:
 
 # 📦 `ZC_FI_TAX_CARGA (MDE)` (Metadata Extension — Monitor de Lotes de Carga)
 
-⬅️ [[01 - DEL-COM-165 - Arquitetura App 1 (Carga Massiva de Taxas)|Voltar para Arquitetura App 1]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica App 1 (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw App 1]]
+⬅️ [[01 - DEL-COM-165 - Arquitetura (Carga Massiva de Taxas)|Voltar para Arquitetura (Carga Massiva de Taxas)]] | 🎨 [[01 - DEL-COM-165 - Arquitetura Técnica (Carga Massiva).excalidraw|Ver no Diagrama Excalidraw (Carga Massiva)]]
 
 ---
 
 ## 📌 Visão Geral do Objeto
 
-O Metadata Extension `ZC_FI_TAX_CARGA` define o layout do **List Report** (tela inicial do monitor de lotes) e da **Object Page de 1º nível** (detalhes do lote e tabela de documentos filhos `_Documentos`) para o **Aplicativo 1** ([[35 - taxascarga (App Fiori)|taxascarga]]).
+O Metadata Extension `ZC_FI_TAX_CARGA` define o layout do **List Report** (tela inicial do monitor de lotes) e da **Object Page de 1º nível** (detalhes do lote e tabela de documentos filhos `_Documentos`) para o **Aplicativo de Carga Massiva de Taxas (`ZFI_TAX_CARGA`)** ([[35 - taxascarga (App Fiori)|taxascarga]]).
 
 ---
 
@@ -40,6 +40,15 @@ O Metadata Extension `ZC_FI_TAX_CARGA` define o layout do **List Report** (tela 
 ---
 
 ## 🛠️ Passo a Passo da Criação do Objeto
+
+### 🔖 Metadados ADT
+
+```yaml
+objectType: "DDLX/EX"
+packageName: "ZFI_TAX_CARGA"
+name: "ZC_FI_TAX_CARGA"
+description: "DEL-COM-165: UI Annotations Monitor de Lotes de Carga"
+```
 
 1. **No Eclipse ADT:** Clique com o botão direito sobre a CDS View [[26 - ZC_FI_TAX_CARGA (CDS)|ZC_FI_TAX_CARGA]] -> **`New Metadata Extension`**.
 2. Preencha as propriedades:
