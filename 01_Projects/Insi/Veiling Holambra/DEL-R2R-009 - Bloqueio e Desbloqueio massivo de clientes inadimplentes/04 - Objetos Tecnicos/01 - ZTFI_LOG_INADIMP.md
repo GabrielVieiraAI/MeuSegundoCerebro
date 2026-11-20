@@ -32,7 +32,7 @@ A **`ZTFI_LOG_INADIMP`** é uma **Tabela Transparente** do Dicionário de Dados 
 
 Sua única responsabilidade é guardar o **histórico de auditoria (log)** de todas as ações de **Bloqueio (`B`)** e **Desbloqueio (`D`)** executadas pelos usuários dentro do aplicativo Fiori da demanda **DEL-R2R-009**.
 
-Seguindo a abordagem **ABAP Cloud Lean**, esta tabela reutiliza elementos de dados standard liberados pela SAP (como `sysuuid_x16` e `bu_partner`) combinados com tipos primitivos embutidos (`abap.char`, `abap.curr`, `abap.utclong`), evitando a criação desnecessária de Domínios (`ZD_*`) e Elementos de Dados (`ZE_*`) customizados.
+Seguindo a padronização do Dicionário de Dados ABAP (**DDIC**) aplicada após a **CR-112**, esta tabela combina elementos de dados standard liberados pela SAP (como `sysuuid_x16`, `bu_partner`, `bapi_msg` e `abp_creation_utcl`) com os 4 elementos de dados customizados criados especificamente para este log (`ze_acao_bloq_inad`, `ze_status_bloq_inad`, `ze_vlr_vencido` e `ze_dias_atraso`), garantindo rótulos claros em português e proteção contra manutenção manual via `@AbapCatalog.dataMaintenance : #NOT_ALLOWED`.
 
 ---
 
@@ -67,7 +67,7 @@ Seguindo a abordagem **ABAP Cloud Lean**, esta tabela reutiliza elementos de dad
 @AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
 @AbapCatalog.tableCategory : #TRANSPARENT
 @AbapCatalog.deliveryClass : #A
-@AbapCatalog.dataMaintenance : #RESTRICTED
+@AbapCatalog.dataMaintenance : #NOT_ALLOWED
 define table ztfi_log_inadimp {
 
   key client     : abap.clnt not null;              // Mandante SAP: isola os registros e evita compartilhamento de dados entre mandantes
@@ -75,17 +75,17 @@ define table ztfi_log_inadimp {
   partner        : bu_partner not null;             // BP da Matriz: cliente principal onde o bloqueio de crédito no FSCM é efetivado
   partner_origem : bu_partner;                      // BP de Origem: filial que originou a dívida (ou a própria Matriz se não houver filial)
   credit_sgmnt   : ukm_credit_sgmnt;                // Segmento de Crédito: identifica a área de crédito avaliada (ex.: 1000)
-  acao           : abap.char(1);                    // Ação realizada: registra se o operador clicou em 'B' (Bloquear) ou 'D' (Desbloquear)
+  acao           : ze_acao_bloq_inad;               // Ação realizada: registra se o operador clicou em 'B' (Bloquear) ou 'D' (Desbloquear)
   block_reason   : ukm_block_reason;                // Motivo do bloqueio: código gravado no FSCM no momento da ação (ex.: 10 = Inadimplência)
-  status         : abap.char(1);                    // Status da execução: 'S' (Sucesso ao chamar APIs) ou 'E' (Erro durante o processamento)
-  mensagem       : abap.char(220);                  // Mensagem de retorno: texto descritivo do resultado ou detalhe do erro retornado
+  status         : ze_status_bloq_inad;             // Status da execução: 'S' (Sucesso ao chamar APIs) ou 'E' (Erro durante o processamento)
+  mensagem       : bapi_msg;                        // Mensagem de retorno: texto descritivo do resultado ou detalhe do erro retornado
   risk_class     : ukm_risk_class;                  // Classe de risco: fotografia do perfil do cliente (1A, 2A) no instante do bloqueio
   moeda          : waers_curc;                      // Moeda de referência: código da moeda (ex.: BRL) associado ao montante vencido
   @Semantics.amount.currencyCode : 'ztfi_log_inadimp.moeda'
-  vlr_vencido    : abap.curr(15,2);                 // Montante vencido: fotografia do saldo total em atraso no momento em que a ação foi disparada
-  dias_atraso    : abap.int4;                       // Dias em atraso: maior quantidade de dias vencidos que o cliente possuía no momento
+  vlr_vencido    : ze_vlr_vencido;                  // Montante vencido: fotografia do saldo total em atraso no momento em que a ação foi disparada
+  dias_atraso    : ze_dias_atraso;                  // Dias em atraso: maior quantidade de dias vencidos que o cliente possuía no momento
   created_by     : abp_creation_user;               // Usuário executor: login SAP (sy-uname) do operador que confirmou a ação no Fiori
-  created_at     : abap.utclong;                    // Timestamp de auditoria: data, hora, minuto e segundo exatos (UTC) da gravação
+  created_at     : abp_creation_utcl;               // Timestamp de auditoria: data, hora, minuto e segundo exatos (UTC) da gravação
 
 }
 ```
@@ -99,7 +99,7 @@ define table ztfi_log_inadimp {
 @AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
 @AbapCatalog.tableCategory : #TRANSPARENT
 @AbapCatalog.deliveryClass : #A
-@AbapCatalog.dataMaintenance : #RESTRICTED
+@AbapCatalog.dataMaintenance : #NOT_ALLOWED
 define table ztfi_log_inadimp {
 
   key client     : abap.clnt not null;
@@ -107,17 +107,17 @@ define table ztfi_log_inadimp {
   partner        : bu_partner not null;
   partner_origem : bu_partner;
   credit_sgmnt   : ukm_credit_sgmnt;
-  acao           : abap.char(1);
+  acao           : ze_acao_bloq_inad;
   block_reason   : ukm_block_reason;
-  status         : abap.char(1);
-  mensagem       : abap.char(220);
+  status         : ze_status_bloq_inad;
+  mensagem       : bapi_msg;
   risk_class     : ukm_risk_class;
   moeda          : waers_curc;
   @Semantics.amount.currencyCode : 'ztfi_log_inadimp.moeda'
-  vlr_vencido    : abap.curr(15,2);
-  dias_atraso    : abap.int4;
+  vlr_vencido    : ze_vlr_vencido;
+  dias_atraso    : ze_dias_atraso;
   created_by     : abp_creation_user;
-  created_at     : abap.utclong;
+  created_at     : abp_creation_utcl;
 
 }
 ```

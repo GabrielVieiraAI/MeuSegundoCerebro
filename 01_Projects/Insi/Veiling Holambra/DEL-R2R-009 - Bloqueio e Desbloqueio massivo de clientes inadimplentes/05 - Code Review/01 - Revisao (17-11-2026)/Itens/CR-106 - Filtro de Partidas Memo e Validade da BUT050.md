@@ -13,7 +13,7 @@ request: S4DK900952
 tarefa: S4DK900953
 item_cr: CR-106
 prioridade: Recomendado (Ponto de Atenção)
-status: Pendente
+status: concluido
 data: 2026-11-18
 sap_destination: ""
 transport_requests: []

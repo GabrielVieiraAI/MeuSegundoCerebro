@@ -38,6 +38,18 @@ A **`ZFI_INADIMPLENCIA`** é a **Classe de Mensagens** (transação `SE91` / Mes
 
 ## 🛠️ Passo a Passo da Criação do Objeto
 
+### 🔖 Metadados ADT (*ABAP Development Tools* — Obrigatório para MCP `sap-adt`)
+
+```yaml
+objectType: "MSAG/N"
+packageName: "ZFI_BLOQ_INADIMPLENTES"
+name: "ZFI_INADIMPLENCIA"
+description: " Mensagens de Bloqueio/Desbloqueio de Inadimplentes"
+extraParams: {}
+```
+
+### 📋 Passo a Passo no ADT / SAP GUI
+
 1. **No Eclipse ADT** (ou transação `SE91` no SAP GUI):
    - Clique com o botão direito sobre o pacote de desenvolvimento `ZFI_BLOQ_INADIMPLENTES` -> **`New`** -> **`Other ABAP Repository Object`**.
    - Na caixa de pesquisa, digite **`Message Class`** (na categoria *Texts* ou *Dictionary*) e clique em **Next**.
@@ -45,8 +57,8 @@ A **`ZFI_INADIMPLENCIA`** é a **Classe de Mensagens** (transação `SE91` / Mes
    - **Name:** `ZFI_INADIMPLENCIA`
    - **Description:** ` Mensagens de Bloqueio/Desbloqueio de Inadimplentes`
 3. Selecione a sua ordem de transporte (TR) de desenvolvimento e clique em **Finish**.
-4. No editor de mensagens, cadastre os números de mensagem de `001` a `006` com seus respectivos textos e marcadores de posição (`&1`, `&2`) conforme detalhado no snippet abaixo.
-5. Salve e ative o objeto com **`Ctrl + F3`**.
+4. No editor de mensagens (ou no arquivo **AFF** — *ABAP File Format* — `zfi_inadimplencia.msag.json`), cadastre os números de mensagem de `001` a `010` com seus respectivos textos e marcadores de posição (`&1`, `&2`) respeitando o limite máximo de 73 caracteres por mensagem conforme detalhado no snippet abaixo.
+5. Salve e valide o objeto (classes de mensagens em `MSAG/N` são gravadas diretamente sem ciclo separado de ativação).
 
 ---
 
@@ -58,12 +70,16 @@ Message Class: ZFI_INADIMPLENCIA                                    # Nome técn
 Descrição: " Mensagens de Bloqueio/Desbloqueio de Inadimplentes"    # Descrição curta da classe de mensagens
 
 Mensagens Ativas:
-  001: "Cliente &1 bloqueado com sucesso no segmento &2 (Motivo 10)." # Mensagem de sucesso após bloquear o BP no FSCM
-  002: "Cliente &1 desbloqueado com sucesso no segmento &2."          # Mensagem de sucesso após desbloquear o BP no FSCM
-  003: "Erro ao atualizar bloqueio do cliente &1: &2"                 # Falha técnica ou exceção ao chamar as APIs do FSCM
+  001: "Cliente &1 bloqueado com sucesso no segmento &2 (Motivo 10)." # Sucesso ao bloquear o BP no FSCM (tela e log da Matriz)
+  002: "Cliente &1 desbloqueado com sucesso no segmento &2."          # Sucesso ao desbloquear o BP no FSCM (tela e log da Matriz)
+  003: "Erro ao atualizar bloqueio do cliente &1: &2"                 # Falha técnica ou exceção ao chamar as APIs do FSCM (tela e log)
   004: "Sem autorização para bloquear clientes na empresa &1 / segmento &2."   # Falha no AUTHORITY-CHECK ZFI_BLOQ (Atividade 05)
   005: "Sem autorização para desbloquear clientes na empresa &1 / segmento &2." # Falha no AUTHORITY-CHECK ZFI_BLOQ (Atividade 43)
-  006: "Cliente &1 possui bloqueio por motivo &2 (diferente de 10 - Inadimplência" # Alerta quando cliente já tem outro bloqueio (truncado no limite de 73 chars da SE91)
+  006: "Cliente &1 possui bloqueio por motivo &2 (diferente de 10-Inadimplência)." # Alerta quando membro já tem outro bloqueio (73 chars exatos)
+  007: "Cliente &1 pertence à classe de risco &2 (excluída) e não é bloqueado."    # Bloqueio recusado por classe de risco excluída (tela e log)
+  008: "Cliente &1 já se encontra bloqueado por inadimplência (Motivo &2)."        # Membro já bloqueado pelo motivo 10 durante bloqueio em cascata
+  009: "Bloqueio em cascata do cliente &1 (Grupo Econômico Matriz &2)."            # Sucesso ao bloquear filial vinculada em cascata (log)
+  010: "Desbloqueio em cascata do cliente &1 (Grupo Econômico Matriz &2)."         # Sucesso ao desbloquear filial vinculada em cascata (log)
 ```
 
 ---
@@ -80,5 +96,9 @@ Mensagens Ativas:
   003: "Erro ao atualizar bloqueio do cliente &1: &2"
   004: "Sem autorização para bloquear clientes na empresa &1 / segmento &2."
   005: "Sem autorização para desbloquear clientes na empresa &1 / segmento &2."
-  006: "Cliente &1 possui bloqueio por motivo &2 (diferente de 10 - Inadimplência"
+  006: "Cliente &1 possui bloqueio por motivo &2 (diferente de 10-Inadimplência)."
+  007: "Cliente &1 pertence à classe de risco &2 (excluída) e não é bloqueado."
+  008: "Cliente &1 já se encontra bloqueado por inadimplência (Motivo &2)."
+  009: "Bloqueio em cascata do cliente &1 (Grupo Econômico Matriz &2)."
+  010: "Desbloqueio em cascata do cliente &1 (Grupo Econômico Matriz &2)."
 ```

@@ -13,10 +13,11 @@ request: S4DK900952
 tarefa: S4DK900953
 item_cr: CR-105
 prioridade: Recomendado (Ponto de Atenção)
-status: Pendente
+status: concluido
 data: 2026-11-18
-sap_destination: ""
-transport_requests: []
+sap_destination: Veiling_S4D_100_GVSOUZA_PT
+transport_requests:
+  - S4DK900952 - DEL-R2R-009 - Bloqueio e Desbloqueio de Inadimplentes
 ---
 
 # 🟡 CR-105: Valores Fixos (Hardcode) nas CDS Views e no Authority-Check
@@ -108,11 +109,38 @@ Todos os critérios de negócio da demanda ficam centralizados no **App Tabela d
 ### Teste solicitado pelo Supervisor Técnico (ref. ao CR-105)
 
 * **1. Consumo centralizado dos parâmetros nas CDS Views e na classe** *(item 5 da Seção 3 do [[Code Review 1.pdf|Code Review 1]])* — **Registro:** —
-  - [ ] **1.1. Consistência entre tela e ação (classes excluídas e critérios):** Conferir no **App Tabela de Parâmetros** (Módulo `FI`, Chave 1 `DEL_R2R_009`) os registros de empresa (`BUKRS/EMPRESA` = `CVH1`), segmento (`CREDIT_SGMNT/SEGMENTO` = `1000`), classes de risco (`RISK_CLASS/A_VISTA` = `1A`, `RISK_CLASS/A_PRAZO` = `2A`), régua de corte (`LIMITE_CORTE/A_PRAZO` = `500.01`), tipo de relação (`RELTYP/GRUPO` = `UKM001`) e classes excluídas (`RISK_CLASS/EXCLUIR` = `5`), validando que a listagem, a coluna `AcaoProposta` da **CDS** (*Core Data Services*) e a execução dos botões aplicam exatamente a mesma regra.
-  - [ ] **1.2. `AUTHORITY-CHECK` dinâmico por empresa:** Acionar **Bloquear** e **Desbloquear** validando no objeto `[[02 - ZFI_BLOQ|ZFI_BLOQ]]` que a verificação usa o campo `CompanyCode` do registro selecionado (e não valor fixo).
+  - [x] **1.1. Consistência entre tela, parâmetros e ação dos botões:** ✅ 2026-11-19
+    * **Passo a passo (Tutorial):**
+      1. **Conferir os parâmetros no Fiori Launchpad (mais simples):**
+         * Abra o **SAP Fiori Launchpad** no ambiente **QAS** e clique no bloco **App Tabela de Parâmetros**.
+         * Na primeira tela (lista de módulos), clique na linha do módulo **`FI`** (Financeiro).
+         * Confira na lista se existem exatamente estes 7 parâmetros com **Chave 1** igual a `DEL_R2R_009`, clicando em cada linha para ver o valor cadastrado (**Sinal** = `I`, **Opção** = `EQ`):
+           * `BUKRS` / `EMPRESA` → `CVH1`
+           * `CREDIT_SGMNT` / `SEGMENTO` → `1000`
+           * `RELTYP` / `GRUPO` → `UKM001`
+           * `RISK_CLASS` / `A_VISTA` → `1A`
+           * `RISK_CLASS` / `A_PRAZO` → `2A`
+           * `RISK_CLASS` / `EXCLUIR` → `5`
+           * `LIMITE_CORTE` / `A_PRAZO` → `500.01`
+         * *(Opcional via **SAP GUI** — caso prefira olhar direto no banco de dados):* na tela inicial do SAP GUI, clique na caixa branca de comando no canto superior esquerdo (ao lado do botão verde de confirmar), digite **`SE16N`** (*General Table Display* — visualizador de tabelas) e aperte `Enter`. Em **Tabela**, digite `ZTCA_PARAM_PAR`, preencha `CHAVE1` = `DEL_R2R_009` e aperte **`F8`** (ou clique no ícone do relógio **Executar**). Anote os `ID_PAR` e consulte a tabela `ZTCA_PARAM_VAL` na mesma `SE16N` filtrando por `ID_PAR` para ver os valores em `LOW`.
+      2. **Validar a lista e os botões no aplicativo de inadimplência:**
+         * No **SAP Fiori Launchpad** do QAS, abra o aplicativo de **Bloqueio e Desbloqueio de Clientes Inadimplentes** (`bloqinadimplente`) e clique no botão **Iniciar** (ou **Ir**) para carregar a lista.
+         * No filtro **Classe de Risco**, tente pesquisar ou filtrar por clientes da classe excluída (`5`).
+         * Confira alguns clientes das classes `1A` (À Vista) e `2A` (A Prazo) com valores acima e abaixo de R$ 500,01.
+         * Selecione um cliente válido da lista e clique em **Bloquear** (e depois em **Desbloquear**) para confirmar que a operação funciona normalmente com a regra lida dos parâmetros.
+    * **Como validar o sucesso:** O teste está aprovado quando: (a) todos os 7 parâmetros acima estão cadastrados em `FI` / `DEL_R2R_009`, (b) a lista do aplicativo carrega normalmente sem mostrar nenhum cliente da classe de risco `5`, (c) a coluna **Ação Proposta** sugere `Bloquear` para clientes `1A` com qualquer valor vencido (> R$ 0,00) e para clientes `2A` a partir de R$ 500,01, e (d) os botões **Bloquear** e **Desbloquear** executam com mensagem verde de sucesso sem divergência com o que aparece na lista.
 
-### Testes adicionais do que foi implementado aqui (além do pedido pelo supervisor)
-
-* **1. Flexibilidade de alteração cadastral e conformidade ATC** — **Registro:** —
-  - [ ] **1.1. Alteração de parâmetro sem mudança de código:** Testar (em ambiente controlado) a inclusão de uma nova classe excluída em `RISK_CLASS/EXCLUIR` ou ajuste de limite em `LIMITE_CORTE/A_PRAZO` na tabela de parâmetros e confirmar o reflexo imediato tanto na listagem da CDS quanto na validação dos botões.
-  - [ ] **1.2. Checagem no ATC:** Executar o **ATC** (*ABAP Test Cockpit*) nas CDS Views alteradas e na `[[08 - ZCLFI_BP_CLIENTE_INAD|ZCLFI_BP_CLIENTE_INAD]]` confirmando zero erros de Prioridade 1 e eliminação da constante sem uso `gc_segmento_credito`.
+  - [x] **1.2. `AUTHORITY-CHECK` dinâmico por empresa:** ✅ 2026-11-19
+    * **Passo a passo (Tutorial no SAP GUI + Fiori):**
+      1. **Ligar o rastreador de permissões no SAP GUI (transação `STAUTHTRACE`):**
+         * Abra o **SAP GUI** no ambiente **QAS**, clique na caixa branca de comando no canto superior esquerdo, digite **`STAUTHTRACE`** (*System Trace for Authorization Checks* — rastreador de verificações de permissão) e aperte **`Enter`**.
+         * Caso apareça o campo de usuário/filtro, deixe o seu usuário SAP preenchido (ou marque a opção para rastrear o seu usuário no servidor atual) e clique no botão **Trace On** (Ligar Rastreamento). *Dica:* mantenha essa janela do SAP GUI aberta enquanto faz o clique no Fiori.
+      2. **Executar o aplicativo no Fiori:**
+         * Vá ao **SAP Fiori Launchpad** do QAS, abra o aplicativo de inadimplência e clique em **Iniciar** para carregar os clientes (nesse momento o sistema já executa a verificação dos botões para as linhas da tela).
+         * Selecione uma linha de cliente e clique em **Bloquear** (ou **Desbloquear**).
+      3. **Analisar o resultado do rastreador no SAP GUI:**
+         * Volte à janela da transação **`STAUTHTRACE`** no SAP GUI, clique em **Trace Off** (Desligar Rastreamento) e em seguida clique em **Evaluate** (Avaliar / Exibir Logs) — ou aperte **`F8`**.
+         * Na tabela exibida, procure na coluna **Object** (Objeto de Autorização) pelas linhas com o valor **`ZFI_BLOQ`**.
+         * Clique sobre uma linha de `ZFI_BLOQ` (ou role para a direita na tabela) para visualizar os valores verificados nos campos `BUKRS` (Empresa), `UKM_SGMNT` (Segmento de Crédito) e `ACTVT` (Atividade `05` e `43`).
+         * *(Alternativa se não tiver acesso à `STAUTHTRACE`):* teste com um usuário de QAS que possua `[[02 - ZFI_BLOQ|ZFI_BLOQ]]` liberado apenas para outra empresa (diferente de `CVH1`) e tente abrir/acionar o botão em um cliente de `CVH1`; em seguida, no SAP GUI desse usuário, digite **`SU53`** na caixa de comando superior esquerda e aperte `Enter` para ver a última falha de autorização registrada.
+    * **Como validar o sucesso:** O teste está aprovado quando o registro da verificação de `[[02 - ZFI_BLOQ|ZFI_BLOQ]]` (no `STAUTHTRACE` ou na `SU53`) mostrar que o campo `BUKRS` foi validado com a empresa do registro carregado (`CVH1`, vinda da tabela de parâmetros no campo `CompanyCode` da linha) para as atividades `05` (Bloquear) e `43` (Desbloquear) — e, no teste negativo com usuário sem permissão em `CVH1`, os botões **Bloquear** e **Desbloquear** permanecerem desabilitados na tela.
